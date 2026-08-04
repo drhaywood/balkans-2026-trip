@@ -476,43 +476,48 @@ const LEGS = [
     ]
   },
   {
-    id:"hrv", name:"Croatia", color:"#1F6F7A", meta:"11–13 Aug · lakes down to the Adriatic",
-    route:[[46.3383,13.5525],[44.8654,15.5820],[43.3711,16.9114],[42.6407,18.1077]],
+    id:"hrv", name:"Croatia", color:"#1F6F7A", meta:"11–13 Aug · straight to the coast, two nights at Brela",
+    route:[[46.3383,13.5525],[43.3711,16.9114],[42.6989,18.0056]],
     days:[
-      {n:4,date:"Tue 11 Aug",title:"→ Plitvice Lakes",lat:44.8654,lng:15.5820,
+      {n:4,date:"Tue 11 Aug",title:"→ Brela (Plitvice cut)",lat:43.3711,lng:16.9114,
        from:{name:"Bovec",lat:46.3383,lng:13.5525},
-       body:"Long drive south out of the Alps — down through Ljubljana and Karlovac, across the border, and into the park by mid-afternoon. Camp at the park so you're through the gate at opening, not fighting the coach crowds at 11am.",
-       pills:[["drive","~4.5 h"],["locked","Plitvice"],["tent","Korana campsite"],["pencil","Entrance 1 · Route C"]],
-       hist:{h:"Plitvice Lakes incident",t:"The first fatality of the Croatian War of Independence happened here on Easter Sunday 1991, when Serb paramilitaries seized the park headquarters. The park spent the war under Serb control and was mined; it was cleared and fully reopened by 1998."},
-       opts:{label:"Plitvice — the planning checklist",
+       body:"Plitvice's off the list — August crowds, peak-season pricing, and 2026's drought has the waterfalls running thin, so the one thing that sells the ticket wasn't going to deliver. Straight through to the coast instead: down through Ljubljana, Zagreb, and the A1 to the Makarska Riviera. This is a genuinely long single day — treat it like Day 14's Munich–Rotterdam haul, not a casual drive, and start early given yesterday's Vršič hairpins are still in your legs.",
+       pills:[["drive","~7.5–8 h"],["locked","Brela"],["tent","Autocamp Sirena"],["pencil","2 nights"]],
+       opts:{label:"Brela camping — you've emailed all four",
          items:[
-           {n:"Entrance 1 (Rastovača)",d:"The north entrance, closest to the Lower Lakes and Veliki Slap. Best first-timer start — most famous viewpoints are right here, and you face the falls for photos.",t:"Start here",cost:null,star:true,lat:44.9053,lng:15.6118},
-           {n:"Route C",d:"The standard full-day route — Lower and Upper Lakes plus the boat and panoramic shuttle, both included in the ticket. About 8 km including water crossings.",t:"4–5 h",cost:null,star:true,lat:44.8770,lng:15.6020},
-           {n:"Timed-entry ticket",d:"Peak-August adult pricing. Book online in advance and validate at the gate — August sells out and walk-up queues run long. Covers the boat and shuttle.",t:"Book ahead",cost:42,unit:"pp",star:true,lat:44.8654,lng:15.5820},
-           {n:"Veliki Slap",d:"Croatia's tallest waterfall, a short walk down from Entrance 1. Non-negotiable — it's on Route C regardless.",t:"20 min",cost:0,lat:44.8791,lng:15.6136},
-           {n:"Arrive at opening",d:"7–8am gets you near-empty boardwalks. Reviewers who came at 10am+ in mid-August describe queues on the walkways and hour-plus waits for the boat. This is the one day on the trip where the alarm matters as much as Dubrovnik dawn.",t:"7–8am",cost:null,lat:44.9053,lng:15.6118},
-           {n:"No swimming",d:"Forbidden park-wide — it's a protected UNESCO site. If you want a lake dip, that's Brela tomorrow, not here.",t:"—",cost:0,lat:44.8654,lng:15.5820},
-           {n:"Bring food and water",d:"In-park cafés are overpriced and spread far apart. Pack a picnic and fill bottles before you go through the gate.",t:"—",cost:0,lat:44.8654,lng:15.5820},
-           {n:"Korana campsite",d:"Large grassy site on the river a few minutes from Entrance 1 — park anywhere on the grass, clean facilities even in high season. The practical camp choice for tonight.",t:"Camp",cost:15,unit:"pp",star:true,lat:44.8817,lng:15.5589},
-           {n:"Krka National Park (skip this trip)",d:"Smaller, near Šibenik, and unlike Plitvice you're allowed to swim. Not on your route so not worth a detour — but if the coast leg leaves you wanting more swim and less waterfall, this is the trade-off you're making by choosing Plitvice instead.",t:"Not routed",cost:null,lat:43.8000,lng:15.9000},
-           {n:"Stick to Route C, skip A–B lingering",d:"Reviewers repeatedly flag the stretch nearest Entrance 1 (routes A–B) as the crowd bottleneck. Route C's longer loop draws the crowds thin fast — don't dawdle near the gate.",t:"—",cost:null,lat:44.8770,lng:15.6020}
+           {n:"Autocamp Sirena",d:"Lokva Rogoznica, ~10 min south of Brela. Cliffside pitches over the sea, tent-friendly without reservation per reviewers, restaurant with live music on-site. The strongest overall pick on this stretch.",t:"4.5★ · 1,888 reviews",cost:15,unit:"pp",star:true,lat:43.4063,lng:16.7771},
+           {n:"Camping Krvavica",d:"Krvavica, ~15 min south. Small and quiet, 5-min walk to the beach, good showers. Cheapest of the strong options at ~€23/night for two.",t:"4.5★ · 1,299 reviews",cost:12,unit:"pp",star:true,lat:43.3235,lng:16.9858},
+           {n:"Mini Camp Podaca",d:"Podaca, ~20 min south. Terraced olive-grove pitches with sea views, free communal kitchen. Highest-rated of the four.",t:"4.6★ · 601 reviews",cost:15,unit:"pp",lat:43.1225,lng:17.3060},
+           {n:"Camp Viter",d:"Zaostrog, ~25 min south. Right on the beach, big enough for tent plus motorcycle, close to town for supplies.",t:"4.4★ · 1,299 reviews",cost:14,unit:"pp",lat:43.1393,lng:17.2810}
          ],
-         foot:"<b>Reality check:</b> €42pp isn't the outlier cost on this trip — Soča rafting was €70pp. The thing that will actually ruin this day is arriving late. Commit to the 7am start or the ticket buys you a queue, not a walk."}},
-      {n:5,date:"Wed 12 Aug",title:"Plitvice, then the coast road",lat:43.3711,lng:16.9114,
-       from:{name:"Plitvice",lat:44.8654,lng:15.5820},
-       body:"Boardwalks in the morning before the coaches arrive. Then down to the Makarska Riviera — Brela for a pebble-beach swim and a night by the water.",
-       pills:[["pencil","Brela"],["drive","~3.5 h"],["tent","Camp"]]},
-      {n:6,date:"Thu 13 Aug",title:"→ Dubrovnik",lat:42.6407,lng:18.1077,
+         foot:"<b>Note:</b> replies aren't back on all of these yet — once you hear back, delete whichever don't have space so the budget total only reflects where you're actually staying."}},
+      {n:5,date:"Wed 12 Aug",title:"Brela — beach day",lat:43.3711,lng:16.9114,
+       body:"No driving. A full day to actually use the beach and campsite you paid for, instead of passing through it. Second night at the same site.",
+       pills:[["locked","Rest day"],["pencil","Punta Rata beach"],["tent","2nd night"]],
+       opts:{label:"What to do with a free day in Brela",
+         items:[
+           {n:"Punta Rata Beach",d:"Brela's signature beach, consistently ranked among Europe's best — pebble beach around the small pine-covered islet Kamen Brela, walkable from most of the campsites on the list.",t:"Half day+",cost:0,star:true,lat:43.3757,lng:16.9370},
+           {n:"Biokovo Skywalk",d:"A glass horseshoe platform cantilevered off Biokovo mountain above the riviera, roughly 1,200m up with views straight down to the coast — a real change of pace from beach time if you want one active thing this day.",t:"Half day",cost:16,unit:"pp",lat:43.3183,lng:17.0658},
+           {n:"Kamen Brela islet swim",d:"Swim or kayak out to the small pine islet just off Punta Rata — the postcard shot of Brela.",t:"1–2 h",cost:0,lat:43.3757,lng:16.9370},
+           {n:"Just don't drive anywhere",d:"You cut Plitvice specifically to get unhurried time on the coast — the point of this day is doing less, not filling it with a second activity.",t:"—",cost:null,lat:43.3711,lng:16.9114}
+         ]}},
+      {n:6,date:"Thu 13 Aug",title:"→ Dubrovnik (camp outside the walls)",lat:42.6989,lng:18.0056,
        from:{name:"Brela",lat:43.3711,lng:16.9114},
-       body:"Coastal drive over the Pelješac bridge. Sleep just outside the walls so you can walk in before sunrise.",
-       pills:[["drive","~3 h"],["sleep","Camp or cheap hotel"]]}
+       body:"Coastal drive over the Pelješac Bridge, bypassing the old Neum corridor entirely. Camp just outside Dubrovnik tonight rather than inside the city, so tomorrow's dawn walk starts fresh instead of after a late check-in.",
+       pills:[["drive","~3 h"],["tent","Camp Pod Maslinom"],["pencil","Dawn walk tomorrow"]],
+       opts:{label:"Dubrovnik-area camping",
+         items:[
+           {n:"Camp Pod Maslinom",d:"Orašac, ~20 min from Dubrovnik old town. Best-reviewed option near the city — olive-shaded terraces, small secluded beach, staff specifically help with Dubrovnik trip logistics.",t:"4.6★ · 1,819 reviews",cost:15,unit:"pp",star:true,lat:42.6989,lng:18.0056},
+           {n:"Slano camping bambo",d:"Slano, ~35 min from Dubrovnik. Cheaper, quieter, right on the water — the fallback if Camp Pod Maslinom is full.",t:"4.5★ · 115 reviews",cost:10,unit:"pp",lat:42.7752,lng:17.8849},
+           {n:"Avoid: Camping Solitudo",d:"The closest site to the old town, but reviews split hard — €75+/night against run-down facilities and broken showers by multiple accounts. Not worth the proximity.",t:"Skip",cost:null,lat:42.6621,lng:18.0705}
+         ]}}
     ]
   },
   {
     id:"mne", name:"Montenegro — the base", color:"#B0603C", meta:"14–16 Aug · three nights, one bed",
     days:[
       {n:7,date:"Fri 14 Aug",title:"Dubrovnik at dawn → Kotor",lat:42.4247,lng:18.7712,
-       from:{name:"Dubrovnik",lat:42.6407,lng:18.1077},
+       from:{name:"Camp Pod Maslinom",lat:42.6989,lng:18.0056},
        body:"Walls at first light, empty streets, out before the first ship docks. Then the border and around the bay to Kotor by lunch.",
        pills:[["locked","Dubrovnik dawn"],["locked","Kotor"],["drive","~2.5 h"],["sleep","Base 1 of 3"]],
        hist:{h:"Two republics",t:"Dubrovnik spent four centuries as Ragusa, an independent maritime republic that bought its safety from the Ottomans with tribute rather than war, and abolished slavery in 1416. Kotor went the other way — Venetian for nearly four hundred years, which is why the lion of St Mark sits over the gate."}},
