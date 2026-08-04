@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rotterdam → Kotor → Rotterdam · 8–21 August 2026</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Nunito+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#FDFBF6; --paper-2:#F1F5EC; --paper-3:#E7EEE0;
+  --ink:#2F3A2C; --ink-soft:#63705C; --ink-faint:#8B9784; --rule:#D6E0CC;
+  --teal:#2E8B84; --citrus:#F0942B; --clay:#B0603C; --sea:#1F6F7A;
+  --pine:#4F7141; --ochre:#C08A2E; --violet:#7A6A9B; --olive:#6B7F3E;
+  --display:"Fraunces",Georgia,serif; --body:"Nunito Sans",system-ui,sans-serif;
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);
+  font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased;}
+
+.shell{display:grid;grid-template-columns:minmax(360px,490px) 1fr;height:100vh;}
+@media (max-width:920px){
+  .shell{grid-template-columns:1fr;height:auto;}
+  #map{height:48vh;position:sticky;top:0;z-index:5;}
+}
+
+.panel{overflow-y:auto;background:var(--paper);border-right:1px solid var(--rule);}
+.panel::-webkit-scrollbar{width:10px;}
+.panel::-webkit-scrollbar-track{background:var(--paper);}
+.panel::-webkit-scrollbar-thumb{background:var(--rule);border-radius:10px;border:3px solid var(--paper);}
+
+.masthead{padding:34px 30px 22px;}
+.eyebrow{font-size:11.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--teal);margin:0 0 12px;}
+h1{font-family:var(--display);font-weight:600;font-size:clamp(28px,3.4vw,36px);
+  line-height:1.06;margin:0 0 18px;letter-spacing:-.015em;}
+h1 em{font-style:normal;color:var(--citrus);}
+h1 .to{color:var(--ink-faint);font-weight:400;}
+.stats{display:flex;gap:8px;flex-wrap:wrap;}
+.stat{background:var(--paper-2);border:1px solid var(--rule);border-radius:999px;
+  padding:6px 14px;font-size:12.5px;color:var(--ink-soft);}
+.stat b{color:var(--ink);font-weight:700;}
+
+/* ---- budget tile ---- */
+.budget{margin:0 30px 18px;border-radius:16px;overflow:hidden;
+  border:1px solid #CBDCC4;background:linear-gradient(160deg,#EAF3E3,#F5FAF0);}
+.budgethead{padding:18px 20px 14px;display:flex;align-items:flex-start;
+  justify-content:space-between;gap:14px;}
+.budgetlabel{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
+  color:#4E7040;margin:0 0 6px;}
+.budgettotal{font-family:var(--display);font-weight:700;font-size:38px;line-height:1;
+  color:#2C4322;letter-spacing:-.02em;}
+.budgetsub{font-size:12px;color:#5E7551;margin-top:5px;}
+.budgetclear{font:inherit;font-size:12px;font-weight:700;color:#4E7040;background:#fff;
+  border:1px solid #CBDCC4;border-radius:999px;padding:6px 13px;cursor:pointer;
+  white-space:nowrap;transition:.15s;}
+.budgetclear:hover{background:#DFEDD6;}
+.budgetrows{border-top:1px solid #CBDCC4;background:rgba(255,255,255,.55);}
+.brow{display:flex;justify-content:space-between;gap:12px;padding:8px 20px;
+  font-size:12.5px;color:#4A5D40;border-bottom:1px solid rgba(203,220,196,.6);}
+.brow:last-child{border-bottom:none;}
+.brow b{font-weight:700;}
+.bempty{padding:12px 20px;font-size:12.5px;color:#6E8461;line-height:1.5;}
+
+.spare{margin:0 30px 20px;padding:15px 18px;border-radius:13px;
+  background:#FDF1E1;border:1px solid #F3D3A6;}
+.spare b{display:block;font-family:var(--display);font-size:16px;font-weight:600;
+  color:#A5641A;margin-bottom:4px;}
+.spare p{margin:0;font-size:13.5px;color:#8A6234;line-height:1.55;}
+
+.charge{margin:0 30px 20px;padding:15px 18px;border-radius:13px;
+  background:#FBF3D9;border:1px solid #E9D48C;}
+.charge b{display:block;font-family:var(--display);font-size:16px;font-weight:600;
+  color:#8A6D0E;margin-bottom:4px;}
+.charge p{margin:0;font-size:13.5px;color:#6E5A15;line-height:1.55;}
+.charge p b{display:inline;color:#5C4A10;font-size:inherit;font-weight:800;}
+
+.controls{padding:0 30px 22px;display:flex;gap:9px;flex-wrap:wrap;}
+.btn{font-family:var(--body);font-size:13px;font-weight:600;background:var(--paper-2);
+  color:var(--ink-soft);border:1px solid var(--rule);padding:9px 16px;
+  border-radius:999px;cursor:pointer;transition:.18s;}
+.btn:hover{background:var(--paper-3);color:var(--ink);border-color:var(--ink-faint);}
+.btn:focus-visible{outline:2.5px solid var(--teal);outline-offset:2px;}
+.btn.abrp{background:#2C4322;color:#fff;border-color:#2C4322;}
+.btn.abrp:hover{background:#3C5A2E;color:#fff;}
+
+.spine{padding:0 0 40px;}
+.leg{position:relative;padding:0 30px 0 64px;}
+.leg::before{content:"";position:absolute;left:33px;top:0;bottom:0;width:3px;border-radius:3px;
+  background:var(--legcolor);opacity:.55;transition:opacity .25s;}
+.leg:first-child::before{top:30px;}
+.leg:last-child::before{bottom:calc(100% - 30px);}
+.leg.off::before{opacity:.15;}
+
+.leghead{display:flex;align-items:flex-start;gap:12px;padding:22px 0 14px;
+  cursor:pointer;user-select:none;position:relative;border:none;background:none;
+  font:inherit;color:inherit;text-align:left;width:100%;}
+.leghead:focus-visible{outline:2.5px solid var(--teal);outline-offset:4px;border-radius:8px;}
+.leghead::before{content:"";position:absolute;left:-38px;top:27px;width:15px;height:15px;
+  border-radius:50%;background:var(--legcolor);box-shadow:0 0 0 4px var(--paper);transition:.25s;}
+.leg.off .leghead::before{background:var(--rule);}
+.legtitle{flex:1;}
+.legname{font-family:var(--display);font-weight:600;font-size:20px;
+  letter-spacing:-.01em;line-height:1.15;transition:.2s;}
+.leg.off .legname{color:var(--ink-faint);}
+.legmeta{font-size:12.5px;color:var(--ink-faint);margin-top:3px;font-weight:500;}
+.legswitch{flex-shrink:0;width:42px;height:24px;border-radius:24px;margin-top:5px;
+  background:var(--legcolor);position:relative;transition:.25s;}
+.leg.off .legswitch{background:var(--rule);}
+.legswitch::after{content:"";position:absolute;top:3px;left:21px;width:18px;height:18px;
+  border-radius:50%;background:#fff;transition:.25s;box-shadow:0 1px 3px rgba(0,0,0,.18);}
+.leg.off .legswitch::after{left:3px;}
+
+.days{display:grid;gap:11px;padding-bottom:10px;transition:.25s;}
+.leg.off .days{opacity:.32;pointer-events:none;}
+
+.day{background:var(--paper-2);border:1px solid var(--rule);border-radius:13px;
+  transition:.18s;overflow:hidden;}
+.day:hover{background:#fff;border-color:var(--legcolor);box-shadow:0 4px 16px rgba(47,58,44,.07);}
+.day.active{background:#fff;border-color:var(--legcolor);
+  box-shadow:0 0 0 2px var(--legcolor),0 6px 20px rgba(47,58,44,.09);}
+
+.daymain{padding:16px 18px;cursor:pointer;}
+.daymain:focus-visible{outline:2.5px solid var(--teal);outline-offset:-3px;border-radius:11px;}
+.dayrow{display:flex;align-items:center;gap:9px;margin-bottom:7px;}
+.daynum{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:#fff;background:var(--legcolor);padding:3px 9px;border-radius:999px;}
+.daydate{font-size:12px;font-weight:600;color:var(--ink-faint);letter-spacing:.03em;}
+.daytitle{font-family:var(--display);font-weight:600;font-size:18px;
+  line-height:1.22;margin:0 0 7px;letter-spacing:-.005em;}
+.daybody{font-size:14px;color:var(--ink-soft);line-height:1.55;margin:0;}
+
+.pills{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px;}
+.pill{font-size:11.5px;font-weight:600;padding:4px 11px;border-radius:999px;}
+.pill.locked{background:var(--teal);color:#fff;}
+.pill.pencil{background:var(--citrus);color:#fff;}
+.pill.bed{background:#6B5B95;color:#fff;}
+.pill.tent{background:var(--pine);color:#fff;}
+.pill.sleep,.pill.drive{background:transparent;color:var(--ink-soft);border:1px solid var(--rule);}
+.pill.warn{background:#C4553A;color:#fff;}
+
+.hist{margin:14px 18px 0;padding:13px 15px;border-radius:10px;background:var(--paper-3);
+  font-size:13.5px;line-height:1.6;color:var(--ink-soft);}
+.hist b{display:block;font-size:11px;font-weight:700;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--teal);margin-bottom:5px;}
+
+.daylinks{padding:12px 18px 0;display:flex;gap:8px;flex-wrap:wrap;}
+.abrplink{font-size:12px;font-weight:700;color:#2C4322;background:#E5EFDE;
+  border:1px solid #CBDCC4;border-radius:999px;padding:6px 13px;text-decoration:none;
+  display:inline-block;transition:.15s;}
+.abrplink:hover{background:#D5E7CB;}
+
+.optbtn{width:100%;border:none;border-top:1px solid var(--rule);background:transparent;
+  font:inherit;font-size:13px;font-weight:700;color:var(--legcolor);
+  padding:12px 18px;cursor:pointer;display:flex;align-items:center;
+  justify-content:space-between;gap:8px;margin-top:14px;transition:.15s;}
+.optbtn:hover{background:var(--paper-3);}
+.optbtn:focus-visible{outline:2.5px solid var(--teal);outline-offset:-3px;}
+.optbtn .chev{transition:transform .22s;font-size:11px;}
+.optbtn[aria-expanded="true"] .chev{transform:rotate(180deg);}
+.optwrap{display:none;padding:2px 18px 16px;}
+.optwrap.show{display:block;}
+
+.opt{display:flex;gap:10px;align-items:flex-start;padding:11px 0;
+  border-bottom:1px solid var(--rule);}
+.opt:last-of-type{border-bottom:none;}
+.optgo{flex:1;display:flex;gap:10px;text-align:left;background:none;border:none;
+  font:inherit;color:inherit;cursor:pointer;padding:0;border-radius:7px;}
+.optgo:hover .optname{color:var(--legcolor);}
+.optgo:focus-visible{outline:2.5px solid var(--teal);outline-offset:3px;}
+.optmark{width:9px;height:9px;border-radius:50%;background:var(--legcolor);
+  flex-shrink:0;margin-top:6px;border:1.5px solid #fff;box-shadow:0 0 0 1px var(--legcolor);}
+.opt.star .optmark{background:var(--citrus);box-shadow:0 0 0 1px var(--citrus),0 0 0 4px #FDF1E1;}
+.opttext{flex:1;}
+.optname{font-weight:700;font-size:13.5px;line-height:1.35;transition:.15s;}
+.opt.star .optname::after{content:" ★";color:var(--citrus);}
+.optdesc{font-size:12.5px;color:var(--ink-soft);line-height:1.5;margin-top:2px;}
+.optmeta{display:flex;gap:8px;margin-top:5px;font-size:11.5px;font-weight:700;
+  color:var(--ink-faint);align-items:center;}
+.optcost{color:#4E7040;}
+.optcost.free{color:var(--ink-faint);font-weight:600;}
+
+.optactions{display:flex;gap:5px;flex-shrink:0;margin-top:3px;}
+.optadd{flex-shrink:0;width:28px;height:28px;border-radius:50%;border:1.5px solid var(--rule);
+  background:#fff;color:var(--ink-faint);font-size:15px;font-weight:700;line-height:1;
+  cursor:pointer;transition:.15s;display:flex;align-items:center;justify-content:center;}
+.optadd:hover{border-color:#4E7040;color:#4E7040;}
+.optadd:focus-visible{outline:2.5px solid var(--teal);outline-offset:2px;}
+.optadd.on{background:#4E7040;border-color:#4E7040;color:#fff;}
+
+.optdel{flex-shrink:0;width:28px;height:28px;border-radius:50%;border:1.5px solid transparent;
+  background:transparent;color:#BEC8B6;font-size:17px;font-weight:400;line-height:1;
+  cursor:pointer;transition:.15s;display:flex;align-items:center;justify-content:center;}
+.opt:hover .optdel{color:var(--ink-faint);}
+.optdel:hover{background:#FBEAE5;border-color:#E8BFB2;color:#C4553A;}
+.optdel:focus-visible{outline:2.5px solid #C4553A;outline-offset:2px;}
+
+.opttrash{display:none;align-items:center;justify-content:space-between;gap:10px;
+  margin-top:11px;padding:9px 12px;border-radius:9px;background:#FBEAE5;
+  border:1px solid #EFD5CB;font-size:12.5px;font-weight:600;color:#9A4A33;}
+.trashbtn{font:inherit;font-size:12px;font-weight:700;color:#9A4A33;background:#fff;
+  border:1px solid #E8BFB2;border-radius:999px;padding:5px 12px;cursor:pointer;transition:.15s;}
+.trashbtn:hover{background:#F6DED6;}
+
+.optfoot{margin-top:13px;padding:11px 13px;border-radius:9px;background:var(--paper-3);
+  font-size:12.5px;line-height:1.55;color:var(--ink-soft);}
+.optfoot b{color:var(--ink);}
+
+.notes{padding:8px 30px 50px;}
+.notes section{background:var(--paper-2);border:1px solid var(--rule);border-radius:14px;
+  padding:20px 22px;margin-bottom:14px;}
+.notes h3{font-family:var(--display);font-weight:600;font-size:18px;margin:0 0 12px;
+  letter-spacing:-.01em;}
+.notes ul{margin:0;padding-left:19px;}
+.notes li{margin-bottom:9px;font-size:13.5px;color:var(--ink-soft);line-height:1.55;}
+.notes li:last-child{margin-bottom:0;}
+.notes li b{color:var(--ink);font-weight:700;}
+.notes .warnhead{color:#C4553A;}
+.notes a{color:var(--teal);}
+
+#map{height:100vh;background:var(--paper-2);}
+.leaflet-container{background:var(--paper-2);font-family:var(--body);}
+.leaflet-popup-content-wrapper{background:#fff;color:var(--ink);border-radius:13px;
+  border:1px solid var(--rule);box-shadow:0 10px 34px rgba(47,58,44,.16);}
+.leaflet-popup-tip{background:#fff;}
+.leaflet-popup-content{margin:15px 17px;font-size:14px;line-height:1.5;}
+.leaflet-popup-content h4{font-family:var(--display);font-weight:600;font-size:17.5px;
+  margin:0 0 4px;letter-spacing:-.01em;}
+.leaflet-popup-content .pm{font-size:11.5px;font-weight:700;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--teal);margin:0 0 8px;}
+.leaflet-popup-content p:last-child{margin:0;color:var(--ink-soft);font-size:13.5px;}
+.leaflet-control-zoom a{background:#fff!important;color:var(--ink)!important;
+  border-color:var(--rule)!important;border-radius:8px!important;}
+.leaflet-control-attribution{background:rgba(253,251,246,.9)!important;
+  color:var(--ink-faint)!important;font-size:10.5px!important;}
+.leaflet-control-attribution a{color:var(--ink-soft)!important;}
+
+.legend{position:absolute;bottom:26px;left:16px;z-index:400;
+  background:rgba(253,251,246,.96);border:1px solid var(--rule);border-radius:13px;
+  padding:15px 17px;box-shadow:0 6px 22px rgba(47,58,44,.12);max-width:230px;}
+.legend p{margin:0 0 9px;font-size:11px;font-weight:700;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--ink-faint);}
+.legend div{display:flex;align-items:center;gap:9px;margin-bottom:6px;
+  font-size:12.5px;color:var(--ink-soft);font-weight:500;}
+.legend div:last-child{margin-bottom:0;}
+.legend i{width:12px;height:12px;border-radius:50%;display:inline-block;flex-shrink:0;}
+.legend i.sm{width:8px;height:8px;}
+.legend i.line{width:20px;height:3px;border-radius:3px;background:var(--ink-soft);}
+.legend i.dash{width:20px;height:0;border-radius:0;border-top:3px dashed var(--ink-faint);}
+.legend hr{border:none;border-top:1px solid var(--rule);margin:9px 0;}
+
+#routestatus{position:absolute;top:14px;left:16px;z-index:400;
+  background:rgba(253,251,246,.96);border:1px solid var(--rule);border-radius:999px;
+  padding:7px 15px;font-size:12px;font-weight:600;color:var(--ink-soft);
+  box-shadow:0 4px 14px rgba(47,58,44,.1);}
+
+@media (prefers-reduced-motion:reduce){*{transition:none!important;}}
+</style>
+</head>
+<body>
+<div class="shell">
+  <div class="panel">
+    <div class="masthead">
+      <p class="eyebrow">EV road trip · 14 days · 13 nights</p>
+      <h1>Rotterdam <span class="to">→</span> <em>Kotor</em> <span class="to">→</span> Rotterdam</h1>
+      <div class="stats">
+        <span class="stat"><b>8–21 Aug</b> 2026</span>
+        <span class="stat"><b>~4,900</b> km</span>
+        <span class="stat"><b>6</b> countries</span>
+        <span class="stat"><b>3 nights</b> in Kotor</span>
+      </div>
+    </div>
+
+    <div class="budget">
+      <div class="budgethead">
+        <div>
+          <p class="budgetlabel">Running total · 2 people</p>
+          <div class="budgettotal" id="btotal">€0</div>
+          <div class="budgetsub" id="bsub">Tap + on any activity or bed to add it</div>
+        </div>
+        <button class="budgetclear" id="bclear">Clear</button>
+      </div>
+      <div class="budgetrows" id="brows">
+        <div class="bempty">Nothing added yet. Costs cover activities and lodging only — fuel, food, tolls and the Slovenian vignette aren't included.</div>
+      </div>
+    </div>
+
+    <div class="spare">
+      <b>Two days spare</b>
+      <p>You're home on Friday 21 August with the 22nd and 23rd free. Durmitor and the Tara rafting would fit, or a second day in Triglav, or a gentler drive home.</p>
+    </div>
+
+    <div class="charge">
+      <b>⚡ Supercharger streak plan</b>
+      <p><b>Montenegro and Bosnia have zero Tesla Superchargers</b> — confirmed directly against Tesla's site. Your 3 nights in Kotor plus Sutjeska and Mostar sit in a dead zone, so this trip produces <b>two separate streaks</b>, not one 14-day chain: Rotterdam→Vrgorac, then a gap, then Zagreb→Rotterdam on the way back. Amber ⚡ markers on the map show the planned stops for days 1–3 so far.</p>
+    </div>
+
+    <div class="controls">
+      <button class="btn" id="allOn">Show all legs</button>
+      <button class="btn" id="allOff">Hide all</button>
+      <button class="btn" id="reset">Reset view</button>
+      <button class="btn" id="chargeToggle">Hide charging stops</button>
+      <a class="btn abrp" id="abrpAll" href="#" target="_blank" rel="noopener">Whole trip in ABRP</a>
+    </div>
+
+    <div class="spine" id="spine"></div>
+
+    <div class="notes">
+      <section>
+        <h3 class="warnhead">Where this plan is tight</h3>
+        <ul>
+          <li><b>8 Aug</b> — Rotterdam to Maria Laach is 2h45, then another 4h45 on to Munich. With the abbey stop that's a full 8-hour day, on day one. Hence the bed.</li>
+          <li><b>10 Aug</b> — the Vršič Pass is 80 km and takes 2 hours on fifty hairpins. Beautiful, slow, hard on EV range.</li>
+          <li><b>17 Aug</b> — Kotor to Tjentište crosses into Bosnia on mountain roads with thin charging.</li>
+        </ul>
+      </section>
+      <section>
+        <h3>About the routing</h3>
+        <ul>
+          <li>Days 1 to 3 follow <b>real roads</b>, pulled live from OpenStreetMap routing. Hover a segment on the map — or a day card — to highlight it.</li>
+          <li>Days 4 onward have <b>pins but no line yet</b>. Each leg gets routed as we build it out.</li>
+          <li>Every day card has an <b>Open in ABRP</b> link that hands that leg's waypoints to A Better Routeplanner for charging stops.</li>
+        </ul>
+      </section>
+      <section>
+        <h3>Still open</h3>
+        <ul>
+          <li>Munich bed and Bled campsite both to be confirmed — tell me which and I'll lock the real prices in.</li>
+          <li>Costs shown are 2026 published prices where I could find them, otherwise typical rates. Treat as estimates until booked.</li>
+          <li>Triglav splits east/west and one day only covers one side.</li>
+          <li>Vintgar Gorge needs a timed-entry ticket booked in advance for August.</li>
+        </ul>
+      </section>
+    </div>
+  </div>
+
+  <div style="position:relative">
+    <div id="map"></div>
+    <div id="routestatus">Loading road routes…</div>
+    <div class="legend">
+      <p>On the map</p>
+      <div><i style="background:#2E8B84"></i> Locked in</div>
+      <div><i style="background:#F0942B"></i> Pencilled</div>
+      <div><i class="sm" style="background:#63705C"></i> Option — expand a menu</div>
+      <hr>
+      <div><i class="line"></i> Road route — hover to highlight</div>
+      <div><span style="display:inline-flex;align-items:center;justify-content:center;width:14px;height:14px;border-radius:50%;background:#E5A33C;color:#fff;font-size:9px;flex-shrink:0;">⚡</span>&nbsp; Supercharger stop</div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script>
+const ORIGIN={name:"Rotterdam",lat:51.9244,lng:4.4777};
+
+/* Tesla Supercharger contest plan — real sites, verified against tesla.com.
+   Only days 1-3 are populated so far. Days 4-6 (Croatia) are now routed on
+   real roads too, but no charger stops have been verified for that leg yet —
+   extend this once that research is done. */
+const CHARGE_STOPS=[
+  {day:1,name:"Koblenz Supercharger",lat:50.3463,lng:7.5073,
+   note:"~25 min from Maria Laach. Barely a detour on day one."},
+  {day:1,name:"Frankfurt Flughafen Supercharger",lat:50.0533,lng:8.5714,
+   note:"Right on the A3 toward Munich. 20 stalls, up to 250kW."},
+  {day:2,name:"Salzburg Nord Supercharger",lat:47.8360,lng:13.0591,
+   note:"On the direct Munich–Villach corridor."},
+  {day:2,name:"Villach-Ost Supercharger",lat:46.6018,lng:13.8833,
+   note:"Last Austrian stop before the Karawanks tunnel into Slovenia."},
+  {day:2,name:"Žirovnica Supercharger",lat:46.4036,lng:14.1305,
+   note:"10 min from Bled, 5 min off the highway. Also the last charger before the Julian Alps — day 3 (Vršič/Bovec) has none at all."}
+];
+
+const LEGS = [
+  {
+    id:"out", name:"Getting there", color:"#C08A2E", meta:"8 Aug · one long day, via the Eifel",
+    route:[[51.9244,4.4777],[50.4014,7.2528],[48.1351,11.5820]],
+    days:[
+      {n:1,date:"Sat 8 Aug",title:"Rotterdam → Maria Laach → Munich",lat:48.1351,lng:11.5820,
+       from:ORIGIN,
+       via:[{name:"Maria Laach Abbey",lat:50.4014,lng:7.2528}],
+       body:"Down through the Eifel for a photo stop at the abbey, then the long haul east to Munich. Bed at the end of this one.",
+       pills:[["drive","~8 h total"],["bed","Bed"],["pencil","Maria Laach"]],
+       hist:{h:"Maria Laach",t:"A Benedictine abbey begun in 1093 on the shore of a volcanic crater lake, and one of the most complete Romanesque churches in Germany — six towers, almost untouched by later rebuilding. Still a working monastery."},
+       opts:{label:"Stops on the way",
+         items:[
+           {n:"Maria Laach Abbey",d:"Romanesque, six towers, on a volcanic crater lake. Church entry is free; there's a paid car park.",t:"1 h",cost:5,unit:"grp",star:true,lat:50.4014,lng:7.2528},
+           {n:"Munich old town",d:"If you arrive with light left. Marienplatz and the Viktualienmarkt are walkable from most of the cheap beds.",t:"Evening",cost:0,lat:48.1374,lng:11.5755}
+         ],
+         foot:"<b>Reality check:</b> 2h45 to the abbey, then 4h45 on to Munich. Eight hours of driving plus stops. Don't add a third."},
+       opts2:{label:"Where to sleep — Munich",
+         items:[
+           {n:"Wombat's Hauptbahnhof",d:"Right at the main station, five minutes' walk to the old town. No air conditioning, but every bunk has a fan.",t:"Hostel",cost:48,unit:"pp",star:true,lat:48.1388,lng:11.5604},
+           {n:"Euro Youth Hotel",d:"Same street, similar price, consistently well reviewed. Spacious rooms with private bathrooms available.",t:"Hostel",cost:45,unit:"pp",lat:48.1385,lng:11.5603},
+           {n:"The Tent",d:"An enormous circus tent packed with bunks, plus pitches for your own. Cheapest real option in the city. No electricity in the sleeping tent — charge near the restaurant.",t:"Camp",cost:25,unit:"pp",lat:48.1678,lng:11.5022},
+           {n:"Campingplatz Obermenzing",d:"A proper campsite with hedged pitches. Bus at the end of the road to the S-Bahn. Showers €1 extra.",t:"Camp",cost:32,unit:"grp",lat:48.1746,lng:11.4465}
+         ],
+         foot:"<b>After eight hours of driving, take the bed.</b> Prices are peak-August estimates for a private double or two dorm beds."}}
+    ]
+  },
+  {
+    id:"bled", name:"Lake Bled", color:"#4F7141", meta:"9 Aug · arrive, then climb",
+    route:[[48.1351,11.5820],[46.3683,14.1146]],
+    days:[
+      {n:2,date:"Sun 9 Aug",title:"Munich breakfast → Bled",lat:46.3683,lng:14.1146,
+       from:{name:"Munich",lat:48.1351,lng:11.5820},
+       body:"Linger over breakfast, then four and a half hours south into Slovenia. Arrive mid-afternoon with plenty of light — sunset isn't until about 8:20.",
+       pills:[["drive","~4.5 h"],["locked","Viewpoint hike"],["tent","Tent"]],
+       hist:{h:"History underfoot",t:"Bled Castle has sat on that cliff since 1011. Tito kept a summer villa on the north shore — Vila Bled, now a hotel — where he hosted Nehru and Nasser and built the Non-Aligned Movement."},
+       opts:{label:"What to do around Bled",
+         items:[
+           {n:"Mala Osojnica viewpoint",d:"Twenty minutes past Ojstrica, steel steps near the top. Higher, wider, the better of the two. If you only do one, do this.",t:"2 h loop",cost:0,star:true,lat:46.3617,lng:14.0806},
+           {n:"Ojstrica viewpoint",d:"A short steep scramble from the lakeshore. The classic postcard angle with the island framed below. Same trail.",t:"20 min up",cost:0,star:true,lat:46.3639,lng:14.0817},
+           {n:"Lake circuit walk",d:"Six kilometres flat all the way round. Easy, and the island keeps changing shape as you go.",t:"1.5 h",cost:0,lat:46.3625,lng:14.0930},
+           {n:"Bled Island & pletna boat",d:"Hand-rowed wooden boats, unchanged for centuries. Ninety-nine steps up to the church. Cash only — the rowers don't take cards.",t:"1.5 h",cost:20,unit:"pp",lat:46.3625,lng:14.0922},
+           {n:"Rowboat rental",d:"On the eastern shore. Row yourselves to the island — cheaper than the pletna for two and more satisfying. Per boat, per hour.",t:"2 h",cost:25,unit:"grp",lat:46.3648,lng:14.1043},
+           {n:"Bled Castle",d:"Cliff-top since 1011. Small museum, a wine cellar, and the view straight back down over the lake.",t:"1–2 h",cost:19,unit:"pp",lat:46.3692,lng:14.1006},
+           {n:"Swimming, western shore",d:"Free public spots near Velika Zaka by the campsite. The water's genuinely warm by mid-August.",t:"—",cost:0,lat:46.3606,lng:14.0872},
+           {n:"Vintgar Gorge",d:"Four kilometres north. Wooden boardwalk pinned to the canyon wall above turquoise water. Timed entry — book ahead for August.",t:"Half day",cost:15,unit:"pp",lat:46.3944,lng:14.0808},
+           {n:"Lake Bohinj",d:"Half an hour southwest. Bigger, wilder and far quieter than Bled. The better swim of the two lakes. Parking only.",t:"Half day",cost:10,unit:"grp",lat:46.2833,lng:13.8833}
+         ],
+         foot:"<b>If you only have the afternoon:</b> everything except Vintgar and Bohinj is within walking distance of the lake, and the viewpoints are free. Walk the western shore, climb Ojstrica then Mala Osojnica for sunset, swim on the way down."},
+       opts2:{label:"Where to sleep — Bled",
+         items:[
+           {n:"Kamp Bled",d:"Lakeside at Velika Zaka, clean showers, charging lockers at reception. Pricey and crowded in August — book well ahead.",t:"Camp",cost:30,unit:"pp",star:true,lat:46.3615,lng:14.0809},
+           {n:"Camping Šobec",d:"Three kilometres out in a bend of the Sava, ringed by pine. Quieter and cheaper than Kamp Bled, with a swimming lake.",t:"Camp",cost:22,unit:"pp",lat:46.3617,lng:14.1339},
+           {n:"Travellers' Haven Hostel",d:"Recently renovated, two kitchens, five minutes from the bus station. Cheapest bed near the lake and a well-liked owner.",t:"Hostel",cost:35,unit:"pp",lat:46.3724,lng:14.1042},
+           {n:"1 A Adventure Hostel, Lesce",d:"Five kilometres out with a free daily shuttle to Bled. They book rafting and canyoning directly — useful the night before Triglav.",t:"Hostel",cost:32,unit:"pp",lat:46.3614,lng:14.1608}
+         ],
+         foot:"<b>You said tent for this night.</b> Kamp Bled wins on location, Šobec on price and quiet. Both need booking for August."}}
+    ]
+  },
+  {
+    id:"triglav", name:"Triglav National Park", color:"#2E8B84", meta:"10 Aug · over the pass, into the Julian Alps",
+    route:[[46.3683,14.1146],[46.4331,13.7469],[46.3383,13.5525]],
+    days:[
+      {n:3,date:"Mon 10 Aug",title:"Vršič Pass → Trenta & the upper Soča",lat:46.3383,lng:13.5525,
+       from:{name:"Bled",lat:46.3683,lng:14.1146},
+       via:[{name:"Vršič Pass",lat:46.4331,lng:13.7469}],
+       body:"Fifty numbered hairpins over the pass and down the far side into the park proper. One day means picking a side: water in the west, high pasture and gorges in the east.",
+       pills:[["drive","~2 h"],["locked","Triglav NP"],["tent","Camp"]],
+       hist:{h:"The Isonzo Front",t:"The Vršič road was built by Russian prisoners of war in 1915 under Austro-Hungarian command; a wooden chapel near the summit marks the avalanche that killed hundreds of them. The valley below was the Isonzo Front — twelve battles, over a million casualties, and the setting for A Farewell to Arms."},
+       opts:{label:"Triglav — the headline sights",
+         items:[
+           {n:"Vršič Pass",d:"The drive is the attraction. Fifty numbered hairpins, the Russian Chapel at bend eight, pull-outs the whole way. Free, and you're doing it regardless.",t:"2 h",cost:0,star:true,lat:46.4331,lng:13.7469},
+           {n:"Source of the Soča",d:"From Trenta, twenty minutes up to where the river comes out of the rock. The last stretch is a chained scramble — proper shoes, not sandals.",t:"1.5 h",cost:0,star:true,lat:46.4085,lng:13.7295},
+           {n:"Peričnik Waterfall",d:"In the Vrata valley. The path runs behind the falling water, so you stand in the gap between rock and curtain. Parking fee only.",t:"1 h",cost:8,unit:"grp",star:true,lat:46.4319,lng:13.9333},
+           {n:"Soča rafting",d:"Grade II–III, beginner-friendly, about two hours on the water. Note the municipal river tax is charged separately on top — €6 at Bovec, €15 at Kobarid.",t:"2 h",cost:70,unit:"pp",lat:46.3381,lng:13.5550},
+           {n:"Canyoning",d:"Abseiling, sliding and jumping down a side gorge. Beginner tours cap jumps around five metres; advanced go to thirty-metre abseils. The more memorable of the two.",t:"3–4 h",cost:80,unit:"pp",lat:46.3243,lng:13.5531},
+           {n:"Vogel cable car",d:"Up from Bohinj to 1,535 m for the full Triglav panorama without walking a step. Return ticket.",t:"Half day",cost:28,unit:"pp",lat:46.2739,lng:13.8400},
+           {n:"Savica Waterfall",d:"At the far end of Lake Bohinj. Five hundred and fifty steps to the platform. Slovenia's national poem is set here.",t:"1.5 h",cost:8,unit:"pp",lat:46.2939,lng:13.8009},
+           {n:"Tolmin Gorges",d:"The park's southern gate. Thermal spring, the Devil's Bridge sixty metres up, and a boulder wedged between the walls.",t:"2 h",cost:10,unit:"pp",lat:46.1861,lng:13.7297},
+           {n:"Mount Triglav",d:"2,864 m and the thing on the flag. Two days minimum with a hut night and via ferrata near the top. Listed so you know you're not missing a day hike.",t:"2 days",cost:null,lat:46.3786,lng:13.8369}
+         ],
+         foot:"<b>Look at the spread on the map.</b> West (Trenta, the source, Bovec) keeps you moving south toward Croatia. East (Vrata, Bohinj, Vogel) has the quieter walks but means backtracking past Bled. About ninety minutes apart."},
+       opts2:{label:"Off the beaten path",
+         items:[
+           {n:"Planina Zajamniki",d:"A single row of shepherds' huts along a ridge above the Pokljuka plateau, facing the mountains. Reachable by car on a rough forest road. Almost nobody at sunrise.",t:"2 h",cost:0,star:true,lat:46.3350,lng:13.9250},
+           {n:"Slap Kozjak",d:"Near Kobarid. A waterfall dropping into an enclosed rock chamber that feels deliberately built. Short flat walk, far less trafficked than Vintgar.",t:"1.5 h",cost:5,unit:"grp",star:true,lat:46.2547,lng:13.5844},
+           {n:"Pokljuka Gorge",d:"A dry limestone gorge above Bled — natural bridges, a cave, and often nobody else on the loop. The gorge Vintgar's crowds haven't found.",t:"1.5 h",cost:10,unit:"pp",lat:46.3831,lng:14.0431},
+           {n:"Mostnica Gorge",d:"From Stara Fužina at Bohinj. Two hours up a narrow green canyon to a meadow, past a rock everyone insists looks like an elephant.",t:"2–3 h",cost:5,unit:"pp",lat:46.2953,lng:13.8828},
+           {n:"Radovna valley",d:"A flat, quiet valley road between Bled and the Vrata, good on foot or bike. Farms, meadows, no coaches.",t:"Flexible",cost:0,lat:46.4083,lng:14.0167},
+           {n:"Velika Korita",d:"The Great Soča Gorge near Soča village, where the river narrows to about a metre across. Suspension bridges over the top.",t:"45 min",cost:0,lat:46.3372,lng:13.6800},
+           {n:"Planina pri Jezeru",d:"A working high pasture with a small lake, and the gateway to the Seven Lakes valley. Serious uphill, shared with cows rather than tourists.",t:"5 h",cost:0,lat:46.3167,lng:13.8500},
+           {n:"Lake Krn",d:"Slovenia's largest permanent alpine lake at 1,391 m. A long day's walk up from Lepena, and genuinely remote.",t:"6–7 h",cost:0,lat:46.2678,lng:13.6597}
+         ],
+         foot:"<b>If you want one thing nobody else is at:</b> Planina Zajamniki at first light. The shot everyone assumes is stock photography, and you can drive most of the way."},
+       opts3:{label:"Where to sleep — Bovec",
+         items:[
+           {n:"Camping Vodenca",d:"Quiet, clean, right by the Soča. Free firewood, two big fire pits, charging points, and a kayak school next door.",t:"Camp",cost:14,unit:"pp",star:true,lat:46.3313,lng:13.5723},
+           {n:"Kamp Soča",d:"The scenic one — mountain views and a river-access key at check-in. Gets busy and noisy in August.",t:"Camp",cost:15,unit:"pp",lat:46.3349,lng:13.6440},
+           {n:"Camping Liza",d:"On the river with a shop and restaurant on site. Dog friendly, clean, but the pricier of the Bovec options.",t:"Camp",cost:18,unit:"pp",lat:46.3325,lng:13.5751},
+           {n:"Adrenaline-check Eco Place",d:"Wooden huts as well as pitches, and they'll book your rafting or canyoning for you.",t:"Camp/hut",cost:20,unit:"pp",lat:46.3222,lng:13.5031}
+         ],
+         foot:"<b>Bovec campsites run roughly €11.50–18 per person</b> in high season. Vodenca is the quiet pick; Liza has the most facilities."}}
+    ]
+  },
+  {
+    id:"hrv", name:"Croatia", color:"#1F6F7A", meta:"11–13 Aug · lakes down to the Adriatic",
+    route:[[46.3383,13.5525],[44.8654,15.5820],[43.3711,16.9114],[42.6407,18.1077]],
+    days:[
+      {n:4,date:"Tue 11 Aug",title:"→ Plitvice Lakes",lat:44.8654,lng:15.5820,
+       from:{name:"Bovec",lat:46.3383,lng:13.5525},
+       body:"Long drive south out of the Alps — down through Ljubljana and Karlovac, across the border, and into the park by mid-afternoon. Camp at the park so you're through the gate at opening, not fighting the coach crowds at 11am.",
+       pills:[["drive","~4.5 h"],["locked","Plitvice"],["tent","Korana campsite"],["pencil","Entrance 1 · Route C"]],
+       hist:{h:"Plitvice Lakes incident",t:"The first fatality of the Croatian War of Independence happened here on Easter Sunday 1991, when Serb paramilitaries seized the park headquarters. The park spent the war under Serb control and was mined; it was cleared and fully reopened by 1998."},
+       opts:{label:"Plitvice — the planning checklist",
+         items:[
+           {n:"Entrance 1 (Rastovača)",d:"The north entrance, closest to the Lower Lakes and Veliki Slap. Best first-timer start — most famous viewpoints are right here, and you face the falls for photos.",t:"Start here",cost:null,star:true,lat:44.9053,lng:15.6118},
+           {n:"Route C",d:"The standard full-day route — Lower and Upper Lakes plus the boat and panoramic shuttle, both included in the ticket. About 8 km including water crossings.",t:"4–5 h",cost:null,star:true,lat:44.8770,lng:15.6020},
+           {n:"Timed-entry ticket",d:"Peak-August adult pricing. Book online in advance and validate at the gate — August sells out and walk-up queues run long. Covers the boat and shuttle.",t:"Book ahead",cost:42,unit:"pp",star:true,lat:44.8654,lng:15.5820},
+           {n:"Veliki Slap",d:"Croatia's tallest waterfall, a short walk down from Entrance 1. Non-negotiable — it's on Route C regardless.",t:"20 min",cost:0,lat:44.8791,lng:15.6136},
+           {n:"Arrive at opening",d:"7–8am gets you near-empty boardwalks. Reviewers who came at 10am+ in mid-August describe queues on the walkways and hour-plus waits for the boat. This is the one day on the trip where the alarm matters as much as Dubrovnik dawn.",t:"7–8am",cost:null,lat:44.9053,lng:15.6118},
+           {n:"No swimming",d:"Forbidden park-wide — it's a protected UNESCO site. If you want a lake dip, that's Brela tomorrow, not here.",t:"—",cost:0,lat:44.8654,lng:15.5820},
+           {n:"Bring food and water",d:"In-park cafés are overpriced and spread far apart. Pack a picnic and fill bottles before you go through the gate.",t:"—",cost:0,lat:44.8654,lng:15.5820},
+           {n:"Korana campsite",d:"Large grassy site on the river a few minutes from Entrance 1 — park anywhere on the grass, clean facilities even in high season. The practical camp choice for tonight.",t:"Camp",cost:15,unit:"pp",star:true,lat:44.8817,lng:15.5589},
+           {n:"Krka National Park (skip this trip)",d:"Smaller, near Šibenik, and unlike Plitvice you're allowed to swim. Not on your route so not worth a detour — but if the coast leg leaves you wanting more swim and less waterfall, this is the trade-off you're making by choosing Plitvice instead.",t:"Not routed",cost:null,lat:43.8000,lng:15.9000},
+           {n:"Stick to Route C, skip A–B lingering",d:"Reviewers repeatedly flag the stretch nearest Entrance 1 (routes A–B) as the crowd bottleneck. Route C's longer loop draws the crowds thin fast — don't dawdle near the gate.",t:"—",cost:null,lat:44.8770,lng:15.6020}
+         ],
+         foot:"<b>Reality check:</b> €42pp isn't the outlier cost on this trip — Soča rafting was €70pp. The thing that will actually ruin this day is arriving late. Commit to the 7am start or the ticket buys you a queue, not a walk."}},
+      {n:5,date:"Wed 12 Aug",title:"Plitvice, then the coast road",lat:43.3711,lng:16.9114,
+       from:{name:"Plitvice",lat:44.8654,lng:15.5820},
+       body:"Boardwalks in the morning before the coaches arrive. Then down to the Makarska Riviera — Brela for a pebble-beach swim and a night by the water.",
+       pills:[["pencil","Brela"],["drive","~3.5 h"],["tent","Camp"]]},
+      {n:6,date:"Thu 13 Aug",title:"→ Dubrovnik",lat:42.6407,lng:18.1077,
+       from:{name:"Brela",lat:43.3711,lng:16.9114},
+       body:"Coastal drive over the Pelješac bridge. Sleep just outside the walls so you can walk in before sunrise.",
+       pills:[["drive","~3 h"],["sleep","Camp or cheap hotel"]]}
+    ]
+  },
+  {
+    id:"mne", name:"Montenegro — the base", color:"#B0603C", meta:"14–16 Aug · three nights, one bed",
+    days:[
+      {n:7,date:"Fri 14 Aug",title:"Dubrovnik at dawn → Kotor",lat:42.4247,lng:18.7712,
+       from:{name:"Dubrovnik",lat:42.6407,lng:18.1077},
+       body:"Walls at first light, empty streets, out before the first ship docks. Then the border and around the bay to Kotor by lunch.",
+       pills:[["locked","Dubrovnik dawn"],["locked","Kotor"],["drive","~2.5 h"],["sleep","Base 1 of 3"]],
+       hist:{h:"Two republics",t:"Dubrovnik spent four centuries as Ragusa, an independent maritime republic that bought its safety from the Ottomans with tribute rather than war, and abolished slavery in 1416. Kotor went the other way — Venetian for nearly four hundred years, which is why the lion of St Mark sits over the gate."}},
+      {n:8,date:"Sat 15 Aug",title:"Kotor fortress + Perast",lat:42.4869,lng:18.6989,
+       from:{name:"Kotor",lat:42.4247,lng:18.7712},
+       body:"1,350 steps up the walls at dawn — brutal in August heat any later. Afternoon in Perast and the boat out to Our Lady of the Rocks.",
+       pills:[["locked","Fortress walls"],["locked","Perast"],["sleep","Base 2 of 3"]],
+       hist:{h:"An island built by hand",t:"Our Lady of the Rocks is artificial. Sailors have dropped a stone into the bay on every safe return since the fifteenth century, and the islet grew under the church. The tradition still runs each 22 July as the Fašinada."},
+       opts:{label:"What to do around the bay",
+         items:[
+           {n:"Fortress walls to San Giovanni",d:"1,350 steps switchbacking up the cliff behind the old town. Go at first light — no shade, and August is merciless.",t:"2–3 h",cost:15,unit:"pp",star:true,lat:42.4262,lng:18.7756},
+           {n:"Kotor old town",d:"Venetian squares, the lion of St Mark over the gate, a cathedral from 1166. Small enough to get properly lost in.",t:"2 h",cost:0,lat:42.4247,lng:18.7712},
+           {n:"Perast",d:"Twenty minutes round the bay. A single street of baroque palaces and no cars.",t:"Half day",cost:0,star:true,lat:42.4869,lng:18.6989},
+           {n:"Our Lady of the Rocks",d:"Short boat hop from Perast to the hand-built island church. Boat plus church entry.",t:"1 h",cost:12,unit:"pp",lat:42.4878,lng:18.6897},
+           {n:"Kotor–Lovćen serpentine",d:"The old road up the mountain in twenty-five hairpins, the whole bay unfolding below. Pull-outs the entire way.",t:"Half day",cost:0,lat:42.4133,lng:18.7500},
+           {n:"Njegoš Mausoleum, Lovćen",d:"At 1,657 m, reached by 461 steps. Poet, prince and bishop, buried at the top of his own country. Park entry plus mausoleum.",t:"2 h",cost:13,unit:"pp",lat:42.4008,lng:18.8375},
+           {n:"Ostrog Monastery",d:"Ninety minutes inland. Built into a sheer white cliff. Free to enter; covered shoulders and legs required.",t:"Half day",cost:0,lat:42.6764,lng:19.0294},
+           {n:"Swimming, Dobrota shore",d:"Small pebble beaches along the water just north of the old town.",t:"—",cost:0,lat:42.4444,lng:18.7644}
+         ],
+         foot:"<b>Three nights means two full days plus edges.</b> Fortress and Perast fill one comfortably. The serpentine road plus Ostrog fills the other, but note on the map how far inland Ostrog sits — that's the long one."}},
+      {n:9,date:"Sun 16 Aug",title:"Serpentine road + Ostrog",lat:42.6764,lng:19.0294,
+       from:{name:"Kotor",lat:42.4247,lng:18.7712},
+       body:"Up the old Kotor–Lovćen switchbacks for the bay view, then inland to the monastery in the cliff. Long day, but nothing to pack.",
+       pills:[["pencil","Lovćen"],["pencil","Ostrog"],["sleep","Base 3 of 3"]],
+       hist:{h:"Njegoš",t:"Petar II Petrović-Njegoš was at once Montenegro's prince, its Orthodox bishop, and its greatest poet. His mausoleum sits at 1,657 m on Lovćen. Ostrog draws Orthodox, Catholic and Muslim pilgrims alike."}}
+    ]
+  },
+  {
+    id:"bih", name:"Bosnia & Herzegovina", color:"#6B7F3E", meta:"17–19 Aug · home a different way",
+    days:[
+      {n:10,date:"Mon 17 Aug",title:"→ Sutjeska National Park",lat:43.3400,lng:18.6800,
+       from:{name:"Kotor",lat:42.4247,lng:18.7712},
+       body:"North out of Montenegro on mountain roads into Bosnia. Camp at Tjentište beneath the monument.",
+       pills:[["drive","~4.5 h"],["locked","Sutjeska"],["tent","Camp"],["warn","Thin charging"]],
+       hist:{h:"The Battle of the Sutjeska",t:"In 1943 Tito's Partisans broke out of a German encirclement here and lost roughly a third of their force doing it. The concrete monument at Tjentište is one of the great Yugoslav spomeniks. Perućica, inside the park, is one of the last primeval forests left in Europe."}},
+      {n:11,date:"Tue 18 Aug",title:"Perućica, then Mostar",lat:43.3438,lng:17.8078,
+       from:{name:"Tjentište",lat:43.3400,lng:18.6800},
+       body:"Morning in the old-growth forest, afternoon drive to Mostar. The Stari Most at dusk, divers still working the crowd.",
+       pills:[["drive","~3.5 h"],["locked","Mostar"],["sleep","Cheap hotel"]],
+       hist:{h:"The bridge, twice over",t:"Ottoman-built in 1566, the Stari Most stood 427 years until Croat forces shelled it in November 1993. Reconstruction used the original quarry and Ottoman techniques, and it reopened in 2004. The city on either side of the Neretva is still, in practice, divided."}},
+      {n:12,date:"Wed 19 Aug",title:"Kravice, then turn north",lat:43.1583,lng:17.6111,
+       from:{name:"Mostar",lat:43.3438,lng:17.8078},
+       body:"Early run down to the waterfalls for a swim before the heat, back through Mostar, and then the long haul home begins.",
+       pills:[["pencil","Kravice"],["drive","~5.5 h after"],["tent","Camp near Zagreb"]]}
+    ]
+  },
+  {
+    id:"home", name:"The way back", color:"#7A6A9B", meta:"20–21 Aug · 1,400 km",
+    days:[
+      {n:13,date:"Thu 20 Aug",title:"Zagreb → Bavaria",lat:48.1351,lng:11.5820,
+       from:{name:"Zagreb",lat:45.8150,lng:15.9819},
+       body:"Up through Slovenia and Austria into Germany. Munich, or just short of it.",
+       pills:[["drive","~6 h"],["tent","Camp"]]},
+      {n:14,date:"Fri 21 Aug",title:"→ Rotterdam",lat:51.9244,lng:4.4777,
+       from:{name:"Munich",lat:48.1351,lng:11.5820},
+       body:"The last push. Roughly eight hours with charging, the top of your range. Cologne is the bail-out if you'd rather split it — and with two days spare, you can.",
+       pills:[["drive","~8 h"],["warn","At your limit"]]}
+    ]
+  }
+];
+
+/* ---------------- ABRP deep links ---------------- */
+function abrpUrl(stops){
+  const dest = stops.map(s=>({address:s.name,lat:s.lat,lon:s.lng}));
+  return "https://abetterrouteplanner.com/?destinations="+
+    encodeURIComponent(JSON.stringify(dest));
+}
+const ALL_STOPS=[{name:ORIGIN.name,lat:ORIGIN.lat,lng:ORIGIN.lng}]
+  .concat(LEGS.flatMap(l=>l.days.map(d=>({name:d.title.replace(/^.*→\s*/,''),lat:d.lat,lng:d.lng}))));
+document.getElementById('abrpAll').href=abrpUrl(ALL_STOPS);
+
+/* ---------------- map ---------------- */
+const map=L.map('map',{zoomControl:true,scrollWheelZoom:true});
+L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',{
+  attribution:'&copy; OpenStreetMap &copy; CARTO · routing by OSRM', subdomains:'abcd', maxZoom:19
+}).addTo(map);
+
+const layers={}, markerIndex={};
+
+/* origin marker */
+const originLayer=L.layerGroup().addTo(map);
+L.circleMarker([ORIGIN.lat,ORIGIN.lng],{radius:8,color:'#fff',weight:3,
+  fillColor:'#2F3A2C',fillOpacity:1})
+  .bindPopup(`<h4>Rotterdam</h4><p class="pm">Start &amp; finish</p><p>Out on 8 August, back on the 21st.</p>`)
+  .addTo(originLayer);
+
+LEGS.forEach((leg,li)=>{
+  const group=L.layerGroup();
+
+  /* only draw a line where we have real road geometry to fetch */
+  if(leg.route){
+    const casing=L.polyline(leg.route,{color:'#fff',weight:8,opacity:.9}).addTo(group);
+    const line=L.polyline(leg.route,{color:leg.color,weight:4,opacity:.95,lineCap:'round'}).addTo(group);
+    line.bindTooltip(leg.name,{sticky:true,direction:'top',opacity:.95});
+
+    const hoverOn=()=>{ casing.setStyle({weight:13}); line.setStyle({weight:7}); line.bringToFront(); };
+    const hoverOff=()=>{ casing.setStyle({weight:8}); line.setStyle({weight:4}); };
+    line.on('mouseover',hoverOn);
+    line.on('mouseout',hoverOff);
+
+    leg._casing=casing; leg._line=line;
+    leg._hoverOn=hoverOn; leg._hoverOff=hoverOff;
+  }
+
+  leg.days.forEach(d=>{
+    const pencilOnly=d.pills.some(p=>p[0]==='pencil')&&!d.pills.some(p=>p[0]==='locked');
+    const c=pencilOnly?'#F0942B':'#2E8B84';
+    const m=L.circleMarker([d.lat,d.lng],{radius:8,color:'#fff',weight:3,fillColor:c,fillOpacity:1});
+    m.bindPopup(`<h4>${d.title}</h4><p class="pm">Day ${d.n} · ${d.date}</p><p>${d.body}</p>`);
+    m.addTo(group);
+    markerIndex[d.n]=m;
+  });
+
+  layers[leg.id]=group;
+  group.addTo(map);
+});
+
+const HOME_VIEW=[[42.2,12.4],[52.4,19.8]];
+map.fitBounds(HOME_VIEW,{padding:[26,26]});
+
+/* ---------------- charging layer ---------------- */
+const chargeLayer=L.layerGroup().addTo(map);
+CHARGE_STOPS.forEach(c=>{
+  const icon=L.divIcon({
+    className:'',
+    html:`<div style="width:22px;height:22px;border-radius:50%;background:#E5A33C;
+      border:2.5px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,.25);
+      display:flex;align-items:center;justify-content:center;
+      font-size:13px;line-height:1;color:#fff;font-weight:800;">⚡</div>`,
+    iconSize:[22,22], iconAnchor:[11,11]
+  });
+  const m=L.marker([c.lat,c.lng],{icon});
+  m.bindPopup(`<h4>${c.name}</h4><p class="pm">Day ${c.day} · Supercharger stop</p><p>${c.note}</p>`);
+  m.addTo(chargeLayer);
+});
+let chargeOn=true;
+document.getElementById('chargeToggle').addEventListener('click',e=>{
+  chargeOn=!chargeOn;
+  if(chargeOn){ chargeLayer.addTo(map); e.target.textContent='Hide charging stops'; }
+  else { map.removeLayer(chargeLayer); e.target.textContent='Show charging stops'; }
+});
+
+/* ---- fetch real road geometry for the legs that have waypoints ---- */
+const status=document.getElementById('routestatus');
+(async()=>{
+  const routed=LEGS.filter(l=>l.route);
+  let ok=0;
+  for(const leg of routed){
+    try{
+      const coords=leg.route.map(p=>`${p[1]},${p[0]}`).join(';');
+      const r=await fetch(`https://router.project-osrm.org/route/v1/driving/${coords}?overview=full&geometries=geojson`);
+      const j=await r.json();
+      const g=j?.routes?.[0]?.geometry?.coordinates;
+      if(g&&g.length){
+        const latlngs=g.map(c=>[c[1],c[0]]);
+        leg._casing.setLatLngs(latlngs);
+        leg._line.setLatLngs(latlngs);
+        ok++;
+      }
+    }catch(e){ /* keep the straight fallback */ }
+  }
+  status.textContent = ok===routed.length
+    ? `Days 1–6 routed on real roads`
+    : (ok>0 ? `${ok} of ${routed.length} legs routed`
+            : `Routing unavailable — try reloading`);
+  setTimeout(()=>{status.style.opacity='0';status.style.transition='opacity .6s';},6000);
+})();
+
+/* ---------------- budget ---------------- */
+const selected=new Map();
+const fmt=n=>'€'+n.toLocaleString('en-GB',{maximumFractionDigits:0});
+
+/* ---------------- shared state sync (JSONBin) ---------------- */
+const JSONBIN_ID='6a724d76f5f4af5e29eb8807';
+const JSONBIN_KEY='$2a$10$lQCtaV8tV.2XLltQo3Gl5.V90ZO3dwZTRUnWYS1wB4s40p0qvMOnS';
+const JSONBIN_URL=`https://api.jsonbin.io/v3/b/${JSONBIN_ID}`;
+const itemRegistry=new Map(); // stable key -> {add, del, entry}
+let suppressSave=true;   // true until the remote state has been applied once
+let saveTimer=null;
+function scheduleSave(){
+  if(suppressSave) return;
+  clearTimeout(saveTimer);
+  saveTimer=setTimeout(saveState,700);
+}
+async function saveState(){
+  const removed=[...itemRegistry.entries()]
+    .filter(([k,r])=>!r.entry.live)
+    .map(([k])=>k);
+  const state={selected:[...selected.keys()],removed};
+  try{
+    await fetch(JSONBIN_URL,{method:'PUT',
+      headers:{'Content-Type':'application/json','X-Master-Key':JSONBIN_KEY},
+      body:JSON.stringify(state)});
+  }catch(e){ console.warn('Sync save failed — changes stayed local only.',e); }
+}
+async function loadState(){
+  try{
+    const res=await fetch(JSONBIN_URL+'/latest',{headers:{'X-Master-Key':JSONBIN_KEY}});
+    if(!res.ok) throw new Error('bad response '+res.status);
+    const data=await res.json();
+    return data.record||{};
+  }catch(e){ console.warn('Sync load failed — starting from a blank slate.',e); return {}; }
+}
+
+function itemCost(o){
+  if(o.cost==null) return 0;
+  return o.unit==='pp' ? o.cost*2 : o.cost;
+}
+function renderBudget(){
+  const rows=document.getElementById('brows');
+  const total=[...selected.values()].reduce((s,o)=>s+itemCost(o),0);
+  document.getElementById('btotal').textContent=fmt(total);
+  const n=selected.size;
+  document.getElementById('bsub').textContent = n===0
+    ? 'Tap + on any activity or bed to add it'
+    : `${n} item${n===1?'':'s'} selected`;
+  if(n===0){
+    rows.innerHTML='<div class="bempty">Nothing added yet. Costs cover activities and lodging only — fuel, food, tolls and the Slovenian vignette aren\'t included.</div>';
+    return;
+  }
+  rows.innerHTML=[...selected.values()].map(o=>
+    `<div class="brow"><span>${o.n}</span><b>${fmt(itemCost(o))}</b></div>`).join('');
+}
+document.getElementById('bclear').addEventListener('click',()=>{
+  selected.clear();
+  document.querySelectorAll('.optadd.on').forEach(b=>{b.classList.remove('on');b.textContent='+';
+    b.setAttribute('aria-pressed','false');});
+  renderBudget();
+  scheduleSave();
+});
+
+/* ---------------- sidebar ---------------- */
+const spine=document.getElementById('spine');
+let uid=0;
+
+LEGS.forEach(leg=>{
+  const wrap=document.createElement('section');
+  wrap.className='leg';
+  wrap.style.setProperty('--legcolor',leg.color);
+  wrap.dataset.leg=leg.id;
+
+  const head=document.createElement('button');
+  head.className='leghead';
+  head.setAttribute('role','switch');
+  head.setAttribute('aria-checked','true');
+  head.innerHTML=`<div class="legtitle"><div class="legname">${leg.name}</div>
+    <div class="legmeta">${leg.meta}</div></div><div class="legswitch"></div>`;
+  head.addEventListener('click',()=>{
+    const off=wrap.classList.toggle('off');
+    head.setAttribute('aria-checked',String(!off));
+    if(off) map.removeLayer(layers[leg.id]); else layers[leg.id].addTo(map);
+  });
+
+  const days=document.createElement('div');
+  days.className='days';
+
+  leg.days.forEach(d=>{
+    const card=document.createElement('div');
+    card.className='day';
+
+    const main=document.createElement('div');
+    main.className='daymain';
+    main.setAttribute('role','button');
+    main.tabIndex=0;
+    main.innerHTML=`
+      <div class="dayrow"><span class="daynum">Day ${d.n}</span>
+        <span class="daydate">${d.date}</span></div>
+      <p class="daytitle">${d.title}</p>
+      <p class="daybody">${d.body}</p>
+      <div class="pills">${d.pills.map(([k,v])=>`<span class="pill ${k}">${v}</span>`).join('')}</div>`;
+
+    const setActive=()=>{
+      document.querySelectorAll('.day.active').forEach(x=>x.classList.remove('active'));
+      card.classList.add('active');
+    };
+    const fly=()=>{
+      setActive();
+      map.flyTo([d.lat,d.lng],9,{duration:.85});
+      markerIndex[d.n].openPopup();
+      if(window.innerWidth<=920) document.getElementById('map').scrollIntoView({behavior:'smooth'});
+    };
+    main.addEventListener('click',fly);
+    main.addEventListener('keydown',e=>{
+      if(e.key==='Enter'||e.key===' '){e.preventDefault();fly();}
+    });
+    if(leg._hoverOn){
+      card.addEventListener('mouseenter',leg._hoverOn);
+      card.addEventListener('mouseleave',leg._hoverOff);
+      main.addEventListener('focus',leg._hoverOn);
+      main.addEventListener('blur',leg._hoverOff);
+    }
+    card.appendChild(main);
+
+    /* ABRP deep link for this day's drive */
+    if(d.from){
+      const stops=[d.from,...(d.via||[]),{name:d.title.replace(/^.*→\s*/,''),lat:d.lat,lng:d.lng}];
+      const links=document.createElement('div');
+      links.className='daylinks';
+      links.innerHTML=`<a class="abrplink" target="_blank" rel="noopener"
+        href="${abrpUrl(stops)}">Open this leg in ABRP →</a>`;
+      card.appendChild(links);
+    }
+
+    if(d.hist){
+      const h=document.createElement('div');
+      h.className='hist';
+      h.innerHTML=`<b>${d.hist.h}</b>${d.hist.t}`;
+      card.appendChild(h);
+    }
+
+    [d.opts,d.opts2,d.opts3].filter(Boolean).forEach((set,setIdx)=>{
+      const optLayer=L.layerGroup();
+      const entries=[];   /* {o, row, marker, connector, key, live} */
+      let removedCount=0;
+
+      const ob=document.createElement('button');
+      ob.className='optbtn';
+      ob.setAttribute('aria-expanded','false');
+      const countLabel=()=>{
+        ob.querySelector('.optcount').textContent=
+          entries.filter(e=>e.live).length;
+      };
+      ob.innerHTML=`<span>${set.label} · <span class="optcount">${set.items.length}</span></span><span class="chev">▼</span>`;
+
+      const ow=document.createElement('div');
+      ow.className='optwrap';
+
+      const trash=document.createElement('div');
+      trash.className='opttrash';
+
+      const refreshTrash=()=>{
+        if(removedCount===0){ trash.style.display='none'; return; }
+        trash.style.display='flex';
+        trash.querySelector('.trashtext').textContent=
+          `${removedCount} removed`;
+      };
+      trash.innerHTML=`<span class="trashtext"></span>
+        <button class="trashbtn" type="button">Restore all</button>`;
+
+      set.items.forEach((o,itemIdx)=>{
+        const key=leg.id+'_d'+d.n+'_s'+setIdx+'_i'+itemIdx;
+        const entry={o,key,live:true,marker:null,connector:null};
+
+        if(o.lat){
+          entry.connector=L.polyline([[d.lat,d.lng],[o.lat,o.lng]],{
+            color:leg.color,weight:1.6,opacity:.45,dashArray:'3,6'
+          }).addTo(optLayer);
+          entry.marker=L.circleMarker([o.lat,o.lng],{
+            radius:6,color:'#fff',weight:2.5,
+            fillColor:o.star?'#F0942B':leg.color,fillOpacity:1
+          });
+          const priceTxt = o.cost==null?'':(o.cost===0?'Free':
+            fmt(o.cost)+(o.unit==='pp'?' pp':' total'));
+          entry.marker.bindPopup(
+            `<h4>${o.n}</h4><p class="pm">${o.t}${priceTxt?' · '+priceTxt:''}</p><p>${o.d}</p>`);
+          entry.marker.addTo(optLayer);
+        }
+
+        const row=document.createElement('div');
+        row.className='opt'+(o.star?' star':'');
+        entry.row=row;
+
+        const go=document.createElement('button');
+        go.className='optgo';
+        const priceTxt = o.cost==null?'<span class="optcost free">—</span>'
+          :(o.cost===0?'<span class="optcost free">Free</span>'
+          :`<span class="optcost">${fmt(o.cost)}${o.unit==='pp'?' pp':' total'}</span>`);
+        go.innerHTML=`<span class="optmark"></span>
+          <div class="opttext"><div class="optname">${o.n}</div>
+            <div class="optdesc">${o.d}</div>
+            <div class="optmeta"><span>${o.t}</span>${priceTxt}</div></div>`;
+        if(o.lat){
+          go.addEventListener('click',()=>{
+            if(!ow.classList.contains('show')) return;
+            map.flyTo([o.lat,o.lng],12,{duration:.8});
+            entry.marker.openPopup();
+            if(window.innerWidth<=920) document.getElementById('map').scrollIntoView({behavior:'smooth'});
+          });
+        }
+        row.appendChild(go);
+
+        const acts=document.createElement('div');
+        acts.className='optactions';
+
+        let add=null;
+        if(o.cost!=null){
+          add=document.createElement('button');
+          add.className='optadd';
+          add.textContent='+';
+          add.type='button';
+          add.setAttribute('aria-pressed','false');
+          add.setAttribute('aria-label','Add '+o.n+' to the budget');
+          add.addEventListener('click',()=>{
+            if(selected.has(key)){
+              selected.delete(key); add.classList.remove('on');
+              add.textContent='+'; add.setAttribute('aria-pressed','false');
+            } else {
+              selected.set(key,o); add.classList.add('on');
+              add.textContent='✓'; add.setAttribute('aria-pressed','true');
+            }
+            renderBudget();
+            scheduleSave();
+          });
+          acts.appendChild(add);
+        }
+
+        const del=document.createElement('button');
+        del.className='optdel';
+        del.type='button';
+        del.innerHTML='&times;';
+        del.title='Remove this option';
+        del.setAttribute('aria-label','Remove '+o.n);
+        del.addEventListener('click',()=>{
+          entry.live=false;
+          row.style.display='none';
+          if(entry.marker) optLayer.removeLayer(entry.marker);
+          if(entry.connector) optLayer.removeLayer(entry.connector);
+          if(selected.has(key)){
+            selected.delete(key);
+            if(add){add.classList.remove('on');add.textContent='+';
+              add.setAttribute('aria-pressed','false');}
+            renderBudget();
+          }
+          removedCount++;
+          countLabel(); refreshTrash();
+          scheduleSave();
+        });
+        acts.appendChild(del);
+
+        row.appendChild(acts);
+        ow.appendChild(row);
+        entries.push(entry);
+        itemRegistry.set(key,{add,del,entry});
+      });
+
+      trash.querySelector('.trashbtn').addEventListener('click',()=>{
+        entries.forEach(e=>{
+          if(e.live) return;
+          e.live=true;
+          e.row.style.display='';
+          if(e.marker) e.marker.addTo(optLayer);
+          if(e.connector) e.connector.addTo(optLayer);
+        });
+        removedCount=0;
+        countLabel(); refreshTrash();
+        scheduleSave();
+      });
+      refreshTrash();
+      ow.appendChild(trash);
+
+      if(set.foot){
+        const f=document.createElement('div');
+        f.className='optfoot';
+        f.innerHTML=set.foot;
+        ow.appendChild(f);
+      }
+
+      ob.addEventListener('click',()=>{
+        const open=ow.classList.toggle('show');
+        ob.setAttribute('aria-expanded',String(open));
+        if(open){
+          setActive();
+          optLayer.addTo(map);
+          const live=entries.filter(e=>e.live&&e.o.lat);
+          const b=L.latLngBounds([[d.lat,d.lng],...live.map(e=>[e.o.lat,e.o.lng])]);
+          map.flyToBounds(b,{padding:[60,60],duration:.9});
+          if(window.innerWidth<=920) document.getElementById('map').scrollIntoView({behavior:'smooth'});
+        } else {
+          map.removeLayer(optLayer);
+        }
+      });
+
+      card.appendChild(ob);
+      card.appendChild(ow);
+    });
+
+    days.appendChild(card);
+  });
+
+  wrap.appendChild(head);
+  wrap.appendChild(days);
+  spine.appendChild(wrap);
+});
+
+renderBudget();
+
+/* ---- pull whatever's already saved to the shared bin, then unlock saving ---- */
+(async function syncFromRemote(){
+  const remote=await loadState();
+  const removedKeys=Array.isArray(remote.removed)?remote.removed:[];
+  const selectedKeys=Array.isArray(remote.selected)?remote.selected:[];
+  removedKeys.forEach(key=>{
+    const reg=itemRegistry.get(key);
+    if(reg && reg.entry.live) reg.del.click();
+  });
+  selectedKeys.forEach(key=>{
+    if(removedKeys.includes(key)) return;
+    const reg=itemRegistry.get(key);
+    if(reg && reg.add && !selected.has(key)) reg.add.click();
+  });
+  suppressSave=false;
+})();
+
+document.getElementById('allOn').addEventListener('click',()=>{
+  document.querySelectorAll('.leg').forEach(w=>{
+    if(w.classList.contains('off')){
+      w.classList.remove('off');
+      w.querySelector('.leghead').setAttribute('aria-checked','true');
+      layers[w.dataset.leg].addTo(map);
+    }
+  });
+});
+document.getElementById('allOff').addEventListener('click',()=>{
+  document.querySelectorAll('.leg').forEach(w=>{
+    if(!w.classList.contains('off')){
+      w.classList.add('off');
+      w.querySelector('.leghead').setAttribute('aria-checked','false');
+      map.removeLayer(layers[w.dataset.leg]);
+    }
+  });
+});
+document.getElementById('reset').addEventListener('click',()=>{
+  map.fitBounds(HOME_VIEW,{padding:[26,26]});
+  document.querySelectorAll('.day.active').forEach(x=>x.classList.remove('active'));
+  map.closePopup();
+});
+</script>
+</body>
+</html>
