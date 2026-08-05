@@ -690,10 +690,8 @@ const status=document.getElementById('routestatus');
 const selected=new Map();
 const fmt=n=>'€'+n.toLocaleString('en-GB',{maximumFractionDigits:0});
 
-/* ---------------- shared state sync (JSONBin) ---------------- */
-const JSONBIN_ID='6a724d76f5f4af5e29eb8807';
-const JSONBIN_KEY='$2a$10$lQCtaV8tV.2XLltQo3Gl5.V90ZO3dwZTRUnWYS1wB4s40p0qvMOnS';
-const JSONBIN_URL=`https://api.jsonbin.io/v3/b/${JSONBIN_ID}`;
+/* ---------------- shared state sync (via /api/state, key stays server-side) ---------------- */
+const STATE_URL='/api/state';
 const itemRegistry=new Map(); // stable key -> {add, del, entry}
 let suppressSave=true;   // true until the remote state has been applied once
 let saveTimer=null;
@@ -708,14 +706,14 @@ async function saveState(){
     .map(([k])=>k);
   const state={selected:[...selected.keys()],removed};
   try{
-    await fetch(JSONBIN_URL,{method:'PUT',
-      headers:{'Content-Type':'application/json','X-Master-Key':JSONBIN_KEY},
+    await fetch(STATE_URL,{method:'POST',
+      headers:{'Content-Type':'application/json'},
       body:JSON.stringify(state)});
   }catch(e){ console.warn('Sync save failed — changes stayed local only.',e); }
 }
 async function loadState(){
   try{
-    const res=await fetch(JSONBIN_URL+'/latest',{headers:{'X-Master-Key':JSONBIN_KEY}});
+    const res=await fetch(STATE_URL);
     if(!res.ok) throw new Error('bad response '+res.status);
     const data=await res.json();
     return data.record||{};
