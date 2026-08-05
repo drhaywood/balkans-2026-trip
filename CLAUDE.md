@@ -38,6 +38,13 @@ used to sync picks across devices. **Only append new days/items at the end
 of their arrays** — inserting in the middle shifts every later item's key
 and silently forgets its saved state.
 
+Each day also gets a shared free-text notes box, keyed by `notes_d${n}`
+(day number, stable regardless of array position). The synced state blob
+PUT to `/api/state` is `{selected:[...], removed:[...], notes:{key:text}}`.
+A `#syncPill` in the masthead reflects the save lifecycle (loading / saved /
+unsaved changes / saving / error) and a "Save changes" button forces an
+immediate save — added because save/load failures used to fail silently.
+
 ## JSONBin key security
 
 The JSONBin access key lives in a Vercel environment variable
@@ -48,7 +55,10 @@ to `api.jsonbin.io` from client-side code.
 
 ## Known limitation: no conflict resolution
 
-Saving is last-write-wins — there's no merge logic. If both people edit
-their picks on separate devices around the same time, whichever save PUT
-lands last silently overwrites the other's changes. Fine for casual use,
-but don't assume concurrent edits are safe.
+Saving is last-write-wins — there's no merge logic. Every save PUTs the
+*entire* state blob (picks and all notes together), so if both people edit
+anything — a budget pick, a day's notes, doesn't matter which — on separate
+devices around the same time, whichever save lands last silently overwrites
+the other's changes, even to a field neither of you touched. Fine for
+casual use, but don't assume concurrent edits are safe. The sync pill will
+tell you if *your own* save failed, not whether someone else's overwrote it.

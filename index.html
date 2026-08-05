@@ -42,6 +42,16 @@ h1 .to{color:var(--ink-faint);font-weight:400;}
   padding:6px 14px;font-size:12.5px;color:var(--ink-soft);}
 .stat b{color:var(--ink);font-weight:700;}
 
+.syncbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:10px;}
+.syncpill{font-size:12px;font-weight:700;padding:5px 13px;border-radius:999px;
+  border:1px solid var(--rule);background:var(--paper-2);color:var(--ink-soft);
+  transition:.2s;}
+.syncpill.sy-loading{background:var(--paper-2);border-color:var(--rule);color:var(--ink-faint);}
+.syncpill.sy-saved{background:#EAF3E3;border-color:#CBDCC4;color:#4E7040;}
+.syncpill.sy-dirty{background:#FDF1E1;border-color:#F3D3A6;color:#A5641A;}
+.syncpill.sy-saving{background:#FBF3D9;border-color:#E9D48C;color:#8A6D0E;}
+.syncpill.sy-error{background:#FBEAE5;border-color:#EFD5CB;color:#9A4A33;}
+
 /* ---- budget tile ---- */
 .budget{margin:0 30px 18px;border-radius:16px;overflow:hidden;
   border:1px solid #CBDCC4;background:linear-gradient(160deg,#EAF3E3,#F5FAF0);}
@@ -144,6 +154,15 @@ h1 .to{color:var(--ink-faint);font-weight:400;}
   font-size:13.5px;line-height:1.6;color:var(--ink-soft);}
 .hist b{display:block;font-size:11px;font-weight:700;letter-spacing:.12em;
   text-transform:uppercase;color:var(--teal);margin-bottom:5px;}
+
+.notes-tile{margin:14px 18px 16px;}
+.notes-label{display:block;font-size:11px;font-weight:700;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--ink-faint);margin-bottom:5px;}
+.notes-input{width:100%;font:inherit;font-size:13.5px;color:var(--ink);
+  background:var(--paper-2);border:1px solid var(--rule);border-radius:10px;
+  padding:9px 12px;line-height:1.5;resize:vertical;transition:.15s;}
+.notes-input:focus-visible{outline:2.5px solid var(--teal);outline-offset:1px;border-color:var(--teal);}
+.notes-input::placeholder{color:var(--ink-faint);}
 
 .daylinks{padding:12px 18px 0;display:flex;gap:8px;flex-wrap:wrap;}
 .abrplink{font-size:12px;font-weight:700;color:#2C4322;background:#E5EFDE;
@@ -269,6 +288,10 @@ h1 .to{color:var(--ink-faint);font-weight:400;}
         <span class="stat"><b>~4,900</b> km</span>
         <span class="stat"><b>6</b> countries</span>
         <span class="stat"><b>3 nights</b> in Kotor</span>
+      </div>
+      <div class="syncbar">
+        <span class="syncpill sy-loading" id="syncPill">● Loading…</span>
+        <button class="btn" id="saveNow" type="button">Save changes</button>
       </div>
     </div>
 
@@ -483,32 +506,60 @@ const fmt=n=>'€'+n.toLocaleString('en-GB',{maximumFractionDigits:0});
 /* ---------------- shared state sync (via /api/state, key stays server-side) ---------------- */
 const STATE_URL='/api/state';
 const itemRegistry=new Map(); // stable key -> {add, del, entry}
+const notes=new Map();        // day key ("notes_d"+n) -> note text
+const notesInputs=new Map();  // day key -> textarea element
 let suppressSave=true;   // true until the remote state has been applied once
 let saveTimer=null;
+
+function setSyncState(s){
+  const pill=document.getElementById('syncPill');
+  if(!pill) return;
+  const cfg={
+    loading:['● Loading…','sy-loading'],
+    saved:['● Saved','sy-saved'],
+    dirty:['● Unsaved changes','sy-dirty'],
+    saving:['● Saving…','sy-saving'],
+    saveerror:['● Save failed — tap Save changes to retry','sy-error'],
+    loaderror:['● Could not load shared picks — using local only','sy-error']
+  }[s];
+  pill.textContent=cfg[0];
+  pill.className='syncpill '+cfg[1];
+}
+
 function scheduleSave(){
   if(suppressSave) return;
+  setSyncState('dirty');
   clearTimeout(saveTimer);
   saveTimer=setTimeout(saveState,700);
 }
 async function saveState(){
+  clearTimeout(saveTimer);
+  setSyncState('saving');
   const removed=[...itemRegistry.entries()]
     .filter(([k,r])=>!r.entry.live)
     .map(([k])=>k);
-  const state={selected:[...selected.keys()],removed};
+  const state={selected:[...selected.keys()],removed,notes:Object.fromEntries(notes)};
   try{
-    await fetch(STATE_URL,{method:'POST',
+    const res=await fetch(STATE_URL,{method:'POST',
       headers:{'Content-Type':'application/json'},
       body:JSON.stringify(state)});
-  }catch(e){ console.warn('Sync save failed — changes stayed local only.',e); }
+    if(!res.ok) throw new Error('bad response '+res.status);
+    setSyncState('saved');
+  }catch(e){
+    console.warn('Sync save failed — changes stayed local only.',e);
+    setSyncState('saveerror');
+  }
 }
 async function loadState(){
-  try{
-    const res=await fetch(STATE_URL);
-    if(!res.ok) throw new Error('bad response '+res.status);
-    const data=await res.json();
-    return data||{};
-  }catch(e){ console.warn('Sync load failed — starting from a blank slate.',e); return {}; }
+  const res=await fetch(STATE_URL);
+  if(!res.ok) throw new Error('bad response '+res.status);
+  const data=await res.json();
+  return data||{};
 }
+document.getElementById('saveNow').addEventListener('click',()=>{
+  if(suppressSave) return; // initial load hasn't finished — nothing local to push yet
+  saveState();
+});
 
 function itemCost(o){
   if(o.cost==null) return 0;
@@ -779,6 +830,20 @@ LEGS.forEach(leg=>{
       card.appendChild(ow);
     });
 
+    const notesKey='notes_d'+d.n;
+    const notesTile=document.createElement('div');
+    notesTile.className='notes-tile';
+    notesTile.innerHTML=`<label class="notes-label">Notes</label>
+      <textarea class="notes-input" rows="2" placeholder="Add a note for this day — both of you will see it"></textarea>`;
+    const notesTa=notesTile.querySelector('textarea');
+    notesInputs.set(notesKey,notesTa);
+    notesTa.addEventListener('input',()=>{
+      const v=notesTa.value;
+      if(v.trim()==='') notes.delete(notesKey); else notes.set(notesKey,v);
+      scheduleSave();
+    });
+    card.appendChild(notesTile);
+
     days.appendChild(card);
   });
 
@@ -791,7 +856,14 @@ renderBudget();
 
 /* ---- pull whatever's already saved to the shared bin, then unlock saving ---- */
 (async function syncFromRemote(){
-  const remote=await loadState();
+  let remote={};
+  let loadFailed=false;
+  try{
+    remote=await loadState();
+  }catch(e){
+    console.warn('Sync load failed — starting from a blank slate.',e);
+    loadFailed=true;
+  }
   const removedKeys=Array.isArray(remote.removed)?remote.removed:[];
   const selectedKeys=Array.isArray(remote.selected)?remote.selected:[];
   removedKeys.forEach(key=>{
@@ -803,7 +875,13 @@ renderBudget();
     const reg=itemRegistry.get(key);
     if(reg && reg.add && !selected.has(key)) reg.add.click();
   });
+  const remoteNotes=(remote.notes&&typeof remote.notes==='object')?remote.notes:{};
+  Object.entries(remoteNotes).forEach(([key,text])=>{
+    const ta=notesInputs.get(key);
+    if(ta){ ta.value=text; notes.set(key,text); }
+  });
   suppressSave=false;
+  setSyncState(loadFailed?'loaderror':'saved');
 })();
 
 document.getElementById('allOn').addEventListener('click',()=>{
