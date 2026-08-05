@@ -27,7 +27,7 @@ const LEGS = [
        from:ORIGIN,
        via:[{name:"Maria Laach Abbey",lat:50.4014,lng:7.2528}],
        body:"Down through the Eifel for a photo stop at the abbey, then the long haul east to Munich. Bed at the end of this one.",
-       pills:[["drive","~8 h total"],["bed","Bed"],["pencil","Maria Laach"]],
+       pills:[["drive","~8 h total"],["bed","Super 8 Munich"],["pencil","Maria Laach"]],
        hist:{h:"Maria Laach",t:"A Benedictine abbey begun in 1093 on the shore of a volcanic crater lake, and one of the most complete Romanesque churches in Germany — six towers, almost untouched by later rebuilding. Still a working monastery."},
        opts:{label:"Stops on the way",
          items:[
@@ -37,10 +37,11 @@ const LEGS = [
          foot:"<b>Reality check:</b> 2h45 to the abbey, then 4h45 on to Munich. Eight hours of driving plus stops. Don't add a third."},
        opts2:{label:"Where to sleep — Munich",
          items:[
-           {n:"Wombat's Hauptbahnhof",d:"Right at the main station, five minutes' walk to the old town. No air conditioning, but every bunk has a fan.",t:"Hostel",cost:48,unit:"pp",star:true,lat:48.1388,lng:11.5604},
+           {n:"Wombat's Hauptbahnhof",d:"Right at the main station, five minutes' walk to the old town. No air conditioning, but every bunk has a fan.",t:"Hostel",cost:48,unit:"pp",lat:48.1388,lng:11.5604},
            {n:"Euro Youth Hotel",d:"Same street, similar price, consistently well reviewed. Spacious rooms with private bathrooms available.",t:"Hostel",cost:45,unit:"pp",lat:48.1385,lng:11.5603},
            {n:"The Tent",d:"An enormous circus tent packed with bunks, plus pitches for your own. Cheapest real option in the city. No electricity in the sleeping tent — charge near the restaurant.",t:"Camp",cost:25,unit:"pp",lat:48.1678,lng:11.5022},
-           {n:"Campingplatz Obermenzing",d:"A proper campsite with hedged pitches. Bus at the end of the road to the S-Bahn. Showers €1 extra.",t:"Camp",cost:32,unit:"grp",lat:48.1746,lng:11.4465}
+           {n:"Campingplatz Obermenzing",d:"A proper campsite with hedged pitches. Bus at the end of the road to the S-Bahn. Showers €1 extra.",t:"Camp",cost:32,unit:"grp",lat:48.1746,lng:11.4465},
+           {n:"Super 8 by Wyndham Munich City North",d:"Booked — Sat 8 Aug, €58 for the room. Am Nordring 4, Freimann, north side of the city with a short S-Bahn ride into the old town.",t:"Hotel · booked",cost:58,unit:"grp",star:true,lat:48.18887,lng:11.59145}
          ],
          foot:"<b>After eight hours of driving, take the bed.</b> Prices are peak-August estimates for a private double or two dorm beds."}}
     ]
