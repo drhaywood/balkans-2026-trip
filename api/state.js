@@ -7,7 +7,7 @@ export default async function handler(req, res) {
   if (req.method === 'GET') {
     try {
       const r = await fetch(`${JSONBIN_URL}/latest`, {
-        headers: { 'X-Master-Key': key },
+        headers: { 'X-Access-Key': key },
       });
       if (!r.ok) throw new Error('jsonbin GET ' + r.status);
       const data = await r.json();
@@ -22,7 +22,7 @@ export default async function handler(req, res) {
     try {
       const r = await fetch(JSONBIN_URL, {
         method: 'PUT',
-        headers: { 'Content-Type': 'application/json', 'X-Master-Key': key },
+        headers: { 'Content-Type': 'application/json', 'X-Access-Key': key },
         body: JSON.stringify(req.body),
       });
       if (!r.ok) throw new Error('jsonbin PUT ' + r.status);
