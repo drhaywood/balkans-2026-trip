@@ -716,7 +716,7 @@ async function loadState(){
     const res=await fetch(STATE_URL);
     if(!res.ok) throw new Error('bad response '+res.status);
     const data=await res.json();
-    return data.record||{};
+    return data||{};
   }catch(e){ console.warn('Sync load failed — starting from a blank slate.',e); return {}; }
 }
 
