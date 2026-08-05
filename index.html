@@ -365,6 +365,13 @@ const ALL_STOPS=[{name:ORIGIN.name,lat:ORIGIN.lat,lng:ORIGIN.lng}]
 document.getElementById('abrpAll').href=abrpUrl(ALL_STOPS);
 
 /* ---------------- map ---------------- */
+/* if the Leaflet CDN script failed to load (bad connection), stub out L so the
+   itinerary/budget below still renders instead of the whole script dying here */
+const mapOK=typeof L!=='undefined';
+if(!mapOK){
+  const stub=new Proxy(function(){},{get:()=>()=>stub});
+  window.L=stub;
+}
 const map=L.map('map',{zoomControl:true,scrollWheelZoom:true});
 L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',{
   attribution:'&copy; OpenStreetMap &copy; CARTO · routing by OSRM', subdomains:'abcd', maxZoom:19
@@ -440,6 +447,7 @@ document.getElementById('chargeToggle').addEventListener('click',e=>{
        for any routed leg that doesn't have geometry baked in yet (e.g. future legs) ---- */
 const status=document.getElementById('routestatus');
 (async()=>{
+  if(!mapOK){ status.textContent='Map unavailable — itinerary still works below'; return; }
   const needsFetch=LEGS.filter(l=>l.route&&!l.geometry);
   if(!needsFetch.length){
     status.textContent=`Days 1–6 routed on real roads (loaded instantly)`;
