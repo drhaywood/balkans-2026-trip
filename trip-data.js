@@ -24,7 +24,8 @@ const KILLED=[
   {n:"Prokletije NP",reason:"Removed to avoid overextending the route."},
   {n:"Albania",reason:"Ruled out early for the same reason as Prokletije — overextension."},
   {n:"Foča → Nevesinje → Mostar",reason:"A mountain charging desert. Ruled out."},
-  {n:"Route ending in Dubrovnik",reason:"Evaluated and rejected — Dubrovnik is a geographic dead end. Finishing there means re-driving the Dalmatian coast, adding ~250–300 km to the return."}
+  {n:"Route ending in Dubrovnik",reason:"Evaluated and rejected — Dubrovnik is a geographic dead end. Finishing there means re-driving the Dalmatian coast, adding ~250–300 km to the return."},
+  {n:"Vršič Pass → Trenta/Bovec (Soča Valley)",reason:"Cut once 2 nights at Kamna Gorica were booked — day 3 became an eastern-Triglav loop (via ferrata, Bohinj, gorges) out of camp instead of crossing into the Soča Valley."}
 ];
 
 const LEGS = [
@@ -64,7 +65,7 @@ const LEGS = [
       {n:2,date:"Sun 9 Aug",title:"Munich breakfast → Bled",lat:46.3683,lng:14.1146,
        from:{name:"Munich",lat:48.1351,lng:11.5820},
        body:"Linger over breakfast, then four and a half hours south into Slovenia. Arrive mid-afternoon with plenty of light — sunset isn't until about 8:20.",
-       pills:[["drive","~4.5 h"],["locked","Viewpoint hike"],["tent","Tent"]],
+       pills:[["drive","~4.5 h"],["locked","Viewpoint hike"],["tent","Kamna Gorica"]],
        hist:{h:"History underfoot",t:"Bled Castle has sat on that cliff since 1011. Tito kept a summer villa on the north shore — Vila Bled, now a hotel — where he hosted Nehru and Nasser and built the Non-Aligned Movement."},
        opts:{label:"What to do around Bled",
          items:[
@@ -84,67 +85,50 @@ const LEGS = [
            {n:"Kamp Bled",d:"Lakeside at Velika Zaka, clean showers, charging lockers at reception. Pricey and crowded in August — book well ahead.",t:"Camp",cost:30,unit:"pp",star:true,lat:46.3615,lng:14.0809},
            {n:"Camping Šobec",d:"Three kilometres out in a bend of the Sava, ringed by pine. Quieter and cheaper than Kamp Bled, with a swimming lake.",t:"Camp",cost:22,unit:"pp",lat:46.3617,lng:14.1339},
            {n:"Travellers' Haven Hostel",d:"Recently renovated, two kitchens, five minutes from the bus station. Cheapest bed near the lake and a well-liked owner.",t:"Hostel",cost:35,unit:"pp",lat:46.3724,lng:14.1042},
-           {n:"1 A Adventure Hostel, Lesce",d:"Five kilometres out with a free daily shuttle to Bled. They book rafting and canyoning directly — useful the night before Triglav.",t:"Hostel",cost:32,unit:"pp",lat:46.3614,lng:14.1608}
+           {n:"1 A Adventure Hostel, Lesce",d:"Five kilometres out with a free daily shuttle to Bled. They book rafting and canyoning directly — useful the night before Triglav.",t:"Hostel",cost:32,unit:"pp",lat:46.3614,lng:14.1608},
+           {n:"Kamna Gorica campsite",d:"Booked — 2 nights, Sun 9 to Tue 11 Aug. In Kamna Gorica near Radovljica, about 10 minutes from Bled — base for both this night and the eastern-Triglav loop day that follows.",t:"Camp · booked",cost:null,star:true,lat:46.317389,lng:14.193883}
          ],
-         foot:"<b>You said tent for this night.</b> Kamp Bled wins on location, Šobec on price and quiet. Both need booking for August."}}
+         foot:"<b>Booked:</b> Kamna Gorica campsite, 9–11 Aug (2 nights) — covers this night and the day after."}}
     ]
   },
   {
-    id:"triglav", name:"Triglav National Park", color:"#2E8B84", meta:"10 Aug · over the pass, into the Julian Alps",
-    route:[[46.3683,14.1146],[46.4331,13.7469],[46.3383,13.5525]],
-    geometry:[[46.36831,14.1146],[46.36668,14.12207],[46.36813,14.13406],[46.36351,14.14984],[46.36806,14.16238],[46.38947,14.13788],[46.40456,14.12958],[46.40889,14.12455],[46.41479,14.09528],[46.42471,14.07515],[46.42916,14.05765],[46.45066,14.00178],[46.45142,13.99133],[46.45545,13.98526],[46.46086,13.96174],[46.46356,13.95878],[46.46808,13.92447],[46.47609,13.90887],[46.47544,13.8994],[46.47911,13.88433],[46.48109,13.85447],[46.4845,13.8421],[46.48229,13.83784],[46.48629,13.8266],[46.48749,13.81243],[46.48565,13.79512],[46.48841,13.7896],[46.48516,13.78974],[46.47855,13.78035],[46.47556,13.78041],[46.47471,13.78488],[46.47125,13.78502],[46.44501,13.77504],[46.44216,13.76859],[46.44446,13.76953],[46.44312,13.76455],[46.43805,13.76152],[46.44047,13.76006],[46.43884,13.75895],[46.43937,13.75317],[46.44142,13.75322],[46.43916,13.7517],[46.44,13.74841],[46.43451,13.74354],[46.43202,13.74448],[46.42047,13.74467],[46.41549,13.7411],[46.41369,13.74517],[46.41031,13.74639],[46.40967,13.7527],[46.40959,13.74913],[46.4086,13.75284],[46.40753,13.75044],[46.4075,13.75465],[46.4068,13.74915],[46.40552,13.75016],[46.4071,13.7408],[46.40497,13.74298],[46.4049,13.73836],[46.40105,13.74468],[46.39438,13.74389],[46.38961,13.74653],[46.38243,13.75817],[46.38148,13.75202],[46.3761,13.74738],[46.37018,13.72747],[46.36235,13.71412],[46.35676,13.69883],[46.34138,13.68368],[46.34249,13.6691],[46.34085,13.65037],[46.33447,13.63982],[46.33751,13.62858],[46.3383,13.60081],[46.33335,13.59152],[46.33546,13.58924],[46.33672,13.57532],[46.34028,13.5747],[46.34081,13.57183],[46.34376,13.57445],[46.33775,13.55991],[46.33944,13.55549],[46.33814,13.55223]],
+    id:"triglav", name:"Triglav National Park", color:"#2E8B84", meta:"10 Aug · loop day from Kamna Gorica — eastern Triglav",
+    route:[[46.317389,14.193883],[46.3944,14.0808],[46.4875,13.8454],[46.4319,13.9333],[46.2939,13.8009],[46.317389,14.193883]],
     days:[
-      {n:3,date:"Mon 10 Aug",title:"Vršič Pass → Trenta & the upper Soča",lat:46.3383,lng:13.5525,
-       from:{name:"Bled",lat:46.3683,lng:14.1146},
-       via:[{name:"Vršič Pass",lat:46.4331,lng:13.7469}],
-       body:"Fifty numbered hairpins over the pass and down the far side into the park proper. One day means picking a side: water in the west, high pasture and gorges in the east.",
-       pills:[["drive","~2 h"],["locked","Triglav NP"],["tent","Camp"]],
-       hist:{h:"The Isonzo Front",t:"The Vršič road was built by Russian prisoners of war in 1915 under Austro-Hungarian command; a wooden chapel near the summit marks the avalanche that killed hundreds of them. The valley below was the Isonzo Front — twelve battles, over a million casualties, and the setting for A Farewell to Arms."},
-       opts:{label:"Triglav — the headline sights",
+      {n:3,date:"Mon 10 Aug",title:"Eastern Triglav — via ferrata, Bohinj & gorges",lat:46.317389,lng:14.193883,
+       from:{name:"Kamna Gorica",lat:46.317389,lng:14.193883},
+       body:"A loop day out of camp — no Vršič crossing needed. Eastern Triglav holds plenty on its own: via ferrata above Kranjska Gora, Vintgar's boardwalk gorge, and Lake Bohinj's quieter shoreline, all within about 45 minutes of Kamna Gorica.",
+       pills:[["drive","Loop day, ~1–1.5 h total"],["locked","Eastern Triglav"],["tent","Kamna Gorica"]],
+       opts:{label:"Eastern Triglav — the loop",
          items:[
-           {n:"Vršič Pass",d:"The drive is the attraction. Fifty numbered hairpins, the Russian Chapel at bend eight, pull-outs the whole way. Free, and you're doing it regardless.",t:"2 h",cost:0,star:true,lat:46.4331,lng:13.7469},
-           {n:"Source of the Soča",d:"From Trenta, twenty minutes up to where the river comes out of the rock. The last stretch is a chained scramble — proper shoes, not sandals.",t:"1.5 h",cost:0,star:true,lat:46.4085,lng:13.7295},
+           {n:"Via Ferrata Hvadnik",d:"A short protected route up a stream gorge at Gozd Martuljek, near Kranjska Gora. Grade B/C, ~500 m of cable with a waterfall-climbing section and a couple of suspension bridges, ~1.5 h round trip. Needs a via ferrata kit (helmet, harness, energy-absorber lanyard) but no climbing experience.",t:"1.5 h",cost:null,lat:46.4875,lng:13.8454},
            {n:"Peričnik Waterfall",d:"In the Vrata valley. The path runs behind the falling water, so you stand in the gap between rock and curtain. Parking fee only.",t:"1 h",cost:8,unit:"grp",star:true,lat:46.4319,lng:13.9333},
-           {n:"Soča rafting",d:"Grade II–III, beginner-friendly, about two hours on the water. Note the municipal river tax is charged separately on top — €6 at Bovec, €15 at Kobarid.",t:"2 h",cost:70,unit:"pp",lat:46.3381,lng:13.5550},
-           {n:"Canyoning",d:"Abseiling, sliding and jumping down a side gorge. Beginner tours cap jumps around five metres; advanced go to thirty-metre abseils. The more memorable of the two.",t:"3–4 h",cost:80,unit:"pp",lat:46.3243,lng:13.5531},
+           {n:"Vintgar Gorge",d:"A few kilometres from camp. Wooden boardwalk pinned to the canyon wall above turquoise water. Timed entry — book ahead for August.",t:"Half day",cost:15,unit:"pp",star:true,lat:46.3944,lng:14.0808},
+           {n:"Lake Bohinj",d:"Twenty-five minutes southwest. Bigger, wilder and far quieter than Bled. The better swim of the two lakes.",t:"Half day",cost:10,unit:"grp",star:true,lat:46.2833,lng:13.8833},
            {n:"Vogel cable car",d:"Up from Bohinj to 1,535 m for the full Triglav panorama without walking a step. Return ticket.",t:"Half day",cost:28,unit:"pp",lat:46.2739,lng:13.8400},
            {n:"Savica Waterfall",d:"At the far end of Lake Bohinj. Five hundred and fifty steps to the platform. Slovenia's national poem is set here.",t:"1.5 h",cost:8,unit:"pp",lat:46.2939,lng:13.8009},
-           {n:"Tolmin Gorges",d:"The park's southern gate. Thermal spring, the Devil's Bridge sixty metres up, and a boulder wedged between the walls.",t:"2 h",cost:10,unit:"pp",lat:46.1861,lng:13.7297},
-           {n:"Mount Triglav",d:"2,864 m and the thing on the flag. Two days minimum with a hut night and via ferrata near the top. Listed so you know you're not missing a day hike.",t:"2 days",cost:null,lat:46.3786,lng:13.8369},
-           {n:"Via Ferrata Hvadnik",d:"A short protected route up a stream gorge at Gozd Martuljek, near Kranjska Gora — close to the start of the Vršič approach. Grade B/C, ~500 m of cable with a waterfall-climbing section and a couple of suspension bridges, ~1.5 h round trip. Needs a via ferrata kit (helmet, harness, energy-absorber lanyard) but no climbing experience.",t:"1.5 h",cost:null,lat:46.4875,lng:13.8454}
+           {n:"Mount Triglav",d:"2,864 m and the thing on the flag. Two days minimum with a hut night and via ferrata near the top. Listed so you know you're not missing a day hike.",t:"2 days",cost:null,lat:46.3786,lng:13.8369}
          ],
-         foot:"<b>Look at the spread on the map.</b> West (Trenta, the source, Bovec) keeps you moving south toward Croatia. East (Vrata, Bohinj, Vogel) has the quieter walks but means backtracking past Bled. About ninety minutes apart."},
+         foot:"<b>It's a full day either way.</b> Via Ferrata Hvadnik plus Peričnik covers the Kranjska Gora side; Bohinj (Vogel, Savica, or just the lake) covers the other. Vintgar's close enough to fit before or after either — pick one side rather than chasing all four."},
        opts2:{label:"Off the beaten path",
          items:[
            {n:"Planina Zajamniki",d:"A single row of shepherds' huts along a ridge above the Pokljuka plateau, facing the mountains. Reachable by car on a rough forest road. Almost nobody at sunrise.",t:"2 h",cost:0,star:true,lat:46.3350,lng:13.9250},
-           {n:"Slap Kozjak",d:"Near Kobarid. A waterfall dropping into an enclosed rock chamber that feels deliberately built. Short flat walk, far less trafficked than Vintgar.",t:"1.5 h",cost:5,unit:"grp",star:true,lat:46.2547,lng:13.5844},
            {n:"Pokljuka Gorge",d:"A dry limestone gorge above Bled — natural bridges, a cave, and often nobody else on the loop. The gorge Vintgar's crowds haven't found.",t:"1.5 h",cost:10,unit:"pp",lat:46.3831,lng:14.0431},
            {n:"Mostnica Gorge",d:"From Stara Fužina at Bohinj. Two hours up a narrow green canyon to a meadow, past a rock everyone insists looks like an elephant.",t:"2–3 h",cost:5,unit:"pp",lat:46.2953,lng:13.8828},
-           {n:"Radovna valley",d:"A flat, quiet valley road between Bled and the Vrata, good on foot or bike. Farms, meadows, no coaches.",t:"Flexible",cost:0,lat:46.4083,lng:14.0167},
-           {n:"Velika Korita",d:"The Great Soča Gorge near Soča village, where the river narrows to about a metre across. Suspension bridges over the top.",t:"45 min",cost:0,lat:46.3372,lng:13.6800},
-           {n:"Planina pri Jezeru",d:"A working high pasture with a small lake, and the gateway to the Seven Lakes valley. Serious uphill, shared with cows rather than tourists.",t:"5 h",cost:0,lat:46.3167,lng:13.8500},
-           {n:"Lake Krn",d:"Slovenia's largest permanent alpine lake at 1,391 m. A long day's walk up from Lepena, and genuinely remote.",t:"6–7 h",cost:0,lat:46.2678,lng:13.6597}
+           {n:"Radovna valley",d:"A flat, quiet valley road between Bled and the Vrata, good on foot or bike. Farms, meadows, no coaches.",t:"Flexible",cost:0,lat:46.4083,lng:14.0167}
          ],
-         foot:"<b>If you want one thing nobody else is at:</b> Planina Zajamniki at first light. The shot everyone assumes is stock photography, and you can drive most of the way."},
-       opts3:{label:"Where to sleep — Bovec",
-         items:[
-           {n:"Camping Vodenca",d:"Quiet, clean, right by the Soča. Free firewood, two big fire pits, charging points, and a kayak school next door.",t:"Camp",cost:14,unit:"pp",star:true,lat:46.3313,lng:13.5723},
-           {n:"Kamp Soča",d:"The scenic one — mountain views and a river-access key at check-in. Gets busy and noisy in August.",t:"Camp",cost:15,unit:"pp",lat:46.3349,lng:13.6440},
-           {n:"Camping Liza",d:"On the river with a shop and restaurant on site. Dog friendly, clean, but the pricier of the Bovec options.",t:"Camp",cost:18,unit:"pp",lat:46.3325,lng:13.5751},
-           {n:"Adrenaline-check Eco Place",d:"Wooden huts as well as pitches, and they'll book your rafting or canyoning for you.",t:"Camp/hut",cost:20,unit:"pp",lat:46.3222,lng:13.5031}
-         ],
-         foot:"<b>Bovec campsites run roughly €11.50–18 per person</b> in high season. Vodenca is the quiet pick; Liza has the most facilities."}}
+         foot:"<b>If you want one thing nobody else is at:</b> Planina Zajamniki at first light. The shot everyone assumes is stock photography, and you can drive most of the way."}}
     ]
   },
   {
     id:"hrv", name:"Croatia", color:"#1F6F7A", meta:"11–13 Aug · straight to the coast, two nights at Brela",
-    route:[[46.3383,13.5525],[43.3711,16.9114],[42.6989,18.0056]],
-    geometry:[[46.33814,13.55223],[46.41714,13.62474],[46.42925,13.56605],[46.50277,13.59377],[46.56904,13.69356],[46.57137,13.83063],[46.61269,13.91735],[46.53257,14.03075],[46.45113,13.99287],[46.40864,14.12484],[46.33475,14.19758],[46.18858,14.4796],[46.03903,14.44984],[45.97009,14.63383],[45.89979,15.05131],[45.82862,15.1806],[45.77852,15.17915],[45.47897,15.42825],[45.40554,15.24979],[45.14509,15.27334],[44.96875,15.09142],[44.94603,15.16116],[44.86198,15.21096],[44.75165,15.3738],[44.63615,15.43911],[44.54033,15.43865],[44.45919,15.60573],[44.31358,15.67761],[44.25319,15.64481],[44.26413,15.59126],[44.23911,15.60577],[44.21528,15.45098],[44.12998,15.42358],[43.83886,15.88382],[43.70869,15.99372],[43.59556,16.34876],[43.60259,16.61972],[43.48088,16.80605],[43.39768,17.04501],[43.34931,16.96504],[43.37577,16.91965],[43.34879,16.96497],[43.40274,17.03547],[43.33288,17.16111],[43.22578,17.23791],[43.1599,17.47548],[43.06293,17.4959],[43.04927,17.45694],[43.03178,17.55071],[42.96947,17.51603],[42.86382,17.56643],[42.79056,17.88653],[42.76082,17.88123],[42.69908,18.00569]],
+    route:[[46.317389,14.193883],[43.3711,16.9114],[42.6989,18.0056]],
+    geometry:[[46.317389,14.193883],[46.33475,14.19758],[46.18858,14.4796],[46.03903,14.44984],[45.97009,14.63383],[45.89979,15.05131],[45.82862,15.1806],[45.77852,15.17915],[45.47897,15.42825],[45.40554,15.24979],[45.14509,15.27334],[44.96875,15.09142],[44.94603,15.16116],[44.86198,15.21096],[44.75165,15.3738],[44.63615,15.43911],[44.54033,15.43865],[44.45919,15.60573],[44.31358,15.67761],[44.25319,15.64481],[44.26413,15.59126],[44.23911,15.60577],[44.21528,15.45098],[44.12998,15.42358],[43.83886,15.88382],[43.70869,15.99372],[43.59556,16.34876],[43.60259,16.61972],[43.48088,16.80605],[43.39768,17.04501],[43.34931,16.96504],[43.37577,16.91965],[43.34879,16.96497],[43.40274,17.03547],[43.33288,17.16111],[43.22578,17.23791],[43.1599,17.47548],[43.06293,17.4959],[43.04927,17.45694],[43.03178,17.55071],[42.96947,17.51603],[42.86382,17.56643],[42.79056,17.88653],[42.76082,17.88123],[42.69908,18.00569]],
     days:[
       {n:4,date:"Tue 11 Aug",title:"→ Brela (Plitvice cut)",lat:43.3711,lng:16.9114,
-       from:{name:"Bovec",lat:46.3383,lng:13.5525},
-       body:"Plitvice's off the list — August crowds, peak-season pricing, and 2026's drought has the waterfalls running thin, so the one thing that sells the ticket wasn't going to deliver. Straight through to the coast instead: down through Ljubljana, Zagreb, and the A1 to the Makarska Riviera. This is a genuinely long single day — treat it like Day 14's Munich–Rotterdam haul, not a casual drive, and start early given yesterday's Vršič hairpins are still in your legs.",
-       pills:[["drive","~7.5–8 h"],["locked","Brela"],["tent","Autocamp Sirena"],["pencil","2 nights"]],
+       from:{name:"Kamna Gorica",lat:46.317389,lng:14.193883},
+       body:"Plitvice's off the list — August crowds, peak-season pricing, and 2026's drought has the waterfalls running thin, so the one thing that sells the ticket wasn't going to deliver. Straight through to the coast instead: down through Ljubljana, Zagreb, and the A1 to the Makarska Riviera. This is a genuinely long single day — treat it like Day 14's Munich–Rotterdam haul, not a casual drive, and start early regardless of how the legs feel after yesterday's via ferrata.",
+       pills:[["drive","~6–6.5 h"],["locked","Brela"],["tent","Autocamp Sirena"],["pencil","2 nights"]],
        opts:{label:"Brela camping — you've emailed all four",
          items:[
            {n:"Autocamp Sirena",d:"Lokva Rogoznica, ~10 min south of Brela. Cliffside pitches over the sea, tent-friendly without reservation per reviewers, restaurant with live music on-site. The strongest overall pick on this stretch.",t:"4.5★ · 1,888 reviews",cost:15,unit:"pp",star:true,lat:43.4063,lng:16.7771},
@@ -183,7 +167,7 @@ const LEGS = [
       {n:7,date:"Fri 14 Aug",title:"Dubrovnik at dawn → Kotor",lat:42.4247,lng:18.7712,
        from:{name:"Camp Pod Maslinom",lat:42.6989,lng:18.0056},
        body:"Walls at first light, empty streets, out before the first ship docks. Then the border and around the bay to Kotor by lunch.",
-       pills:[["locked","Dubrovnik dawn"],["locked","Kotor"],["drive","~2.5 h"],["sleep","Base 1 of 3"]],
+       pills:[["locked","Dubrovnik dawn"],["locked","Kotor"],["drive","~2.5 h"],["bed","Azure Adriatica"]],
        hist:{h:"Two republics",t:"Dubrovnik spent four centuries as Ragusa, an independent maritime republic that bought its safety from the Ottomans with tribute rather than war, and abolished slavery in 1416. Kotor went the other way — Venetian for nearly four hundred years, which is why the lion of St Mark sits over the gate."},
        opts2:{label:"Where to sleep — Kotor (3 nights)",
          items:[
@@ -191,9 +175,10 @@ const LEGS = [
            {n:"Apartments Wine House Old Town",d:"Renovated, central. Reviews note noise from an adjacent bar until ~1am — worth weighing across three nights. Same Old Town parking caveat as Monte Cristo.",t:"4.7★ (78) · Mid-tier",cost:null,verify:true,lat:42.4245,lng:18.7715},
            {n:"Guesthouse Step",d:"Dobrota, 5 min from the Old Town, 1 min from a beach, shared kitchen, balcony. Good value. One review reports bed bugs — check recent reviews before committing.",t:"4.4★ · Budget",cost:null,lat:42.4444,lng:18.7644},
            {n:"Guest House Sandra",d:"Škaljari. Best views of the set, 10–15 min walk down to the Old Town (uphill on the way back). Easier parking than the Old Town options.",t:"4.0★ · Budget",cost:null,lat:42.4195,lng:18.7810},
-           {n:"Majka Guest House",d:"Old Town, but effectively hostel-format — one bathroom for 20+ beds per one review. Cheap, but not right for three nights as a couple.",t:"4.4★ (39) · Budget",cost:null,lat:42.4249,lng:18.7708}
+           {n:"Majka Guest House",d:"Old Town, but effectively hostel-format — one bathroom for 20+ beds per one review. Cheap, but not right for three nights as a couple.",t:"4.4★ (39) · Budget",cost:null,lat:42.4249,lng:18.7708},
+           {n:"Hotel Azure Adriatica",d:"Booked — 3 nights, Fri 14 to Mon 17 Aug. Kriva bb, 85330 Kotor (Dobrota), a few minutes up the bay from the Old Town.",t:"Hotel · booked",cost:null,star:true,lat:42.4542,lng:18.7683}
          ],
-         foot:"<b>Rationale for spending here:</b> three consecutive nights, the longest static stay of the trip, in the hottest part of the route — working AC is worth more than the price gap. <b>Prices aren't reliable</b>: this list comes from a Google Places lookup, not direct verification, so treat every option as a candidate to check on Booking/direct rather than a blind pick."}},
+         foot:"<b>Booked:</b> Hotel Azure Adriatica, 14–17 Aug (3 nights) — the base for all three Kotor days."}},
       {n:8,date:"Sat 15 Aug",title:"Kotor — southern coast day trips",lat:42.2864,lng:18.8400,
        from:{name:"Kotor",lat:42.4247,lng:18.7712},
        body:"Sveti Stefan, Budva, the Lovćen serpentine and Cetinje are all live for this day — more than fits, so this is about picking two or three, not doing all four.",
