@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Rotterdam → Kotor → Rotterdam · 8–21 August 2026</title>
+<title>Rotterdam → Kotor → Rotterdam · 8–23 August 2026</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Nunito+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -150,6 +150,35 @@ h1 .to{color:var(--ink-faint);font-weight:400;}
 .pill.sleep,.pill.drive{background:transparent;color:var(--ink-soft);border:1px solid var(--rule);}
 .pill.warn{background:#C4553A;color:#fff;}
 
+.decideblock{margin:0 18px 0;padding:11px 14px;border-radius:10px;
+  background:#FBEAE5;border:1px solid #EFD5CB;}
+.decideblock+.decideblock{margin-top:8px;}
+.decidetag{display:inline-block;font-size:10.5px;font-weight:800;letter-spacing:.1em;
+  text-transform:uppercase;color:#9A4A33;background:#F6DED6;border-radius:5px;
+  padding:2px 7px;margin-right:7px;vertical-align:middle;}
+.decidelabel{font-weight:700;font-size:13.5px;color:#7A3626;}
+.decidebody{font-size:12.5px;line-height:1.5;color:#8A5142;margin-top:4px;}
+
+.verifytag{display:inline-block;font-size:10px;font-weight:800;letter-spacing:.08em;
+  text-transform:uppercase;color:#8A6D0E;background:#FBF3D9;border:1px solid #E9D48C;
+  border-radius:5px;padding:1px 6px;}
+
+.consequence{display:none;margin-top:7px;padding:8px 10px;border-radius:8px;
+  background:#FBEAE5;border:1px solid #EFD5CB;font-size:12px;line-height:1.5;color:#8A5142;}
+.consequence.show{display:block;}
+.consequence b{color:#7A3626;}
+
+.killed{background:var(--paper-2);border:1px solid var(--rule);border-radius:14px;
+  padding:20px 22px;margin-bottom:14px;}
+.killed summary{cursor:pointer;font-family:var(--display);font-weight:600;font-size:16px;
+  color:var(--ink-faint);list-style:none;display:flex;align-items:center;gap:7px;}
+.killed summary::-webkit-details-marker{display:none;}
+.killed summary::before{content:"▸";font-size:12px;transition:transform .18s;}
+.killed[open] summary::before{transform:rotate(90deg);}
+.killed ul{margin:12px 0 0;padding-left:19px;}
+.killed li{margin-bottom:8px;font-size:13px;color:var(--ink-soft);line-height:1.5;}
+.killed li b{color:var(--ink);}
+
 .hist{margin:14px 18px 0;padding:13px 15px;border-radius:10px;background:var(--paper-3);
   font-size:13.5px;line-height:1.6;color:var(--ink-soft);}
 .hist b{display:block;font-size:11px;font-weight:700;letter-spacing:.12em;
@@ -281,12 +310,12 @@ h1 .to{color:var(--ink-faint);font-weight:400;}
 <div class="shell">
   <div class="panel">
     <div class="masthead">
-      <p class="eyebrow">EV road trip · 14 days · 13 nights</p>
+      <p class="eyebrow">EV road trip · 16 days · 15 nights</p>
       <h1>Rotterdam <span class="to">→</span> <em>Kotor</em> <span class="to">→</span> Rotterdam</h1>
       <div class="stats">
-        <span class="stat"><b>8–21 Aug</b> 2026</span>
-        <span class="stat"><b>~4,900</b> km</span>
-        <span class="stat"><b>6</b> countries</span>
+        <span class="stat"><b>8–23 Aug</b> 2026</span>
+        <span class="stat"><b>~4,500</b> km</span>
+        <span class="stat"><b>7</b> countries</span>
         <span class="stat"><b>3 nights</b> in Kotor</span>
       </div>
       <div class="syncbar">
@@ -310,13 +339,13 @@ h1 .to{color:var(--ink-faint);font-weight:400;}
     </div>
 
     <div class="spare">
-      <b>Two days spare</b>
-      <p>You're home on Friday 21 August with the 22nd and 23rd free. Durmitor and the Tara rafting would fit, or a second day in Triglav, or a gentler drive home.</p>
+      <b>Six open decisions</b>
+      <p>Day 3's Vršič/Soça routing is settled, but Sveti Stefan (day 8), Žabljak charging (day 10), the day 12 routing choice, Konjic's bunker tour (day 13), and the day 14 return city are all still open — look for the flagged days in the list below.</p>
     </div>
 
     <div class="charge">
       <b>⚡ Supercharger streak plan</b>
-      <p><b>Montenegro and Bosnia have zero Tesla Superchargers</b> — confirmed directly against Tesla's site. Your 3 nights in Kotor plus Sutjeska and Mostar sit in a dead zone, so this trip produces <b>two separate streaks</b>, not one 14-day chain: Rotterdam→Vrgorac, then a gap, then Zagreb→Rotterdam on the way back. Amber ⚡ markers on the map show the planned stops for days 1–3 so far.</p>
+      <p><b>Montenegro and Bosnia have zero Tesla Superchargers</b> — confirmed directly against Tesla's site. Your 3 nights in Kotor, the Žabljak/Durmitor stretch, and Mostar/Sarajevo all sit in a dead zone, so this trip produces <b>two separate streaks</b>, not one 16-day chain: Rotterdam→Vrgorac on the way down, then a gap through Montenegro and Bosnia, then a second streak from wherever the day 12 routing choice rejoins dense charging on the way home. Amber ⚡ markers on the map show the planned stops for days 1–3 so far.</p>
     </div>
 
     <div class="controls">
@@ -335,26 +364,32 @@ h1 .to{color:var(--ink-faint);font-weight:400;}
         <ul>
           <li><b>8 Aug</b> — Rotterdam to Maria Laach is 2h45, then another 4h45 on to Munich. With the abbey stop that's a full 8-hour day, on day one. Hence the bed.</li>
           <li><b>10 Aug</b> — the Vršič Pass is 80 km and takes 2 hours on fifty hairpins. Beautiful, slow, hard on EV range.</li>
-          <li><b>17 Aug</b> — Kotor to Tjentište crosses into Bosnia on mountain roads with thin charging.</li>
+          <li><b>17 Aug</b> — Kotor to Žabljak, and whatever's actually reliable to charge on once there blocks the day 12 routing choice entirely.</li>
+          <li><b>22 Aug</b> — Salzburg (or wherever day 14 lands) to Rotterdam in one push, deliberately past the usual comfort ceiling. The 23rd is recovery, not a day to fill.</li>
         </ul>
       </section>
       <section>
         <h3>About the routing</h3>
         <ul>
-          <li>Days 1 to 3 follow <b>real roads</b>, pulled live from OpenStreetMap routing. Hover a segment on the map — or a day card — to highlight it.</li>
-          <li>Days 4 onward have <b>pins but no line yet</b>. Each leg gets routed as we build it out.</li>
+          <li>Days 1 to 9 follow <b>real roads</b>, pulled live from OpenStreetMap routing and baked in. Hover a segment on the map — or a day card — to highlight it.</li>
+          <li>Days 10 onward are freshly rebuilt from the trip brief — some legs are still on a live OSRM fetch rather than baked-in geometry until that catches up.</li>
           <li>Every day card has an <b>Open in ABRP</b> link that hands that leg's waypoints to A Better Routeplanner for charging stops.</li>
         </ul>
       </section>
       <section>
         <h3>Still open</h3>
         <ul>
-          <li>Munich bed and Bled campsite both to be confirmed — tell me which and I'll lock the real prices in.</li>
+          <li>Munich's booked; Bled campsite still to be confirmed — tell me which and I'll lock the real price in.</li>
           <li>Costs shown are 2026 published prices where I could find them, otherwise typical rates. Treat as estimates until booked.</li>
           <li>Triglav splits east/west and one day only covers one side.</li>
           <li>Vintgar Gorge needs a timed-entry ticket booked in advance for August.</li>
+          <li>Most of the new Days 10–16 lodging has no reliable pricing yet — flagged item by item rather than repeated here.</li>
         </ul>
       </section>
+      <details class="killed" id="killedSection" style="display:none">
+        <summary>Killed — do not reintroduce</summary>
+        <ul id="killedList"></ul>
+      </details>
     </div>
   </div>
 
@@ -649,6 +684,15 @@ LEGS.forEach(leg=>{
     }
     card.appendChild(main);
 
+    /* DECIDE flags — open blocking decisions, always visible, never buried in an opts panel */
+    (d.decide||[]).forEach(dec=>{
+      const db=document.createElement('div');
+      db.className='decideblock';
+      db.innerHTML=`<div><span class="decidetag">Decide</span><span class="decidelabel">${dec.label}</span></div>
+        <div class="decidebody">${dec.body}</div>`;
+      card.appendChild(db);
+    });
+
     /* ABRP deep link for this day's drive */
     if(d.from){
       const stops=[d.from,...(d.via||[]),{name:d.title.replace(/^.*→\s*/,''),lat:d.lat,lng:d.lng}];
@@ -678,7 +722,7 @@ LEGS.forEach(leg=>{
         ob.querySelector('.optcount').textContent=
           entries.filter(e=>e.live).length;
       };
-      ob.innerHTML=`<span>${set.label} · <span class="optcount">${set.items.length}</span></span><span class="chev">▼</span>`;
+      ob.innerHTML=`<span>${set.label}${set.exclusive?' · pick one':''} · <span class="optcount">${set.items.length}</span></span><span class="chev">▼</span>`;
 
       const ow=document.createElement('div');
       ow.className='optwrap';
@@ -726,7 +770,8 @@ LEGS.forEach(leg=>{
         go.innerHTML=`<span class="optmark"></span>
           <div class="opttext"><div class="optname">${o.n}</div>
             <div class="optdesc">${o.d}</div>
-            <div class="optmeta"><span>${o.t}</span>${priceTxt}</div></div>`;
+            <div class="optmeta"><span>${o.t}</span>${priceTxt}${o.verify?'<span class="verifytag">Verify</span>':''}</div>
+            ${o.consequence?`<div class="consequence">${o.consequence}</div>`:''}</div>`;
         if(o.lat){
           go.addEventListener('click',()=>{
             if(!ow.classList.contains('show')) return;
@@ -747,13 +792,24 @@ LEGS.forEach(leg=>{
           add.type='button';
           add.setAttribute('aria-pressed','false');
           add.setAttribute('aria-label','Add '+o.n+' to the budget');
+          const conseq=row.querySelector('.consequence');
           add.addEventListener('click',()=>{
             if(selected.has(key)){
               selected.delete(key); add.classList.remove('on');
               add.textContent='+'; add.setAttribute('aria-pressed','false');
+              if(conseq) conseq.classList.remove('show');
             } else {
               selected.set(key,o); add.classList.add('on');
               add.textContent='✓'; add.setAttribute('aria-pressed','true');
+              if(conseq) conseq.classList.add('show');
+              /* exclusive set: picking one clears any other live selection in the same set */
+              if(set.exclusive){
+                entries.forEach(other=>{
+                  if(other.key===key||!other.live) return;
+                  const reg=itemRegistry.get(other.key);
+                  if(reg&&reg.add&&selected.has(other.key)) reg.add.click();
+                });
+              }
             }
             renderBudget();
             scheduleSave();
@@ -853,6 +909,13 @@ LEGS.forEach(leg=>{
 });
 
 renderBudget();
+
+/* killed list — populated from trip-data.js's KILLED array if present; stays hidden if empty */
+if(typeof KILLED!=='undefined'&&KILLED.length){
+  document.getElementById('killedList').innerHTML=
+    KILLED.map(k=>`<li><b>${k.n}</b> — ${k.reason}</li>`).join('');
+  document.getElementById('killedSection').style.display='';
+}
 
 /* ---- pull whatever's already saved to the shared bin, then unlock saving ---- */
 (async function syncFromRemote(){

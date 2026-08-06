@@ -17,6 +17,16 @@ const CHARGE_STOPS=[
    note:"10 min from Bled, 5 min off the highway. Also the last charger before the Julian Alps — day 3 (Vršič/Bovec) has none at all."}
 ];
 
+/* Retired ideas — kept here (not surfaced by default) so they don't get accidentally
+   re-proposed in a later planning session. Rendered as a closed-by-default section. */
+const KILLED=[
+  {n:"Plitvice Lakes",reason:"Cut deliberately. August crowds, peak-season pricing, and 2026 drought conditions likely to make it underwhelming."},
+  {n:"Prokletije NP",reason:"Removed to avoid overextending the route."},
+  {n:"Albania",reason:"Ruled out early for the same reason as Prokletije — overextension."},
+  {n:"Foča → Nevesinje → Mostar",reason:"A mountain charging desert. Ruled out."},
+  {n:"Route ending in Dubrovnik",reason:"Evaluated and rejected — Dubrovnik is a geographic dead end. Finishing there means re-driving the Dalmatian coast, adding ~250–300 km to the return."}
+];
+
 const LEGS = [
   {
     id:"out", name:"Getting there", color:"#C08A2E", meta:"8 Aug · one long day, via the Eifel",
@@ -174,80 +184,185 @@ const LEGS = [
        from:{name:"Camp Pod Maslinom",lat:42.6989,lng:18.0056},
        body:"Walls at first light, empty streets, out before the first ship docks. Then the border and around the bay to Kotor by lunch.",
        pills:[["locked","Dubrovnik dawn"],["locked","Kotor"],["drive","~2.5 h"],["sleep","Base 1 of 3"]],
-       hist:{h:"Two republics",t:"Dubrovnik spent four centuries as Ragusa, an independent maritime republic that bought its safety from the Ottomans with tribute rather than war, and abolished slavery in 1416. Kotor went the other way — Venetian for nearly four hundred years, which is why the lion of St Mark sits over the gate."}},
-      {n:8,date:"Sat 15 Aug",title:"Kotor fortress + Perast",lat:42.4869,lng:18.6989,
-       from:{name:"Kotor",lat:42.4247,lng:18.7712},
-       body:"1,350 steps up the walls at dawn — brutal in August heat any later. Afternoon in Perast and the boat out to Our Lady of the Rocks.",
-       pills:[["locked","Fortress walls"],["locked","Perast"],["sleep","Base 2 of 3"]],
-       hist:{h:"An island built by hand",t:"Our Lady of the Rocks is artificial. Sailors have dropped a stone into the bay on every safe return since the fifteenth century, and the islet grew under the church. The tradition still runs each 22 July as the Fašinada."},
-       opts:{label:"What to do around the bay",
+       hist:{h:"Two republics",t:"Dubrovnik spent four centuries as Ragusa, an independent maritime republic that bought its safety from the Ottomans with tribute rather than war, and abolished slavery in 1416. Kotor went the other way — Venetian for nearly four hundred years, which is why the lion of St Mark sits over the gate."},
+       opts2:{label:"Where to sleep — Kotor (3 nights)",
          items:[
-           {n:"Fortress walls to San Giovanni",d:"1,350 steps switchbacking up the cliff behind the old town. Go at first light — no shade, and August is merciless.",t:"2–3 h",cost:15,unit:"pp",star:true,lat:42.4262,lng:18.7756},
-           {n:"Kotor old town",d:"Venetian squares, the lion of St Mark over the gate, a cathedral from 1166. Small enough to get properly lost in.",t:"2 h",cost:0,lat:42.4247,lng:18.7712},
-           {n:"Perast",d:"Twenty minutes round the bay. A single street of baroque palaces and no cars.",t:"Half day",cost:0,star:true,lat:42.4869,lng:18.6989},
-           {n:"Our Lady of the Rocks",d:"Short boat hop from Perast to the hand-built island church. Boat plus church entry.",t:"1 h",cost:12,unit:"pp",lat:42.4878,lng:18.6897},
-           {n:"Kotor–Lovćen serpentine",d:"The old road up the mountain in twenty-five hairpins, the whole bay unfolding below. Pull-outs the entire way.",t:"Half day",cost:0,lat:42.4133,lng:18.7500},
-           {n:"Njegoš Mausoleum, Lovćen",d:"At 1,657 m, reached by 461 steps. Poet, prince and bishop, buried at the top of his own country. Park entry plus mausoleum.",t:"2 h",cost:13,unit:"pp",lat:42.4008,lng:18.8375},
-           {n:"Ostrog Monastery",d:"Ninety minutes inland. Built into a sheer white cliff. Free to enter; covered shoulders and legs required.",t:"Half day",cost:0,lat:42.6764,lng:19.0294},
-           {n:"Swimming, Dobrota shore",d:"Small pebble beaches along the water just north of the old town.",t:"—",cost:0,lat:42.4444,lng:18.7644}
+           {n:"Hotel Monte Cristo",d:"Old Town, historic building, on-site breakfast — staff reportedly help arrange parking via WhatsApp. Parking is the real constraint for any Old Town stay with an EV.",t:"4.2★ · Mid-tier",cost:null,verify:true,lat:42.4247,lng:18.7712},
+           {n:"Apartments Wine House Old Town",d:"Renovated, central. Reviews note noise from an adjacent bar until ~1am — worth weighing across three nights. Same Old Town parking caveat as Monte Cristo.",t:"4.7★ (78) · Mid-tier",cost:null,verify:true,lat:42.4245,lng:18.7715},
+           {n:"Guesthouse Step",d:"Dobrota, 5 min from the Old Town, 1 min from a beach, shared kitchen, balcony. Good value. One review reports bed bugs — check recent reviews before committing.",t:"4.4★ · Budget",cost:null,lat:42.4444,lng:18.7644},
+           {n:"Guest House Sandra",d:"Škaljari. Best views of the set, 10–15 min walk down to the Old Town (uphill on the way back). Easier parking than the Old Town options.",t:"4.0★ · Budget",cost:null,lat:42.4195,lng:18.7810},
+           {n:"Majka Guest House",d:"Old Town, but effectively hostel-format — one bathroom for 20+ beds per one review. Cheap, but not right for three nights as a couple.",t:"4.4★ (39) · Budget",cost:null,lat:42.4249,lng:18.7708}
          ],
-         foot:"<b>Three nights means two full days plus edges.</b> Fortress and Perast fill one comfortably. The serpentine road plus Ostrog fills the other, but note on the map how far inland Ostrog sits — that's the long one."}},
-      {n:9,date:"Sun 16 Aug",title:"Serpentine road + Ostrog",lat:42.6764,lng:19.0294,
+         foot:"<b>Rationale for spending here:</b> three consecutive nights, the longest static stay of the trip, in the hottest part of the route — working AC is worth more than the price gap. <b>Prices aren't reliable</b>: this list comes from a Google Places lookup, not direct verification, so treat every option as a candidate to check on Booking/direct rather than a blind pick."}},
+      {n:8,date:"Sat 15 Aug",title:"Kotor — southern coast day trips",lat:42.2864,lng:18.8400,
        from:{name:"Kotor",lat:42.4247,lng:18.7712},
-       body:"Up the old Kotor–Lovćen switchbacks for the bay view, then inland to the monastery in the cliff. Long day, but nothing to pack.",
-       pills:[["pencil","Lovćen"],["pencil","Ostrog"],["sleep","Base 3 of 3"]],
-       hist:{h:"Njegoš",t:"Petar II Petrović-Njegoš was at once Montenegro's prince, its Orthodox bishop, and its greatest poet. His mausoleum sits at 1,657 m on Lovćen. Ostrog draws Orthodox, Catholic and Muslim pilgrims alike."},
-       opts:{label:"Still deciding — day 8 or day 9",
+       body:"Sveti Stefan, Budva, the Lovćen serpentine and Cetinje are all live for this day — more than fits, so this is about picking two or three, not doing all four.",
+       pills:[["pencil","Southern coast"],["sleep","Base 2 of 3"]],
+       decide:[
+         {label:"Sveti Stefan: viewpoint or resort?",body:"The islet itself is a private Aman resort — non-guests can walk the causeway to the gate but no further. The classic view is a free roadside pull-off above the village (or the better, higher Church of Saint Sava viewpoint nearby). If it's the viewpoint only, this is a 20-minute stop, not a day."},
+         {label:"Days 8-9 have more options than fit",body:"Sveti Stefan, Budva, Lovćen/Njegoš, Cetinje (today) and Perast, the fortress climb, Herceg Novi, Risan (day 9) — more than two days can hold. Needs pruning, not more research."}
+       ],
+       hist:{h:"History underfoot",t:"Budva claims over 2,500 years of continuous habitation, one of the oldest settlements on the Adriatic. Cetinje was Montenegro's royal capital from the 15th century until 1918 — a mountain-ringed town chosen precisely because it was hard to attack."},
+       opts:{label:"Southern coast — pick two or three",
          items:[
-           {n:"Sveti Stefan",d:"The islet-resort south of Budva, ~90 min coastal drive from Kotor. Still unresolved whether this is a quick stop at the free roadside viewpoint (or the better, higher Church of Saint Sava viewpoint above the village) or a paid day as an Aman resort guest on the islet itself — very different trips, and would bump something off either this day or Perast/the fortress on day 8.",t:"Viewpoint vs resort",cost:null,lat:42.2558,lng:18.8911}
+           {n:"Sveti Stefan",d:"The islet-resort south of Budva, ~90 min coastal drive from Kotor. See the decide flag above — viewpoint or resort are very different trips.",t:"Viewpoint vs resort",cost:null,lat:42.2558,lng:18.8911},
+           {n:"Budva old town",d:"Walled old town on its own small peninsula, over 2,500 years of habitation behind it. Busier and more built-up than Kotor's.",t:"Half day",cost:0,lat:42.2864,lng:18.8400},
+           {n:"Lovćen NP / Njegoš Mausoleum",d:"The old serpentine road up from Kotor in twenty-five hairpins, the whole bay unfolding below, to the mausoleum at 1,657 m (461 steps). Significant elevation gain — regen on the descent recovers a chunk of it.",t:"Half day",cost:13,unit:"pp",star:true,lat:42.4008,lng:18.8375},
+           {n:"Cetinje",d:"Montenegro's old royal capital, chosen for being hard to attack. Historical depth rather than a headline sight — pairs naturally with Lovćen on the same drive.",t:"Half day",cost:0,lat:42.3906,lng:18.9219}
+         ],
+         foot:"<b>Note:</b> this day and day 9 are currently defined by direction (south vs. bay) rather than by content — prune rather than trying to fit everything in."}},
+      {n:9,date:"Sun 16 Aug",title:"Kotor — bay day trips",lat:42.4869,lng:18.6989,
+       from:{name:"Kotor",lat:42.4247,lng:18.7712},
+       body:"Perast and the boat out to Our Lady of the Rocks are the locked centerpiece. Fortress climb, Herceg Novi and Risan are all live around it — more than a day needs.",
+       pills:[["locked","Perast"],["sleep","Base 3 of 3"]],
+       hist:{h:"An island built by hand",t:"Our Lady of the Rocks is artificial. Sailors have dropped a stone into the bay on every safe return since the fifteenth century, and the islet grew under the church. The tradition still runs each 22 July as the Fašinada."},
+       opts:{label:"Bay day trips",
+         items:[
+           {n:"Perast",d:"Twenty minutes round the bay. A single street of baroque palaces and no cars.",t:"Half day",cost:0,star:true,lat:42.4869,lng:18.6989},
+           {n:"Our Lady of the Rocks",d:"Short boat hop from Perast to the hand-built island church. Boat plus church entry.",t:"1 h",cost:12,unit:"pp",star:true,lat:42.4878,lng:18.6897},
+           {n:"Kotor town walls climb",d:"1,350 steps switchbacking up the cliff behind the old town to San Giovanni. Do it at dawn or dusk, not midday — no shade, and August is merciless.",t:"2–3 h",cost:15,unit:"pp",lat:42.4262,lng:18.7756},
+           {n:"Herceg Novi",d:"At the mouth of the bay. Brief's own note: take this here, or work it into the Dubrovnik→Kotor drive on day 7 instead — one location, not both.",t:"Half day",cost:0,lat:42.4531,lng:18.5375},
+           {n:"Risan",d:"Roman mosaics — the floor of a villa at the head of the bay, including the well-known sleeping Hypnos.",t:"1–2 h",cost:0,lat:42.5133,lng:18.6942}
+         ],
+         foot:"<b>Perast is the one thing locked in.</b> Fortress climb, Herceg Novi and Risan are all live — treat as a menu, not a checklist."}}
+    ]
+  },
+  {
+    id:"durmitor", name:"Durmitor National Park", color:"#3D6B8C", meta:"17–18 Aug · Žabljak, two nights",
+    route:[[42.4247,18.7712],[43.1548,19.1223]],
+    geometry:[[42.42396,18.77018],[42.40652,18.76442],[42.41038,18.77903],[42.40259,18.77945],[42.39956,18.78274],[42.41966,18.79453],[42.43176,18.80825],[42.4293,18.81533],[42.43246,18.82881],[42.43752,18.8382],[42.4388,18.83597],[42.43773,18.85323],[42.51816,18.91516],[42.57583,18.87173],[42.62109,18.86441],[42.659,18.86187],[42.68868,18.87784],[42.72632,18.85579],[42.77728,18.88845],[42.7832,18.92571],[42.80428,18.91109],[42.8236,18.89754],[42.84508,18.91493],[42.85958,18.93447],[42.8792,18.94165],[42.89594,18.96384],[42.90351,18.97452],[42.90114,18.99243],[42.90193,19.01028],[42.89959,19.02531],[42.89676,19.04136],[42.8986,19.06385],[42.8945,19.07885],[42.90077,19.09295],[42.90479,19.0902],[42.90558,19.08825],[42.9092,19.09024],[42.91843,19.08672],[42.92511,19.07494],[42.93214,19.07016],[42.94485,19.07337],[42.94906,19.08194],[42.94676,19.09233],[42.94693,19.09483],[42.94853,19.09492],[42.94737,19.09998],[42.95159,19.09583],[42.9512,19.09949],[42.96182,19.09287],[42.97662,19.08388],[42.98691,19.07111],[42.99999,19.07652],[43.01388,19.08317],[43.03027,19.08845],[43.04605,19.08102],[43.06929,19.10443],[43.08019,19.10459],[43.0938,19.10885],[43.11707,19.12211],[43.1294,19.1256],[43.15477,19.12229]],
+    days:[
+      {n:10,date:"Mon 17 Aug",title:"Kotor → Žabljak",lat:43.1548,lng:19.1223,
+       from:{name:"Kotor",lat:42.4247,lng:18.7712},
+       body:"Up out of the bay to the Durmitor plateau. Where you sleep tonight needs to answer the charging question, not just the comfort one — see the flag below before booking.",
+       pills:[["drive","~3 h"],["locked","Durmitor NP"],["warn","Thin charging"]],
+       decide:[
+         {label:"What charging actually exists in Žabljak?",body:"This blocks the whole routing choice on day 12 — everything downstream depends on the answer. Needs recent PlugShare check-ins, not general knowledge. Fallback regardless of what DC exists: book accommodation with a confirmed standard power outlet — ~2.3 kW over 10 h ≈ 20+ kWh ≈ 120–150 km overnight. Register and pre-load payment on ABRP, PlugShare, Moon Power and EVC Charge/Electromaps before arriving."}
+       ],
+       hist:{h:"A glacial plateau",t:"Durmitor's karst plateau sits above 1,400 m, ringed by 48 peaks over 2,000 m and pocked with glacial lakes — Montenegro's largest national park and, since 1980, a UNESCO World Heritage Site."},
+       opts2:{label:"Where to sleep — Žabljak (2 nights)",
+         items:[
+           {n:"Durmitorski bungalovi",d:"Family-run bungalows with kitchenette and fridge, close to town and the park. Detached units — most likely of the set to have an accessible outdoor socket. Ask directly before booking.",t:"4.7★ · Budget",cost:null,verify:true,lat:43.1520,lng:19.1180},
+           {n:"Guesthouse Planinarski",d:"Pitomine. Cabin/treehouse format, directly on hiking trails, minutes from Žabljak, host cooks local food. Shared bathrooms. Excellent value.",t:"4.7★ · Budget",cost:null,lat:43.1450,lng:19.1300},
+           {n:"Chalets pod Gorom",d:"Njegovuđa. Cottages around a lawn, shared bathrooms, very well reviewed. ~20 min from Žabljak — check against the actual Durmitor activity plan before booking.",t:"4.9★ · Budget",cost:null,lat:43.2000,lng:19.0500},
+           {n:"Polar Star",d:"Borje. Proper small hotel with buffet dinner, breakfast and sauna, ~5 min from Žabljak — the comfortable option if the Durmitor days are hike-heavy. One review reports an unexpected €91 surcharge on arrival.",t:"4.5★ · Mid-tier",cost:null,verify:true,lat:43.1500,lng:19.0900},
+           {n:"Eko Oaza – Tear of Europe",d:"Dobrilovina, on the Tara toward Mojkovac. 4.9★ (449 reviews) — the best-rated place in the whole brief. Family-run, home-cooked food, kitchen access, river setting. Only makes sense if Tara rafting/Tara Bridge are taken — well east of Žabljak, check the actual drive time.",t:"4.9★ (449) · Budget camping",cost:null,lat:43.0700,lng:19.4200},
+           {n:"Hotel Porto Tara",d:"Riverside, good for a rafting-anchored stay. Mixed recent reviews on cleanliness. Windy access road.",t:"4.3★ · Budget/mid",cost:null,lat:43.1000,lng:19.3000}
+         ],
+         foot:"<b>Every camping night on this trip needs the same question asked before booking:</b> \"can I charge an electric car from the pitch hookup, and at what amperage?\" Many sites explicitly prohibit it even with EHU present — this matters most here."}},
+      {n:11,date:"Tue 18 Aug",title:"Durmitor",lat:43.1467,lng:19.0844,
+       from:{name:"Žabljak",lat:43.1548,lng:19.1223},
+       body:"A full day in the park. Priority is Tara rafting if the logistics work out — everything else fits around it.",
+       pills:[["pencil","Durmitor day"],["sleep","2nd night"]],
+       hist:{h:"The canyon Tito's partisans crossed",t:"The Tara Canyon is Europe's deepest at over 1,300 m — second in the world only to the Grand Canyon. Đurđevića Tara bridge, opened in 1940, was itself partly demolished by its own engineer in 1942 to slow the Axis advance, then rebuilt."},
+       opts:{label:"Durmitor — pick what fits",
+         items:[
+           {n:"Tara River rafting",d:"The priority water activity for this stretch of the trip. Half-day vs. full-day, and exactly where the put-in sits relative to Žabljak, still needs confirming.",t:"Half or full day",cost:null,verify:true,lat:43.2870,lng:18.5972},
+           {n:"Tara Bridge (Đurđevića Tara)",d:"Flagged previously as adding a detour that widens the day's charging gap. Cheap to include if rafting already puts you out this way.",t:"1 h",cost:0,lat:43.1614,lng:19.3067},
+           {n:"Black Lake (Crno Jezero)",d:"Easy, close to Žabljak, the low-effort option that's still genuinely worth it.",t:"1–2 h",cost:0,star:true,lat:43.1467,lng:19.0844},
+           {n:"Bobotov Kuk / ridge hike",d:"The one full-day trek slot, if the payoff justifies it. Durmitor's highest peak at 2,523 m, or a shorter ridge walk if the summit push is too much for the day.",t:"Full day",cost:0,lat:43.1264,lng:19.0361},
+           {n:"Durmitor Ring Road (P14)",d:"Scenic loop around the park by car — the low-commitment way to see most of it in an afternoon.",t:"Half day",cost:0,lat:43.1300,lng:19.0500},
+           {n:"Sedlo Pass",d:"High mountain pass through the park, part of the Ring Road loop but worth calling out on its own for the viewpoint.",t:"1 h",cost:0,lat:43.1719,lng:19.0294}
+         ],
+         foot:"<b>Yesterday's charging answer shapes today.</b> If Žabljak turned out to be a real charging dead end, treat the Ring Road and Black Lake as the safe low-mileage plan and save the Tara detour for a confirmed-charge day."}}
+    ]
+  },
+  {
+    id:"bih", name:"Bosnia & Herzegovina", color:"#6B7F3E", meta:"19–20 Aug · Mostar & Sarajevo",
+    route:[[43.1548,19.1223],[42.4304,19.2594],[42.7124,18.3446],[43.3438,17.8078],[43.6606,17.7625],[43.6549,17.9626],[43.8586,18.4312]],
+    geometry:[[43.15477,19.12229],[43.13782,19.1218],[43.12138,19.12477],[43.06607,19.13687],[43.02144,19.16176],[42.97638,19.19048],[42.94531,19.20165],[42.9267,19.23494],[42.92654,19.27428],[42.91563,19.28291],[42.91269,19.28084],[42.91843,19.26778],[42.90737,19.27043],[42.90024,19.27359],[42.89698,19.27282],[42.87783,19.30217],[42.87541,19.29987],[42.86132,19.32066],[42.84295,19.34192],[42.83143,19.35669],[42.82588,19.37067],[42.82074,19.38482],[42.81642,19.39914],[42.81542,19.40109],[42.80675,19.39078],[42.79073,19.39442],[42.78219,19.39279],[42.77282,19.39128],[42.75784,19.38956],[42.74376,19.38951],[42.73562,19.38128],[42.72493,19.3778],[42.70858,19.3725],[42.69792,19.37392],[42.68391,19.37428],[42.66946,19.36749],[42.65761,19.37669],[42.64622,19.37913],[42.63425,19.37297],[42.62092,19.37039],[42.60893,19.37601],[42.59966,19.37541],[42.58955,19.35878],[42.578,19.35467],[42.56608,19.34498],[42.54544,19.33428],[42.53396,19.33728],[42.52051,19.3426],[42.50621,19.33225],[42.50204,19.32134],[42.49623,19.3104],[42.48225,19.30587],[42.4699,19.3003],[42.439,19.26583],[42.4414,19.24368],[42.44341,19.20626],[42.45428,19.19214],[42.46321,19.17586],[42.4987,19.15026],[42.51546,19.12469],[42.54096,19.10971],[42.56401,19.08311],[42.58102,19.05233],[42.61201,19.02791],[42.62746,19.01258],[42.6402,19.00118],[42.64895,18.99172],[42.66615,18.97679],[42.67277,18.97506],[42.67839,18.97383],[42.68612,18.96305],[42.69787,18.96178],[42.7107,18.9525],[42.74154,18.93793],[42.76544,18.94078],[42.77732,18.93649],[42.78108,18.92299],[42.77676,18.89187],[42.78257,18.86507],[42.77651,18.84884],[42.77002,18.83134],[42.75489,18.81908],[42.75326,18.80589],[42.75093,18.78733],[42.7412,18.76971],[42.74437,18.74691],[42.74457,18.71824],[42.75068,18.68856],[42.75435,18.66613],[42.74962,18.64675],[42.73917,18.62904],[42.73672,18.60552],[42.72357,18.58445],[42.71308,18.57074],[42.71295,18.53879],[42.712,18.52746],[42.71779,18.50408],[42.70558,18.51884],[42.70859,18.48258],[42.70868,18.44477],[42.70773,18.39655],[42.71524,18.34638],[42.71044,18.31104],[42.73128,18.2624],[42.75988,18.23603],[42.78206,18.19469],[42.79238,18.14858],[42.81378,18.11243],[42.8493,18.09567],[42.86454,18.02799],[42.88375,17.98366],[42.90472,17.92953],[42.94671,17.91132],[42.99141,17.8944],[43.03935,17.94917],[43.083,17.94232],[43.11215,17.90924],[43.19153,17.8955],[43.23152,17.85191],[43.26911,17.83548],[43.3172,17.82961],[43.34599,17.80745],[43.36584,17.83312],[43.40519,17.87388],[43.48313,17.80991],[43.52109,17.74031],[43.57964,17.72008],[43.62772,17.75314],[43.6526,17.7545],[43.66437,17.77152],[43.68644,17.8241],[43.69093,17.87073],[43.67205,17.91353],[43.65498,17.96284],[43.68224,17.98634],[43.7172,17.99516],[43.74174,18.0253],[43.85856,18.13912],[43.86331,18.30412],[43.85114,18.3779],[43.85834,18.43131]],
+    days:[
+      {n:12,date:"Wed 19 Aug",title:"Durmitor → Mostar",lat:43.3438,lng:17.8078,
+       from:{name:"Žabljak",lat:43.1548,lng:19.1223},
+       body:"The biggest unresolved routing decision on the trip — three mutually exclusive ways down off the plateau. Pick one below; Option C changes more than the road.",
+       pills:[["pencil","A/B/C routing"],["pencil","Mostar"],["sleep","1 night"]],
+       hist:{h:"The bridge, twice over",t:"Ottoman-built in 1566, the Stari Most stood 427 years until Croat forces shelled it in November 1993. Reconstruction used the original quarry and Ottoman techniques, and it reopened in 2004. The city on either side of the Neretva is still, in practice, divided."},
+       opts:{label:"Routing to Mostar",exclusive:true,
+         items:[
+           {n:"Option A — via Nikšić → Trebinje",d:"~290 km, descent overall. Skips Sutjeska entirely — least interesting road of the three. The low-risk default.",t:"Charging: Nikšić & Trebinje both plausible anchors",cost:0,verify:true,lat:42.7731,lng:18.9445},
+           {n:"Option B — via Podgorica → Trebinje",d:"~140 km of near-continuous descent from 1,450 m to sea level, then west. Podgorica is the strongest charging hub in Montenegro — longer again, but removes EV risk almost entirely. Take this if the constraint turns out to be Žabljak itself: you can't reliably leave with a full charge.",t:"Charging: Podgorica, the strongest hub in the country",cost:0,star:true,lat:42.4304,lng:19.2594},
+           {n:"Option C — via Šćepan Polje → Sutjeska → Foča",d:"Shortest at ~210 km, and the best road: Tara Canyon, Šćepan Polje, Tjentište. But it does not reach Mostar — Foča → Nevesinje → Mostar is a ruled-out charging desert.",t:"Charging: works only with the flip below",cost:0,consequence:"<b>This flips the plan:</b> day 12 becomes Žabljak → Sutjeska (overnight, Schuko charge), day 13 becomes Foča → Sarajevo → Konjic/Jablanica → Mostar, and the whole exit changes to south via Počitelj/Kravica → Bijača border → Croatian A1, replacing Sarajevo → Salzburg with Ploče → Zagreb → Ljubljana → Austria. ~100–150 km longer, but dense-charging motorway the entire way — may be a net win for an EV, not a cost. The day cards below are written for A/B; picking this means rebuilding days 12–15 by hand, not just re-routing the map line.",lat:43.2870,lng:18.5972}
+         ],
+         foot:"<b>Blocking question:</b> is the constraint (a) nothing reliable in Žabljak to leave on, or (b) nothing at Sutjeska/Foča to arrive at? (a) points to Option B, (b) points to Option A. Neither is confirmed yet."},
+       opts2:{label:"Mostar day trips (if A or B)",
+         items:[
+           {n:"Kravica Waterfall",d:"Back in — ~45 min from Mostar, out-and-back. Go at opening; midday in August is heaving. Was previously cut for crowding, reinstated.",t:"Half day",cost:0,star:true,lat:43.1583,lng:17.6111},
+           {n:"Blagaj Tekija",d:"A 16th-century Dervish monastery built directly into the cliff face at the source of the Buna River, one of Europe's most powerful natural springs. About 12 km south of Mostar.",t:"1–2 h",cost:0,star:true,lat:43.2572,lng:17.9032},
+           {n:"Počitelj",d:"Ottoman hill town on the Mostar → coast road — pairs naturally with Kravica in one loop.",t:"1–2 h",cost:0,lat:43.1344,lng:17.7318},
+           {n:"Stari Most, old bazaar & the war-history layer",d:"Acknowledged but not centred, per stated preference — the bridge at dusk is worth it regardless, divers still working the crowd.",t:"Evening",cost:0,lat:43.3438,lng:17.8078}
+         ]},
+       opts3:{label:"Where to sleep — Mostar",
+         items:[
+           {n:"Guest House Vanja",d:"10 min walk to the Old Bridge, free parking, shared kitchen, free coffee. Best overall of the set.",t:"4.8★ (144) · Budget",cost:null,star:true,lat:43.3420,lng:17.8130},
+           {n:"Guest House STARI",d:"200 m from the Old Bridge, free parking out front, shared bathroom. Entrance is on a side street and hard to find.",t:"4.7★ · Budget",cost:null,lat:43.3410,lng:17.8140},
+           {n:"Guest House \"Nana\"",d:"Next to the bus/train station, big clean rooms, very flexible hosts.",t:"4.8★ (96) · Budget",cost:null,lat:43.3480,lng:17.8090},
+           {n:"Guesthouse Stari Grad",d:"Only 46 reviews and one flags inconsistent room quality. Safe parking, <10 min to the Old Town.",t:"4.6★ · Budget",cost:null,verify:true,lat:43.3440,lng:17.8110},
+           {n:"Villa Park, Lacina",d:"Neretva river views from two balcony rooms only — worth requesting specifically. On-site parking. One very negative recent review about the owner's conduct — read current reviews first.",t:"4.6★ (257) · Budget/mid",cost:null,verify:true,lat:43.3520,lng:17.8250}
+         ],
+         foot:"<b>All strong and all cheap</b> — this is the easiest night on the trip. Free parking is common here, which matters for the EV."}},
+      {n:13,date:"Thu 20 Aug",title:"Mostar → Sarajevo",lat:43.8586,lng:18.4312,
+       from:{name:"Mostar",lat:43.3438,lng:17.8078},
+       body:"Up the M17 through Jablanica and Konjic — on-route, not a detour. Short enough drive that the rest of the day is Sarajevo, not just the arrival.",
+       pills:[["drive","~2.5 h"],["locked","Sarajevo"],["sleep","1 night"]],
+       hist:{h:"More than one era",t:"Sarajevo has been Ottoman regional capital, Austro-Hungarian showcase city, the spark of 1914, a Winter Olympics host in 1984, and besieged for four years in the 1990s. It's easy for the whole day to become 1992–95 — worth deliberately keeping the other centuries in view too."},
+       opts:{label:"On the M17 — Jablanica & Konjic",
+         items:[
+           {n:"Jablanica",d:"Neretva bridge and the Battle of the Neretva site — and the lamb, a genuine local specialty worth timing lunch around.",t:"1 h",cost:0,lat:43.6606,lng:17.7625},
+           {n:"Konjic",d:"An old stone bridge of its own, and Tito's nuclear bunker (Ark D-0) just outside town. Tour booking requirements and whether it runs in August still need confirming.",t:"1–2 h",cost:null,verify:true,lat:43.6549,lng:17.9626}
+         ]},
+       opts2:{label:"Sarajevo — one night, pick what fits",
+         items:[
+           {n:"Baščaršija / Ottoman quarter",d:"The old bazaar core — coppersmiths, mosques, the obvious place to just walk.",t:"2–3 h",cost:0,star:true,lat:43.8590,lng:18.4320},
+           {n:"Latin Bridge / 1914 assassination site",d:"Where Franz Ferdinand was shot — the spark of the First World War, right in the old town.",t:"20 min",cost:0,lat:43.8577,lng:18.4306},
+           {n:"Tunnel of Hope",d:"The hand-dug tunnel under the airport runway that kept the besieged city supplied through the 1990s. Out near Butmir, a short drive from the centre.",t:"1–2 h",cost:0,lat:43.8214,lng:18.3130},
+           {n:"Yellow Fortress",d:"Free viewpoint over the old town and the valley, especially good near sunset.",t:"1 h",cost:0,lat:43.8626,lng:18.4275},
+           {n:"Trebević / abandoned bobsleigh track",d:"1984 Olympic bobsleigh run, now derelict and covered in graffiti, reached by cable car from the old town.",t:"Half day",cost:0,lat:43.8100,lng:18.4600}
+         ],
+         foot:"<b>Keep the balance conscious here.</b> All eras chronologically, war acknowledged but not centred — Sarajevo is the one stop on the trip where it's easy for the whole day to collapse into just 1992–95."},
+       opts3:{label:"Where to sleep — Sarajevo",
+         items:[
+           {n:"Pigeon Square Rooms",d:"Baščaršija. Directly on the old square, spacious rooms, working AC, shared kitchen, well-regarded host. The clear pick.",t:"4.7★ (225) · Budget",cost:null,star:true,lat:43.8590,lng:18.4320},
+           {n:"Apartment Gondola",d:"Hrvatin. Free on-site parking, 1 min from the Trebević cable car, 5–7 min walk to Baščaršija. Best option if parking is the priority — and in Sarajevo it usually is.",t:"5.0★ (19) · Budget",cost:null,verify:true,lat:43.8470,lng:18.4380},
+           {n:"Bascarsija Private Rooms",d:"Only 3 reviews — too thin a sample to rely on. Fallback only.",t:"4.0★ (3) · Budget",cost:null,verify:true,lat:43.8585,lng:18.4315},
+           {n:"Avoid: Hostel Latin Bridge",d:"3.8★, multiple serious complaints about check-in refusals and cleanliness.",t:"Skip",cost:null,lat:43.8580,lng:18.4310},
+           {n:"Avoid: Room in heart of the city-Old Town",d:"4.3★ across 10 reviews, with a detailed report of cold, dusty rooms and no hot water.",t:"Skip",cost:null,lat:43.8595,lng:18.4325}
          ]}}
     ]
   },
   {
-    id:"bih", name:"Bosnia & Herzegovina", color:"#6B7F3E", meta:"17–19 Aug · home a different way",
-    route:[[42.4247,18.7712],[43.3400,18.6800],[43.3438,17.8078],[43.1344,17.7318],[43.6606,17.7625],[43.6549,17.9626],[45.8150,15.9819]],
-    geometry:[[42.42396,18.77018],[42.41024,18.77018],[42.40005,18.76747],[42.41322,18.77965],[42.40498,18.7797],[42.40362,18.78159],[42.40355,18.78397],[42.41474,18.79184],[42.4273,18.80045],[42.43245,18.81005],[42.42938,18.8149],[42.42784,18.82092],[42.43776,18.82912],[42.43754,18.83888],[42.43812,18.8399],[42.43844,18.84124],[42.43767,18.85426],[42.49264,18.89934],[42.56195,18.89659],[42.58241,18.8697],[42.61414,18.86372],[42.64693,18.86655],[42.66929,18.86122],[42.6873,18.87707],[42.71285,18.86352],[42.73836,18.85591],[42.77736,18.88942],[42.78052,18.91598],[42.78987,18.92819],[42.80523,18.90783],[42.8209,18.89671],[42.83259,18.90535],[42.84845,18.91454],[42.86454,18.90103],[42.88044,18.87599],[42.89518,18.84149],[42.89433,18.80893],[42.91429,18.7785],[42.93203,18.75066],[42.94968,18.72296],[42.97774,18.70844],[43.00996,18.73027],[43.01044,18.68838],[43.04439,18.64921],[43.05897,18.62295],[43.07348,18.60747],[43.0983,18.60142],[43.13589,18.57992],[43.14395,18.5716],[43.16096,18.56778],[43.20148,18.56797],[43.22499,18.57965],[43.25397,18.62658],[43.28366,18.61754],[43.30804,18.65643],[43.32949,18.68637],[43.36576,18.69353],[43.35182,18.67947],[43.34332,18.66856],[43.34944,18.65676],[43.34516,18.66986],[43.3588,18.68442],[43.35894,18.69528],[43.32272,18.67519],[43.29637,18.63793],[43.27367,18.61958],[43.24885,18.62641],[43.2162,18.57278],[43.19113,18.57039],[43.15673,18.5617],[43.1663,18.53486],[43.18862,18.48097],[43.20349,18.44641],[43.21832,18.41362],[43.23539,18.39967],[43.24889,18.37855],[43.25305,18.3393],[43.24749,18.31898],[43.25891,18.29595],[43.27759,18.26946],[43.28614,18.23159],[43.27287,18.19279],[43.25484,18.12487],[43.25583,18.10415],[43.24873,18.08777],[43.26281,18.03855],[43.25964,18.0064],[43.24567,17.97056],[43.26697,17.92894],[43.26681,17.89368],[43.28971,17.86031],[43.31883,17.83022],[43.34372,17.80788],[43.32728,17.8214],[43.28947,17.83364],[43.2434,17.83471],[43.19419,17.78031],[43.13849,17.73384],[43.15567,17.75009],[43.21127,17.79838],[43.25751,17.83619],[43.30821,17.83167],[43.34219,17.81817],[43.36687,17.8368],[43.40497,17.87383],[43.47584,17.81626],[43.51235,17.74715],[43.56478,17.72143],[43.60842,17.7415],[43.64386,17.76121],[43.66121,17.76275],[43.67789,17.77552],[43.6843,17.83205],[43.68729,17.87163],[43.67161,17.91518],[43.6548,17.96214],[43.67798,17.98567],[43.70926,17.99387],[43.74063,18.01319],[43.79116,18.08126],[43.86505,18.22327],[43.9203,18.31016],[43.9996,18.18165],[44.11436,18.11057],[44.13345,17.98763],[44.2389,17.90232],[44.25635,17.88867],[44.35079,17.92745],[44.40565,18.00519],[44.44152,18.04458],[44.48835,18.08314],[44.55851,18.09408],[44.62641,18.09281],[44.68147,18.0657],[44.73497,18.09667],[44.77699,18.06517],[44.84449,17.96217],[44.84753,17.76344],[44.88369,17.61821],[44.85603,17.44514],[44.95418,17.28294],[45.11623,17.20622],[45.14322,17.25382],[45.20694,17.2094],[45.28817,17.09997],[45.39416,16.86491],[45.53588,16.61197],[45.68378,16.43483],[45.78599,16.18088],[45.79613,16.00199],[45.81501,15.98194]],
+    id:"home", name:"The way back", color:"#7A6A9B", meta:"21–23 Aug · Sarajevo → Salzburg → Rotterdam (+ buffer)",
+    route:[[43.8586,18.4312],[47.8095,13.0550],[51.9244,4.4777]],
+    geometry:[[43.85834,18.43131],[43.85571,18.40102],[43.852,18.34803],[43.9111,18.32143],[43.99732,18.18508],[44.11617,18.10914],[44.13617,17.97415],[44.24194,17.90167],[44.26808,17.88118],[44.38158,17.98765],[44.41891,17.99781],[44.44973,18.05771],[44.5185,18.08492],[44.5894,18.09455],[44.64912,18.07712],[44.70951,18.07249],[44.75435,18.08364],[44.83185,18.01093],[44.83119,17.80887],[44.864,17.64516],[44.86144,17.47624],[44.93963,17.28679],[45.11569,17.20347],[45.14322,17.25382],[45.20901,17.20877],[45.2978,17.06175],[45.43853,16.8259],[45.57059,16.57447],[45.70127,16.36022],[45.78582,16.12202],[45.76046,15.89824],[45.83973,15.70378],[45.91055,15.52472],[45.85588,15.2521],[45.85619,15.1422],[45.90209,15.00286],[45.925,14.90392],[45.95355,14.75543],[45.98062,14.60286],[46.02603,14.49604],[46.08326,14.46056],[46.16977,14.48594],[46.281,14.29392],[46.36422,14.16429],[46.44355,14.01757],[46.54583,14.02179],[46.60397,13.93454],[46.64705,13.77383],[46.70299,13.63819],[46.78887,13.52588],[46.86768,13.50547],[46.95524,13.6148],[47.09232,13.60993],[47.15546,13.50038],[47.23737,13.42151],[47.31652,13.39636],[47.41865,13.38652],[47.43765,13.24065],[47.51239,13.17159],[47.63094,13.13173],[47.72982,13.08841],[47.75048,13.08673],[47.78202,13.08176],[47.80175,13.06728],[47.82032,13.05308],[47.82711,13.0259],[47.76714,12.92168],[47.82726,12.75159],[47.82768,12.62054],[47.83432,12.44014],[47.80405,12.29563],[47.81659,12.04951],[47.84427,11.86802],[47.9411,11.7017],[48.06901,11.72081],[48.18269,11.72327],[48.29751,11.63238],[48.50532,11.58906],[48.60984,11.5438],[48.8037,11.4657],[48.96061,11.42269],[49.03827,11.35805],[49.24789,11.21682],[49.45926,11.23709],[49.54785,11.01396],[49.61527,10.92428],[49.73701,10.80141],[49.74831,10.62229],[49.7855,10.43231],[49.78021,10.2477],[49.74665,10.03151],[49.7548,9.91828],[49.77259,9.74311],[49.77092,9.58065],[49.8244,9.54031],[49.88197,9.42679],[49.9468,9.33492],[50.00292,9.21755],[50.02147,8.94997],[50.06479,8.7241],[50.0445,8.53828],[50.14041,8.33087],[50.24806,8.24683],[50.35777,8.14837],[50.4124,7.98741],[50.43512,7.91861],[50.4462,7.83891],[50.49348,7.73567],[50.53844,7.59336],[50.61195,7.42634],[50.70143,7.25821],[50.82752,7.20243],[50.91915,7.08249],[51.04352,7.00647],[51.23879,6.91023],[51.42015,6.79714],[51.48729,6.80742],[51.48526,6.66354],[51.54421,6.5642],[51.65655,6.17608],[51.66292,5.95384],[51.7829,5.82942],[51.84456,5.77691],[51.86702,5.56919],[51.87337,5.49759],[51.87659,5.35109],[51.84339,5.00362],[51.82741,4.77864],[51.88121,4.56701],[51.91954,4.5148],[51.92413,4.4782]],
     days:[
-      {n:10,date:"Mon 17 Aug",title:"→ Sutjeska National Park",lat:43.3400,lng:18.6800,
-       from:{name:"Kotor",lat:42.4247,lng:18.7712},
-       body:"North out of Montenegro on mountain roads into Bosnia. Camp at Tjentište beneath the monument.",
-       pills:[["drive","~4.5 h"],["locked","Sutjeska"],["tent","Camp"],["warn","Thin charging"]],
-       hist:{h:"The Battle of the Sutjeska",t:"In 1943 Tito's Partisans broke out of a German encirclement here and lost roughly a third of their force doing it. The concrete monument at Tjentište is one of the great Yugoslav spomeniks. Perućica, inside the park, is one of the last primeval forests left in Europe."}},
-      {n:11,date:"Tue 18 Aug",title:"Perućica, then Mostar",lat:43.3438,lng:17.8078,
-       from:{name:"Tjentište",lat:43.3400,lng:18.6800},
-       body:"Morning in the old-growth forest, afternoon drive to Mostar. The Stari Most at dusk, divers still working the crowd.",
-       pills:[["drive","~3.5 h"],["locked","Mostar"],["pencil","Blagaj Tekija"],["sleep","Cheap hotel"]],
-       hist:{h:"The bridge, twice over",t:"Ottoman-built in 1566, the Stari Most stood 427 years until Croat forces shelled it in November 1993. Reconstruction used the original quarry and Ottoman techniques, and it reopened in 2004. The city on either side of the Neretva is still, in practice, divided."},
-       opts:{label:"Near Mostar",
+      {n:14,date:"Fri 21 Aug",title:"Sarajevo → Salzburg",lat:47.8095,lng:13.0550,
+       from:{name:"Sarajevo",lat:43.8586,lng:18.4312},
+       body:"This is really a question of where the 13/14 split falls, not which city is nicer. Salzburg is the current plan and the only one with lodging worked up below. The M17/A1 out of Sarajevo through central Bosnia is the weakest charging corridor on the entire return, whichever city is picked.",
+       pills:[["pencil","Return city undecided"],["drive","~7–10 h (city-dependent)"],["warn","Weak charging out of Bosnia"],["sleep","1 night"]],
+       hist:{h:"Mid-tier exception #2",t:"This is the night before the long final push — a good bed and a proper breakfast has direct operational value here, not just comfort. The same logic as the three nights in Kotor."},
+       opts:{label:"Which city — this sets tomorrow's drive",exclusive:true,
          items:[
-           {n:"Blagaj Tekija",d:"A 16th-century Dervish monastery built directly into the cliff face at the source of the Buna River, one of Europe's most powerful natural springs. About 12 km south of Mostar — an easy detour on the way in, or a short trip out from the old town.",t:"1–2 h",cost:0,star:true,lat:43.2572,lng:17.9032}
-         ]}},
-      {n:12,date:"Wed 19 Aug",title:"Počitelj, then north",lat:43.1344,lng:17.7318,
-       from:{name:"Mostar",lat:43.3438,lng:17.8078},
-       body:"Kravice is off the list, so the day loses its swim — Počitelj instead, a stone Ottoman hill village on the Neretva, before the long haul north begins, past Jablanica and Konjic on the way to camp near Zagreb.",
-       pills:[["pencil","Počitelj"],["drive","~5.5 h after"],["tent","Camp near Zagreb"]],
-       opts:{label:"South of Mostar, then north",
-         items:[
-           {n:"Počitelj",d:"A fortified Ottoman-era hill village on the Neretva — stone houses stacked below a 16th-century fort and the Hajji Alija Mosque. Replaces Kravice as the day's stop.",t:"1–2 h",cost:0,star:true,lat:43.1344,lng:17.7318},
-           {n:"Jablanica",d:"On the road north, pencilled in as a possible break — still worth confirming what's actually worth stopping for here before committing.",t:"—",cost:null,lat:43.6606,lng:17.7625},
-           {n:"Konjic",d:"Another possible stop heading north, on the Neretva with an Ottoman stone bridge of its own — but the actual draw here is still unconfirmed, so treat this as a maybe rather than a plan.",t:"—",cost:null,lat:43.6549,lng:17.9626}
+           {n:"Salzburg",d:"Roughly splits Sarajevo → Rotterdam into 13/14 evenly. Shortest total of the four. Accommodation options already worked up — see below.",t:"Current plan",cost:0,star:true,lat:47.8095,lng:13.0550},
+           {n:"Vienna",d:"Further east, so day 15 gets longer — but the more natural line if exiting Bosnia north via Zagreb rather than west via Ljubljana. A genuine city night rather than a motel stop.",t:"Earlier plan",cost:0,consequence:"Lodging for Vienna isn't researched yet — the Salzburg options below don't apply. Day 15's ~1,000 km / warn pill assumes Salzburg; expect meaningfully more from here.",lat:48.2082,lng:16.3738},
+           {n:"Nuremberg",d:"Shortens day 15 meaningfully but lengthens today. Only makes sense paired with an earlier start out of Sarajevo.",t:"Further along",cost:0,consequence:"Lodging for Nuremberg isn't researched yet — the Salzburg options below don't apply. Today's drive gets longer to compensate.",lat:49.4521,lng:11.0767},
+           {n:"Cologne",d:"Turns day 15 into a ~250 km hop. Requires today to be a very long push, which strains the single-night structure. Keep as a fallback if today runs late rather than a first choice.",t:"Near home",cost:0,consequence:"Lodging for Cologne isn't researched yet — the Salzburg options below don't apply. Only makes sense if today is already running long.",lat:50.9375,lng:6.9603}
          ],
-         foot:"<b>Kravice is cut.</b> If you want a swim back in, it's a short detour off this same southward run near Ljubuški."}}
-    ]
-  },
-  {
-    id:"home", name:"The way back", color:"#7A6A9B", meta:"20–21 Aug · ~1,530 km, via Vienna & Nuremberg",
-    route:[[45.8150,15.9819],[48.2082,16.3738],[49.4521,11.0767],[50.9375,6.9603],[51.9244,4.4777]],
-    geometry:[[45.81501,15.98194],[45.80707,15.96747],[45.79487,15.92506],[45.8102,15.83035],[45.94621,15.83205],[46.0706,15.91901],[46.16503,15.8536],[46.25009,15.85309],[46.31517,15.87091],[46.3943,15.85327],[46.47627,15.67186],[46.52841,15.69838],[46.60196,15.66376],[46.69419,15.64242],[46.81193,15.56679],[46.96212,15.4381],[47.0396,15.51382],[47.06966,15.63254],[47.10563,15.76842],[47.085,15.9709],[47.21511,15.99394],[47.29491,16.07026],[47.41618,16.08218],[47.48078,16.09313],[47.53467,16.11074],[47.58084,16.11006],[47.67064,16.12676],[47.80736,16.19845],[47.95716,16.22266],[48.10924,16.32058],[48.17996,16.35956],[48.1964,16.36722],[48.20782,16.37372],[48.19662,16.35622],[48.18518,16.32344],[48.20146,16.25009],[48.1755,16.10222],[48.1525,15.97872],[48.17325,15.85043],[48.1767,15.65064],[48.18841,15.40525],[48.19767,15.25145],[48.1359,15.0569],[48.13366,14.83162],[48.11866,14.64708],[48.19497,14.52285],[48.22973,14.31644],[48.18863,14.16304],[48.17994,13.99697],[48.17891,13.86754],[48.17824,13.75379],[48.2043,13.6373],[48.27322,13.4933],[48.3623,13.4146],[48.44353,13.37536],[48.58654,13.36467],[48.65525,13.27815],[48.7202,13.15348],[48.82132,12.9315],[48.93299,12.70393],[48.98859,12.44267],[48.9928,12.11434],[48.9941,12.00804],[49.05152,11.92785],[49.15529,11.84166],[49.20362,11.66197],[49.28681,11.5635],[49.34609,11.4424],[49.39999,11.30377],[49.37982,11.13379],[49.39934,11.07539],[49.44025,11.06464],[49.45144,11.07265],[49.46059,11.07255],[49.47545,11.06383],[49.50873,11.03802],[49.53853,11.03276],[49.58798,10.9265],[49.69939,10.85547],[49.73101,10.71721],[49.76173,10.55393],[49.77703,10.39541],[49.78069,10.22446],[49.75018,10.03941],[49.75203,9.93725],[49.76642,9.77631],[49.76345,9.62123],[49.79986,9.58779],[49.85006,9.50165],[49.89224,9.40157],[49.96033,9.31822],[50.00155,9.20927],[50.00946,8.97742],[50.06706,8.76885],[50.0537,8.58846],[50.05331,8.39019],[50.17459,8.28164],[50.27699,8.24266],[50.38604,8.08222],[50.41307,7.96009],[50.43535,7.91853],[50.44702,7.84992],[50.47366,7.76095],[50.5236,7.66951],[50.57957,7.48673],[50.63521,7.36705],[50.74135,7.23852],[50.84921,7.21343],[50.91978,7.07381],[50.9396,6.97891],[50.94037,6.95323],[50.95237,6.93319],[51.09157,6.80658],[51.17762,6.70919],[51.26451,6.64393],[51.37032,6.62557],[51.4936,6.57572],[51.58707,6.38383],[51.67267,6.07674],[51.67033,5.8999],[51.79696,5.79906],[51.84467,5.7755],[51.86671,5.57213],[51.86976,5.50284],[51.90289,5.45189],[51.84865,5.17523],[51.83927,4.91668],[51.85561,4.6693],[51.89951,4.54669],[51.92089,4.50909],[51.92413,4.4782]],
-    days:[
-      {n:13,date:"Thu 20 Aug",title:"Zagreb → Vienna → Nuremberg",lat:49.4521,lng:11.0767,
-       from:{name:"Zagreb",lat:45.8150,lng:15.9819},
-       body:"New route home — avoids retracing the outbound Munich corridor. North through Slovenia and Austria to Vienna, then west across Bavaria to Nuremberg. Longer than the original Zagreb–Munich run, so start early.",
-       pills:[["drive","~9.5 h"],["warn","Longer day than before"],["tent","Camp"]]},
-      {n:14,date:"Fri 21 Aug",title:"Nuremberg → Cologne → Rotterdam",lat:51.9244,lng:4.4777,
-       from:{name:"Nuremberg",lat:49.4521,lng:11.0767},
-       body:"West across Germany to Cologne, then the last stretch to Rotterdam. Shorter than the original Munich–Rotterdam day, and Cologne now sits on the route itself rather than as a fallback split point.",
-       pills:[["drive","~7 h"]]}
+         foot:"<b>Downstream of the day 12 routing choice.</b> If Option C was picked there, this whole return corridor changes to Ploče → Zagreb → Ljubljana → Austria, which favours Salzburg or Nuremberg over Vienna."},
+       opts2:{label:"Where to sleep — Salzburg (if the current plan)",
+         items:[
+           {n:"Villa Verde",d:"Leopoldskronstraße. Small owner-run B&B, private parking, repeatedly praised breakfast, 15 min walk to the old town. Best-reviewed option in Salzburg by a distance — the obvious pick for a pre-drive night.",t:"4.8★ (409) · Mid-tier",cost:null,star:true,lat:47.7930,lng:13.0330},
+           {n:"B&B Hotel Salzburg-Nord",d:"Just off the motorway — the pragmatic choice if arriving late and leaving at dawn, not caring about the city at all. Breakfast is extra.",t:"4.0★ (1,710) · Budget",cost:null,lat:47.8360,lng:13.0430},
+           {n:"myNext – Riverside Hotel",d:"Riverside, guest kitchen and laundry, one stop from the main station. Functional.",t:"4.0★ · Budget",cost:null,lat:47.8130,lng:13.0480},
+           {n:"B&B Hotel Salzburg-Süd, Puch",d:"South of the city — wrong side for a northbound departure. Only if arriving late from the Sarajevo direction and skipping the city entirely.",t:"4.3★ · Budget",cost:null,lat:47.7550,lng:13.0350},
+           {n:"Skip: Holiday Inn Salzburg City",d:"3.8★ with a run of recent complaints about condition and service, at chain pricing.",t:"Skip",cost:null,lat:47.8010,lng:13.0450}
+         ],
+         foot:"<b>If day 14 moves to Vienna, Nuremberg or Cologne, this whole list needs redoing</b> — none of it has been researched for those cities yet."}},
+      {n:15,date:"Sat 22 Aug",title:"Salzburg → Rotterdam",lat:51.9244,lng:4.4777,
+       from:{name:"Salzburg",lat:47.8095,lng:13.0550},
+       body:"Single push to Rotterdam, arriving late. ~1,000 km from Salzburg — meaningfully more from Vienna. This exceeds the usual 7–8 hour comfort ceiling deliberately; tomorrow is the recovery buffer, not this evening. Treat the charging stops as rest stops, not lost time, and leave Salzburg with a full battery.",
+       pills:[["drive","~10–11 h w/ charging"],["warn","Exceeds comfort ceiling — deliberate"]]},
+      {n:16,date:"Sun 23 Aug",title:"Open buffer day",lat:51.9244,lng:4.4777,
+       body:"No plan, deliberately. Yesterday was a long push arriving late — this exists purely as recovery slack, not a day to fill.",
+       pills:[["locked","Recovery day"],["pencil","No plan"]]}
     ]
   }
 ];
