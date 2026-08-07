@@ -128,15 +128,15 @@ const LEGS = [
       {n:4,date:"Tue 11 Aug",title:"→ Brela (Plitvice cut)",lat:43.3711,lng:16.9114,
        from:{name:"Kamna Gorica",lat:46.317389,lng:14.193883},
        body:"Plitvice's off the list — August crowds, peak-season pricing, and 2026's drought has the waterfalls running thin, so the one thing that sells the ticket wasn't going to deliver. Straight through to the coast instead: down through Ljubljana, Zagreb, and the A1 to the Makarska Riviera. This is a genuinely long single day — treat it like Day 14's Munich–Rotterdam haul, not a casual drive, and start early regardless of how the legs feel after yesterday's via ferrata.",
-       pills:[["drive","~6–6.5 h"],["locked","Brela"],["tent","Autocamp Sirena"],["pencil","2 nights"]],
+       pills:[["drive","~6–6.5 h"],["locked","Brela"],["tent","Autocamp Sirena"],["locked","Booked · 2 nights"]],
        opts:{label:"Brela camping — you've emailed all four",
          items:[
-           {n:"Autocamp Sirena",d:"Lokva Rogoznica, ~10 min south of Brela. Cliffside pitches over the sea, tent-friendly without reservation per reviewers, restaurant with live music on-site. The strongest overall pick on this stretch.",t:"4.5★ · 1,888 reviews",cost:15,unit:"pp",star:true,lat:43.4063,lng:16.7771},
-           {n:"Camping Krvavica",d:"Krvavica, ~15 min south. Small and quiet, 5-min walk to the beach, good showers. Cheapest of the strong options at ~€23/night for two.",t:"4.5★ · 1,299 reviews",cost:12,unit:"pp",star:true,lat:43.3235,lng:16.9858},
+           {n:"Autocamp Sirena",d:"Booked — 2 nights, Tue 11 to Thu 13 Aug. Lokva Rogoznica, ~10 min south of Brela. Cliffside pitches over the sea, restaurant with live music on-site — base for this night and the beach day that follows.",t:"Camp · booked",cost:null,star:true,lat:43.4063,lng:16.7771},
+           {n:"Camping Krvavica",d:"Krvavica, ~15 min south. Small and quiet, 5-min walk to the beach, good showers. Cheapest of the strong options at ~€23/night for two.",t:"4.5★ · 1,299 reviews",cost:12,unit:"pp",lat:43.3235,lng:16.9858},
            {n:"Mini Camp Podaca",d:"Podaca, ~20 min south. Terraced olive-grove pitches with sea views, free communal kitchen. Highest-rated of the four.",t:"4.6★ · 601 reviews",cost:15,unit:"pp",lat:43.1225,lng:17.3060},
            {n:"Camp Viter",d:"Zaostrog, ~25 min south. Right on the beach, big enough for tent plus motorcycle, close to town for supplies.",t:"4.4★ · 1,299 reviews",cost:14,unit:"pp",lat:43.1393,lng:17.2810}
          ],
-         foot:"<b>Note:</b> replies aren't back on all of these yet — once you hear back, delete whichever don't have space so the budget total only reflects where you're actually staying."}},
+         foot:"<b>Booked:</b> Autocamp Sirena, 11–13 Aug (2 nights) — covers this night and the Brela beach day that follows."}},
       {n:5,date:"Wed 12 Aug",title:"Brela — beach day",lat:43.3711,lng:16.9114,
        body:"No driving. A full day to actually use the beach and campsite you paid for, instead of passing through it. Second night at the same site.",
        pills:[["locked","Rest day"],["pencil","Punta Rata beach"],["tent","2nd night"]],
@@ -213,32 +213,33 @@ const LEGS = [
     ]
   },
   {
-    id:"durmitor", name:"Durmitor National Park", color:"#3D6B8C", meta:"17–18 Aug · Žabljak, two nights",
+    id:"durmitor", name:"Durmitor National Park", color:"#3D6B8C", meta:"17–19 Aug · Žabljak, three nights (booked)",
     route:[[42.4247,18.7712],[43.1548,19.1223]],
     geometry:[[42.42396,18.77018],[42.40652,18.76442],[42.41038,18.77903],[42.40259,18.77945],[42.39956,18.78274],[42.41966,18.79453],[42.43176,18.80825],[42.4293,18.81533],[42.43246,18.82881],[42.43752,18.8382],[42.4388,18.83597],[42.43773,18.85323],[42.51816,18.91516],[42.57583,18.87173],[42.62109,18.86441],[42.659,18.86187],[42.68868,18.87784],[42.72632,18.85579],[42.77728,18.88845],[42.7832,18.92571],[42.80428,18.91109],[42.8236,18.89754],[42.84508,18.91493],[42.85958,18.93447],[42.8792,18.94165],[42.89594,18.96384],[42.90351,18.97452],[42.90114,18.99243],[42.90193,19.01028],[42.89959,19.02531],[42.89676,19.04136],[42.8986,19.06385],[42.8945,19.07885],[42.90077,19.09295],[42.90479,19.0902],[42.90558,19.08825],[42.9092,19.09024],[42.91843,19.08672],[42.92511,19.07494],[42.93214,19.07016],[42.94485,19.07337],[42.94906,19.08194],[42.94676,19.09233],[42.94693,19.09483],[42.94853,19.09492],[42.94737,19.09998],[42.95159,19.09583],[42.9512,19.09949],[42.96182,19.09287],[42.97662,19.08388],[42.98691,19.07111],[42.99999,19.07652],[43.01388,19.08317],[43.03027,19.08845],[43.04605,19.08102],[43.06929,19.10443],[43.08019,19.10459],[43.0938,19.10885],[43.11707,19.12211],[43.1294,19.1256],[43.15477,19.12229]],
     days:[
       {n:10,date:"Mon 17 Aug",title:"Kotor → Žabljak",lat:43.1548,lng:19.1223,
        from:{name:"Kotor",lat:42.4247,lng:18.7712},
-       body:"Up out of the bay to the Durmitor plateau. Where you sleep tonight needs to answer the charging question, not just the comfort one — see the flag below before booking.",
-       pills:[["drive","~3 h"],["locked","Durmitor NP"],["warn","Thin charging"]],
+       body:"Up out of the bay to the Durmitor plateau. Three nights booked at Mountain Life — but the charging question below still needs answering before you rely on it for the EV.",
+       pills:[["drive","~3 h"],["locked","Durmitor NP"],["bed","Mountain Life"],["warn","Thin charging"]],
        decide:[
-         {label:"What charging actually exists in Žabljak?",body:"This blocks the whole routing choice on day 12 — everything downstream depends on the answer. Needs recent PlugShare check-ins, not general knowledge. Fallback regardless of what DC exists: book accommodation with a confirmed standard power outlet — ~2.3 kW over 10 h ≈ 20+ kWh ≈ 120–150 km overnight. Register and pre-load payment on ABRP, PlugShare, Moon Power and EVC Charge/Electromaps before arriving."}
+         {label:"What charging actually exists in Žabljak?",body:"This blocks the whole routing choice on day 13 — everything downstream depends on the answer. Needs recent PlugShare check-ins, not general knowledge. Fallback regardless of what DC exists: book accommodation with a confirmed standard power outlet — ~2.3 kW over 10 h ≈ 20+ kWh ≈ 120–150 km overnight. Register and pre-load payment on ABRP, PlugShare, Moon Power and EVC Charge/Electromaps before arriving."}
        ],
        hist:{h:"A glacial plateau",t:"Durmitor's karst plateau sits above 1,400 m, ringed by 48 peaks over 2,000 m and pocked with glacial lakes — Montenegro's largest national park and, since 1980, a UNESCO World Heritage Site."},
-       opts2:{label:"Where to sleep — Žabljak (2 nights)",
+       opts2:{label:"Where to sleep — Žabljak (3 nights)",
          items:[
            {n:"Durmitorski bungalovi",d:"Family-run bungalows with kitchenette and fridge, close to town and the park. Detached units — most likely of the set to have an accessible outdoor socket. Ask directly before booking.",t:"4.7★ · Budget",cost:null,verify:true,lat:43.1520,lng:19.1180},
            {n:"Guesthouse Planinarski",d:"Pitomine. Cabin/treehouse format, directly on hiking trails, minutes from Žabljak, host cooks local food. Shared bathrooms. Excellent value.",t:"4.7★ · Budget",cost:null,lat:43.1450,lng:19.1300},
            {n:"Chalets pod Gorom",d:"Njegovuđa. Cottages around a lawn, shared bathrooms, very well reviewed. ~20 min from Žabljak — check against the actual Durmitor activity plan before booking.",t:"4.9★ · Budget",cost:null,lat:43.2000,lng:19.0500},
            {n:"Polar Star",d:"Borje. Proper small hotel with buffet dinner, breakfast and sauna, ~5 min from Žabljak — the comfortable option if the Durmitor days are hike-heavy. One review reports an unexpected €91 surcharge on arrival.",t:"4.5★ · Mid-tier",cost:null,verify:true,lat:43.1500,lng:19.0900},
            {n:"Eko Oaza – Tear of Europe",d:"Dobrilovina, on the Tara toward Mojkovac. 4.9★ (449 reviews) — the best-rated place in the whole brief. Family-run, home-cooked food, kitchen access, river setting. Only makes sense if Tara rafting/Tara Bridge are taken — well east of Žabljak, check the actual drive time.",t:"4.9★ (449) · Budget camping",cost:null,lat:43.0700,lng:19.4200},
-           {n:"Hotel Porto Tara",d:"Riverside, good for a rafting-anchored stay. Mixed recent reviews on cleanliness. Windy access road.",t:"4.3★ · Budget/mid",cost:null,lat:43.1000,lng:19.3000}
+           {n:"Hotel Porto Tara",d:"Riverside, good for a rafting-anchored stay. Mixed recent reviews on cleanliness. Windy access road.",t:"4.3★ · Budget/mid",cost:null,lat:43.1000,lng:19.3000},
+           {n:"Mountain Life",d:"Booked — 3 nights, Mon 17 to Thu 20 Aug. 7 Vojvode Mišića, 84220 Žabljak. Confirmation 5212042213, +382 67 858 650.",t:"Hotel · booked",cost:null,star:true,lat:43.1548,lng:19.1223}
          ],
-         foot:"<b>Every camping night on this trip needs the same question asked before booking:</b> \"can I charge an electric car from the pitch hookup, and at what amperage?\" Many sites explicitly prohibit it even with EHU present — this matters most here."}},
+         foot:"<b>Booked:</b> Mountain Life, 17–20 Aug (3 nights) — the base for all three Durmitor days. Every camping night elsewhere on this trip still needs the same question asked before booking: \"can I charge an electric car from the pitch hookup, and at what amperage?\" Many sites explicitly prohibit it even with EHU present."}},
       {n:11,date:"Tue 18 Aug",title:"Durmitor",lat:43.1467,lng:19.0844,
        from:{name:"Žabljak",lat:43.1548,lng:19.1223},
        body:"A full day in the park. Priority is Tara rafting if the logistics work out — everything else fits around it.",
-       pills:[["pencil","Durmitor day"],["sleep","2nd night"]],
+       pills:[["pencil","Durmitor day"],["sleep","Night 2 of 3"]],
        hist:{h:"The canyon Tito's partisans crossed",t:"The Tara Canyon is Europe's deepest at over 1,300 m — second in the world only to the Grand Canyon. Đurđevića Tara bridge, opened in 1940, was itself partly demolished by its own engineer in 1942 to slow the Axis advance, then rebuilt."},
        opts:{label:"Durmitor — pick what fits",
          items:[
@@ -249,24 +250,27 @@ const LEGS = [
            {n:"Durmitor Ring Road (P14)",d:"Scenic loop around the park by car — the low-commitment way to see most of it in an afternoon.",t:"Half day",cost:0,lat:43.1300,lng:19.0500},
            {n:"Sedlo Pass",d:"High mountain pass through the park, part of the Ring Road loop but worth calling out on its own for the viewpoint.",t:"1 h",cost:0,lat:43.1719,lng:19.0294}
          ],
-         foot:"<b>Yesterday's charging answer shapes today.</b> If Žabljak turned out to be a real charging dead end, treat the Ring Road and Black Lake as the safe low-mileage plan and save the Tara detour for a confirmed-charge day."}}
+         foot:"<b>Yesterday's charging answer shapes today.</b> If Žabljak turned out to be a real charging dead end, treat the Ring Road and Black Lake as the safe low-mileage plan and save the Tara detour for a confirmed-charge day."}},
+      {n:12,date:"Wed 19 Aug",title:"Durmitor — second day",lat:43.1467,lng:19.0844,
+       body:"The third night at Mountain Life buys a second full day in the park, traded for the buffer day at the very end of the trip. No need to cram Tara rafting, Bobotov Kuk and the Ring Road into one day like yesterday — Bobotov Kuk in particular wants a dedicated full day, not a slot squeezed in around other things.",
+       pills:[["pencil","Durmitor day 2"],["sleep","Night 3 of 3"]]}
     ]
   },
   {
-    id:"bih", name:"Bosnia & Herzegovina", color:"#6B7F3E", meta:"19–20 Aug · Mostar & Sarajevo",
+    id:"bih", name:"Bosnia & Herzegovina", color:"#6B7F3E", meta:"20–21 Aug · Mostar & Sarajevo",
     route:[[43.1548,19.1223],[42.4304,19.2594],[42.7124,18.3446],[43.3438,17.8078],[43.6606,17.7625],[43.6549,17.9626],[43.8586,18.4312]],
     geometry:[[43.15477,19.12229],[43.13782,19.1218],[43.12138,19.12477],[43.06607,19.13687],[43.02144,19.16176],[42.97638,19.19048],[42.94531,19.20165],[42.9267,19.23494],[42.92654,19.27428],[42.91563,19.28291],[42.91269,19.28084],[42.91843,19.26778],[42.90737,19.27043],[42.90024,19.27359],[42.89698,19.27282],[42.87783,19.30217],[42.87541,19.29987],[42.86132,19.32066],[42.84295,19.34192],[42.83143,19.35669],[42.82588,19.37067],[42.82074,19.38482],[42.81642,19.39914],[42.81542,19.40109],[42.80675,19.39078],[42.79073,19.39442],[42.78219,19.39279],[42.77282,19.39128],[42.75784,19.38956],[42.74376,19.38951],[42.73562,19.38128],[42.72493,19.3778],[42.70858,19.3725],[42.69792,19.37392],[42.68391,19.37428],[42.66946,19.36749],[42.65761,19.37669],[42.64622,19.37913],[42.63425,19.37297],[42.62092,19.37039],[42.60893,19.37601],[42.59966,19.37541],[42.58955,19.35878],[42.578,19.35467],[42.56608,19.34498],[42.54544,19.33428],[42.53396,19.33728],[42.52051,19.3426],[42.50621,19.33225],[42.50204,19.32134],[42.49623,19.3104],[42.48225,19.30587],[42.4699,19.3003],[42.439,19.26583],[42.4414,19.24368],[42.44341,19.20626],[42.45428,19.19214],[42.46321,19.17586],[42.4987,19.15026],[42.51546,19.12469],[42.54096,19.10971],[42.56401,19.08311],[42.58102,19.05233],[42.61201,19.02791],[42.62746,19.01258],[42.6402,19.00118],[42.64895,18.99172],[42.66615,18.97679],[42.67277,18.97506],[42.67839,18.97383],[42.68612,18.96305],[42.69787,18.96178],[42.7107,18.9525],[42.74154,18.93793],[42.76544,18.94078],[42.77732,18.93649],[42.78108,18.92299],[42.77676,18.89187],[42.78257,18.86507],[42.77651,18.84884],[42.77002,18.83134],[42.75489,18.81908],[42.75326,18.80589],[42.75093,18.78733],[42.7412,18.76971],[42.74437,18.74691],[42.74457,18.71824],[42.75068,18.68856],[42.75435,18.66613],[42.74962,18.64675],[42.73917,18.62904],[42.73672,18.60552],[42.72357,18.58445],[42.71308,18.57074],[42.71295,18.53879],[42.712,18.52746],[42.71779,18.50408],[42.70558,18.51884],[42.70859,18.48258],[42.70868,18.44477],[42.70773,18.39655],[42.71524,18.34638],[42.71044,18.31104],[42.73128,18.2624],[42.75988,18.23603],[42.78206,18.19469],[42.79238,18.14858],[42.81378,18.11243],[42.8493,18.09567],[42.86454,18.02799],[42.88375,17.98366],[42.90472,17.92953],[42.94671,17.91132],[42.99141,17.8944],[43.03935,17.94917],[43.083,17.94232],[43.11215,17.90924],[43.19153,17.8955],[43.23152,17.85191],[43.26911,17.83548],[43.3172,17.82961],[43.34599,17.80745],[43.36584,17.83312],[43.40519,17.87388],[43.48313,17.80991],[43.52109,17.74031],[43.57964,17.72008],[43.62772,17.75314],[43.6526,17.7545],[43.66437,17.77152],[43.68644,17.8241],[43.69093,17.87073],[43.67205,17.91353],[43.65498,17.96284],[43.68224,17.98634],[43.7172,17.99516],[43.74174,18.0253],[43.85856,18.13912],[43.86331,18.30412],[43.85114,18.3779],[43.85834,18.43131]],
     days:[
-      {n:12,date:"Wed 19 Aug",title:"Durmitor → Mostar",lat:43.3438,lng:17.8078,
+      {n:13,date:"Thu 20 Aug",title:"Durmitor → Mostar",lat:43.3438,lng:17.8078,
        from:{name:"Žabljak",lat:43.1548,lng:19.1223},
        body:"The biggest unresolved routing decision on the trip — three mutually exclusive ways down off the plateau. Pick one below; Option C changes more than the road.",
-       pills:[["pencil","A/B/C routing"],["pencil","Mostar"],["sleep","1 night"]],
+       pills:[["pencil","A/B/C routing"],["bed","Apartment Mana"]],
        hist:{h:"The bridge, twice over",t:"Ottoman-built in 1566, the Stari Most stood 427 years until Croat forces shelled it in November 1993. Reconstruction used the original quarry and Ottoman techniques, and it reopened in 2004. The city on either side of the Neretva is still, in practice, divided."},
        opts:{label:"Routing to Mostar",exclusive:true,
          items:[
            {n:"Option A — via Nikšić → Trebinje",d:"~290 km, descent overall. Skips Sutjeska entirely — least interesting road of the three. The low-risk default.",t:"Charging: Nikšić & Trebinje both plausible anchors",cost:0,verify:true,lat:42.7731,lng:18.9445},
            {n:"Option B — via Podgorica → Trebinje",d:"~140 km of near-continuous descent from 1,450 m to sea level, then west. Podgorica is the strongest charging hub in Montenegro — longer again, but removes EV risk almost entirely. Take this if the constraint turns out to be Žabljak itself: you can't reliably leave with a full charge.",t:"Charging: Podgorica, the strongest hub in the country",cost:0,star:true,lat:42.4304,lng:19.2594},
-           {n:"Option C — via Šćepan Polje → Sutjeska → Foča",d:"Shortest at ~210 km, and the best road: Tara Canyon, Šćepan Polje, Tjentište. But it does not reach Mostar — Foča → Nevesinje → Mostar is a ruled-out charging desert.",t:"Charging: works only with the flip below",cost:0,consequence:"<b>This flips the plan:</b> day 12 becomes Žabljak → Sutjeska (overnight, Schuko charge), day 13 becomes Foča → Sarajevo → Konjic/Jablanica → Mostar, and the whole exit changes to south via Počitelj/Kravica → Bijača border → Croatian A1, replacing Sarajevo → Salzburg with Ploče → Zagreb → Ljubljana → Austria. ~100–150 km longer, but dense-charging motorway the entire way — may be a net win for an EV, not a cost. The day cards below are written for A/B; picking this means rebuilding days 12–15 by hand, not just re-routing the map line.",lat:43.2870,lng:18.5972}
+           {n:"Option C — via Šćepan Polje → Sutjeska → Foča",d:"Shortest at ~210 km, and the best road: Tara Canyon, Šćepan Polje, Tjentište. But it does not reach Mostar — Foča → Nevesinje → Mostar is a ruled-out charging desert.",t:"Charging: works only with the flip below",cost:0,consequence:"<b>This flips the plan:</b> day 13 becomes Žabljak → Sutjeska (overnight, Schuko charge), day 14 becomes Foča → Sarajevo → Konjic/Jablanica → Mostar, and the whole exit changes to south via Počitelj/Kravica → Bijača border → Croatian A1, replacing Sarajevo → Salzburg with Ploče → Zagreb → Ljubljana → Austria. ~100–150 km longer, but dense-charging motorway the entire way — may be a net win for an EV, not a cost. The day cards below are written for A/B; picking this means rebuilding days 13–16 by hand, not just re-routing the map line.",lat:43.2870,lng:18.5972}
          ],
          foot:"<b>Blocking question:</b> is the constraint (a) nothing reliable in Žabljak to leave on, or (b) nothing at Sutjeska/Foča to arrive at? (a) points to Option B, (b) points to Option A. Neither is confirmed yet."},
        opts2:{label:"Mostar day trips (if A or B)",
@@ -282,10 +286,11 @@ const LEGS = [
            {n:"Guest House STARI",d:"200 m from the Old Bridge, free parking out front, shared bathroom. Entrance is on a side street and hard to find.",t:"4.7★ · Budget",cost:null,lat:43.3410,lng:17.8140},
            {n:"Guest House \"Nana\"",d:"Next to the bus/train station, big clean rooms, very flexible hosts.",t:"4.8★ (96) · Budget",cost:null,lat:43.3480,lng:17.8090},
            {n:"Guesthouse Stari Grad",d:"Only 46 reviews and one flags inconsistent room quality. Safe parking, <10 min to the Old Town.",t:"4.6★ · Budget",cost:null,verify:true,lat:43.3440,lng:17.8110},
-           {n:"Villa Park, Lacina",d:"Neretva river views from two balcony rooms only — worth requesting specifically. On-site parking. One very negative recent review about the owner's conduct — read current reviews first.",t:"4.6★ (257) · Budget/mid",cost:null,verify:true,lat:43.3520,lng:17.8250}
+           {n:"Villa Park, Lacina",d:"Neretva river views from two balcony rooms only — worth requesting specifically. On-site parking. One very negative recent review about the owner's conduct — read current reviews first.",t:"4.6★ (257) · Budget/mid",cost:null,verify:true,lat:43.3520,lng:17.8250},
+           {n:"Apartment Mana",d:"Booked — 1 night, Thu 20 to Fri 21 Aug. Fra Franje Miličevića 24, 88000 Mostar. Confirmation 5623155150, +387 61 169 402.",t:"Apartment · booked",cost:null,star:true,lat:43.3438,lng:17.8078}
          ],
-         foot:"<b>All strong and all cheap</b> — this is the easiest night on the trip. Free parking is common here, which matters for the EV."}},
-      {n:13,date:"Thu 20 Aug",title:"Mostar → Sarajevo",lat:43.8586,lng:18.4312,
+         foot:"<b>Booked:</b> Apartment Mana, 20–21 Aug (1 night) — the rest of this list is backup/reference only. Free parking is common in Mostar generally, which matters for the EV."}},
+      {n:14,date:"Fri 21 Aug",title:"Mostar → Sarajevo",lat:43.8586,lng:18.4312,
        from:{name:"Mostar",lat:43.3438,lng:17.8078},
        body:"Up the M17 through Jablanica and Konjic — on-route, not a detour. Short enough drive that the rest of the day is Sarajevo, not just the arrival.",
        pills:[["drive","~2.5 h"],["locked","Sarajevo"],["sleep","1 night"]],
@@ -315,23 +320,23 @@ const LEGS = [
     ]
   },
   {
-    id:"home", name:"The way back", color:"#7A6A9B", meta:"21–23 Aug · Sarajevo → Salzburg → Rotterdam (+ buffer)",
+    id:"home", name:"The way back", color:"#7A6A9B", meta:"22–23 Aug · Sarajevo → Salzburg → Rotterdam",
     route:[[43.8586,18.4312],[47.8095,13.0550],[51.9244,4.4777]],
     geometry:[[43.85834,18.43131],[43.85571,18.40102],[43.852,18.34803],[43.9111,18.32143],[43.99732,18.18508],[44.11617,18.10914],[44.13617,17.97415],[44.24194,17.90167],[44.26808,17.88118],[44.38158,17.98765],[44.41891,17.99781],[44.44973,18.05771],[44.5185,18.08492],[44.5894,18.09455],[44.64912,18.07712],[44.70951,18.07249],[44.75435,18.08364],[44.83185,18.01093],[44.83119,17.80887],[44.864,17.64516],[44.86144,17.47624],[44.93963,17.28679],[45.11569,17.20347],[45.14322,17.25382],[45.20901,17.20877],[45.2978,17.06175],[45.43853,16.8259],[45.57059,16.57447],[45.70127,16.36022],[45.78582,16.12202],[45.76046,15.89824],[45.83973,15.70378],[45.91055,15.52472],[45.85588,15.2521],[45.85619,15.1422],[45.90209,15.00286],[45.925,14.90392],[45.95355,14.75543],[45.98062,14.60286],[46.02603,14.49604],[46.08326,14.46056],[46.16977,14.48594],[46.281,14.29392],[46.36422,14.16429],[46.44355,14.01757],[46.54583,14.02179],[46.60397,13.93454],[46.64705,13.77383],[46.70299,13.63819],[46.78887,13.52588],[46.86768,13.50547],[46.95524,13.6148],[47.09232,13.60993],[47.15546,13.50038],[47.23737,13.42151],[47.31652,13.39636],[47.41865,13.38652],[47.43765,13.24065],[47.51239,13.17159],[47.63094,13.13173],[47.72982,13.08841],[47.75048,13.08673],[47.78202,13.08176],[47.80175,13.06728],[47.82032,13.05308],[47.82711,13.0259],[47.76714,12.92168],[47.82726,12.75159],[47.82768,12.62054],[47.83432,12.44014],[47.80405,12.29563],[47.81659,12.04951],[47.84427,11.86802],[47.9411,11.7017],[48.06901,11.72081],[48.18269,11.72327],[48.29751,11.63238],[48.50532,11.58906],[48.60984,11.5438],[48.8037,11.4657],[48.96061,11.42269],[49.03827,11.35805],[49.24789,11.21682],[49.45926,11.23709],[49.54785,11.01396],[49.61527,10.92428],[49.73701,10.80141],[49.74831,10.62229],[49.7855,10.43231],[49.78021,10.2477],[49.74665,10.03151],[49.7548,9.91828],[49.77259,9.74311],[49.77092,9.58065],[49.8244,9.54031],[49.88197,9.42679],[49.9468,9.33492],[50.00292,9.21755],[50.02147,8.94997],[50.06479,8.7241],[50.0445,8.53828],[50.14041,8.33087],[50.24806,8.24683],[50.35777,8.14837],[50.4124,7.98741],[50.43512,7.91861],[50.4462,7.83891],[50.49348,7.73567],[50.53844,7.59336],[50.61195,7.42634],[50.70143,7.25821],[50.82752,7.20243],[50.91915,7.08249],[51.04352,7.00647],[51.23879,6.91023],[51.42015,6.79714],[51.48729,6.80742],[51.48526,6.66354],[51.54421,6.5642],[51.65655,6.17608],[51.66292,5.95384],[51.7829,5.82942],[51.84456,5.77691],[51.86702,5.56919],[51.87337,5.49759],[51.87659,5.35109],[51.84339,5.00362],[51.82741,4.77864],[51.88121,4.56701],[51.91954,4.5148],[51.92413,4.4782]],
     days:[
-      {n:14,date:"Fri 21 Aug",title:"Sarajevo → Salzburg",lat:47.8095,lng:13.0550,
+      {n:15,date:"Sat 22 Aug",title:"Sarajevo → Salzburg",lat:47.8095,lng:13.0550,
        from:{name:"Sarajevo",lat:43.8586,lng:18.4312},
-       body:"This is really a question of where the 13/14 split falls, not which city is nicer. Salzburg is the current plan and the only one with lodging worked up below. The M17/A1 out of Sarajevo through central Bosnia is the weakest charging corridor on the entire return, whichever city is picked.",
+       body:"This is really a question of where the 14/15 split falls, not which city is nicer. Salzburg is the current plan and the only one with lodging worked up below. The M17/A1 out of Sarajevo through central Bosnia is the weakest charging corridor on the entire return, whichever city is picked.",
        pills:[["pencil","Return city undecided"],["drive","~7–10 h (city-dependent)"],["warn","Weak charging out of Bosnia"],["sleep","1 night"]],
        hist:{h:"Mid-tier exception #2",t:"This is the night before the long final push — a good bed and a proper breakfast has direct operational value here, not just comfort. The same logic as the three nights in Kotor."},
        opts:{label:"Which city — this sets tomorrow's drive",exclusive:true,
          items:[
-           {n:"Salzburg",d:"Roughly splits Sarajevo → Rotterdam into 13/14 evenly. Shortest total of the four. Accommodation options already worked up — see below.",t:"Current plan",cost:0,star:true,lat:47.8095,lng:13.0550},
-           {n:"Vienna",d:"Further east, so day 15 gets longer — but the more natural line if exiting Bosnia north via Zagreb rather than west via Ljubljana. A genuine city night rather than a motel stop.",t:"Earlier plan",cost:0,consequence:"Lodging for Vienna isn't researched yet — the Salzburg options below don't apply. Day 15's ~1,000 km / warn pill assumes Salzburg; expect meaningfully more from here.",lat:48.2082,lng:16.3738},
-           {n:"Nuremberg",d:"Shortens day 15 meaningfully but lengthens today. Only makes sense paired with an earlier start out of Sarajevo.",t:"Further along",cost:0,consequence:"Lodging for Nuremberg isn't researched yet — the Salzburg options below don't apply. Today's drive gets longer to compensate.",lat:49.4521,lng:11.0767},
-           {n:"Cologne",d:"Turns day 15 into a ~250 km hop. Requires today to be a very long push, which strains the single-night structure. Keep as a fallback if today runs late rather than a first choice.",t:"Near home",cost:0,consequence:"Lodging for Cologne isn't researched yet — the Salzburg options below don't apply. Only makes sense if today is already running long.",lat:50.9375,lng:6.9603}
+           {n:"Salzburg",d:"Roughly splits Sarajevo → Rotterdam into 14/15 evenly. Shortest total of the four. Accommodation options already worked up — see below.",t:"Current plan",cost:0,star:true,lat:47.8095,lng:13.0550},
+           {n:"Vienna",d:"Further east, so day 16 gets longer — but the more natural line if exiting Bosnia north via Zagreb rather than west via Ljubljana. A genuine city night rather than a motel stop.",t:"Earlier plan",cost:0,consequence:"Lodging for Vienna isn't researched yet — the Salzburg options below don't apply. Day 16's ~1,000 km / warn pill assumes Salzburg; expect meaningfully more from here.",lat:48.2082,lng:16.3738},
+           {n:"Nuremberg",d:"Shortens day 16 meaningfully but lengthens today. Only makes sense paired with an earlier start out of Sarajevo.",t:"Further along",cost:0,consequence:"Lodging for Nuremberg isn't researched yet — the Salzburg options below don't apply. Today's drive gets longer to compensate.",lat:49.4521,lng:11.0767},
+           {n:"Cologne",d:"Turns day 16 into a ~250 km hop. Requires today to be a very long push, which strains the single-night structure. Keep as a fallback if today runs late rather than a first choice.",t:"Near home",cost:0,consequence:"Lodging for Cologne isn't researched yet — the Salzburg options below don't apply. Only makes sense if today is already running long.",lat:50.9375,lng:6.9603}
          ],
-         foot:"<b>Downstream of the day 12 routing choice.</b> If Option C was picked there, this whole return corridor changes to Ploče → Zagreb → Ljubljana → Austria, which favours Salzburg or Nuremberg over Vienna."},
+         foot:"<b>Downstream of the day 13 routing choice.</b> If Option C was picked there, this whole return corridor changes to Ploče → Zagreb → Ljubljana → Austria, which favours Salzburg or Nuremberg over Vienna."},
        opts2:{label:"Where to sleep — Salzburg (if the current plan)",
          items:[
            {n:"Villa Verde",d:"Leopoldskronstraße. Small owner-run B&B, private parking, repeatedly praised breakfast, 15 min walk to the old town. Best-reviewed option in Salzburg by a distance — the obvious pick for a pre-drive night.",t:"4.8★ (409) · Mid-tier",cost:null,star:true,lat:47.7930,lng:13.0330},
@@ -340,14 +345,11 @@ const LEGS = [
            {n:"B&B Hotel Salzburg-Süd, Puch",d:"South of the city — wrong side for a northbound departure. Only if arriving late from the Sarajevo direction and skipping the city entirely.",t:"4.3★ · Budget",cost:null,lat:47.7550,lng:13.0350},
            {n:"Skip: Holiday Inn Salzburg City",d:"3.8★ with a run of recent complaints about condition and service, at chain pricing.",t:"Skip",cost:null,lat:47.8010,lng:13.0450}
          ],
-         foot:"<b>If day 14 moves to Vienna, Nuremberg or Cologne, this whole list needs redoing</b> — none of it has been researched for those cities yet."}},
-      {n:15,date:"Sat 22 Aug",title:"Salzburg → Rotterdam",lat:51.9244,lng:4.4777,
+         foot:"<b>If day 15 moves to Vienna, Nuremberg or Cologne, this whole list needs redoing</b> — none of it has been researched for those cities yet."}},
+      {n:16,date:"Sun 23 Aug",title:"Salzburg → Rotterdam",lat:51.9244,lng:4.4777,
        from:{name:"Salzburg",lat:47.8095,lng:13.0550},
-       body:"Single push to Rotterdam, arriving late. ~1,000 km from Salzburg — meaningfully more from Vienna. This exceeds the usual 7–8 hour comfort ceiling deliberately; tomorrow is the recovery buffer, not this evening. Treat the charging stops as rest stops, not lost time, and leave Salzburg with a full battery.",
-       pills:[["drive","~10–11 h w/ charging"],["warn","Exceeds comfort ceiling — deliberate"]]},
-      {n:16,date:"Sun 23 Aug",title:"Open buffer day",lat:51.9244,lng:4.4777,
-       body:"No plan, deliberately. Yesterday was a long push arriving late — this exists purely as recovery slack, not a day to fill.",
-       pills:[["locked","Recovery day"],["pencil","No plan"]]}
+       body:"Single push to Rotterdam, arriving late. ~1,000 km from Salzburg — meaningfully more from Vienna. This exceeds the usual 7–8 hour comfort ceiling deliberately — and with the buffer day traded for the extra Durmitor night, there's no recovery day after this one either. Treat the charging stops as rest stops, not lost time, and leave Salzburg with a full battery.",
+       pills:[["drive","~10–11 h w/ charging"],["warn","Exceeds comfort ceiling — no buffer day after"]]}
     ]
   }
 ];
