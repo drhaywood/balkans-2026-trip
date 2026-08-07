@@ -236,6 +236,31 @@ h1 .to{color:var(--ink-faint);font-weight:400;}
 .optadd:hover{border-color:#4E7040;color:#4E7040;}
 .optadd:focus-visible{outline:2.5px solid var(--teal);outline-offset:2px;}
 .optadd.on{background:#4E7040;border-color:#4E7040;color:#fff;}
+.optadd:disabled{opacity:.35;cursor:default;}
+.optadd:disabled:hover{border-color:var(--rule);color:var(--ink-faint);}
+
+.costedit{flex-shrink:0;width:28px;height:28px;border-radius:50%;border:1.5px solid transparent;
+  background:transparent;color:#BEC8B6;font-size:13px;cursor:pointer;transition:.15s;
+  display:flex;align-items:center;justify-content:center;}
+.opt:hover .costedit{color:var(--ink-faint);}
+.costedit:hover{background:var(--paper-3);border-color:var(--rule);color:var(--ink-soft);}
+.costedit:focus-visible{outline:2.5px solid var(--teal);outline-offset:2px;}
+
+.costeditor{display:none;align-items:center;gap:6px;margin-top:9px;padding:9px 11px;
+  border-radius:9px;background:var(--paper-3);flex-wrap:wrap;}
+.costeditor.show{display:flex;}
+.costeditor-label,.costeditor-unit{font-size:12px;font-weight:700;color:var(--ink-soft);}
+.costinput{width:78px;font:inherit;font-size:13px;color:var(--ink);background:#fff;
+  border:1px solid var(--rule);border-radius:7px;padding:5px 8px;}
+.costinput:focus-visible{outline:2.5px solid var(--teal);outline-offset:1px;border-color:var(--teal);}
+.costeditor button{font:inherit;font-size:12px;font-weight:700;border-radius:999px;
+  padding:5px 12px;cursor:pointer;transition:.15s;border:1px solid;}
+.costsave{background:#4E7040;color:#fff;border-color:#4E7040;}
+.costsave:hover{background:#3E5C32;}
+.costclear{background:#fff;color:#9A4A33;border-color:#E8BFB2;}
+.costclear:hover{background:#FBEAE5;}
+.costcancel{background:#fff;color:var(--ink-soft);border-color:var(--rule);}
+.costcancel:hover{background:var(--paper-2);}
 
 .optdel{flex-shrink:0;width:28px;height:28px;border-radius:50%;border:1.5px solid transparent;
   background:transparent;color:#BEC8B6;font-size:17px;font-weight:400;line-height:1;
@@ -536,6 +561,7 @@ const status=document.getElementById('routestatus');
 
 /* ---------------- budget ---------------- */
 const selected=new Map();
+const costOverrides=new Map(); // item key -> manually-entered € amount, overrides trip-data's preset cost
 const fmt=n=>'€'+n.toLocaleString('en-GB',{maximumFractionDigits:0});
 
 /* ---------------- shared state sync (via /api/state, key stays server-side) ---------------- */
@@ -573,7 +599,8 @@ async function saveState(){
   const removed=[...itemRegistry.entries()]
     .filter(([k,r])=>!r.entry.live)
     .map(([k])=>k);
-  const state={selected:[...selected.keys()],removed,notes:Object.fromEntries(notes)};
+  const state={selected:[...selected.keys()],removed,notes:Object.fromEntries(notes),
+    costs:Object.fromEntries(costOverrides)};
   try{
     const res=await fetch(STATE_URL,{method:'POST',
       headers:{'Content-Type':'application/json'},
@@ -596,13 +623,36 @@ document.getElementById('saveNow').addEventListener('click',()=>{
   saveState();
 });
 
-function itemCost(o){
-  if(o.cost==null) return 0;
-  return o.unit==='pp' ? o.cost*2 : o.cost;
+function effectiveCost(entry){
+  return costOverrides.has(entry.key) ? costOverrides.get(entry.key) : entry.o.cost;
+}
+function itemCost(entry){
+  const ec=effectiveCost(entry);
+  if(ec==null) return 0;
+  return entry.o.unit==='pp' ? ec*2 : ec;
+}
+/* keeps an item's price display, +add button and map popup in sync with any manual override */
+function updateCostUI(entry){
+  const {o,key}=entry;
+  const ec=effectiveCost(entry);
+  const priceWrap=entry.row.querySelector('.pricewrap');
+  if(priceWrap){
+    priceWrap.innerHTML = ec==null?'<span class="optcost free">—</span>'
+      :(ec===0?'<span class="optcost free">Free</span>'
+      :`<span class="optcost">${fmt(ec)}${o.unit==='pp'?' pp':' total'}</span>`);
+  }
+  if(entry.add) entry.add.disabled = ec==null;
+  if(entry.marker){
+    const priceTxt = ec==null?'':(ec===0?'Free':fmt(ec)+(o.unit==='pp'?' pp':' total'));
+    entry.marker.setPopupContent(`<h4>${o.n}</h4><p class="pm">${o.t}${priceTxt?' · '+priceTxt:''}</p><p>${o.d}</p>`);
+  }
+  if(entry.costInput && document.activeElement!==entry.costInput){
+    entry.costInput.value = ec==null?'':ec;
+  }
 }
 function renderBudget(){
   const rows=document.getElementById('brows');
-  const total=[...selected.values()].reduce((s,o)=>s+itemCost(o),0);
+  const total=[...selected.values()].reduce((s,entry)=>s+itemCost(entry),0);
   document.getElementById('btotal').textContent=fmt(total);
   const n=selected.size;
   document.getElementById('bsub').textContent = n===0
@@ -612,8 +662,8 @@ function renderBudget(){
     rows.innerHTML='<div class="bempty">Nothing added yet. Costs cover activities and lodging only — fuel, food, tolls and the Slovenian vignette aren\'t included.</div>';
     return;
   }
-  rows.innerHTML=[...selected.values()].map(o=>
-    `<div class="brow"><span>${o.n}</span><b>${fmt(itemCost(o))}</b></div>`).join('');
+  rows.innerHTML=[...selected.values()].map(entry=>
+    `<div class="brow"><span>${entry.o.n}</span><b>${fmt(itemCost(entry))}</b></div>`).join('');
 }
 document.getElementById('bclear').addEventListener('click',()=>{
   selected.clear();
@@ -751,10 +801,7 @@ LEGS.forEach(leg=>{
             radius:6,color:'#fff',weight:2.5,
             fillColor:o.star?'#F0942B':leg.color,fillOpacity:1
           });
-          const priceTxt = o.cost==null?'':(o.cost===0?'Free':
-            fmt(o.cost)+(o.unit==='pp'?' pp':' total'));
-          entry.marker.bindPopup(
-            `<h4>${o.n}</h4><p class="pm">${o.t}${priceTxt?' · '+priceTxt:''}</p><p>${o.d}</p>`);
+          entry.marker.bindPopup(`<h4>${o.n}</h4><p class="pm">${o.t}</p><p>${o.d}</p>`);
           entry.marker.addTo(optLayer);
         }
 
@@ -764,13 +811,10 @@ LEGS.forEach(leg=>{
 
         const go=document.createElement('button');
         go.className='optgo';
-        const priceTxt = o.cost==null?'<span class="optcost free">—</span>'
-          :(o.cost===0?'<span class="optcost free">Free</span>'
-          :`<span class="optcost">${fmt(o.cost)}${o.unit==='pp'?' pp':' total'}</span>`);
         go.innerHTML=`<span class="optmark"></span>
           <div class="opttext"><div class="optname">${o.n}</div>
             <div class="optdesc">${o.d}</div>
-            <div class="optmeta"><span>${o.t}</span>${priceTxt}${o.verify?'<span class="verifytag">Verify</span>':''}</div>
+            <div class="optmeta"><span>${o.t}</span><span class="pricewrap"></span>${o.verify?'<span class="verifytag">Verify</span>':''}</div>
             ${o.consequence?`<div class="consequence">${o.consequence}</div>`:''}</div>`;
         if(o.lat){
           go.addEventListener('click',()=>{
@@ -784,38 +828,44 @@ LEGS.forEach(leg=>{
         const acts=document.createElement('div');
         acts.className='optactions';
 
-        let add=null;
-        if(o.cost!=null){
-          add=document.createElement('button');
-          add.className='optadd';
-          add.textContent='+';
-          add.type='button';
-          add.setAttribute('aria-pressed','false');
-          add.setAttribute('aria-label','Add '+o.n+' to the budget');
-          const conseq=row.querySelector('.consequence');
-          add.addEventListener('click',()=>{
-            if(selected.has(key)){
-              selected.delete(key); add.classList.remove('on');
-              add.textContent='+'; add.setAttribute('aria-pressed','false');
-              if(conseq) conseq.classList.remove('show');
-            } else {
-              selected.set(key,o); add.classList.add('on');
-              add.textContent='✓'; add.setAttribute('aria-pressed','true');
-              if(conseq) conseq.classList.add('show');
-              /* exclusive set: picking one clears any other live selection in the same set */
-              if(set.exclusive){
-                entries.forEach(other=>{
-                  if(other.key===key||!other.live) return;
-                  const reg=itemRegistry.get(other.key);
-                  if(reg&&reg.add&&selected.has(other.key)) reg.add.click();
-                });
-              }
+        const editBtn=document.createElement('button');
+        editBtn.className='costedit';
+        editBtn.type='button';
+        editBtn.textContent='✎';
+        editBtn.title='Set a manual price';
+        editBtn.setAttribute('aria-label','Set a manual price for '+o.n);
+        acts.appendChild(editBtn);
+
+        const add=document.createElement('button');
+        add.className='optadd';
+        add.textContent='+';
+        add.type='button';
+        add.setAttribute('aria-pressed','false');
+        add.setAttribute('aria-label','Add '+o.n+' to the budget');
+        entry.add=add;
+        const conseq=row.querySelector('.consequence');
+        add.addEventListener('click',()=>{
+          if(selected.has(key)){
+            selected.delete(key); add.classList.remove('on');
+            add.textContent='+'; add.setAttribute('aria-pressed','false');
+            if(conseq) conseq.classList.remove('show');
+          } else {
+            selected.set(key,entry); add.classList.add('on');
+            add.textContent='✓'; add.setAttribute('aria-pressed','true');
+            if(conseq) conseq.classList.add('show');
+            /* exclusive set: picking one clears any other live selection in the same set */
+            if(set.exclusive){
+              entries.forEach(other=>{
+                if(other.key===key||!other.live) return;
+                const reg=itemRegistry.get(other.key);
+                if(reg&&reg.add&&selected.has(other.key)) reg.add.click();
+              });
             }
-            renderBudget();
-            scheduleSave();
-          });
-          acts.appendChild(add);
-        }
+          }
+          renderBudget();
+          scheduleSave();
+        });
+        acts.appendChild(add);
 
         const del=document.createElement('button');
         del.className='optdel';
@@ -830,8 +880,8 @@ LEGS.forEach(leg=>{
           if(entry.connector) optLayer.removeLayer(entry.connector);
           if(selected.has(key)){
             selected.delete(key);
-            if(add){add.classList.remove('on');add.textContent='+';
-              add.setAttribute('aria-pressed','false');}
+            add.classList.remove('on');add.textContent='+';
+            add.setAttribute('aria-pressed','false');
             renderBudget();
           }
           removedCount++;
@@ -841,9 +891,58 @@ LEGS.forEach(leg=>{
         acts.appendChild(del);
 
         row.appendChild(acts);
+
+        /* manual price override — lets you replace/clear a preset cost, or add one where none exists yet */
+        const editorRow=document.createElement('div');
+        editorRow.className='costeditor';
+        editorRow.innerHTML=`<span class="costeditor-label">€</span>
+          <input type="number" class="costinput" min="0" step="1" inputmode="decimal">
+          <span class="costeditor-unit">${o.unit==='pp'?'pp':'total'}</span>
+          <button type="button" class="costsave">Save</button>
+          <button type="button" class="costclear">Clear</button>
+          <button type="button" class="costcancel">Cancel</button>`;
+        row.appendChild(editorRow);
+        const costInput=editorRow.querySelector('.costinput');
+        entry.editorRow=editorRow;
+        entry.costInput=costInput;
+
+        const closeEditor=()=>editorRow.classList.remove('show');
+        editBtn.addEventListener('click',e=>{
+          e.stopPropagation();
+          costInput.value = effectiveCost(entry)==null ? '' : effectiveCost(entry);
+          editorRow.classList.add('show');
+          costInput.focus();
+          costInput.select();
+        });
+        editorRow.querySelector('.costsave').addEventListener('click',()=>{
+          const v=costInput.value.trim();
+          if(v===''){ costOverrides.delete(key); }
+          else{
+            const n=Math.max(0,Math.round(Number(v)));
+            if(!Number.isNaN(n)) costOverrides.set(key,n);
+          }
+          closeEditor();
+          updateCostUI(entry);
+          if(selected.has(key)) renderBudget();
+          scheduleSave();
+        });
+        editorRow.querySelector('.costclear').addEventListener('click',()=>{
+          costOverrides.delete(key);
+          closeEditor();
+          updateCostUI(entry);
+          if(selected.has(key)) renderBudget();
+          scheduleSave();
+        });
+        editorRow.querySelector('.costcancel').addEventListener('click',closeEditor);
+        costInput.addEventListener('keydown',e=>{
+          if(e.key==='Enter'){ e.preventDefault(); editorRow.querySelector('.costsave').click(); }
+          else if(e.key==='Escape'){ e.preventDefault(); closeEditor(); }
+        });
+
         ow.appendChild(row);
         entries.push(entry);
         itemRegistry.set(key,{add,del,entry});
+        updateCostUI(entry);
       });
 
       trash.querySelector('.trashbtn').addEventListener('click',()=>{
@@ -927,6 +1026,14 @@ if(typeof KILLED!=='undefined'&&KILLED.length){
     console.warn('Sync load failed — starting from a blank slate.',e);
     loadFailed=true;
   }
+  /* apply price overrides first — they can flip an add button from disabled to enabled,
+     which the selectedKeys pass below depends on */
+  const remoteCosts=(remote.costs&&typeof remote.costs==='object')?remote.costs:{};
+  Object.entries(remoteCosts).forEach(([key,val])=>{
+    if(typeof val==='number') costOverrides.set(key,val);
+  });
+  itemRegistry.forEach(reg=>updateCostUI(reg.entry));
+
   const removedKeys=Array.isArray(remote.removed)?remote.removed:[];
   const selectedKeys=Array.isArray(remote.selected)?remote.selected:[];
   removedKeys.forEach(key=>{
