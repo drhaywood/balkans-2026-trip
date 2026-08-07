@@ -1,7 +1,7 @@
 const ORIGIN={name:"Rotterdam",lat:51.9244,lng:4.4777};
 
 /* Tesla Supercharger contest plan — real sites, verified against tesla.com.
-   Only days 1-3 are populated so far. Days 4-6 (Croatia) are now routed on
+   Only days 1-2 are populated so far. Days 4-6 (Croatia) are now routed on
    real roads too, but no charger stops have been verified for that leg yet —
    extend this once that research is done. */
 const CHARGE_STOPS=[
@@ -75,11 +75,9 @@ const LEGS = [
            {n:"Bled Island & pletna boat",d:"Hand-rowed wooden boats, unchanged for centuries. Ninety-nine steps up to the church. Cash only — the rowers don't take cards.",t:"1.5 h",cost:20,unit:"pp",lat:46.3625,lng:14.0922},
            {n:"Rowboat rental",d:"On the eastern shore. Row yourselves to the island — cheaper than the pletna for two and more satisfying. Per boat, per hour.",t:"2 h",cost:25,unit:"grp",lat:46.3648,lng:14.1043},
            {n:"Bled Castle",d:"Cliff-top since 1011. Small museum, a wine cellar, and the view straight back down over the lake.",t:"1–2 h",cost:19,unit:"pp",lat:46.3692,lng:14.1006},
-           {n:"Swimming, western shore",d:"Free public spots near Velika Zaka by the campsite. The water's genuinely warm by mid-August.",t:"—",cost:0,lat:46.3606,lng:14.0872},
-           {n:"Vintgar Gorge",d:"Four kilometres north. Wooden boardwalk pinned to the canyon wall above turquoise water. Timed entry — book ahead for August.",t:"Half day",cost:15,unit:"pp",lat:46.3944,lng:14.0808},
-           {n:"Lake Bohinj",d:"Half an hour southwest. Bigger, wilder and far quieter than Bled. The better swim of the two lakes. Parking only.",t:"Half day",cost:10,unit:"grp",lat:46.2833,lng:13.8833}
+           {n:"Swimming, western shore",d:"Free public spots near Velika Zaka by the campsite. The water's genuinely warm by mid-August.",t:"—",cost:0,lat:46.3606,lng:14.0872}
          ],
-         foot:"<b>If you only have the afternoon:</b> everything except Vintgar and Bohinj is within walking distance of the lake, and the viewpoints are free. Walk the western shore, climb Ojstrica then Mala Osojnica for sunset, swim on the way down."},
+         foot:"<b>If you only have the afternoon:</b> everything on this list is within walking distance of the lake, and the viewpoints are free. Walk the western shore, climb Ojstrica then Mala Osojnica for sunset, swim on the way down. Vintgar Gorge and Lake Bohinj are covered on day 3 instead, rather than repeated here."},
        opts2:{label:"Where to sleep — Bled",
          items:[
            {n:"Kamp Bled",d:"Lakeside at Velika Zaka, clean showers, charging lockers at reception. Pricey and crowded in August — book well ahead.",t:"Camp",cost:30,unit:"pp",star:true,lat:46.3615,lng:14.0809},
@@ -127,11 +125,11 @@ const LEGS = [
     days:[
       {n:4,date:"Tue 11 Aug",title:"→ Brela (Plitvice cut)",lat:43.3711,lng:16.9114,
        from:{name:"Kamna Gorica",lat:46.317389,lng:14.193883},
-       body:"Plitvice's off the list — August crowds, peak-season pricing, and 2026's drought has the waterfalls running thin, so the one thing that sells the ticket wasn't going to deliver. Straight through to the coast instead: down through Ljubljana, Zagreb, and the A1 to the Makarska Riviera. This is a genuinely long single day — treat it like Day 14's Munich–Rotterdam haul, not a casual drive, and start early regardless of how the legs feel after yesterday's via ferrata.",
+       body:"Plitvice's off the list — August crowds, peak-season pricing, and 2026's drought has the waterfalls running thin, so the one thing that sells the ticket wasn't going to deliver. Straight through to the coast instead: down through Ljubljana, Zagreb, and the A1 to the Makarska Riviera. This is a genuinely long single day — treat it like Day 16's Salzburg–Rotterdam haul, not a casual drive, and start early regardless of how the legs feel after yesterday's via ferrata.",
        pills:[["drive","~6–6.5 h"],["locked","Brela"],["tent","Autocamp Sirena"],["locked","Booked · 2 nights"]],
        opts:{label:"Brela camping — you've emailed all four",
          items:[
-           {n:"Autocamp Sirena",d:"Booked — 2 nights, Tue 11 to Thu 13 Aug. Lokva Rogoznica, ~10 min south of Brela. Cliffside pitches over the sea, restaurant with live music on-site — base for this night and the beach day that follows.",t:"Camp · booked",cost:null,star:true,lat:43.4063,lng:16.7771},
+           {n:"Autocamp Sirena",d:"Booked — 2 nights, Tue 11 to Thu 13 Aug. Lokva Rogoznica, ~20 min north of Brela toward Omiš. Cliffside pitches over the sea, restaurant with live music on-site — base for this night and the beach day that follows.",t:"Camp · booked",cost:null,star:true,lat:43.4063,lng:16.7771},
            {n:"Camping Krvavica",d:"Krvavica, ~15 min south. Small and quiet, 5-min walk to the beach, good showers. Cheapest of the strong options at ~€23/night for two.",t:"4.5★ · 1,299 reviews",cost:12,unit:"pp",lat:43.3235,lng:16.9858},
            {n:"Mini Camp Podaca",d:"Podaca, ~20 min south. Terraced olive-grove pitches with sea views, free communal kitchen. Highest-rated of the four.",t:"4.6★ · 601 reviews",cost:15,unit:"pp",lat:43.1225,lng:17.3060},
            {n:"Camp Viter",d:"Zaostrog, ~25 min south. Right on the beach, big enough for tent plus motorcycle, close to town for supplies.",t:"4.4★ · 1,299 reviews",cost:14,unit:"pp",lat:43.1393,lng:17.2810}
@@ -142,7 +140,7 @@ const LEGS = [
        pills:[["locked","Rest day"],["pencil","Punta Rata beach"],["tent","2nd night"]],
        opts:{label:"What to do with a free day in Brela",
          items:[
-           {n:"Punta Rata Beach",d:"Brela's signature beach, consistently ranked among Europe's best — pebble beach around the small pine-covered islet Kamen Brela, walkable from most of the campsites on the list.",t:"Half day+",cost:0,star:true,lat:43.3757,lng:16.9370},
+           {n:"Punta Rata Beach",d:"Brela's signature beach, consistently ranked among Europe's best — pebble beach around the small pine-covered islet Kamen Brela. Note: ~20 min drive south from Autocamp Sirena, not walkable from the booked pitch.",t:"Half day+",cost:0,star:true,lat:43.3757,lng:16.9370},
            {n:"Biokovo Skywalk",d:"A glass horseshoe platform cantilevered off Biokovo mountain above the riviera, roughly 1,200m up with views straight down to the coast — a real change of pace from beach time if you want one active thing this day.",t:"Half day",cost:16,unit:"pp",lat:43.3183,lng:17.0658},
            {n:"Kamen Brela islet swim",d:"Swim or kayak out to the small pine islet just off Punta Rata — the postcard shot of Brela.",t:"1–2 h",cost:0,lat:43.3757,lng:16.9370},
            {n:"Just don't drive anywhere",d:"You cut Plitvice specifically to get unhurried time on the coast — the point of this day is doing less, not filling it with a second activity.",t:"—",cost:null,lat:43.3711,lng:16.9114}
@@ -248,7 +246,11 @@ const LEGS = [
            {n:"Hotel Porto Tara",d:"Riverside, good for a rafting-anchored stay. Mixed recent reviews on cleanliness. Windy access road.",t:"4.3★ · Budget/mid",cost:null,lat:43.1000,lng:19.3000},
            {n:"Mountain Life",d:"Booked — 3 nights, Mon 17 to Thu 20 Aug. 7 Vojvode Mišića, 84220 Žabljak. Confirmation 5212042213, +382 67 858 650.",t:"Hotel · booked",cost:null,star:true,lat:43.1548,lng:19.1223}
          ],
-         foot:"<b>Booked:</b> Mountain Life, 17–20 Aug (3 nights) — the base for all three Durmitor days. Every camping night elsewhere on this trip still needs the same question asked before booking: \"can I charge an electric car from the pitch hookup, and at what amperage?\" Many sites explicitly prohibit it even with EHU present."}},
+         foot:"<b>Booked:</b> Mountain Life, 17–20 Aug (3 nights) — the base for all three Durmitor days. Every camping night elsewhere on this trip still needs the same question asked before booking: \"can I charge an electric car from the pitch hookup, and at what amperage?\" Many sites explicitly prohibit it even with EHU present."},
+       opts3:{label:"Also on this route",
+         items:[
+           {n:"Ostrog Monastery",d:"Cliff-face monastery on the Danilovgrad road between Podgorica and Nikšić — in earlier planning and dropped by accident, not a deliberate cut. Only makes sense if today's actual line between Kotor and Žabljak passes that way; check against whichever route you drive.",t:"1–2 h",cost:0,star:true,lat:42.7908,lng:18.9530}
+         ]}},
       {n:11,date:"Tue 18 Aug",title:"Durmitor",lat:43.1467,lng:19.0844,
        from:{name:"Žabljak",lat:43.1548,lng:19.1223},
        body:"A full day in the park. Priority is Tara rafting if the logistics work out — everything else fits around it.",
@@ -339,12 +341,12 @@ const LEGS = [
     days:[
       {n:15,date:"Sat 22 Aug",title:"Sarajevo → Salzburg",lat:47.8095,lng:13.0550,
        from:{name:"Sarajevo",lat:43.8586,lng:18.4312},
-       body:"This is really a question of where the 14/15 split falls, not which city is nicer. Salzburg is the current plan and the only one with lodging worked up below. The M17/A1 out of Sarajevo through central Bosnia is the weakest charging corridor on the entire return, whichever city is picked.",
+       body:"This is really a question of where the 15/16 split falls, not which city is nicer. Salzburg is the current plan and the only one with lodging worked up below. The M17/A1 out of Sarajevo through central Bosnia is the weakest charging corridor on the entire return, whichever city is picked.",
        pills:[["pencil","Return city undecided"],["drive","~7–10 h (city-dependent)"],["warn","Weak charging out of Bosnia"],["sleep","1 night"]],
        hist:{h:"Mid-tier exception #2",t:"This is the night before the long final push — a good bed and a proper breakfast has direct operational value here, not just comfort. The same logic as the three nights in Kotor."},
        opts:{label:"Which city — this sets tomorrow's drive",exclusive:true,
          items:[
-           {n:"Salzburg",d:"Roughly splits Sarajevo → Rotterdam into 14/15 evenly. Shortest total of the four. Accommodation options already worked up — see below.",t:"Current plan",cost:0,star:true,lat:47.8095,lng:13.0550},
+           {n:"Salzburg",d:"Roughly splits Sarajevo → Rotterdam into 15/16 evenly. Shortest total of the four. Accommodation options already worked up — see below.",t:"Current plan",cost:0,star:true,lat:47.8095,lng:13.0550},
            {n:"Vienna",d:"Further east, so day 16 gets longer — but the more natural line if exiting Bosnia north via Zagreb rather than west via Ljubljana. A genuine city night rather than a motel stop.",t:"Earlier plan",cost:0,consequence:"Lodging for Vienna isn't researched yet — the Salzburg options below don't apply. Day 16's ~1,000 km / warn pill assumes Salzburg; expect meaningfully more from here.",lat:48.2082,lng:16.3738},
            {n:"Nuremberg",d:"Shortens day 16 meaningfully but lengthens today. Only makes sense paired with an earlier start out of Sarajevo.",t:"Further along",cost:0,consequence:"Lodging for Nuremberg isn't researched yet — the Salzburg options below don't apply. Today's drive gets longer to compensate.",lat:49.4521,lng:11.0767},
            {n:"Cologne",d:"Turns day 16 into a ~250 km hop. Requires today to be a very long push, which strains the single-night structure. Keep as a fallback if today runs late rather than a first choice.",t:"Near home",cost:0,consequence:"Lodging for Cologne isn't researched yet — the Salzburg options below don't apply. Only makes sense if today is already running long.",lat:50.9375,lng:6.9603}
