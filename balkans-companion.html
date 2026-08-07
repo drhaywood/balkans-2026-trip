@@ -1,0 +1,748 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Long Way Round — Rotterdam to the Bay of Kotor and back</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#16212A; --ink2:#3E4E5A; --ink3:#6C7A85;
+  --stone:#E5E2D8; --paper:#F7F5EF; --line:#CFC9BA;
+  --verd:#2F7A6B; --rust:#A4402A; --gold:#94741C;
+  --rail:78px;
+  --serif:"Fraunces",Georgia,"Iowan Old Style","Times New Roman",serif;
+  --sans:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{
+  margin:0;background:var(--stone);color:var(--ink);
+  font-family:var(--sans);font-size:17px;line-height:1.62;
+  -webkit-text-size-adjust:100%;
+}
+p{margin:0 0 .9em}
+a{color:var(--verd)}
+
+/* ---------- route rail (signature) ---------- */
+.rail{display:none}
+@media(min-width:1080px){
+  .rail{
+    display:block;position:fixed;left:0;top:0;bottom:0;width:var(--rail);
+    border-right:1px solid var(--line);background:var(--stone);z-index:40;
+    padding:22px 0;overflow-y:auto;scrollbar-width:none;
+  }
+  .rail::-webkit-scrollbar{display:none}
+  .rail::before{content:"";position:absolute;left:38px;top:34px;bottom:34px;width:1px;background:var(--line)}
+  .rn{position:relative;display:block;text-decoration:none;padding:7px 0 7px 0;text-align:center}
+  .rn i{
+    position:relative;display:block;width:9px;height:9px;margin:0 auto;border-radius:50%;
+    background:var(--stone);border:1px solid var(--ink3);z-index:2;transition:all .2s;
+  }
+  .rn b{
+    display:block;font-family:var(--mono);font-size:9.5px;letter-spacing:.06em;
+    color:var(--ink3);margin-top:4px;font-weight:400;
+  }
+  .rn:hover i{border-color:var(--verd);background:var(--verd)}
+  .rn.on i{background:var(--rust);border-color:var(--rust);transform:scale(1.5)}
+  .rn.on b{color:var(--rust)}
+}
+main{max-width:720px;margin:0 auto;padding:0 20px 90px}
+@media(min-width:1080px){main{margin-left:calc(var(--rail) + 40px);margin-right:40px}}
+
+/* ---------- top chip nav (mobile) ---------- */
+.chips{
+  position:sticky;top:0;z-index:30;background:var(--stone);
+  border-bottom:1px solid var(--line);margin:0 -20px 0;padding:9px 0;
+  overflow-x:auto;white-space:nowrap;scrollbar-width:none;
+  -webkit-overflow-scrolling:touch;
+}
+.chips::-webkit-scrollbar{display:none}
+@media(min-width:1080px){.chips{display:none}}
+.chip{
+  display:inline-block;font-family:var(--mono);font-size:11px;letter-spacing:.04em;
+  text-decoration:none;color:var(--ink2);border:1px solid var(--line);
+  padding:5px 10px;border-radius:2px;margin-left:7px;background:var(--paper);
+}
+.chip:last-child{margin-right:20px}
+.chip.on{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+
+/* ---------- masthead ---------- */
+.mast{padding:52px 0 30px;border-bottom:2px solid var(--ink)}
+.eyebrow{
+  font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--rust);margin:0 0 14px;
+}
+.mast h1{
+  font-family:var(--serif);font-weight:600;font-size:clamp(34px,8.4vw,58px);
+  line-height:1.02;letter-spacing:-.022em;margin:0 0 16px;
+}
+.mast .sub{font-size:17px;color:var(--ink2);max-width:52ch;margin:0 0 20px}
+.mast .meta{font-family:var(--mono);font-size:11.5px;color:var(--ink3);line-height:1.9}
+
+/* ---------- sections ---------- */
+section{padding:44px 0 8px;border-bottom:1px solid var(--line);scroll-margin-top:60px}
+@media(min-width:1080px){section{scroll-margin-top:24px}}
+.stopno{
+  font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--ink3);
+  display:flex;gap:12px;align-items:baseline;margin-bottom:9px;flex-wrap:wrap;
+}
+.stopno .day{color:var(--rust)}
+section h2{
+  font-family:var(--serif);font-weight:600;font-size:clamp(27px,6vw,38px);
+  line-height:1.08;letter-spacing:-.018em;margin:0 0 10px;
+}
+.dek{font-size:18px;line-height:1.55;color:var(--ink2);max-width:54ch;margin:0 0 24px;font-style:italic}
+h3{
+  font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink);font-weight:400;margin:30px 0 11px;
+  padding-bottom:6px;border-bottom:1px solid var(--line);
+}
+
+/* ---------- fact blocks ---------- */
+.b{border-left:2px solid var(--line);padding:2px 0 2px 16px;margin:0 0 18px}
+.b .lab{
+  font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;
+  display:block;margin-bottom:5px;
+}
+.b p:last-child{margin-bottom:0}
+.b-h{border-left-color:var(--verd)} .b-h .lab{color:var(--verd)}
+.b-g{border-left-color:var(--ink2)} .b-g .lab{color:var(--ink2)}
+.b-l{border-left-color:var(--gold)} .b-l .lab{color:var(--gold)}
+.b-f{border-left-color:var(--rust);background:rgba(164,64,42,.045)} .b-f .lab{color:var(--rust)}
+.b-f{padding:10px 12px 10px 16px}
+
+ul{margin:0 0 16px;padding-left:19px}
+li{margin-bottom:7px}
+li::marker{color:var(--ink3)}
+strong{font-weight:600}
+em.for{font-style:italic}
+
+.verify{
+  font-family:var(--mono);font-size:9.5px;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--rust);border:1px solid var(--rust);border-radius:2px;
+  padding:1px 4px;margin-left:3px;white-space:nowrap;vertical-align:1px;
+}
+
+/* pull quote */
+.pull{
+  font-family:var(--serif);font-size:clamp(21px,4.6vw,26px);line-height:1.28;
+  color:var(--ink);margin:26px 0;padding:0 0 0 18px;border-left:3px solid var(--rust);
+  letter-spacing:-.01em;
+}
+.pull span{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--ink3);margin-top:9px;line-height:1.6}
+
+/* key-value strip */
+.kv{border-top:1px solid var(--line);margin:22px 0 6px}
+.kv div{display:flex;gap:14px;border-bottom:1px solid var(--line);padding:8px 0;font-size:15px}
+.kv dt{font-family:var(--mono);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--ink3);flex:0 0 104px;padding-top:3px}
+.kv dd{margin:0;flex:1}
+
+.phrase{font-family:var(--mono);font-size:14px;background:var(--paper);border:1px solid var(--line);
+  padding:1px 5px;border-radius:2px;white-space:nowrap}
+
+footer{padding:40px 0 20px;font-family:var(--mono);font-size:11.5px;color:var(--ink3);line-height:1.9}
+.top{display:inline-block;margin-top:14px;font-family:var(--mono);font-size:11px;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--verd);text-decoration:none;
+  border:1px solid var(--verd);padding:6px 11px;border-radius:2px}
+:focus-visible{outline:2px solid var(--rust);outline-offset:3px}
+</style>
+
+<nav class="rail" id="rail" aria-label="Route"></nav>
+<div class="chips" id="chips" aria-label="Route"></div>
+
+<main>
+
+<header class="mast" id="top">
+  <p class="eyebrow">Reading companion · 8–23 August 2026 · 16 days</p>
+  <h1>The Long Way Round</h1>
+  <p class="sub">Rotterdam to the Bay of Kotor and home again — along the seam where the Venetian, Ottoman and Habsburg empires ground against each other for four hundred years, and where the twentieth century came apart twice.</p>
+  <p class="meta">
+16 days · 8 countries · 5 empires · 1 EV<br>
+    Built from <code>trip-data.js</code> as of 8 Aug — Vršič is cut, Sutjeska is conditional, the way home runs via Salzburg.<br>
+    Written to be read aloud in a moving car.<br>
+    Anything tagged <span class="verify">verify</span> is a detail worth checking on the ground before you rely on it.
+  </p>
+</header>
+
+<section id="s00" data-nav="00" data-label="Primer">
+  <p class="stopno"><span>00</span><span class="day">Before you cross</span></p>
+  <h2>Six things that make the rest of the trip make sense</h2>
+  <p class="dek">Money, borders, language and driving change under you four times. Here's the shape of it.</p>
+
+  <h3>Money</h3>
+  <div class="b b-g"><span class="lab">On the ground</span>
+  <p>Germany, Austria, Slovenia and Croatia are all euro (Croatia joined 1 January 2023, so no more kuna). <strong>Montenegro is the strange one</strong> — it uses the euro but is not in the EU and never joined the eurozone. It adopted the Deutsche Mark unilaterally in 1999 to escape the collapsing Yugoslav dinar, then switched to euros in 2002 when the Mark disappeared, without asking anyone's permission. The ECB has never been thrilled about it.</p>
+  <p><strong>Bosnia is the one to plan for.</strong> The currency is the konvertibilna marka (KM, code BAM), pegged to the euro at a fixed 1.95583 — which is exactly the old Deutsche Mark rate, because the peg was inherited from the Mark in 1998. Euros are widely accepted in tourist spots at a rounded, unfavourable rate. Draw KM from an ATM in Mostar or Sarajevo and use it, especially for coffee, ćevapi and anything at a roadside stop.</p></div>
+
+  <h3>Borders</h3>
+  <div class="b b-g"><span class="lab">On the ground</span>
+  <p>Slovenia and Croatia are both in Schengen now, so the Austria→Slovenia→Croatia run should be uninterrupted. The real borders are the two exits from the EU: <strong>Croatia→Montenegro</strong> and <strong>Montenegro→Bosnia</strong>, then <strong>Bosnia→Croatia</strong> on the way north. Passports get checked and stamped.</p>
+  <p>Debeli Brijeg (Croatia→Montenegro, the coastal crossing above Herceg Novi) is the one with a reputation for August queues — it is the single funnel for everyone driving the coast. Early morning is the standard fix.</p></div>
+  <div class="b b-f"><span class="lab">Heads up</span>
+  <p>Šćepan Polje (Montenegro→Bosnia, up the Tara/Piva) is a small mountain crossing on a narrow road. Small crossings can have restricted opening hours and can be closed for works. <span class="verify">verify before committing</span> — if it is shut you are looking at a long backtrack through Nikšić.</p></div>
+
+  <h3>Language</h3>
+  <div class="b b-l"><span class="lab">Local knowledge</span>
+  <p>Croatian, Bosnian, Montenegrin and Serbian are, linguistically, one language with four political names and mutually intelligible everywhere on this route. What changes is the <em>alphabet</em>. Croatia and the Bosniak-Croat Federation use Latin script. <strong>Republika Srpska — which includes Foča, Tjentište and the whole Sutjeska corridor — uses Cyrillic</strong>, and you will hit road signs where the Latin has been painted out. Being able to read Cyrillic place names for a few hours is genuinely useful: Фоча = Foča, Тјентиште = Tjentište, Никшић = Nikšić, Сарајево = Sarajevo.</p>
+  <p>Six words carry you a long way: <span class="phrase">dobar dan</span> good day · <span class="phrase">hvala</span> thanks · <span class="phrase">molim</span> please/you're welcome · <span class="phrase">izvinite</span> excuse me · <span class="phrase">račun</span> the bill · <span class="phrase">živjeli</span> cheers. In Bosnia you will also hear the Ottoman-derived <span class="phrase">merhaba</span> as a greeting and <span class="phrase">selam</span> as an informal hello.</p></div>
+
+  <h3>Coffee, and how to order food without being obvious</h3>
+  <div class="b b-l"><span class="lab">Local knowledge</span>
+  <p><strong>Burek is meat. Only meat.</strong> This is the single most useful thing to know in Bosnia. The filled pastries are named by filling: <em>burek</em> (meat), <em>sirnica</em> (cheese), <em>zeljanica</em> (spinach and cheese), <em>krompiruša</em> (potato). Asking for a "cheese burek" is the tell. In Croatia the word has drifted and burek can mean any of them — so it changes at the border.</p>
+  <p><strong>Bosnian coffee is not Turkish coffee</strong> and locals will tell you why. It is served in a <em>džezva</em> (small copper pot) with a <em>fildžan</em> (handleless cup), a sugar cube and usually a piece of rahat lokum. The ritual: pour a little, let the grounds settle, hold the sugar cube in your teeth and drink through it, or dip it. It takes half an hour. That is the point of it — coffee here is a unit of time, not a drink. Do not order one if you are leaving in ten minutes.</p>
+  <p><strong>Rakija</strong> is the regional fruit brandy — plum (<em>šljivovica</em>) in Bosnia and Serbia, grape (<em>loza</em>) on the coast, herb-infused (<em>travarica</em>) in Dalmatia. Eye contact when you clink, and it is a sipping drink despite everything about it suggesting otherwise.</p></div>
+
+  <h3>Driving</h3>
+  <div class="b b-g"><span class="lab">On the ground</span>
+  <ul>
+    <li><strong>Headlights on during the day</strong> are required year-round in Slovenia, Montenegro and Bosnia. Croatia requires them in the winter half of the year, but running them permanently costs you nothing.</li>
+    <li><strong>Alcohol limits are lower than the Netherlands.</strong> Montenegro and Bosnia sit around 0.03%, Slovenia and Croatia 0.05%. Treat it as zero.</li>
+    <li><strong>Austria and Slovenia need vignettes.</strong> Austria additionally has separate section tolls (<em>Sondermaut</em>) on specific alpine tunnels — Karawanken, Tauern, Katschberg — paid at a barrier as you arrive. Croatia is a ticket-and-pay motorway system. Montenegro's only toll is the Sozina tunnel, which is not on your route. Bosnia has tolls on the newer A1 motorway sections.</li>
+    <li><strong>Green Card</strong> is the document that matters for Montenegro and Bosnia — both sit outside the EU insurance system. Yours covers both.</li>
+  </ul></div>
+
+  <h3>The one open decision that reshapes the back half</h3>
+  <div class="b b-f"><span class="lab">Heads up</span>
+  <p>Day 13, Žabljak → Mostar, is still an open A/B/C choice, and it is not only a road choice — it decides <strong>whether you see Sutjeska at all</strong>, and it can change the whole route home.</p>
+  <ul>
+    <li><strong>A — Nikšić → Trebinje.</strong> No Sutjeska. The least interesting road of the three, and the low-risk default.</li>
+    <li><strong>B — Podgorica → Trebinje.</strong> No Sutjeska either, but the safest on charge: near-continuous descent off the plateau, and Podgorica is the strongest hub in the country.</li>
+    <li><strong>C — Šćepan Polje → Sutjeska → Foča.</strong> The best road on the trip and the only one that reaches Tjentište — but it does not reach Mostar in a day. It flips Day 13 into a Sutjeska overnight, Day 14 into Foča → Sarajevo → Konjic → Mostar, and pushes the exit south past Počitelj onto the Croatian A1.</li>
+  </ul>
+  <p>So: read section 15 as optional, and sections 17 and 18 as order-swappable. Everything else here holds whichever way you go.</p></div>
+
+  <h3>The EV problem, stated plainly</h3>
+  <div class="b b-f"><span class="lab">Heads up</span>
+  <p>Charging density collapses roughly at the Montenegrin border and does not recover until Sarajevo. The one genuinely unanswered question is <strong>what charges in Žabljak</strong> — but you have three nights booked there, so an overnight household socket at ~2.3 kW over ten hours (call it 120–150 km a night, three nights running) may quietly solve it without any DC at all. Confirm the socket on arrival, not on departure. The Kotor → Nikšić → Šćepan Polje → Foča → Tjentište → Mostar corridor is the thin part of the whole trip: mountain roads, heavy elevation change, air conditioning running, and long gaps between anything faster than a household socket.</p>
+  <p>The practical mitigations are the ones you already have: arrive at each of Žabljak, Tjentište and Mostar with real margin rather than a calculated one; treat overnight AC charging at accommodation as the primary plan and DC as a bonus; carry the CEE red 16A/32A, CEE blue and Schuko adapters plus your own Type 2 cable, since a surprising number of AC points in the region are untethered; and trust PlugShare check-in dates over Tesla's map data, which is sparse south of Croatia. Mountain driving also gives back more regen on descents than a flat-country range estimate expects — the Lovćen and Durmitor descents in particular.</p></div>
+</section>
+
+<section id="s01" data-nav="01" data-label="Munich">
+  <p class="stopno"><span>01</span><span class="day">Day 1 · Sat 8 Aug</span><span>Rotterdam → Maria Laach → Munich · ~8 h</span></p>
+  <h2>Maria Laach, then Munich</h2>
+  <p class="dek">A city that exists because a duke burned down a bridge to steal a toll.</p>
+
+  <div class="b b-h"><span class="lab">History</span>
+  <p><strong>Maria Laach stands on a volcano.</strong> The Laacher See is a caldera, left by an eruption about 13,000 years ago that was among the largest in Europe in the last hundred thousand years — it threw ash as far as Sweden and northern Italy and dammed the Rhine. The volcanic field beneath it is classed as dormant rather than extinct, and carbon dioxide still bubbles up through the water along the southeastern shore, where you can watch it break the surface from the path.</p>
+  <p>The abbey was begun in 1093 by Count Palatine Henry II as a burial church, and it is one of the most complete Romanesque buildings in Germany — six towers, almost untouched by later fashion. The reason is money: the community was poor at exactly the moments everyone else was rebuilding in Gothic and then Baroque, so nothing got improved. The arcaded forecourt at the west end, the <em>paradise</em>, is an Italian idea and rare this far north. If you have twenty minutes, that is the thing to stand in.</p></div>
+
+  <div class="b b-h"><span class="lab">History</span>
+  <p>In 1158 Henry the Lion, Duke of Saxony and Bavaria, had a problem: the Bishop of Freising owned the bridge over the Isar at Oberföhring and collected the toll on the salt road. Henry burned it down, built his own bridge a few kilometres upstream, and forced the traffic through his settlement. The Emperor Frederick Barbarossa arbitrated, and — in one of history's more brazen rulings — let Henry keep the toll on condition he paid the bishop a third. That settlement is Munich. The name comes from <em>Munichen</em>, "by the monks," after the Benedictines already living there; the monk still sits on the city's coat of arms.</p>
+  <p>The Wittelsbachs took Bavaria in 1180 and did not let go until 1918 — 738 years, one of the longest unbroken dynastic runs in European history. Almost everything monumental in the city centre is theirs.</p></div>
+
+  <div class="b b-l"><span class="lab">Local knowledge</span>
+  <p><strong>You are legally allowed to bring your own food into a Munich beer garden.</strong> This is not a loophole, it is settled law with a real origin. Brewers dug cellars along the Isar to keep beer cool and planted chestnut trees over them for shade; when they started serving on top of the cellars, the city's innkeepers objected to the competition. The compromise, formalised under Ludwig I, was that beer gardens could sell beer but not food — so customers brought their own. The food ban has gone, but the right to bring your own remains, and locals still turn up with bread, radishes and a tablecloth. It only applies in the self-service (<em>Selbstbedienung</em>) section, not the table-service one.</p></div>
+
+  <div class="b b-g"><span class="lab">On the ground</span>
+  <p>The <strong>Eisbach standing wave</strong> in the Englischer Garten, just past the Haus der Kunst, has surfers on it in all weather and at most hours. It is a genuine river wave, not a machine, formed by concrete blocks under the surface, and it has been ridden since the 1970s. Free, permanently entertaining, and about ten minutes' walk from the Altstadt.</p>
+  <p>The <strong>Glockenspiel</strong> on the Neues Rathaus is the classic disappointment of Munich — a fifteen-minute clockwork show that most visitors find slower than advertised. The <strong>Viktualienmarkt</strong>, two minutes away, is the better use of the same time.</p>
+  <p><strong>Reinheitsgebot</strong>, the beer purity law limiting beer to water, barley and hops, was issued in Bavaria in 1516 — partly for quality, partly to stop brewers competing with bakers for wheat and rye. Yeast was added to the list only after Pasteur.</p></div>
+
+  <div class="b b-f"><span class="lab">Heads up</span>
+  <p>Two Superchargers are planned into this leg — Koblenz, roughly 25 minutes past the abbey, then Frankfurt Flughafen straight on the A3. That plus the abbey is the whole day's budget. Do not add a third thing.</p>
+  <p>Munich's city centre is an <em>Umweltzone</em> (low-emission zone). Fully electric vehicles are exempt and need no sticker. German cities are separately rolling out diesel restrictions that do not concern you at all.</p></div>
+</section>
+
+<section id="s02" data-nav="02" data-label="Alps">
+  <p class="stopno"><span>02</span><span class="day">Day 2 · Sun 9 Aug</span><span>Munich → Bled · the Alpine crossing</span></p>
+  <h2>Over the Karawanks</h2>
+  <p class="dek">Three ways through the same wall of rock, and one of them is a war grave.</p>
+
+  <div class="b b-g"><span class="lab">On the ground</span>
+  <p>You come down through Bavaria into Austria, and the Alps run east–west across your path. The Karawanken range is the last barrier before Slovenia and there are three ways over or under it:</p>
+  <ul>
+    <li><strong>Karawanken Tunnel</strong> (A11/A2) — 7.9 km, opened 1991, motorway the whole way. A section toll paid at the barrier, no advance purchase. Fastest, dullest, and the correct choice if you are tired.</li>
+    <li><strong>Wurzen Pass</strong> — short but brutally steep, with sustained gradients around 18%. Spectacular, and it drops you at Kranjska Gora at the foot of the Vršič road.</li>
+    <li><strong>Loibl Pass</strong> — a tunnel under the ridge with hairpins either side.</li>
+  </ul>
+  <p>For an EV, the steep passes are less punishing than they look on paper: you spend on the climb and get a real fraction of it back on the descent.</p></div>
+
+  <div class="b b-h"><span class="lab">History</span>
+  <p>The Loibl Pass road tunnel was cut through the mountain between 1943 and 1945 by prisoners of <em>Loibl</em>, a satellite camp of Mauthausen, working from both the Austrian and Slovenian sides. Several hundred died. There are memorials at both portals. It is the first of many places on this trip where an ordinary piece of infrastructure turns out to have been built by people who did not survive it — a pattern you will see again at Vršič and at Đurđevića Tara.</p></div>
+
+  <div class="b b-f"><span class="lab">Heads up</span>
+  <p>Slovenia requires a vignette from the moment you touch a motorway or expressway. Austria's digital vignette may have an activation delay rule — the fraud-prevention change means a digital vignette bought minutes before you drive may not be valid immediately. A physical sticker is valid on application. <span class="verify">verify current rule at asfinag.at</span></p></div>
+</section>
+
+<section id="s03" data-nav="03" data-label="Bled">
+  <p class="stopno"><span>03</span><span class="day">Days 2–3 · 9–11 Aug</span><span>Bled · camped at Kamna Gorica</span></p>
+  <h2>Lake Bled</h2>
+  <p class="dek">The most photographed lake in the Alps, and a set of rowing rights inherited from an empress.</p>
+  <div class="b b-g"><span class="lab">On the ground</span>
+  <p>You are camped at <strong>Kamna Gorica</strong>, about ten minutes out toward Radovljica, for two nights — which is the better call than a lakeside pitch in mid-August. Bled is a day-visit; the camp is the base. There is more on Kamna Gorica and Radovljica in the next section.</p></div>
+
+  <div class="b b-h"><span class="lab">History</span>
+  <p><strong>Bled Castle</strong> is first documented in 1011, when Emperor Henry II handed the estate to the Bishops of Brixen — a South Tyrolean bishopric that then owned this valley, at arm's length, for over eight hundred years. It is the oldest castle in Slovenia and the reason the lake was never simply farmland.</p>
+  <p>The island church is dedicated to the Assumption of Mary, but the site was a pre-Christian shrine before that — excavations under the church found early Slavic graves and evidence of a temple. The overlay is literal: a Christian church built directly on top of a pagan sanctuary, on an island, in a lake.</p></div>
+
+  <div class="b b-l"><span class="lab">Local knowledge</span>
+  <p><strong>The pletna boats are a hereditary monopoly.</strong> The flat-bottomed wooden boats that ferry people to the island are rowed standing, with two oars, by <em>pletnarji</em> whose right to do it was granted by Empress Maria Theresa in 1740 to twenty-two families from the village of Mlino. The right still passes down through those families. If the man rowing you looks like he was born to it, that is because his great-great-great-grandfather was licensed for it by the Habsburgs.</p>
+  <p><strong>The wishing bell.</strong> The island church's bell comes with a story: a widow, grieving her murdered husband, had a bell cast for the church; the boat carrying it sank in a storm and the bell went to the bottom of the lake, where it is said still to ring in bad weather. She went to Rome and became a nun, and after her death the Pope sent a replacement bell — the one you ring today. Ring it and make a wish, which is what everyone in the queue behind you is also doing.</p>
+  <p><strong>Kremšnita</strong>, the Bled cream cake, is a specific standardised recipe — custard and cream between two layers of pastry, cut in a square — codified in 1953 by Ištvan Lukačević, then pastry chef at the Hotel Park. The Park still claims the original. It is one of the very few desserts in Europe with a documented inventor and a fixed spec.</p></div>
+
+  <div class="b b-g"><span class="lab">On the ground</span>
+  <p><strong>The photograph everybody wants</strong> — island, church, mountains behind — is taken from <strong>Mala Osojnica</strong>, on the far side of the lake from the town. It is short but genuinely steep, with metal stair sections near the top, roughly 20–30 minutes of hard uphill from the lakeside path. <strong>Ojstrica</strong> is the lower, easier viewpoint on the same hillside and gives about 80% of the same shot for half the effort. Both are best at sunrise, when the lake is glass and the tour buses have not arrived.</p>
+  <p><strong>Swimming is allowed and the water is warm</strong> — Bled sits over thermal springs, which is why the lake reaches genuinely pleasant temperatures by August despite the altitude. There are no motorboats permitted anywhere on it, which is why it is so quiet.</p>
+  <p><strong>Vintgar Gorge</strong>, 4 km north, is a wooden walkway pinned to the rock walls of the Radovna river gorge, built in 1893. It is beautiful and it is also a single-file boardwalk that gets fully congested in August. Timed entry tickets are the norm now. <span class="verify">check booking requirement</span></p></div>
+
+  <div class="b b-h"><span class="lab">History</span>
+  <p><strong>Vila Bled</strong>, on the south shore, was Tito's summer residence. He entertained Nehru, Nasser, Ho Chi Minh and Haile Selassie here. The Non-Aligned Movement — the third bloc that let Yugoslavia sit outside both NATO and the Warsaw Pact — was substantially built in conversations at Bled and Brijuni. That independent position is the reason Yugoslavs could travel freely west in the 1960s while other Eastern Europeans could not, and it is background you will need when you get to Sarajevo.</p></div>
+</section>
+
+<section id="s04" data-nav="04" data-label="E. Triglav">
+  <p class="stopno"><span>04</span><span class="day">Day 3 · Mon 10 Aug</span><span>Eastern Triglav loop from Kamna Gorica</span></p>
+  <h2>The eastern side of the mountain</h2>
+  <p class="dek">No pass to cross. A loop out of camp through gorges, waterfalls and the quieter of the two lakes — and a village that made nails for six hundred years.</p>
+
+  <div class="b b-l"><span class="lab">Local knowledge</span>
+  <p><strong>Kamna Gorica</strong>, where you are camped, is not a random village. It was an <em>iron</em> village — from the Middle Ages until the nineteenth century it forged nails, and water channels were cut through the settlement to drive the hammers. You can still see the channels running between the houses. It is a protected heritage settlement, and almost nobody staying at Bled has heard of it.</p>
+  <p>Ten minutes away, <strong>Radovljica</strong> has a small walled medieval core and the thing genuinely worth the detour on this trip: the <strong>Beekeeping Museum</strong>. Slovenia is disproportionately, almost obsessively, a beekeeping country. <strong>Anton Janša</strong> (1734–1773), born just up the road, was appointed the first teacher of beekeeping at the Habsburg court in Vienna by Maria Theresa, and is regarded as the founder of modern apiculture. <strong>World Bee Day is 20 May because that is his birthday</strong> — a Slovenian proposal the UN adopted in 2017. The native <em>Carniolan grey</em> bee from these valleys is now one of the most widely kept subspecies on earth.</p>
+  <p>The museum's real treasure is the <strong>painted beehive panels</strong> (<em>panjske končnice</em>) — the small front boards of hives, painted from the eighteenth century onward with folk scenes: saints, devils, hunting parties, and a recurring joke about hunters being buried by the animals. It is a folk art form that exists essentially nowhere else. Chocolate and gingerbread shops in the same town trade off the honey connection.</p></div>
+
+  <div class="b b-g"><span class="lab">On the ground</span>
+  <p>Everything on today's menu sits within about forty-five minutes of camp, which is the whole argument for skipping the Vršič crossing. The realistic shape of the day is <em>pick a side</em>, not chase all of it:</p>
+  <ul>
+    <li><strong>The Kranjska Gora side</strong> — Via Ferrata Hvadnik at Gozd Martuljek, then Peričnik in the Vrata valley.</li>
+    <li><strong>The Bohinj side</strong> — the lake itself, the Vogel cable car, Savica waterfall, or the Mostnica gorge.</li>
+    <li><strong>Vintgar</strong> fits before or after either, being only a few kilometres from camp — but it is timed-entry and books out in August.</li>
+  </ul></div>
+
+  <div class="b b-g"><span class="lab">On the ground</span>
+  <p><strong>Peričnik</strong> is the one to do if you only do one waterfall. The path runs <em>behind</em> the falling water — an undercut ledge lets you walk the full width of the curtain with the drop in front of you. You will get wet. There is a lower and an upper fall; the lower is the one with the walkable ledge.</p>
+  <p>At the mouth of the <strong>Vrata valley</strong> on the way in, look for the enormous iron <strong>piton</strong> standing by the road — a monument to Slovene mountaineers killed in the Second World War, and one of the more striking pieces of Yugoslav memorial design you will pass before Tjentište.</p></div>
+
+  <div class="b b-f"><span class="lab">Heads up</span>
+  <p><strong>Via ferrata kit is not optional and improvised kit is dangerous.</strong> Hvadnik is graded B/C — no climbing experience needed — but the reason a proper via ferrata lanyard costs what it does is the energy absorber. A fall on a via ferrata can drop you the full distance to the last anchor onto a steel cable, generating forces a plain sling or a length of rope will not survive and your body will not either. Rent or buy a certified set: helmet, harness, and a Y-lanyard with an energy absorber. Check the absorber's stated weight range — many have both a minimum and a maximum. Helmet is for rockfall from people above you, not for the fall.</p>
+  <p>The route is roughly 500 m of cable with a waterfall section and suspension bridges, about 1.5 hours round trip. Wet rock after rain makes it markedly harder. <span class="verify">confirm grade, current condition and rental with a Kranjska Gora operator</span></p></div>
+
+  <div class="b b-h"><span class="lab">History</span>
+  <p><strong>You are 15 minutes from the Russian Chapel without crossing the pass.</strong> Vršič itself is cut, but from Kranjska Gora the road up starts immediately, and the chapel sits at hairpin 8 — a short drive, not a crossing. It is worth knowing what it is, in case you find yourself with a spare hour.</p>
+  <p>The Vršič road was built in 1915–16 by Russian prisoners of war, captured on the Eastern Front and shipped here to build a supply line to the Isonzo front. In March 1916 an avalanche came down on the northern workings and killed a large number of them — the figure usually given is around a hundred, and the true number is probably higher. The survivors built the small wooden chapel in their memory. It is still maintained, and there is an annual Russian–Slovene commemoration. The road was known for decades simply as the Russian Road.</p>
+  <p>What it was built <em>for</em> is the other half. Over the ridge, on the Soča, Italy and Austria-Hungary fought <strong>twelve battles between 1915 and 1917</strong> along a front about 90 km long, at a cost of roughly 300,000 dead. The twelfth is the one with a name: <strong>Caporetto</strong> — now Kobarid — where a German-Austrian force using new infiltration tactics collapsed the Italian line so completely that the word entered Italian as a synonym for total rout. A young lieutenant named <strong>Erwin Rommel</strong> won the Pour le Mérite there. Hemingway drove ambulances on this front and built <em>A Farewell to Arms</em> on the retreat.</p></div>
+
+  <div class="b b-l"><span class="lab">Local knowledge</span>
+  <p><strong>Bohinj is the better swim and the better legend.</strong> It is four times the size of Bled, ringed by mountains rather than hotels, and has no island and no castle — which is exactly why it is quiet. The church of St John the Baptist at the outflow has frescoes going back to the fourteenth century.</p>
+  <p>The story to tell in the car is <strong>Zlatorog</strong>, the golden-horned chamois — the central folk legend of these mountains. A white chamois with golden horns guarded the treasure of Triglav; a hunter shot him for the love of a girl who wanted gold; the blood of Zlatorog fell on the ground and a Triglav rose sprang up, which the wounded animal ate and was healed. Enraged at the betrayal, he tore the paradise valley to pieces with his horns and left — which is why the Julian Alps are bare rock rather than the garden they once were. It is the standard explanation locals give for the landscape you are looking at, and the beer is named after him.</p>
+  <p><strong>Savica</strong>, at the far end of Bohinj, is 550 steps up to a viewing platform. It matters beyond the water: <em>Kršt pri Savici</em> — The Baptism on the Savica — is France Prešeren's 1836 epic and the founding poem of Slovene literature. Prešeren was born at Vrba, a few minutes from your campsite, and the seventh stanza of another of his poems is the Slovene national anthem, which is a toast wishing that all nations should live free and never make war on each other.</p></div>
+
+  <div class="b b-l"><span class="lab">Local knowledge</span>
+  <p><strong>If you want one thing nobody else is at:</strong> <strong>Planina Zajamniki</strong>, a single row of shepherds' huts strung along a ridge on the Pokljuka plateau, all facing the mountains. It is a working <em>planina</em> — part of the alpine transhumance system where cattle are driven up to high pasture for the summer and brought down in autumn, a practice that still runs here. You can drive most of the way on a rough forest road. First light is when it earns the effort, and there will be nobody there.</p>
+  <p><strong>Pokljuka Gorge</strong> is the dry one — a limestone gorge above Bled with natural rock bridges and a cave, and a fraction of Vintgar's traffic because there is no turquoise river in it. <strong>Mostnica Gorge</strong> from Stara Fužina at Bohinj is the long green one, two hours up a narrow canyon to a meadow, past a rock formation everybody insists is an elephant.</p></div>
+</section>
+<section id="s05" data-nav="05" data-label="Run south">
+  <p class="stopno"><span>05</span><span class="day">Day 4 · Tue 11 Aug</span><span>Kamna Gorica → the coast · ~6.5 h</span></p>
+  <h2>The run south</h2>
+  <p class="dek">Seven and a half hours across three landscapes. The interesting part is a wind.</p>
+
+  <div class="b b-g"><span class="lab">On the ground</span>
+  <p>The A1 south of Zagreb is one of the more dramatic motorways in Europe and nobody talks about it. It crosses the <strong>Velebit</strong>, the long limestone wall that separates continental Croatia from the coast, through the <strong>Sveti Rok</strong> and <strong>Mala Kapela</strong> tunnels. You go in through green, hilly, central-European farmland and come out the other side into bare white karst, Mediterranean scrub and the sea. It is one of the most abrupt landscape transitions on the continent and it happens in about four kilometres of tunnel.</p></div>
+
+  <div class="b b-h"><span class="lab">History</span>
+  <p>That white rock is not natural desert. The Velebit and much of the Dalmatian hinterland were forested until Venice cut them down — centuries of shipbuilding for the Arsenale stripped the slopes, the thin soil washed off the limestone, and it never came back. The bare karst you are looking at is a five-hundred-year-old industrial scar.</p></div>
+
+  <div class="b b-l"><span class="lab">Local knowledge</span>
+  <p><strong>The bura.</strong> The wind that comes down off the Velebit onto the Maslenica channel is a katabatic wind — cold dense air pooling on the plateau behind the range, then falling over the edge and accelerating under gravity. It arrives in violent, discrete gusts rather than a steady blow, and it is among the strongest recorded winds in Europe: gusts over 200 km/h have been logged on the Maslenica bridge, which is closed to high-sided vehicles and sometimes to all traffic when it blows. Croatians distinguish the bura (cold, dry, clears the sky) from the <em>jugo</em> (warm, humid, southerly, brings rain and, according to everyone, bad moods). In August you are unlikely to meet a serious bura, but the roadside wind-warning signs and the anchored guard rails are not decorative.</p></div>
+</section>
+
+<section id="s06" data-nav="06" data-label="Brela">
+  <p class="stopno"><span>06</span><span class="day">Days 4–5 · 11–13 Aug</span><span>Camped at Lokva Rogoznica · Croatia</span></p>
+  <h2>Brela and the Biokovo wall</h2>
+  <p class="dek">A 1,762-metre mountain standing directly behind a beach, which is why the beach is white.</p>
+  <div class="b b-f"><span class="lab">Heads up</span>
+  <p>One thing to correct in your own notes: <strong>Autocamp Sirena at Lokva Rogoznica is north of Brela, not south.</strong> Lokva Rogoznica sits between Omiš and Brela — roughly 20 minutes <em>up</em> the coast from Punta Rata, not down it. Your trip data has it as "~10 min south of Brela," which will send you the wrong way at a junction. The upside is that it puts <strong>Omiš and the Cetina gorge</strong> on your doorstep rather than Makarska — see below, because Omiš is the better story.</p></div>
+
+  <div class="b b-g"><span class="lab">On the ground</span>
+  <p>The Makarska Riviera is a narrow shelf of pine and pebble beach pinned between the Adriatic and the <strong>Biokovo</strong> massif, whose summit Sveti Jure reaches 1,762 m barely four kilometres from the water. That vertical wall is why the strip has its own microclimate, why the light is so hard in the afternoon, and why the beaches are made of white limestone pebbles rather than sand — the material comes straight off the mountain.</p>
+  <p><strong>Punta Rata</strong> at Brela is the beach that keeps appearing on "best in Europe" lists, and the reason is the <strong>Brela Stone</strong> (<em>Brela kamen</em>) — a lump of rock standing just offshore with a single pine tree growing out of it. It is the emblem of the whole Riviera and it is on every postcard from here to Split.</p>
+  <p>The water clarity is a karst effect. There are almost no rivers dumping sediment along this stretch — rain sinks straight into the limestone and travels underground — so the sea stays glass-clear. You will occasionally hit a cold patch swimming: that is a freshwater spring coming up through the seabed.</p></div>
+
+  <div class="b b-l"><span class="lab">Local knowledge</span>
+  <p><strong>Water shoes.</strong> Pebble beaches are hard on bare feet, and there are sea urchins on the rockier entries. Every local family has plastic sandals. Buy a pair at the first supermarket you see and stop thinking about it.</p>
+  <p><strong>The Biokovo Skywalk</strong> is a glass horseshoe platform cantilevered over a 1,200 m drop, opened in 2020. Getting there means the Biokovo Nature Park road, which is narrow, single-track in sections, and operates a timed-entry system with a vehicle cap. <span class="verify">book ahead; check EV suitability of the climb</span> The road climbs over 1,200 m in about 20 km — it is a real drain on range, though you recover a lot coming back down.</p></div>
+
+  <div class="b b-h"><span class="lab">History</span>
+  <p><strong>Omiš</strong>, half an hour north where the Cetina river bursts out of a gorge, was a genuine pirate state. From the twelfth to the thirteenth century the Kačić clan ran fast, shallow-draft galleys called <em>sagittae</em> out of the river mouth and preyed on Venetian shipping — they beat off Venetian punitive fleets more than once and even took on a crusader convoy, which got them excommunicated. The gorge behind the town was the hideout: you cannot see into it from the sea. Venice eventually took the place in 1444 and the piracy stopped.</p></div>
+
+  <div class="b b-l"><span class="lab">Local knowledge</span>
+  <p>Three Dalmatian things worth eating here rather than later:</p>
+  <ul>
+    <li><strong>Peka</strong> — meat or octopus with potatoes cooked under a bell-shaped iron lid buried in embers, for three hours. Almost always has to be ordered a day in advance. Worth organising on your first evening for your second.</li>
+    <li><strong>Pašticada</strong> — beef larded, marinated in vinegar, then stewed slowly with prunes and <em>prošek</em> dessert wine, served with gnocchi. The great Dalmatian celebration dish.</li>
+    <li><strong>Soparnik</strong> — a thin chard pie baked under embers, from the Poljica region just north of here, and EU protected-designation. Poljica was an autonomous peasant republic that governed itself under its own statute from the thirteenth century until Napoleon abolished it in 1807; there is a persistent local claim that Thomas More knew of it and used it as a model for <em>Utopia</em>. Treat that as a proud local tradition rather than settled scholarship — but it is a very good story to have in the car.</li>
+  </ul></div>
+</section>
+
+<section id="s07" data-nav="07" data-label="Ston · Pelješac">
+  <p class="stopno"><span>07</span><span class="day">Day 6 · Thu 13 Aug</span><span>Pelješac · Ston · the Neum corridor</span></p>
+  <h2>Why Bosnia has twenty kilometres of coast</h2>
+  <p class="dek">The strangest border in Europe, and it is entirely Dubrovnik's fault.</p>
+
+  <div class="b b-h"><span class="lab">History</span>
+  <p>Bosnia and Herzegovina is effectively landlocked except for a 20 km strip of coast at <strong>Neum</strong>, which splits Croatia in two. It looks like a Yugoslav-era accident. It is not — it is a deliberate piece of Ragusan diplomacy from 1699.</p>
+  <p>The Republic of Ragusa (Dubrovnik) had spent centuries balancing between Venice and the Ottomans. At the Treaty of Karlowitz, with Venice advancing down the coast, Ragusa <em>gave away</em> the Neum strip and the land at Sutorina in the south to the Ottoman Empire — on purpose. The point was to make sure Ragusa never shared a land border with Venice again. Two buffer zones, deliberately created, so that any Venetian army marching on Dubrovnik would first have to invade the Ottoman Empire. It worked. And the border survived the Ottomans, Austria-Hungary, two Yugoslavias and the 1990s wars essentially unchanged. A 327-year-old diplomatic firewall is still on your satnav.</p></div>
+
+  <div class="b b-g"><span class="lab">On the ground</span>
+  <p>The <strong>Pelješac Bridge</strong>, opened in July 2022, is the modern answer: a 2,404 m cable-stayed bridge leaping the bay from the mainland to the Pelješac peninsula, letting you reach Dubrovnik entirely within Croatia and skip two border crossings. Take it. It is also a genuinely handsome piece of engineering and worth a look back at from the Pelješac side.</p></div>
+
+  <div class="b b-h"><span class="lab">History</span>
+  <p><strong>Ston</strong>, at the neck of the peninsula, has about five kilometres of defensive wall running up over the hills — one of the longest fortification systems in Europe, and the longest in Europe outside... well, it is the standard claim, and the walls are certainly extraordinary. Ragusa began them in 1333. They were not built to protect people. They were built to protect <strong>salt</strong>.</p>
+  <p>The <strong>Ston saltworks</strong> are among the oldest continuously operating in Europe, still worked by hand in shallow evaporation pans exactly as they were in the fourteenth century. Salt was the single most valuable commodity in the medieval Adriatic — it preserved fish and meat, which meant it fed armies and cities — and Ston salt at times generated a very large share of the Republic's revenue. Ragusa walled its salt pans the way a state walls a treasury, because that is what they were.</p></div>
+
+  <div class="b b-l"><span class="lab">Local knowledge</span>
+  <p><strong>Mali Ston oysters.</strong> The bay behind Ston has been farming the flat European oyster (<em>Ostrea edulis</em>) since Roman times. It works because the Neretva river's freshwater mixes with the sea here at just the right salinity. These are not the Pacific oysters you get everywhere — the native flat oyster is rarer, metallic, and much more interesting. Eaten at the quayside with lemon and a glass of Pošip.</p>
+  <p><strong>Pelješac wine.</strong> The peninsula grows <em>Plavac Mali</em>, a grape that DNA testing eventually revealed to be a cross of Crljenak Kaštelanski (which turns out to be Zinfandel/Primitivo) and Dobričić. Two appellations matter: <strong>Dingač</strong> — Croatia's first protected wine region, designated 1961 — and <strong>Postup</strong>. Both grow on absurdly steep south-facing slopes dropping straight to the sea, where the vines get sun three times over: direct, reflected off the water, and radiated back off the white rock. Until 1973 the grapes came off those slopes by donkey; then they blasted the <strong>Dingač tunnel</strong> through the ridge so tractors could get in. Look for it as you drive the peninsula.</p></div>
+</section>
+
+<section id="s08" data-nav="08" data-label="Dubrovnik">
+  <p class="stopno"><span>08</span><span class="day">Day 7 · Fri 14 Aug</span><span>Dubrovnik at dawn · Croatia</span></p>
+  <h2>Dubrovnik</h2>
+  <p class="dek">A city-state that survived 450 years by never once winning a war.</p>
+
+  <div class="pull">Non bene pro toto libertas venditur auro.<br>Liberty is not well sold for all the gold.
+    <span>Carved over the entrance to Fort Lovrijenac</span></div>
+
+  <div class="b b-h"><span class="lab">History</span>
+  <p>The <strong>Republic of Ragusa</strong> ran itself as an independent state from roughly 1358 to 1808, wedged between Venice, the Ottomans and Habsburg Hungary, with a population you could fit in a large football stadium. It survived by being useful to everyone and threatening to no one. From 1458 it paid an annual tribute to the Sultan — and in exchange got trading privileges across the entire Ottoman Balkans, which no Christian rival had. Ragusan merchants had colonies in Sofia, Belgrade and Constantinople. The tribute was not weakness; it was the business model.</p>
+  <p>The constitution was paranoid about tyranny in a way that is almost funny. The <strong>Rector</strong>, the head of state, served a term of <strong>one month</strong>. During it he had to live in the Rector's Palace and could barely leave. He was decorative — real power sat with the Great Council of nobles. No one man could accumulate anything.</p>
+  <p>Two more Ragusan firsts worth carrying with you:</p>
+  <ul>
+    <li><strong>Quarantine was invented here.</strong> In 1377 Ragusa ordered ships and caravans from plague areas to be isolated for thirty days on nearby islands before entering — <em>trentino</em>. It was later extended to forty days, <em>quarantena</em>. That is where the word comes from. The Lazareti complex just outside Ploče Gate is the surviving purpose-built quarantine station.</li>
+    <li><strong>The slave trade was abolished</strong> by the Republic in 1416, centuries ahead of its neighbours.</li>
+  </ul>
+  <p>The <strong>Franciscan monastery pharmacy</strong> off the Stradun has been operating since 1317 and is one of the oldest continuously working pharmacies in Europe. It still dispenses.</p></div>
+
+  <div class="b b-g"><span class="lab">On the ground</span>
+  <p><strong>The Stradun was a sea channel.</strong> There were originally two settlements — a Roman-refugee town on a rocky islet called Laus (which becomes <em>Ragusa</em>) and a Slavic settlement in the oak woods on the mainland shore (<em>dubrava</em> → <em>Dubrovnik</em>). The channel between them was filled in during the twelfth century. The main street is the old strait, which is why it is dead straight and why the city has two names.</p>
+  <p><strong>Why it all looks the same age.</strong> The great earthquake of 1667 killed several thousand people and flattened most of the city. What you walk through is the disciplined, uniform Baroque rebuild — the authorities imposed a standardised design on the whole main street. The Sponza Palace and the outer walls are among the few significant survivors of the older city.</p>
+  <p><strong>The roofs.</strong> Look at the tiles from the walls: a patchwork of faded terracotta and bright new orange. The bright ones are replacements from after the 1991–92 siege, when the JNA shelled the old town from Srđ and the sea. There is a map inside the Pile Gate showing every recorded shell strike. It is worth two minutes.</p></div>
+
+  <div class="b b-l"><span class="lab">Local knowledge</span>
+  <p><strong>The dawn plan is the right plan.</strong> The wall circuit is roughly 2 km, has almost no shade, and is walked in a compulsory anticlockwise direction — meaning if you get stuck behind a tour group you stay stuck. Cruise ship passengers arrive mid-morning. Being on the walls at opening, before the heat and before the ships, is the difference between one of the great city walks in Europe and a queue on a hot wall. <span class="verify">check current opening time</span></p>
+  <p><strong>Fort Lovrijenac</strong>, on its own rock outside the walls, is often included with the walls ticket and is far less crowded. It has the best view back at the city. It is also the Red Keep, if that matters to anyone in the car; the Jesuit Stairs were the walk of shame.</p>
+  <p><strong>Srđ</strong>, the mountain behind, has a cable car and a road. The fort on top — Fort Imperial — was built by Napoleon's occupying forces between 1806 and 1816, and in 1991 a small Croatian force held it against the JNA in a siege-within-a-siege. There is a Homeland War museum inside. Sunset from up there is the other great Dubrovnik view and almost nobody on a day trip does it.</p></div>
+</section>
+
+<section id="s09" data-nav="09" data-label="Kotor">
+  <p class="stopno"><span>09</span><span class="day">Days 7–9 · 14–17 Aug</span><span>Bay of Kotor · 3 nights, Dobrota</span></p>
+  <h2>The Boka</h2>
+  <p class="dek">Not a fjord. A drowned river canyon, with a Venetian city at the bottom of it.</p>
+
+  <div class="b b-g"><span class="lab">On the ground</span>
+  <p>You will read everywhere that the Bay of Kotor is "the southernmost fjord in Europe." It is not a fjord and never was. A fjord is glacially carved. The Boka is a <strong>ria</strong> — a river canyon cut by water, then drowned when sea levels rose after the last ice age. The river that carved it flowed roughly where the bay now bends. Knowing this actually improves the view: you are looking at a canyon with the sea poured into it.</p>
+  <p>The bay is nearly closed off at the <strong>Verige strait</strong>, only a few hundred metres wide, which is why it was such a coveted anchorage — a fleet inside it is invisible and unreachable. The <strong>Kamenari–Lepetane ferry</strong> crosses there in about ten minutes and cuts a substantial loop off the drive around the inner bay. Runs frequently, pay on board. <span class="verify">confirm it takes EVs without restriction</span></p></div>
+
+  <div class="b b-h"><span class="lab">History</span>
+  <p>Kotor's layers, in order: Roman <em>Acruvium</em>; Byzantine; then part of the Serbian Nemanjić kingdom, which is when it grew rich on trade with the Balkan interior; then <strong>Venetian from 1420 to 1797</strong>, as <em>Cattaro</em>, for 377 years — which is why everything you are looking at is Venetian. Then Habsburg, briefly Napoleonic, Austro-Hungarian, Italian-occupied in the Second World War, then Yugoslav.</p>
+  <p><strong>St Tryphon's Cathedral</strong> was consecrated in 1166 and is one of the oldest cathedrals in the region. The relics arrived in 809, when a Kotor merchant bought the saint's remains from Venetian traders — the same acquisitive relic economy that got Venice the body of St Mark. Tryphon has been the city's patron ever since.</p>
+  <p>The <strong>Boka Navy</strong> (<em>Bokeljska mornarica</em>) traces itself to that same year, 809, which would make it one of the oldest continuously existing maritime guilds in the world. It survives today as a ceremonial fraternity with its own uniform and its own circular sword dance, performed on the feast of St Tryphon in February.</p>
+  <p>In 1979 an earthquake devastated the whole Montenegrin coast and did enormous damage to Kotor. The restoration that followed is a large part of why the town is a UNESCO site.</p></div>
+
+  <div class="b b-g"><span class="lab">On the ground</span>
+  <p><strong>The fortress walls.</strong> The fortifications run 4.5 km and climb the cliff behind the town to <strong>San Giovanni (Sveti Ivan) fortress</strong> at about 260 m, up roughly 1,350 steps. It is a hard, exposed, hot climb and the reason to do it at first light or in the last hour of daylight, with water. The payoff — the whole bay laid out beneath you, the town a stone toy below — is the single best thing in Montenegro.</p>
+  <p><strong>The alternative that locals use:</strong> the <em>Ladder of Kotor</em> (Kotorske Skale / the Kotor Serpentine), an old caravan trail of seventy-odd switchbacks that climbed from the bay up to the Krstac pass, long before there was a road. It is the historic route to Cetinje and it is free. There is also long-standing local knowledge about a hole in the wall near the Church of Our Lady of Remedy that lets you join the fortress path without a ticket. <span class="verify">access has been fenced and reopened at various times — check locally, don't plan on it</span></p>
+  <p><strong>The cats.</strong> Kotor is full of them, deliberately. The story is that sailors valued cats on ships and left them here; the town adopted them, there is a small cat museum, and a great deal of merchandise. They are healthy, fed by locals, and they own the place.</p></div>
+
+  <div class="b b-l"><span class="lab">Local knowledge</span>
+  <p>Montenegrin food is where the coast and the mountains meet on one plate. Look for <strong>njeguški pršut</strong> (smoked ham from the village of Njeguši, up on Lovćen — see below), <strong>kajmak</strong> (a clotted, salted dairy spread that goes on everything), <strong>crni rižoto</strong> (cuttlefish-ink risotto), and anything <em>na buzaru</em> — shellfish in white wine, garlic and breadcrumbs.</p>
+  <p>The wine to drink is <strong>Vranac</strong> (red, dark, tannic — the name means "black stallion") and <strong>Krstač</strong> (white). Most of it comes from Plantaže near Podgorica, whose main cellar, <strong>Šipčanik</strong>, is a converted underground aircraft hangar built to hide Yugoslav air force jets. It holds a couple of million litres in a tunnel designed to survive an air strike.</p></div>
+</section>
+
+<section id="s10" data-nav="10" data-label="Perast">
+  <p class="stopno"><span>10</span><span class="day">Day 9 · Sun 16 Aug</span><span>Perast · Risan · Herceg Novi</span></p>
+  <h2>Perast</h2>
+  <p class="dek">A village of four hundred people that trained the Russian navy and built its own island.</p>
+
+  <div class="b b-h"><span class="lab">History</span>
+  <p>Perast has sixteen Baroque palaces and seventeen churches for a population that has never been large. It got rich as Venice's most reliable local ally — Perast held the honour of guarding the Venetian war standard, and its captains were among the best in the Adriatic.</p>
+  <p>In 1698 <strong>Peter the Great sent Russian noblemen to Perast to learn seamanship</strong>, at the nautical school of Captain Marko Martinović. Russia had almost no maritime tradition; Peter was building one from nothing, and he sent his cadets to a village in the Bay of Kotor. There is a plaque. It is a genuinely astonishing footnote for a place this size.</p></div>
+
+  <div class="b b-h"><span class="lab">History</span>
+  <p><strong>Our Lady of the Rocks</strong> (<em>Gospa od Škrpjela</em>) is an artificial island, and its construction method is the best story in the bay. In 1452, sailors are said to have found an icon of the Madonna on a rock barely breaking the surface. They began a tradition: every time they returned safely from a voyage, they dropped a stone on the reef. They also deliberately sank captured and worn-out ships loaded with rocks around it. Over centuries the reef became an island, and they built a church on it.</p>
+  <p>The tradition is not historical — it is <em>current</em>. Every 22 July, at sunset, the <strong>Fašinada</strong> takes place: a procession of boats rows out with stones and drops them around the island, exactly as it has been done for five hundred years, to keep widening it. It is men only, rowed, and accompanied by singing. You will miss it by weeks, but the island you are standing on is still growing.</p>
+  <p>Inside, look for the silver votive plaques left by sailors and the embroidered icon made by <strong>Jacinta Kunić-Mijović</strong>, who worked on it for twenty-five years while waiting for a sailor who never came back, using her own hair in the thread. You can see the hair change colour from dark to grey across the piece.</p></div>
+
+  <div class="b b-h"><span class="lab">History</span>
+  <p><strong>Risan</strong>, five minutes further round the bay, is the oldest settlement in the Boka and almost nobody stops. It was the Illyrian capital, and it is where <strong>Queen Teuta</strong> took refuge around 229 BC after the Romans came for her — she had been licensing piracy against Roman shipping, and when Rome sent envoys to complain she had one of them killed, which triggered the First Illyrian War and Rome's first serious involvement on this coast. Everything Roman, Venetian and Ottoman that follows on this trip starts, in a sense, with that.</p>
+  <p>What survives is better than the story deserves: a set of <strong>Roman floor mosaics</strong> from a 2nd-century villa, including one of <strong>Hypnos</strong>, god of sleep, reclining — believed to be the only known mosaic depiction of him in situ anywhere. It is under a modest shelter in an unremarkable yard, costs very little, and takes fifteen minutes.</p></div>
+
+  <div class="b b-h"><span class="lab">History</span>
+  <p><strong>Herceg Novi</strong>, at the mouth of the bay, is the odd one out on this coast: it was founded in 1382 by <strong>Tvrtko I</strong>, King of Bosnia — not by Rome, not by Venice. He wanted a port of his own and built one. It was then taken by the Ottomans, briefly by Spain, by Venice, by Russia, by France and by Austria, and each left a fort. <strong>Kanli Kula</strong> — Ottoman, and the name means Bloody Tower for what went on in it — is now an open-air theatre. <strong>Forte Mare</strong> sits on the water; <strong>Španjola</strong> is on the hill above, from the Spanish year.</p>
+  <p>The town is built up a slope and is locally known as the city of a thousand steps, which is not a figure of speech. It is also the botanical one — nineteenth-century sea captains brought back plants from everywhere they sailed, and the gardens are full of things that have no business being at this latitude.</p></div>
+
+  <div class="b b-g"><span class="lab">On the ground</span>
+  <p>The neighbouring island, <strong>Sveti Đorđe</strong>, is natural — a real islet with a Benedictine abbey and a cypress cemetery. It is closed to visitors. It is the one in every photograph, because it is the prettier of the two.</p>
+  <p>Perast has no through-traffic in the centre; you park at either end and walk. Small boats run out to the island constantly from the waterfront, take a few minutes, and cost very little.</p></div>
+</section>
+
+<section id="s11" data-nav="11" data-label="Lovćen">
+  <p class="stopno"><span>11</span><span class="day">Day 8 · Sat 15 Aug</span><span>Lovćen · Njeguši · Cetinje</span></p>
+  <h2>Twenty-five hairpins to a poet's tomb</h2>
+  <p class="dek">The old road out of Kotor, and the mountain that gave Montenegro its name and its stubbornness.</p>
+
+  <div class="b b-g"><span class="lab">On the ground</span>
+  <p>The <strong>old Kotor–Cetinje road</strong> (the P1, the <em>Kotor Serpentine</em>) climbs the wall behind the bay in twenty-five numbered hairpins built by the Austro-Hungarians. It is narrow, largely without barriers, and used by tour buses coming the other way. It also gives the single most famous view in Montenegro, from the bend where the road doubles back in an "M" shape above the bay.</p>
+  <p>Drive it <strong>uphill from Kotor</strong> rather than down: on the inside of the hairpins you get the wall rather than the drop, and oncoming buses have to yield to the climbing vehicle. For an EV, the descent afterwards gives back a serious amount of the climb.</p></div>
+
+  <div class="b b-l"><span class="lab">Local knowledge</span>
+  <p><strong>Njeguši</strong>, at the top, is the ancestral village of the Petrović-Njegoš dynasty and the source of <strong>njeguški pršut</strong> — ham smoked over beech in the specific microclimate where cold mountain air meets sea air coming up the slope. It is served with the local hard cheese in oil and a shot of rakija at the roadside houses on the pass. This is the single most Montenegrin thing you can eat, and you are eating it at the source.</p></div>
+
+  <div class="b b-h"><span class="lab">History</span>
+  <p><strong>Petar II Petrović-Njegoš</strong> (1813–1851) is the figure to know. He was simultaneously Montenegro's prince and its Orthodox bishop — a <em>vladika</em>, ruling a theocratic principality where power passed uncle to nephew, because bishops could not have sons. He was reportedly close to two metres tall, he wrote <em>The Mountain Wreath</em>, still the central text of Montenegrin and Serbian literature, and he dragged a clan-based mountain society towards being a state.</p>
+  <p>His <strong>mausoleum</strong> sits on Jezerski Vrh at 1,657 m, reached by 461 steps through a tunnel. It was designed by Ivan Meštrović, the great Croatian sculptor, and it replaced Njegoš's original small chapel — a decision that was politically contentious at the time and still is in some quarters. From the terrace behind it you can see most of Montenegro and, on a clear day, into Albania, Croatia and Bosnia.</p>
+  <p><strong>Cetinje</strong>, below, was the old royal capital: a small town of low buildings that nonetheless contains the former embassies of Russia, Britain, France, Italy and Austria-Hungary, all built when the Great Powers took Montenegro seriously as a Balkan piece on the board. <strong>Cetinje Monastery</strong> holds two of Orthodoxy's most significant relics — a fragment said to be of the True Cross, and the mummified right hand of St John the Baptist, which travelled from Constantinople via the Knights of Malta and the Russian imperial family before ending up here.</p></div>
+
+  <div class="b b-h"><span class="lab">History</span>
+  <p>Why "Montenegro" — <em>Crna Gora</em>, black mountain — matters: this is one of the few parts of the Balkans the Ottomans never fully subdued. The terrain you are driving through is the reason. Clan warfare, blood feud and near-permanent low-level resistance from these mountains gave Montenegro a self-image as the Balkans' unconquered redoubt, and Njegoš is the man who wrote that self-image into literature.</p></div>
+</section>
+
+<section id="s12" data-nav="12" data-label="Sveti Stefan">
+  <p class="stopno"><span>12</span><span class="day">Day 8 · Sat 15 Aug</span><span>Sveti Stefan · the Budva riviera</span></p>
+  <h2>Sveti Stefan</h2>
+  <p class="dek">A fishing village that became a communist state hotel and then a five-star resort. You are here for the photograph.</p>
+
+  <div class="b b-h"><span class="lab">History</span>
+  <p>The islet was fortified in the fifteenth century by local families as a refuge from Ottoman raids — the tradition is that it was paid for with loot taken from a Turkish ship. It stayed a working fishing village of a few dozen houses into the twentieth century.</p>
+  <p>Then, in the 1950s, Yugoslavia did something unusual: it <strong>moved the residents out and turned the entire village into a single hotel</strong> — a "town-hotel," where each old stone house became a suite. It became the glamour address of the socialist Adriatic, and the guest list ran to Sophia Loren, Elizabeth Taylor, Kirk Douglas and Princess Margaret. The idea of a state-run luxury resort inside a socialist country is one of the better illustrations of how differently Yugoslavia ran things.</p></div>
+
+  <div class="b b-f"><span class="lab">Heads up</span>
+  <p>It is now leased as a private resort and <strong>the islet is not open to walk-in visitors</strong>. What everyone actually does — and what is genuinely worth doing — is view it from the mainland: the roadside viewpoints on the coastal highway above, the <strong>Miločer</strong> park path, or the public half of the beach on the causeway. That is a free, ten-minute, excellent stop. Going <em>on</em> the island is a resort booking in an entirely different price bracket. Worth being clear which one you mean before you set off.</p>
+  <p>Note also the resort's operating status has changed more than once in recent years. <span class="verify">check what is actually open</span></p></div>
+
+  <div class="b b-g"><span class="lab">On the ground</span>
+  <p><strong>Budva</strong> is next door and you have already decided against it, correctly for your purposes — it is the loudest, most developed stretch of the Montenegrin coast. Worth knowing anyway that Budva's old town is genuinely ancient (Greek and Illyrian origins, Roman, then Venetian) and was almost entirely rebuilt after the 1979 earthquake. If you end up passing through, the walled core takes twenty minutes and the rest can be ignored.</p></div>
+</section>
+
+<section id="s13" data-nav="13" data-label="Ostrog · Nikšić">
+  <p class="stopno"><span>13</span><span class="day">Day 10 · Mon 17 Aug</span><span>Kotor → Žabljak · ~3 h</span></p>
+  <h2>Into the mountains</h2>
+  <p class="dek">A monastery glued to a cliff, a brewery from 1896, and the last reliable charging for a while.</p>
+
+  <div class="b b-h"><span class="lab">History</span>
+  <p><strong>Ostrog Monastery</strong> is built into a vertical white cliff face — not against it, <em>into</em> it, with the church façades filling natural caves so the rock forms the walls. It was founded in the seventeenth century by Vasilije, Metropolitan of Herzegovina, who fled here from Ottoman pressure; he was canonised as St Basil of Ostrog and his relics are in the upper monastery.</p>
+  <p>What makes Ostrog unusual is who visits. It is the most important pilgrimage site in Montenegro for Orthodox Christians — but it is also visited by Catholics and by Muslims, who come to ask St Basil for healing. In a region defined by religious division, it is one of the few places where the division genuinely thins out. Some pilgrims walk the last stretch barefoot.</p>
+  <p>Dress modestly — covered shoulders and knees — and expect a crowd and a narrow, exposed access road up to the upper level.</p></div>
+
+  <div class="b b-g"><span class="lab">On the ground</span>
+  <p><strong>Nikšić</strong> is Montenegro's second city, an industrial town with a steelworks and a brewery. <strong>Nikšićko pivo</strong>, brewed here since 1896, is the national beer and the standard order everywhere in the country. Nikšić is also a practical waypoint: it is the last place of real size before the road quality and the charging network both thin out.</p></div>
+
+  <div class="b b-f"><span class="lab">Heads up</span>
+  <p>This is the point where the EV plan stops being theoretical. From here to Sarajevo you are working with what is actually installed, not what a route planner promises. Leave Nikšić with a genuine buffer, not a calculated one.</p></div>
+</section>
+
+<section id="s14" data-nav="14" data-label="Durmitor">
+  <p class="stopno"><span>14</span><span class="day">Days 10–12 · 17–20 Aug</span><span>Durmitor · Žabljak · 3 nights</span></p>
+  <h2>Durmitor and the Tara canyon</h2>
+  <p class="dek">Forty-eight peaks over two thousand metres, eighteen glacial lakes, and a bridge the engineer blew up himself.</p>
+
+  <div class="b b-g"><span class="lab">On the ground</span>
+  <p><strong>Durmitor</strong> is a limestone massif with forty-eight peaks above 2,000 m, topped by <strong>Bobotov Kuk</strong> at 2,523 m. It is a UNESCO World Heritage site and the geology is textbook glaciated karst: the eighteen lakes scattered through it are glacial, and Montenegrins call them <em>gorske oči</em> — mountain eyes.</p>
+  <p><strong>Žabljak</strong>, the base town at 1,456 m, is the highest town in the Balkans. It is cold at night even in August — genuinely, pack a layer.</p>
+  <ul>
+    <li><strong>Black Lake</strong> (<em>Crno jezero</em>) — the big one, a 20-minute walk from town, with an easy, flat, beautiful loop of about 3.5 km around it. Two lakes joined by a channel that dries in late summer, at which point they separate. The Meded ("bear") peak stands directly over it.</li>
+    <li><strong>Ćurevac</strong> — a viewpoint on the rim looking straight down into the Tara canyon.</li>
+    <li><strong>Sedlo Pass</strong> (1,907 m) — the road across the western side of the massif, and one of the great drives in the country: bare limestone, no trees, sheer walls.</li>
+  </ul></div>
+
+  <div class="b b-h"><span class="lab">History</span>
+  <p>The <strong>Đurđevića Tara Bridge</strong> — five arches, 365 m long, 172 m above the river — was completed in 1940 after four years' work. In 1942, with Italian forces using it, the Partisans decided it had to go. The man who blew it up was <strong>Lazar Jauković</strong>, one of the engineers who had built it. He destroyed his own bridge, was captured by the Italians, and was executed on the bridge he had built and broken. There is a memorial to him at the eastern end. Very few pieces of infrastructure carry a story that complete.</p></div>
+
+  <div class="b b-g"><span class="lab">On the ground</span>
+  <p><strong>The Tara canyon</strong> is around 1,300 m deep and 80 km long. It is universally described as the deepest river canyon in Europe and the second deepest in the world after the Grand Canyon — the second claim depends on how you measure, and other canyons have competing cases, but the "deepest in Europe" part is solid.</p>
+  <p>The Tara is called <em>Suza Evrope</em>, the tear of Europe, for the clarity of the water, and stretches of it are drinkable straight from the river. <strong>Rafting</strong> runs out of <strong>Šćepan Polje</strong> at the confluence with the Piva, right on the Bosnian border — the classic half-day trip goes through the lower canyon. August is low water, so it is a scenic float with some lively sections rather than serious whitewater. Wetsuit provided; the water is properly cold whatever the air temperature.</p></div>
+
+  <div class="b b-f"><span class="lab">Heads up</span>
+  <p>Two real ones. First: the Đurđevića Tara bridge detour from Žabljak is around <strong>100 km of added distance</strong>, not the 25 km that circulated early in your planning. Budget for it or skip it. Second: mountain roads here are narrow, unlit, and have livestock on them. Do not plan to arrive after dark.</p></div>
+</section>
+
+<section id="s15" data-nav="15" data-label="Sutjeska">
+  <p class="stopno"><span>15</span><span class="day">Only if Option C</span><span>Šćepan Polje → Tjentište → Foča</span></p>
+  <h2>Sutjeska</h2>
+  <p class="dek">One of the last primeval forests in Europe, and the battle that made Tito.</p>
+  <div class="b b-f"><span class="lab">Heads up</span>
+  <p><strong>This section only happens if you pick Option C on Day 13.</strong> Options A and B both route Nikšić or Podgorica → Trebinje → Mostar and skip Sutjeska entirely. If you take C, this becomes an overnight stop rather than a drive-through, and the following two sections swap order — Sarajevo comes before Mostar, not after.</p></div>
+
+  <div class="b b-h"><span class="lab">History</span>
+  <p>In May and June 1943 the Germans launched <em>Fall Schwarz</em> — Case Black — to destroy the Partisan movement once and for all. Roughly 120,000 German, Italian, Croatian and Bulgarian troops encircled about 22,000 Partisans, including 4,000 wounded and typhus cases, in these mountains. The Partisans broke out across the Sutjeska river valley in early June. Around a third of them died. Tito himself was wounded by a bomb blast; <strong>Sava Kovačević</strong>, one of the great Partisan commanders, was killed leading the breakout.</p>
+  <p>Militarily it was a defeat with catastrophic losses. Politically it was the making of Yugoslavia. The Partisans had survived a full German encirclement; within months the Allies switched their support from the royalist Chetniks to Tito, and the postwar state was effectively decided here. Sutjeska became the founding myth — taught in every school, filmed in 1973 with Richard Burton playing Tito.</p>
+  <p>The monument at <strong>Tjentište</strong> — two enormous curved concrete wings splitting a hillside, by the sculptor Miodrag Živković, unveiled 1971 — is the most famous of the Yugoslav <em>spomeniks</em>. These abstract, almost science-fictional war memorials were commissioned across Yugoslavia precisely <em>because</em> they were abstract: no ethnic symbolism, no Orthodox or Catholic or Islamic iconography, nothing that belonged to one republic. A shared modernist language for a shared war. Many were vandalised or neglected after 1991. This one is maintained, and the memorial house behind it has frescoes of the battle.</p></div>
+
+  <div class="b b-g"><span class="lab">On the ground</span>
+  <p><strong>Sutjeska</strong> is Bosnia's oldest national park, established 1962. Within it, the <strong>Perućica</strong> reserve is one of the last two remaining primeval forests in Europe — around 1,400 hectares that have never been logged, with beech and fir over fifty metres tall and some trees more than three hundred years old. The <strong>Skakavac</strong> waterfall drops roughly 75 m inside it. <strong>Entry requires a licensed guide</strong> and is arranged through the park. <span class="verify">book at the park office; do not plan on walking in</span></p>
+  <p><strong>Maglić</strong>, 2,386 m, on the Montenegrin border, is Bosnia's highest peak. You are also crossing into <strong>Republika Srpska</strong> here — expect Cyrillic signage from Foča onwards.</p></div>
+
+  <div class="b b-f"><span class="lab">Heads up</span>
+  <p>This valley is the thinnest part of the whole trip for charging, phone signal and fuel. It is also spectacularly beautiful. Both of those are because nobody lives here. Arrive with charge and downloaded maps.</p></div>
+</section>
+
+<section id="s16" data-nav="16" data-label="Mostar">
+  <p class="stopno"><span>16</span><span class="day">Day 13 · Thu 20 Aug</span><span>Mostar · Blagaj · Kravica · Počitelj</span></p>
+  <h2>Mostar</h2>
+  <p class="dek">A bridge named after the men who guarded it, destroyed in 1993, and rebuilt out of the same quarry.</p>
+
+  <div class="b b-h"><span class="lab">History</span>
+  <p>The city is named for its bridge-keepers — <em>mostari</em>. The <strong>Stari Most</strong> was completed in <strong>1566</strong> for Suleiman the Magnificent by <strong>Mimar Hayruddin</strong>, a pupil of the great Ottoman architect Sinan. A single stone arch of 28.7 m, at the time among the widest in the world, springing between two towers with no central support. The legend — repeated by everyone in Mostar — is that Hayruddin was so sure it would collapse when the scaffolding came out that he arranged his own funeral and left town. It stood for 427 years.</p>
+  <p>On <strong>9 November 1993</strong> it was shelled into the river by Croat HVO artillery during the Croat–Bosniak phase of the war. It had no military value. Its destruction was the point: it was the physical object that proved the two communities had lived together.</p>
+  <p>The rebuild, completed in <strong>2004</strong>, was done deliberately the hard way. Stone came from the same <em>tenelija</em> limestone quarry. Sixteenth-century techniques and iron cramps set in lead were used. Divers recovered original blocks from the Neretva to be reincorporated. It became a UNESCO World Heritage site in 2005. Look for the stone on the bridge inscribed <strong>"Don't forget '93."</strong></p></div>
+
+  <div class="b b-l"><span class="lab">Local knowledge</span>
+  <p><strong>The divers.</strong> Jumping off the bridge is a rite of passage that predates the tourists by centuries — the Mostar diving club claims a continuous tradition from 1664, and the annual competition each July is a serious event, now shadowed by a Red Bull cliff-diving stop. It is about 21 metres to the water and the Neretva stays brutally cold all year because it comes out of the mountains. Young men will collect money from the crowd on the bridge and then jump; if nobody pays, nobody jumps. Do not attempt it — people are injured and killed doing this, and the local divers train for years.</p></div>
+
+  <div class="b b-g"><span class="lab">On the ground</span>
+  <p><strong>The city is still divided in practice.</strong> The Bulevar and Aleksa Šantić street were the front line; today the east bank is largely Bosniak and the west largely Croat, and the city has run parallel institutions — separate utilities, separate school curricula in the same buildings, for years separate bus stations. The ruined tower block on the Bulevar, the former Ljubljanska Banka, is known as the <strong>Sniper Tower</strong>; it is a shell covered in graffiti and it is not the tourist part of town, but it is the honest part. Walking the Bulevar for ten minutes tells you more than the bridge does.</p>
+  <p><strong>The classic view of the bridge</strong> is not from the bridge. Climb the minaret of the <strong>Koski Mehmed Pasha Mosque</strong> (narrow spiral stair, small fee) or go to its courtyard terrace. Downstream, the <strong>Kriva Ćuprija</strong> — the Crooked Bridge, 1558 — is a small humpbacked arch over a side stream that is generally understood to have been the trial run for the Stari Most.</p></div>
+
+  <div class="b b-h"><span class="lab">History</span>
+  <p><strong>Blagaj Tekija</strong>, ten minutes out of town, is a Dervish lodge built around 1520 at the foot of a 200-metre cliff, directly at the source of the <strong>Buna</strong> — one of the largest karst springs in Europe, pouring roughly 30 cubic metres a second straight out of the rock face. It was built for a Sufi order and is still in religious use. Shoes off, modest dress, and expect it to be busy. The combination — cliff, cave mouth, river being born, white Ottoman house — is the single most photographed thing in Herzegovina and deserves to be.</p>
+  <p><strong>Počitelj</strong>, on the road south, is a fortified Ottoman hill town stacked up a limestone amphitheatre above the Neretva: the Šišman Ibrahim Pasha mosque (1563), a clock tower, a fortress, and the Gavrankapetanović house. It has hosted an artists' colony since 1964. Almost everything you see was damaged or destroyed in 1993 and has been rebuilt. Pomegranates and figs grow between the houses; people sell them at the bottom of the steps.</p></div>
+
+  <div class="b b-g"><span class="lab">On the ground</span>
+  <p><strong>Kravica</strong> is back on your list, and it is the one place on this leg where timing is everything. It is not a single fall but a wide amphitheatre of tufa cascades on the Trebižat, roughly 25 m high and 100 m across, with a pool you can swim in. Tufa is the point: the rock is still being <em>made</em>, precipitated out of calcium-saturated water onto moss and plant matter, so the falls are slowly building outward. It is the same process that formed Plitvice — the park you cut. In a sense you are getting the geology anyway, in a warmer place, with swimming.</p>
+  <p>In August it is heaving by mid-morning and there is a shuttle or a steep walk down from the car park. Go at opening or do not go. It pairs naturally with Počitelj in one loop south of Mostar.</p></div>
+
+  <div class="b b-l"><span class="lab">Local knowledge</span>
+  <p><strong>Herzegovinian wine is genuinely good and almost unknown outside the region.</strong> Two indigenous grapes: <strong>Žilavka</strong> (white, mineral, from the karst around Mostar and Čitluk) and <strong>Blatina</strong> (red). Blatina has a botanical oddity — it is functionally female, meaning its flowers cannot self-pollinate, so growers must interplant a pollinator variety. Every Blatina vineyard is therefore a mixed vineyard by necessity.</p></div>
+</section>
+
+<section id="s17" data-nav="17" data-label="Neretva corridor">
+  <p class="stopno"><span>17</span><span class="day">Day 14 · Fri 21 Aug</span><span>Jablanica · Konjic · the M17</span></p>
+  <h2>Up the Neretva</h2>
+  <p class="dek">A film set that is also a war memorial, and Tito's nuclear bunker.</p>
+
+  <div class="b b-h"><span class="lab">History</span>
+  <p>The road north follows the Neretva into its gorge, and at <strong>Jablanica</strong> you pass a broken railway bridge lying in the river. It commemorates the <strong>Battle of the Neretva</strong> (<em>Fall Weiss</em>, January–March 1943), the campaign immediately before Sutjeska, in which the Partisans — burdened with thousands of wounded and typhus patients — destroyed the bridge to convince the Germans they were retreating, then repaired it enough to cross and escape south.</p>
+  <p>Here is the twist: <strong>the wreck in the river is not the original.</strong> The original was cleared after the war. In 1968 the makers of <em>Battle of Neretva</em> — a Yugoslav epic with Yul Brynner, Orson Welles and Sergei Bondarchuk, one of the most expensive films ever made in the country, with a poster designed by <strong>Pablo Picasso</strong> — rebuilt the bridge specifically in order to blow it up on camera. That wreck was then left in place as the memorial. The museum on the bank tells the story of the battle; the object outside is a film prop that has become the real monument.</p></div>
+
+  <div class="b b-l"><span class="lab">Local knowledge</span>
+  <p><strong>Jablanica lamb.</strong> This stretch of the M17 is lined with restaurants spit-roasting whole lambs over open fire, and it is regionally famous — Bosnians detour for it. You will smell it before you see it. Sold by weight, served with somun bread, raw onion and not much else.</p></div>
+
+  <div class="b b-h"><span class="lab">History</span>
+  <p><strong>Konjic</strong> has an Ottoman stone bridge from 1682 and, six kilometres outside town under a hillside, one of the great secrets of the Cold War: <strong>ARK D-0</strong>, Tito's atomic command bunker. Built between 1953 and 1979 at a reported cost in the billions, designed to hold the president and around 350 staff for six months after a nuclear strike, it was among the most closely held secrets in Yugoslavia — even the workers who built it did not know what it was for. When the country collapsed, the officer ordered to destroy it declined to do so.</p>
+  <p>It has since been used as a venue for a contemporary art biennial, with installations left in the corridors — the effect of walking through a 1970s command centre full of conceptual art is unlike anything else in the region. Visits are by guided tour and generally need booking in advance. <span class="verify">book ahead if you want to go in</span></p>
+  <p>Konjic is also known for its woodcarving, which is on UNESCO's intangible cultural heritage list — a distinctive geometric style carried by a handful of local workshops for over a century.</p></div>
+</section>
+
+<section id="s18" data-nav="18" data-label="Sarajevo">
+  <p class="stopno"><span>18</span><span class="day">Day 14 · Fri 21 Aug</span><span>Sarajevo · one night only</span></p>
+  <h2>Sarajevo</h2>
+  <p class="dek">Where the twentieth century started, and very nearly where it ended.</p>
+
+  <div class="b b-h"><span class="lab">History</span>
+  <p>Sarajevo was founded as an Ottoman city in the 1460s by <strong>Isa-beg Ishaković</strong>, who endowed a mosque, a covered market, a bathhouse and a caravanserai — the standard package for creating a city from nothing. The name comes from <em>saray</em>, palace. In the 1530s <strong>Gazi Husrev-beg</strong> endowed the great mosque, a madrasa, a library and the <em>bezistan</em> covered market that still trades. By the sixteenth century it was one of the largest cities in the Balkans, second only to Istanbul in the European Ottoman lands.</p>
+  <p>In 1878 the Austro-Hungarians took Bosnia, and they built a European capital directly onto the Ottoman one. You can stand on the exact seam. On <strong>Ferhadija street</strong> there is a marker in the pavement reading <strong>"Sarajevo, Meeting of Cultures"</strong>: turn one way and you are in an Ottoman bazaar of low wooden shopfronts and copper workshops; turn the other and you are on a Habsburg boulevard of stucco apartment blocks. It is two hundred metres from the fifteenth century to the nineteenth.</p></div>
+
+  <div class="b b-l"><span class="lab">Local knowledge</span>
+  <p>Within a few hundred metres of the old town you can stand at a <strong>mosque, an Orthodox cathedral, a Catholic cathedral and a synagogue</strong>. This is why Sarajevo is called the Jerusalem of Europe, and it is not a tourist-board invention — Sephardic Jews expelled from Spain in 1492 were settled here by the Ottomans and the community was substantial until 1941.</p>
+  <p>The <strong>Sarajevo Haggadah</strong> — an illuminated Hebrew manuscript made in Barcelona around 1350, which travelled with its owners through the expulsion and eventually to Bosnia — is in the National Museum. It has been saved twice: in 1942 by the museum's curator <strong>Derviš Korkut</strong>, a Muslim, who smuggled it out under his coat while a Nazi general was in the building; and again during the siege of the 1990s. Korkut and his wife also hid a young Jewish woman in their home. He is honoured at Yad Vashem.</p></div>
+
+  <div class="pull">The motorcade took a wrong turn. The driver stopped to reverse. Gavrilo Princip was standing on that corner.
+    <span>28 June 1914 · the Latin Bridge</span></div>
+
+  <div class="b b-h"><span class="lab">History</span>
+  <p>Franz Ferdinand and Sophie had already survived one attempt that morning — a bomb thrown at the car, which bounced off and wounded people behind. The visit continued. Later, going to see the wounded in hospital, the motorcade turned into Franz Joseph Street by mistake; told of the error, the driver stopped to reverse, directly in front of a delicatessen where one of the failed conspirators, <strong>Gavrilo Princip</strong>, happened to be standing. He fired twice. The chain of alliances did the rest.</p>
+  <p>The corner is at the north end of the <strong>Latin Bridge</strong>, with a small museum in the building. It is an ordinary street corner. That is the striking part.</p></div>
+
+  <div class="b b-h"><span class="lab">History</span>
+  <p><strong>The siege lasted 1,425 days</strong> — 5 April 1992 to 29 February 1996 — the longest siege of a capital city in modern warfare, longer than Leningrad. Around 11,500 people were killed, including over 1,500 children. The city was surrounded on the hills you can see from every street, with no electricity, no running water and no way in or out.</p>
+  <p>Three places tell it:</p>
+  <ul>
+    <li><strong>The Tunnel of Hope</strong> (<em>Tunel spasa</em>) at Butmir — an 800-metre tunnel dug by hand in four months under the airport runway, the city's only link to the outside world. Food, weapons, fuel and people went through a metre-high shaft in the dark. A 25-metre section is preserved, with the house it emerged into, now a museum. It is the essential visit.</li>
+    <li><strong>Sarajevo Roses</strong> — mortar craters in the pavement where people died, filled with red resin. They are scattered across the city and unmarked. Once you know what they are you cannot stop seeing them.</li>
+    <li><strong>Vijećnica</strong>, the City Hall — an extraordinary Moorish-revival building from 1896 that served as the National Library. On the night of 25–26 August 1992 it was hit by incendiary shells and burned; roughly two million books and irreplaceable Ottoman-era manuscripts were destroyed. Librarians and citizens formed a human chain under sniper fire to save what they could. It reopened, restored, in 2014.</li>
+  </ul>
+  <p>Also: the yellow <strong>Holiday Inn</strong>, built for the <strong>1984 Winter Olympics</strong> and home to the international press corps throughout the siege, stands on the road once known as <strong>Sniper Alley</strong>. The Olympic bobsled run on <strong>Trebević</strong> is now a graffiti-covered concrete snake you can walk down through the forest, reachable by the cable car that reopened in 2018. Twelve years separate the Olympic torch from the siege lines, on the same hillsides.</p></div>
+
+  <div class="b b-l"><span class="lab">Local knowledge</span>
+  <p><strong>Ćevapi in Sarajevo</strong> are their own thing: small beef-and-lamb minced rolls, ordered in fives or tens, served inside a warm <em>somun</em> flatbread with raw onion and often kajmak. Baščaršija has several long-established places and locals have violent opinions about which. Any of them will be good.</p>
+  <p><strong>Sarajevsko pivo</strong> has been brewed since 1864, and the brewery matters for a reason that has nothing to do with beer: it sits over a natural spring, and during the siege — when the water supply was cut — it became one of the city's main water points. People queued there under sniper and mortar fire to fill containers. Some were killed doing it.</p>
+  <p>For sunset, the <strong>Yellow Fortress</strong> (<em>Žuta tabija</em>) above the old town, an eighteenth-century bastion where locals gather. Below it spreads the Kovači cemetery — the field of slim white markers, almost all dated 1992–95. During Ramadan the cannon is fired from here to break the fast.</p>
+  <p>Try <strong>tufahija</strong> (a whole apple poached in syrup and stuffed with walnuts and cream) and <strong>boza</strong> (a thick, mildly fermented millet drink that tastes like nothing else you have had).</p></div>
+</section>
+
+<section id="s19" data-nav="19" data-label="Salzburg">
+  <p class="stopno"><span>19</span><span class="day">Days 15–16 · 22–23 Aug</span><span>Sarajevo → Salzburg → Rotterdam</span></p>
+  <h2>The road home</h2>
+  <p class="dek">A city named after salt, which is where this trip began.</p>
+
+  <div class="b b-h"><span class="lab">History</span>
+  <p>There is a closing arc here, and it is not a stretch. On Day 5 you stood on the walls of <strong>Ston</strong> — five kilometres of fourteenth-century fortification built by Ragusa to protect <em>salt pans</em>, because salt was the revenue that made the Republic. On Day 15 you arrive at a city whose name means <strong>salt fortress</strong>, built by prince-archbishops who got rich on exactly the same commodity, mined out of the Dürrnberg at Hallein and floated down the Salzach in barges they taxed. Two ends of Europe, four hundred years apart, both built on the one mineral that let people keep food through a winter.</p>
+  <p>The other thing to know: <strong>Salzburg was not part of Austria.</strong> For roughly a thousand years it was a sovereign ecclesiastical principality of the Holy Roman Empire, ruled by prince-archbishops who were simultaneously bishop and head of state. It only joined Austria permanently in 1816. That independence is why a city this size has a cathedral, a residence and a fortress on this scale — you are looking at the capital of a country that no longer exists.</p>
+  <p><strong>Hohensalzburg</strong>, on the crag, was begun in 1077 and expanded for six centuries. It is one of the largest fully preserved castles in Europe and it was never taken by an enemy — though it did once hold its own former ruler: <strong>Wolf Dietrich von Raitenau</strong>, the archbishop who tore up the medieval town and rebuilt Salzburg as an Italianate baroque city, overreached politically, was deposed by his own cousin, and died a prisoner in the fortress he had inherited.</p></div>
+
+  <div class="b b-l"><span class="lab">Local knowledge</span>
+  <p><strong>The iron signs on the Getreidegasse</strong> are the detail to look up at. The street's shops advertise with elaborate wrought-iron guild signs hanging over the pavement — a boot, a pretzel, a key — because for most of the street's history most people passing could not read. The rule still binds: modern chains on that street have to make one too, which is why there is a hand-forged wrought-iron McDonald's sign.</p>
+  <p><strong>Mozart</strong> was born at Getreidegasse 9 in 1756, and he could not wait to get out. He found Salzburg provincial, loathed working for Archbishop Colloredo, and eventually left for Vienna after a row that ended, by his own account, with a kick from the archbishop's steward. The city that now sells his face on chocolate is the one he escaped.</p>
+  <p>And the thing locals find funny: <strong><em>The Sound of Music</em> means almost nothing in Salzburg.</strong> It was never a hit in Austria, most Austrians have not seen it, and the version of Austrian history in it is not one they recognise. Meanwhile busloads of visitors circle the Mirabell Gardens singing Do-Re-Mi. If you are staying at Villa Verde on Leopoldskronstraße, you are next to <strong>Schloss Leopoldskron</strong> — the lake terrace from the film — which is a rococo palace built by another prince-archbishop and later the home of Max Reinhardt, who founded the Salzburg Festival.</p></div>
+
+  <div class="b b-f"><span class="lab">Heads up</span>
+  <p><strong>The Salzburg Festival will almost certainly be running on 22 August.</strong> It normally runs from mid-July to the end of August and it is the single biggest thing that happens to this city all year — which means a Saturday night in late August is peak accommodation pricing and peak scarcity. Salzburg lodging is <em>not booked</em> in your plan. Book it before you leave, not from a layby in Bosnia. <span class="verify">check 2026 festival dates and book tonight</span></p>
+  <p>Also: the return city is still formally open (Salzburg / Vienna / Nuremberg / Cologne), and only Salzburg has lodging researched. Every day you leave that open is a day of worse availability.</p></div>
+
+  <div class="b b-g"><span class="lab">On the ground</span>
+  <p><strong>Day 16 is about 1,000 km, Salzburg to Rotterdam, and there is no buffer day behind it</strong> — you traded it for the third Durmitor night. Two things make it more survivable than it looks:</p>
+  <ul>
+    <li><strong>It is a Sunday.</strong> Germany and Austria both ban heavy goods vehicles over 7.5 tonnes from the motorways on Sundays and public holidays, roughly midnight to 22:00. Sunday is the single best day of the week to drive that corridor — the lorry traffic that clogs the A3 and A61 simply is not there. The trade-off is more caravan and holiday traffic, and roadworks do not take Sundays off.</li>
+    <li><strong>Charging stops are rest stops.</strong> Over eleven hours you need to stop anyway. Plan them where you would want to stand up regardless, leave Salzburg full, and let the car dictate the rhythm rather than fighting it.</li>
+  </ul>
+  <p>The route retraces Day 1 in reverse for the last third — Frankfurt, Cologne, the Dutch border. If you want one last stop, Cologne cathedral is visible from the motorway and takes twenty minutes: begun in 1248, abandoned for three centuries with the medieval crane still standing on the unfinished tower, and only completed in 1880 to the original plans.</p></div>
+
+  <div class="b b-l"><span class="lab">Local knowledge</span>
+  <p>If you do stop in Cologne for a beer: <strong>Kölsch</strong> comes in 0.2-litre glasses called <em>Stangen</em>, and the waiter — the <em>Köbes</em> — will keep replacing your empty with a full one, pencilling your beermat each time, without ever asking. The only way to stop him is to <strong>put your beermat on top of the glass</strong>. Nobody will tell you this.</p></div>
+</section>
+<footer>
+  <p>Compiled 8 August 2026 from the planning notes for this trip.<br>
+  No live sources were reachable while writing — everything here is drawn from general knowledge, not from a fresh check. Dates, opening times, booking requirements and anything tagged <span class="verify">verify</span> should be confirmed locally before you rely on them. Where a story is a tradition rather than a documented fact, it says so.<br>
+  Where two versions of a story exist, both are given. That is usually the interesting part.</p>
+  <a class="top" href="#top">Back to the top</a>
+</footer>
+
+</main>
+
+<script>
+(function(){
+  var secs = Array.prototype.slice.call(document.querySelectorAll('section[data-nav]'));
+  var rail = document.getElementById('rail');
+  var chips = document.getElementById('chips');
+  secs.forEach(function(s){
+    var n = s.dataset.nav, l = s.dataset.label;
+    var a = document.createElement('a');
+    a.className='rn'; a.href='#'+s.id; a.dataset.for=s.id;
+    a.innerHTML='<i></i><b>'+n+'</b>';
+    a.setAttribute('aria-label', l);
+    rail.appendChild(a);
+    var c = document.createElement('a');
+    c.className='chip'; c.href='#'+s.id; c.dataset.for=s.id;
+    c.textContent = n+' '+l;
+    chips.appendChild(c);
+  });
+  var links = Array.prototype.slice.call(document.querySelectorAll('[data-for]'));
+  var current = null;
+  function spy(){
+    var best=null, bestTop=-1e9;
+    secs.forEach(function(s){
+      var t = s.getBoundingClientRect().top - 90;
+      if(t<=0 && t>bestTop){bestTop=t;best=s;}
+    });
+    if(!best) best = secs[0];
+    if(best===current) return;
+    current=best;
+    links.forEach(function(a){
+      var on = a.dataset.for===best.id;
+      a.classList.toggle('on', on);
+      if(on && a.classList.contains('chip')){
+        var l = a.offsetLeft - chips.clientWidth/2 + a.clientWidth/2;
+        chips.scrollTo({left:Math.max(0,l), behavior:'smooth'});
+      }
+    });
+  }
+  var tick=false;
+  window.addEventListener('scroll',function(){
+    if(tick) return; tick=true;
+    requestAnimationFrame(function(){spy();tick=false;});
+  },{passive:true});
+  spy();
+})();
+</script>

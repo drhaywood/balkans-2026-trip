@@ -420,6 +420,7 @@ h1 .to{color:var(--ink-faint);font-weight:400;}
       <button class="btn" id="reset">Reset view</button>
       <button class="btn" id="chargeToggle">Hide charging stops</button>
       <a class="btn abrp" id="abrpAll" href="#" target="_blank" rel="noopener">Whole trip in ABRP</a>
+      <a class="btn" href="balkans-companion.html#s00" target="_blank" rel="noopener">Trip primer (money, borders, EV)</a>
     </div>
 
     <div class="spine" id="spine"></div>
@@ -489,6 +490,14 @@ function abrpUrl(stops){
   return "https://abetterrouteplanner.com/?destinations="+
     encodeURIComponent(JSON.stringify(dest));
 }
+
+/* ---------------- reading companion deep links ----------------
+   balkans-companion.html is a separate ~100KB static file (long-form
+   history/practical notes, offline-capable) with stable anchors #s00-#s19.
+   This map is presentation-only — it doesn't touch trip-data.js's model
+   or any synced item key, so a missing/renamed anchor here is harmless. */
+const READING_ANCHORS={1:'s01',2:'s02',3:'s04',4:'s05',5:'s06',6:'s07',7:'s08',
+  8:'s11',9:'s10',10:'s13',11:'s14',12:'s14',13:'s16',14:'s17',15:'s19',16:'s19'};
 const ALL_STOPS=[{name:ORIGIN.name,lat:ORIGIN.lat,lng:ORIGIN.lng}]
   .concat(LEGS.flatMap(l=>l.days.map(d=>({name:d.title.replace(/^.*→\s*/,''),lat:d.lat,lng:d.lng}))));
 document.getElementById('abrpAll').href=abrpUrl(ALL_STOPS);
@@ -921,14 +930,20 @@ LEGS.forEach(leg=>{
       card.appendChild(db);
     });
 
-    /* ABRP deep link for this day's drive */
-    if(d.from){
-      const stops=[d.from,...(d.via||[]),{name:d.title.replace(/^.*→\s*/,''),lat:d.lat,lng:d.lng}];
+    /* ABRP deep link for this day's drive, plus a deep link into the reading companion if this day has one */
+    {
       const links=document.createElement('div');
       links.className='daylinks';
-      links.innerHTML=`<a class="abrplink" target="_blank" rel="noopener"
-        href="${abrpUrl(stops)}">Open this leg in ABRP →</a>`;
-      card.appendChild(links);
+      let html='';
+      if(d.from){
+        const stops=[d.from,...(d.via||[]),{name:d.title.replace(/^.*→\s*/,''),lat:d.lat,lng:d.lng}];
+        html+=`<a class="abrplink" target="_blank" rel="noopener" href="${abrpUrl(stops)}">Open this leg in ABRP →</a>`;
+      }
+      const anchor=READING_ANCHORS[d.n];
+      if(anchor){
+        html+=`<a class="abrplink" target="_blank" rel="noopener" href="balkans-companion.html#${anchor}">Read about this stop →</a>`;
+      }
+      if(html){ links.innerHTML=html; card.appendChild(links); }
     }
 
     if(d.hist){
