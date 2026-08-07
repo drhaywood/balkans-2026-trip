@@ -193,6 +193,19 @@ h1 .to{color:var(--ink-faint);font-weight:400;}
 .notes-input:focus-visible{outline:2.5px solid var(--teal);outline-offset:1px;border-color:var(--teal);}
 .notes-input::placeholder{color:var(--ink-faint);}
 
+.legcost{display:flex;align-items:center;justify-content:space-between;gap:12px;
+  margin:0 0 14px;padding:11px 15px;border-radius:11px;background:var(--paper-2);
+  border:1px solid var(--rule);}
+.legcost-label{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ink-faint);}
+.legcost-field{display:flex;align-items:center;gap:5px;flex-shrink:0;}
+.legcost-euro{font-size:13px;font-weight:700;color:var(--ink-soft);}
+.legcost-input{width:76px;font:inherit;font-size:13.5px;color:var(--ink);
+  background:#fff;border:1px solid var(--rule);border-radius:8px;
+  padding:6px 9px;text-align:right;transition:.15s;}
+.legcost-input:focus-visible{outline:2.5px solid var(--teal);outline-offset:1px;border-color:var(--teal);}
+.legcost-input::placeholder{color:var(--ink-faint);}
+
 .daylinks{padding:12px 18px 0;display:flex;gap:8px;flex-wrap:wrap;}
 .abrplink{font-size:12px;font-weight:700;color:#2C4322;background:#E5EFDE;
   border:1px solid #CBDCC4;border-radius:999px;padding:6px 13px;text-decoration:none;
@@ -354,12 +367,12 @@ h1 .to{color:var(--ink-faint);font-weight:400;}
         <div>
           <p class="budgetlabel">Running total · 2 people</p>
           <div class="budgettotal" id="btotal">€0</div>
-          <div class="budgetsub" id="bsub">Tap + on any activity or bed to add it</div>
+          <div class="budgetsub" id="bsub">Tap + on any activity or bed, or log tolls & parking per leg</div>
         </div>
         <button class="budgetclear" id="bclear">Clear</button>
       </div>
       <div class="budgetrows" id="brows">
-        <div class="bempty">Nothing added yet. Costs cover activities and lodging only — fuel, food, tolls and the Slovenian vignette aren't included.</div>
+        <div class="bempty">Nothing added yet. Costs cover activities, lodging and tolls/parking you log per leg — fuel, food and the Slovenian vignette aren't included.</div>
       </div>
     </div>
 
@@ -562,6 +575,8 @@ const status=document.getElementById('routestatus');
 /* ---------------- budget ---------------- */
 const selected=new Map();
 const costOverrides=new Map(); // item key -> manually-entered € amount, overrides trip-data's preset cost
+const legCosts=new Map();      // leg id -> manually-entered € amount for tolls & parking on that leg
+const legCostInputs=new Map(); // leg id -> the input element
 const fmt=n=>'€'+n.toLocaleString('en-GB',{maximumFractionDigits:0});
 
 /* ---------------- shared state sync (via /api/state, key stays server-side) ---------------- */
@@ -600,7 +615,7 @@ async function saveState(){
     .filter(([k,r])=>!r.entry.live)
     .map(([k])=>k);
   const state={selected:[...selected.keys()],removed,notes:Object.fromEntries(notes),
-    costs:Object.fromEntries(costOverrides)};
+    costs:Object.fromEntries(costOverrides),legCosts:Object.fromEntries(legCosts)};
   try{
     const res=await fetch(STATE_URL,{method:'POST',
       headers:{'Content-Type':'application/json'},
@@ -652,23 +667,30 @@ function updateCostUI(entry){
 }
 function renderBudget(){
   const rows=document.getElementById('brows');
-  const total=[...selected.values()].reduce((s,entry)=>s+itemCost(entry),0);
-  document.getElementById('btotal').textContent=fmt(total);
-  const n=selected.size;
+  const itemTotal=[...selected.values()].reduce((s,entry)=>s+itemCost(entry),0);
+  const legLines=LEGS.filter(l=>legCosts.get(l.id)>0);
+  const legTotal=legLines.reduce((s,l)=>s+legCosts.get(l.id),0);
+  document.getElementById('btotal').textContent=fmt(itemTotal+legTotal);
+  const n=selected.size+legLines.length;
   document.getElementById('bsub').textContent = n===0
-    ? 'Tap + on any activity or bed to add it'
+    ? 'Tap + on any activity or bed, or log tolls & parking per leg'
     : `${n} item${n===1?'':'s'} selected`;
   if(n===0){
-    rows.innerHTML='<div class="bempty">Nothing added yet. Costs cover activities and lodging only — fuel, food, tolls and the Slovenian vignette aren\'t included.</div>';
+    rows.innerHTML='<div class="bempty">Nothing added yet. Costs cover activities, lodging and tolls/parking you log per leg — fuel, food and the Slovenian vignette aren\'t included.</div>';
     return;
   }
-  rows.innerHTML=[...selected.values()].map(entry=>
-    `<div class="brow"><span>${entry.o.n}</span><b>${fmt(itemCost(entry))}</b></div>`).join('');
+  const itemRows=[...selected.values()].map(entry=>
+    `<div class="brow"><span>${entry.o.n}</span><b>${fmt(itemCost(entry))}</b></div>`);
+  const legRows=legLines.map(l=>
+    `<div class="brow"><span>Tolls &amp; parking — ${l.name}</span><b>${fmt(legCosts.get(l.id))}</b></div>`);
+  rows.innerHTML=itemRows.concat(legRows).join('');
 }
 document.getElementById('bclear').addEventListener('click',()=>{
   selected.clear();
+  legCosts.clear();
   document.querySelectorAll('.optadd.on').forEach(b=>{b.classList.remove('on');b.textContent='+';
     b.setAttribute('aria-pressed','false');});
+  legCostInputs.forEach(input=>{input.value='';});
   renderBudget();
   scheduleSave();
 });
@@ -693,6 +715,24 @@ LEGS.forEach(leg=>{
     const off=wrap.classList.toggle('off');
     head.setAttribute('aria-checked',String(!off));
     if(off) map.removeLayer(layers[leg.id]); else layers[leg.id].addTo(map);
+  });
+
+  const legcost=document.createElement('div');
+  legcost.className='legcost';
+  legcost.innerHTML=`<label class="legcost-label" for="legcost-${leg.id}">Tolls &amp; parking — this leg</label>
+    <div class="legcost-field"><span class="legcost-euro">€</span>
+      <input type="number" class="legcost-input" id="legcost-${leg.id}" min="0" step="1" inputmode="decimal" placeholder="0"></div>`;
+  const legcostInput=legcost.querySelector('.legcost-input');
+  legCostInputs.set(leg.id,legcostInput);
+  legcostInput.addEventListener('input',()=>{
+    const v=legcostInput.value.trim();
+    if(v===''){ legCosts.delete(leg.id); }
+    else{
+      const n=Math.max(0,Math.round(Number(v)));
+      if(!Number.isNaN(n)) legCosts.set(leg.id,n);
+    }
+    renderBudget();
+    scheduleSave();
   });
 
   const days=document.createElement('div');
@@ -1003,6 +1043,7 @@ LEGS.forEach(leg=>{
   });
 
   wrap.appendChild(head);
+  wrap.appendChild(legcost);
   wrap.appendChild(days);
   spine.appendChild(wrap);
 });
@@ -1050,6 +1091,14 @@ if(typeof KILLED!=='undefined'&&KILLED.length){
     const ta=notesInputs.get(key);
     if(ta){ ta.value=text; notes.set(key,text); }
   });
+  const remoteLegCosts=(remote.legCosts&&typeof remote.legCosts==='object')?remote.legCosts:{};
+  Object.entries(remoteLegCosts).forEach(([legId,val])=>{
+    if(typeof val!=='number') return;
+    legCosts.set(legId,val);
+    const input=legCostInputs.get(legId);
+    if(input) input.value=val;
+  });
+  renderBudget();
   suppressSave=false;
   setSyncState(loadFailed?'loaderror':'saved');
 })();

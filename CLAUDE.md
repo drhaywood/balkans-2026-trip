@@ -39,11 +39,16 @@ of their arrays** — inserting in the middle shifts every later item's key
 and silently forgets its saved state.
 
 Each day also gets a shared free-text notes box, keyed by `notes_d${n}`
-(day number, stable regardless of array position). The synced state blob
-PUT to `/api/state` is `{selected:[...], removed:[...], notes:{key:text}}`.
-A `#syncPill` in the masthead reflects the save lifecycle (loading / saved /
-unsaved changes / saving / error) and a "Save changes" button forces an
-immediate save — added because save/load failures used to fail silently.
+(day number, stable regardless of array position). Any item's preset
+price can be overridden (or given one, if it had none) from the UI —
+overrides live in `costs`, keyed by the same stable item key. Each leg
+also has a manually-entered tolls & parking figure, keyed by `leg.id`,
+in `legCosts`. The synced state blob PUT to `/api/state` is
+`{selected:[...], removed:[...], notes:{key:text}, costs:{key:amount},
+legCosts:{legId:amount}}`. A `#syncPill` in the masthead reflects the
+save lifecycle (loading / saved / unsaved changes / saving / error) and
+a "Save changes" button forces an immediate save — added because
+save/load failures used to fail silently.
 
 ## JSONBin key security
 
