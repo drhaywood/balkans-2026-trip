@@ -101,7 +101,7 @@ const LEGS = [
        pills:[["drive","Loop day, ~1–1.5 h total"],["locked","Eastern Triglav"],["tent","Kamna Gorica"]],
        opts:{label:"Eastern Triglav — the loop",
          items:[
-           {n:"Via Ferrata Hvadnik",d:"A short protected route up a stream gorge at Gozd Martuljek, near Kranjska Gora. Grade B/C, ~500 m of cable with a waterfall-climbing section and a couple of suspension bridges, ~1.5 h round trip. Needs a via ferrata kit (helmet, harness, energy-absorber lanyard) but no climbing experience.",t:"1.5 h",cost:null,lat:46.4875,lng:13.8454},
+           {n:"Via Ferrata Hvadnik",d:"A short protected route up a stream gorge at Gozd Martuljek, near Kranjska Gora. Reported as Grade B/C, ~500 m of cable with a waterfall-climbing section and a couple of suspension bridges, ~1.5 h round trip — but that grade has never been directly verified, so check it against your actual experience level before committing. Needs a via ferrata kit (helmet, harness, energy-absorber lanyard).",t:"1.5 h",cost:null,verify:true,lat:46.4875,lng:13.8454},
            {n:"Peričnik Waterfall",d:"In the Vrata valley. The path runs behind the falling water, so you stand in the gap between rock and curtain. Parking fee only.",t:"1 h",cost:8,unit:"grp",star:true,lat:46.4319,lng:13.9333},
            {n:"Vintgar Gorge",d:"A few kilometres from camp. Wooden boardwalk pinned to the canyon wall above turquoise water. Timed entry — book ahead for August.",t:"Half day",cost:15,unit:"pp",star:true,lat:46.3944,lng:14.0808},
            {n:"Lake Bohinj",d:"Twenty-five minutes southwest. Bigger, wilder and far quieter than Bled. The better swim of the two lakes.",t:"Half day",cost:10,unit:"grp",star:true,lat:46.2833,lng:13.8833},
@@ -156,6 +156,11 @@ const LEGS = [
            {n:"Camp Pod Maslinom",d:"Orašac, ~20 min from Dubrovnik old town. Best-reviewed option near the city — olive-shaded terraces, small secluded beach, staff specifically help with Dubrovnik trip logistics.",t:"4.6★ · 1,819 reviews",cost:15,unit:"pp",star:true,lat:42.6989,lng:18.0056},
            {n:"Slano camping bambo",d:"Slano, ~35 min from Dubrovnik. Cheaper, quieter, right on the water — the fallback if Camp Pod Maslinom is full.",t:"4.5★ · 115 reviews",cost:10,unit:"pp",lat:42.7752,lng:17.8849},
            {n:"Avoid: Camping Solitudo",d:"The closest site to the old town, but reviews split hard — €75+/night against run-down facilities and broken showers by multiple accounts. Not worth the proximity.",t:"Skip",cost:null,lat:42.6621,lng:18.0705}
+         ]},
+       opts2:{label:"En route to Dubrovnik",
+         items:[
+           {n:"Ston",d:"Walls, oysters and salt pans right on the Pelješac approach — a twenty-minute detour before the bridge, not out of the way.",t:"1–2 h",cost:0,star:true,lat:42.8397,lng:17.6994},
+           {n:"Makarska Riviera beach stops",d:"More coastline between here and the bridge if the pace allows — Brela and Makarska itself are already covered by the last two days, so treat this as a top-up rather than a destination.",t:"Flexible",cost:0,lat:43.2969,lng:17.0186}
          ]}}
     ]
   },
@@ -168,6 +173,9 @@ const LEGS = [
        from:{name:"Camp Pod Maslinom",lat:42.6989,lng:18.0056},
        body:"Walls at first light, empty streets, out before the first ship docks. Then the border and around the bay to Kotor by lunch.",
        pills:[["locked","Dubrovnik dawn"],["locked","Kotor"],["drive","~2.5 h"],["bed","Azure Adriatica"]],
+       decide:[
+         {label:"Debeli Brijeg border timing",body:"The single worst August crossing on this route, by reputation. Southbound early morning is the mitigation — but that caps how long the dawn walk in Dubrovnik can run: either it's short and you're across by ~9am, or you cross late evening and arrive in Kotor after dark. Pick one before you fix a wake-up time."}
+       ],
        hist:{h:"Two republics",t:"Dubrovnik spent four centuries as Ragusa, an independent maritime republic that bought its safety from the Ottomans with tribute rather than war, and abolished slavery in 1416. Kotor went the other way — Venetian for nearly four hundred years, which is why the lion of St Mark sits over the gate."},
        opts2:{label:"Where to sleep — Kotor (3 nights)",
          items:[
@@ -178,7 +186,12 @@ const LEGS = [
            {n:"Majka Guest House",d:"Old Town, but effectively hostel-format — one bathroom for 20+ beds per one review. Cheap, but not right for three nights as a couple.",t:"4.4★ (39) · Budget",cost:null,lat:42.4249,lng:18.7708},
            {n:"Hotel Azure Adriatica",d:"Booked — 3 nights, Fri 14 to Mon 17 Aug. Kriva bb, 85330 Kotor (Dobrota), a few minutes up the bay from the Old Town.",t:"Hotel · booked",cost:null,star:true,lat:42.4542,lng:18.7683}
          ],
-         foot:"<b>Booked:</b> Hotel Azure Adriatica, 14–17 Aug (3 nights) — the base for all three Kotor days."}},
+         foot:"<b>Booked:</b> Hotel Azure Adriatica, 14–17 Aug (3 nights) — the base for all three Kotor days."},
+       opts3:{label:"On the way in",
+         items:[
+           {n:"Herceg Novi",d:"At the mouth of the bay — an alternative to taking this as a day 9 trip from Kotor instead. One location, not both; see the bay-day card for the same note in reverse.",t:"Detour on the drive",cost:0,lat:42.4531,lng:18.5375},
+           {n:"Kamenari–Lepetane ferry",d:"Crosses the bay narrows. Worth it for a Tivat/Budva-side approach; for Kotor town itself the north-shore road via Risan is more direct. Cheap and low-priority — only worth it if it actually saves time on your specific line in.",t:"~10 min crossing",cost:0,lat:42.4394,lng:18.6844}
+         ]}},
       {n:8,date:"Sat 15 Aug",title:"Kotor — southern coast day trips",lat:42.2864,lng:18.8400,
        from:{name:"Kotor",lat:42.4247,lng:18.7712},
        body:"Sveti Stefan, Budva, the Lovćen serpentine and Cetinje are all live for this day — more than fits, so this is about picking two or three, not doing all four.",
