@@ -3,18 +3,22 @@
 Interactive route-planning map for a 14-day EV road trip, **8–21 Aug 2026**:
 Rotterdam → Munich → Slovenia → Croatia → Montenegro → Bosnia → Rotterdam.
 Built for two people (Dave + partner) to plan against together from separate
-devices. Static site, no build step — Vercel auto-deploys on push to `main`
-(repo: `drhaywood/balkans-2026-trip`, live at `indexhtml-tawny-seven.vercel.app`).
+devices. Static site (no client-side build step) with two Vercel serverless
+functions — Vercel auto-deploys on push to `main`, installing `package.json`'s
+one dependency first (repo: `drhaywood/balkans-2026-trip`, live at
+`indexhtml-tawny-seven.vercel.app`).
 
 ## Files
 
 - `index.html` — page structure, CSS, and all rendering/interaction logic
-  (map, day cards, budget panel, sync). Edit behavior here.
+  (map, day cards, budget panel, photos, sync). Edit behavior here.
 - `trip-data.js` — loaded via `<script src>` before `index.html`'s inline
   script. Holds the actual trip content: `ORIGIN`, `CHARGE_STOPS`, `LEGS`.
   Edit trip content here, not in index.html.
 - `api/state.js` — Vercel serverless function. The only code allowed to
   talk to JSONBin directly.
+- `api/photos.js` — Vercel serverless function. The only code allowed to
+  talk to Vercel Blob directly (photo upload/delete).
 
 ## Data shape (trip-data.js)
 
@@ -43,12 +47,29 @@ Each day also gets a shared free-text notes box, keyed by `notes_d${n}`
 price can be overridden (or given one, if it had none) from the UI —
 overrides live in `costs`, keyed by the same stable item key. Each leg
 also has a manually-entered tolls & parking figure, keyed by `leg.id`,
-in `legCosts`. The synced state blob PUT to `/api/state` is
-`{selected:[...], removed:[...], notes:{key:text}, costs:{key:amount},
-legCosts:{legId:amount}}`. A `#syncPill` in the masthead reflects the
-save lifecycle (loading / saved / unsaved changes / saving / error) and
-a "Save changes" button forces an immediate save — added because
-save/load failures used to fail silently.
+in `legCosts`. Photos uploaded per day live in `photos`, keyed by the
+same `notes_d${n}` day key, as arrays of Vercel Blob URLs — see
+"Photo storage" below; the state blob itself only ever holds the URL
+strings, never image bytes. The synced state blob PUT to `/api/state`
+is `{selected:[...], removed:[...], notes:{key:text}, costs:{key:amount},
+legCosts:{legId:amount}, photos:{key:[url,...]}}`. A `#syncPill` in the
+masthead reflects the save lifecycle (loading / saved / unsaved changes
+/ saving / error) and a "Save changes" button forces an immediate save
+— added because save/load failures used to fail silently.
+
+## Photo storage (Vercel Blob)
+
+Photos are uploaded from `index.html` straight to `POST /api/photos`
+(compressed client-side to ~1600px/JPEG-quality-0.82 first, to stay
+under the ~4.5MB request-body limit on Vercel functions), which is the
+only code allowed to call `@vercel/blob`'s `put()`/`del()`. The
+function returns a public blob URL; the client stores *that string* in
+the shared state blob via `/api/state` — Blob storage holds the bytes,
+JSONBin only ever holds the URLs. Deleting a photo calls
+`DELETE /api/photos` with `{url}`. Requires a Blob store enabled on the
+Vercel project, which auto-provisions the `BLOB_READ_WRITE_TOKEN` env
+var that `api/photos.js` reads — no manual key copy-paste needed, unlike
+`JSONBIN_KEY` below.
 
 ## JSONBin key security
 
