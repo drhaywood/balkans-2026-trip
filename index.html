@@ -421,6 +421,7 @@ h1 .to{color:var(--ink-faint);font-weight:400;}
       <button class="btn" id="chargeToggle">Hide charging stops</button>
       <a class="btn abrp" id="abrpAll" href="#" target="_blank" rel="noopener">Whole trip in ABRP</a>
       <a class="btn" href="balkans-companion.html#s00" target="_blank" rel="noopener">Trip primer (money, borders, EV)</a>
+      <a class="btn" href="balkans-food-guide.html#f00" target="_blank" rel="noopener">Food guide (rules)</a>
     </div>
 
     <div class="spine" id="spine"></div>
@@ -498,6 +499,13 @@ function abrpUrl(stops){
    or any synced item key, so a missing/renamed anchor here is harmless. */
 const READING_ANCHORS={1:'s01',2:'s02',3:'s04',4:'s05',5:'s06',6:'s07',7:'s08',
   8:'s11',9:'s10',10:'s13',11:'s14',12:'s14',13:'s16',14:'s17',15:'s19',16:'s19'};
+
+/* ---------------- food guide deep links ----------------
+   balkans-food-guide.html is a separate ~95KB static file (offline-capable,
+   no external deps at all) with stable anchors #f00-#f10, one per leg's
+   food/drink/restaurant notes. Presentation-only, same as READING_ANCHORS. */
+const FOOD_ANCHORS={1:'f01',2:'f02',3:'f02',4:'f03',5:'f03',6:'f04',7:'f05',
+  8:'f06',9:'f06',10:'f07',11:'f07',12:'f07',13:'f08',14:'f09',15:'f10',16:'f10'};
 const ALL_STOPS=[{name:ORIGIN.name,lat:ORIGIN.lat,lng:ORIGIN.lng}]
   .concat(LEGS.flatMap(l=>l.days.map(d=>({name:d.title.replace(/^.*→\s*/,''),lat:d.lat,lng:d.lng}))));
 document.getElementById('abrpAll').href=abrpUrl(ALL_STOPS);
@@ -930,7 +938,7 @@ LEGS.forEach(leg=>{
       card.appendChild(db);
     });
 
-    /* ABRP deep link for this day's drive, plus a deep link into the reading companion if this day has one */
+    /* ABRP deep link for this day's drive, plus deep links into the reading companion and food guide if this day has them */
     {
       const links=document.createElement('div');
       links.className='daylinks';
@@ -942,6 +950,10 @@ LEGS.forEach(leg=>{
       const anchor=READING_ANCHORS[d.n];
       if(anchor){
         html+=`<a class="abrplink" target="_blank" rel="noopener" href="balkans-companion.html#${anchor}">Read about this stop →</a>`;
+      }
+      const foodAnchor=FOOD_ANCHORS[d.n];
+      if(foodAnchor){
+        html+=`<a class="abrplink" target="_blank" rel="noopener" href="balkans-food-guide.html#${foodAnchor}">Where to eat →</a>`;
       }
       if(html){ links.innerHTML=html; card.appendChild(links); }
     }

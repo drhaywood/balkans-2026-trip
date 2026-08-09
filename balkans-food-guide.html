@@ -1,0 +1,879 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Eating the Route — Balkans, 8–23 August 2026</title>
+<style>
+:root{
+  --ink:#0F1519; --ink2:#33414A; --ink3:#4E5C65;
+  --stone:#FCFBF8; --paper:#F1EFE9; --line:#D6D1C5;
+  --verd:#1D6857; --rust:#8E3220; --gold:#7A5F12;
+  --rail:78px;
+  --serif:Georgia,"Iowan Old Style","Times New Roman",serif;
+  --sans:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--stone);color:var(--ink);font-family:var(--sans);
+  font-size:18px;line-height:1.58;-webkit-text-size-adjust:100%}
+p{margin:0 0 .9em}
+main{max-width:740px;margin:0 auto;padding:0 20px 90px}
+@media(min-width:1080px){main{margin-left:calc(var(--rail) + 40px);margin-right:40px}}
+
+.rail{display:none}
+@media(min-width:1080px){
+  .rail{display:block;position:fixed;left:0;top:0;bottom:0;width:var(--rail);
+    border-right:1px solid var(--line);background:var(--stone);z-index:40;padding:22px 0;
+    overflow-y:auto;scrollbar-width:none}
+  .rail::-webkit-scrollbar{display:none}
+  .rail::before{content:"";position:absolute;left:38px;top:34px;bottom:34px;width:1px;background:var(--line)}
+  .rn{position:relative;display:block;text-decoration:none;padding:8px 0;text-align:center}
+  .rn i{position:relative;display:block;width:9px;height:9px;margin:0 auto;border-radius:50%;
+    background:var(--stone);border:1px solid var(--ink3);z-index:2;transition:all .2s}
+  .rn b{display:block;font-family:var(--mono);font-size:10px;color:var(--ink3);margin-top:4px;font-weight:400}
+  .rn.on i{background:var(--rust);border-color:var(--rust);transform:scale(1.5)}
+  .rn.on b{color:var(--rust)}
+}
+.chips{position:sticky;top:0;z-index:30;background:var(--stone);border-bottom:1px solid var(--line);
+  margin:0 -20px;padding:9px 0;overflow-x:auto;white-space:nowrap;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.chips::-webkit-scrollbar{display:none}
+@media(min-width:1080px){.chips{display:none}}
+.chip{display:inline-block;font-family:var(--mono);font-size:12px;text-decoration:none;color:var(--ink2);
+  border:1px solid var(--line);padding:5px 10px;border-radius:2px;margin-left:7px;background:var(--paper)}
+.chip.on{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+
+.mast{padding:50px 0 28px;border-bottom:2px solid var(--ink)}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--rust);margin:0 0 14px}
+.mast h1{font-family:var(--serif);font-weight:700;font-size:clamp(34px,8.4vw,56px);line-height:1.02;letter-spacing:-.022em;margin:0 0 16px}
+.mast .sub{font-size:18px;color:var(--ink2);max-width:54ch;margin:0 0 20px}
+.key{border-top:1px solid var(--line);margin-top:18px;padding-top:14px}
+.key div{display:flex;gap:12px;align-items:flex-start;margin-bottom:8px;font-size:15px;color:var(--ink2)}
+
+section{padding:44px 0 8px;border-bottom:1px solid var(--line);scroll-margin-top:60px}
+@media(min-width:1080px){section{scroll-margin-top:24px}}
+.stopno{font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--ink3);
+  display:flex;gap:12px;align-items:baseline;margin-bottom:9px;flex-wrap:wrap}
+.stopno .day{color:var(--rust)}
+section h2{font-family:var(--serif);font-weight:700;font-size:clamp(27px,6vw,38px);line-height:1.08;letter-spacing:-.018em;margin:0 0 10px}
+.dek{font-size:19px;line-height:1.5;color:var(--ink2);max-width:54ch;margin:0 0 22px;font-style:italic}
+h3{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);
+  font-weight:400;margin:34px 0 14px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+
+/* dish */
+.d{margin:0 0 20px;padding-left:14px;border-left:3px solid var(--line)}
+.d.m{border-left-color:var(--rust)}
+.d.w{border-left-color:var(--verd)}
+.d.t{border-left-color:var(--gold)}
+.d.s{border-left-color:var(--ink3)}
+.d h4{margin:0 0 4px;font-size:19px;font-family:var(--serif);font-weight:700;letter-spacing:-.01em;
+  display:flex;flex-wrap:wrap;gap:8px;align-items:baseline}
+.rate{font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;
+  padding:2px 6px;border-radius:2px;border:1px solid;white-space:nowrap;vertical-align:2px;font-weight:400}
+.r-m{color:#fff;background:var(--rust);border-color:var(--rust)}
+.r-w{color:var(--verd);border-color:var(--verd)}
+.r-t{color:var(--gold);border-color:var(--gold)}
+.r-s{color:var(--ink3);border-color:var(--ink3)}
+.d p{margin:0 0 .55em;font-size:16.5px;line-height:1.52}
+.d p:last-child{margin-bottom:0}
+.d .how{font-size:15px;color:var(--ink2);border-top:1px dotted var(--line);padding-top:6px;margin-top:7px}
+.d .how b{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);font-weight:400}
+
+/* restaurant */
+.r{border:1px solid var(--line);background:var(--paper);border-radius:3px;padding:13px 15px;margin:0 0 12px}
+.r .top{display:flex;justify-content:space-between;gap:10px;align-items:baseline;flex-wrap:wrap;margin-bottom:5px}
+.r .nm{font-family:var(--serif);font-size:19px;font-weight:700;letter-spacing:-.01em}
+.r .sc{font-family:var(--mono);font-size:12px;color:var(--ink2);white-space:nowrap}
+.r .tier{font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;
+  border:1px solid var(--line);color:var(--ink2);padding:2px 6px;border-radius:2px;margin-right:2px}
+.r .t-b{border-color:var(--verd);color:var(--verd)}
+.r .t-s{border-color:var(--gold);color:var(--gold)}
+.r p{margin:6px 0 0;font-size:15.5px;line-height:1.5}
+.r .ad{font-family:var(--mono);font-size:11.5px;color:var(--ink3);margin-top:6px;line-height:1.6}
+.warn{color:var(--rust);font-weight:600}
+
+.b{border-left:3px solid var(--line);padding:2px 0 2px 16px;margin:0 0 20px}
+.b .lab{font-family:var(--mono);font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;display:block;margin-bottom:6px}
+.b-l{border-left-color:var(--gold)} .b-l .lab{color:var(--gold)}
+.b-f{border-left-color:var(--rust);background:rgba(142,50,32,.055);padding:10px 12px 10px 16px} .b-f .lab{color:var(--rust)}
+.b-g{border-left-color:var(--ink2)} .b-g .lab{color:var(--ink2)}
+.b p:last-child{margin-bottom:0}
+ul{margin:0 0 16px;padding-left:19px} li{margin-bottom:8px}
+footer{padding:38px 0 20px;font-family:var(--mono);font-size:12.5px;color:var(--ink2);line-height:1.9}
+
+[data-theme="dark"]{
+  --ink:#ECEAE3; --ink2:#C4CDD3; --ink3:#9BA7AF;
+  --stone:#0F161A; --paper:#1A2429; --line:#2E3A41;
+  --verd:#63C4AC; --rust:#E5876A; --gold:#DCBA63;
+}
+[data-theme="dark"] .r-m{color:#0F161A}
+[data-theme="dark"] .b-f{background:rgba(229,135,106,.10)}
+.themebtn{position:fixed;right:14px;bottom:14px;z-index:60;font-family:var(--mono);font-size:10.5px;
+  letter-spacing:.06em;text-transform:uppercase;background:var(--paper);border:1px solid var(--line);
+  color:var(--ink2);padding:6px 11px;border-radius:2px;cursor:pointer;box-shadow:0 2px 10px rgba(0,0,0,.14)}
+:focus-visible{outline:2px solid var(--rust);outline-offset:3px}
+</style>
+
+<button class="themebtn" id="themebtn">Night mode</button>
+<nav class="rail" id="rail" aria-label="Route"></nav>
+<div class="chips" id="chips" aria-label="Route"></div>
+
+<main>
+<header class="mast" id="top">
+  <p class="eyebrow">Food &amp; drink companion · 8–23 August 2026</p>
+  <h1>Eating the Route</h1>
+  <p class="sub">Ten cuisines along one road — Bavarian beer-cellar, Alpine Slovene, Venetian Dalmatian, Ragusan, Montenegrin coast and mountain, Ottoman Herzegovina, Sarajevo, and a prince-archbishop's kitchen. What to order, what it actually is, and where.</p>
+  <div class="key">
+    <div><span class="rate r-m">Must try</span> <span>Build a meal around it. Missing it is missing the place.</span></div>
+    <div><span class="rate r-w">Worth it</span> <span>Order it when you see it done properly.</span></div>
+    <div><span class="rate r-t">If time</span> <span>Good, but it competes with something better nearby.</span></div>
+    <div><span class="rate r-s">Skippable</span> <span>Interesting to know about. No loss if you never eat it.</span></div>
+  </div>
+</header>
+
+<section id="f00" data-nav="00" data-label="Rules">
+  <p class="stopno"><span>00</span><span class="day">Read once</span></p>
+  <h2>Six rules that travel the whole way</h2>
+
+  <div class="b b-l"><span class="lab">Ordering knowledge</span>
+  <p><strong>Fish is sold by weight, and there are two classes.</strong> From Dalmatia to Montenegro, whole fish is priced per kilo, and menus divide it into categories — first class (sea bass, sea bream, dentex, John Dory) and lower classes (mackerel, sardine, horse mackerel). The waiter brings a tray of raw fish to the table; you pick one, they weigh it, and the bill is the weight times the per-kilo price. <strong>Always ask the price per kilo and ask to see the fish weighed.</strong> This is where a €25 dinner quietly becomes €70. It is not a scam, it is simply how it works — but only if you ask.</p>
+  <p>Counter-intuitively, the cheap classes are often the better eating in August. Grilled fresh sardines and mackerel off a charcoal grill are one of the great Adriatic pleasures and cost almost nothing.</p></div>
+
+  <div class="b b-l"><span class="lab">Ordering knowledge</span>
+  <p><strong>Anything cooked slowly must be ordered a day ahead.</strong> <em>Peka</em> in Croatia, <em>ispod sača</em> in Montenegro and Bosnia, boiled lamb in Durmitor — all take three to five hours over embers. Restaurants will not have it waiting. The move is to phone or drop in on your first day and book it for your second. Doing this on arrival in Brela and again in Žabljak buys you two of the best meals of the trip.</p></div>
+
+  <div class="b b-l"><span class="lab">Ordering knowledge</span>
+  <p><strong>Burek is meat. Only meat.</strong> In Bosnia the filled pastries are named by filling: <em>burek</em> (meat), <em>sirnica</em> (cheese), <em>zeljanica</em> (spinach and cheese), <em>krompiruša</em> (potato). Collectively they are <em>pita</em>. Asking for a "cheese burek" marks you instantly. In Croatia the word has drifted and burek can mean any of them — so the rule changes at the border. In a proper <em>buregdžinica</em> you order <strong>by weight</strong>: "trista grama bureka" — 300 grams — which is a generous single portion.</p></div>
+
+  <div class="b b-l"><span class="lab">Ordering knowledge</span>
+  <p><strong>Coffee is a unit of time, not a drink.</strong> Bosnian coffee arrives as a ritual: a copper <em>džezva</em>, a small handleless <em>fildžan</em>, a sugar cube and usually rahat lokum. Pour a little, let it settle, hold the sugar in your teeth and drink through it. It takes half an hour and that is the entire point. Do not order one if you are leaving in ten minutes. In Dalmatia and Montenegro, coffee is equally slow but Italian in form — a <em>bijela kava</em> or macchiato, drunk sitting down, for as long as you like. Nobody will bring the bill until you ask.</p></div>
+
+  <div class="b b-l"><span class="lab">Ordering knowledge</span>
+  <p><strong>Three words for the local hole-in-the-wall,</strong> and each means something specific. A <strong>konoba</strong> (Croatia, Montenegro) was originally the cellar where wine and cured meat were kept — it now means a small, family, wood-fire place. A <strong>gostilna</strong> (Slovenia) or <strong>gasthof/wirtshaus</strong> (Austria, Bavaria) is the traditional inn. An <strong>aščinica</strong> (Bosnia) is the one worth hunting: a home-cooking canteen serving pre-made stews and braises from trays, point-and-choose, no grill, no menu translation, half the price of anywhere with a view. It is the single most authentic meal in Bosnia.</p></div>
+
+  <div class="b b-f"><span class="lab">Money</span>
+  <p>Croatia and Montenegro are euro. <strong>Bosnia is the convertible mark (KM/BAM)</strong>, pegged at 1.95583. Euros are taken at a rounded, poor rate. Several of the best cheap places in Mostar and Sarajevo are <strong>cash only in KM</strong> — draw local currency on arrival. Tipping: round up or ~10% across the region; in Bavaria and Austria you say the total you want to pay as you hand over money rather than leaving coins on the table.</p></div>
+</section>
+
+<section id="f01" data-nav="01" data-label="Munich">
+  <p class="stopno"><span>01</span><span class="day">Day 1–2 · 8–9 Aug</span><span>Munich · Bavaria</span></p>
+  <h2>Munich</h2>
+  <p class="dek">You arrive Saturday evening and leave Sunday morning. That happens to line up exactly with the one Bavarian meal that is strictly time-limited.</p>
+
+  <h3>Dishes</h3>
+
+  <div class="d m"><h4>Weißwurst <span class="rate r-m">Must try</span></h4>
+  <p>The great Munich breakfast, and the most rule-bound food in Germany. A pale veal-and-pork sausage with parsley and lemon, poached not grilled, served floating in its own hot water in a tureen. Because it was historically made fresh each morning with no preservatives, tradition holds that <strong>Weißwurst must not hear the noon bells</strong> — eaten before midday, or not at all. Plenty of places now serve it later; ordering it at 6pm still marks you.</p>
+  <p>The eating is a technique. Either slice it lengthways and roll the meat out of the skin, or do it properly and <em>zuzeln</em> — bite the end and suck the sausage out. The casing is never eaten. It goes with <strong>sweet mustard</strong> (süßer Senf — never the sharp stuff), a <strong>Brezn</strong>, and a <strong>Weissbier</strong>. Beer with breakfast is not a joke here; it is the correct pairing.</p>
+  <p class="how"><b>Timing</b> — Sunday morning, before you drive to Bled. This is the single most Bavarian thing available to you and your schedule hands it to you for free.</p></div>
+
+  <div class="d m"><h4>Obatzda <span class="rate r-m">Must try</span></h4>
+  <p>The beer garden's own invention and a genuinely clever piece of thrift: over-ripe Camembert mashed with butter, sweet paprika, caraway, onion and a splash of beer, into an orange spread eaten with a pretzel and raw onion rings. It exists because ripe cheese had to be used before it turned, and it is credited to a beer-garden landlady in the 1920s. Salty, funky, and exactly right with a cold Helles.</p></div>
+
+  <div class="d w"><h4>Schweinshaxe <span class="rate r-w">Worth it</span></h4>
+  <p>Roast pork knuckle: a fist of meat under lacquered crackling, with a potato dumpling and dark beer gravy. Enormous, and the crackling is the reason to order it. If you want the same animal in a lighter form, <em>Schweinsbraten</em> — roast pork shoulder with the same gravy — is the everyday version and half the fight.</p></div>
+
+  <div class="d w"><h4>Leberkäse <span class="rate r-w">Worth it</span></h4>
+  <p>A baked loaf of finely ground pork and beef, sliced thick, griddled, and served in a bread roll with mustard — the <em>Leberkässemmel</em>. Contains neither liver nor cheese, despite the name. It is the great Bavarian snack and it costs almost nothing at a butcher's counter or a Viktualienmarkt stall. The best road food available before you cross the Alps.</p></div>
+
+  <div class="d t"><h4>Steckerlfisch and Radi <span class="rate r-t">If time</span></h4>
+  <p>Two beer-garden things worth knowing. <strong>Steckerlfisch</strong> is a whole mackerel, brined and grilled over charcoal on a stick — smoky, oily, excellent. <strong>Radi</strong> is a large white radish cut in a continuous spiral and heavily salted until it weeps; it is salty specifically so that you drink more beer, which is the entire commercial logic of a beer garden in one vegetable.</p></div>
+
+  <div class="d w"><h4>Kaiserschmarrn <span class="rate r-w">Worth it</span></h4>
+  <p>A thick pancake torn into pieces in the pan, caramelised with sugar and butter, dusted heavily and served with plum compote or apple sauce. Named for Emperor Franz Joseph. You will meet it again in Salzburg at the other end of the trip, so if you skip it here you have not lost it.</p></div>
+
+  <h3>Drink</h3>
+
+  <div class="d m"><h4>Helles, and specifically Augustiner <span class="rate r-m">Must try</span></h4>
+  <p>Munich's own style is <strong>Helles</strong> — pale, malty, soft, made to be drunk by the litre rather than admired. Six breweries have the right to serve at Oktoberfest, and the local consensus favourite is <strong>Augustiner</strong>, Munich's oldest, founded 1328. Look for <em>Edelstoff</em>, the stronger export version. Served from wooden barrels where you're going, which changes it noticeably — softer, less carbonated.</p>
+  <p>Also here: <strong>Dunkel</strong> (the original Munich beer, dark and bready), <strong>Weissbier</strong> (wheat, cloudy, banana-clove yeast character), and <strong>Radler</strong> — half beer, half lemonade, credited to an innkeeper in 1922 who ran short of beer with a hundred cyclists arriving and cut it with lemonade. Genuinely the right drink at 32°C.</p>
+  <p class="how"><b>Know this</b> — you are legally entitled to bring your own food into a Munich beer garden's self-service section. Locals turn up with bread, radishes and a tablecloth, and buy only the beer.</p></div>
+
+  <h3>Where</h3>
+
+  <div class="r"><div class="top"><span class="nm">Augustiner-Keller</span><span class="sc">★ 4.4 · 39,600+</span></div>
+    <span class="tier t-b">The one to pick</span><span class="tier">€€</span>
+    <p>Beer straight from wooden barrels, a vast chestnut-shaded garden, and a crowd that skews local rather than coach-party. Reviewers consistently note it runs like clockwork despite the scale. This is the Munich beer garden experience without the Hofbräuhaus tax.</p>
+    <p class="ad">Arnulfstraße 52 · daily 10:00–24:00 · +49 89 594393</p></div>
+
+  <div class="r"><div class="top"><span class="nm">Brauhaus am Kapuzinerplatz</span><span class="sc">★ 4.5 · 1,800+</span></div>
+    <span class="tier t-b">Budget · local</span><span class="tier">€€</span>
+    <p>Smaller, quieter, further out, and repeatedly described as more relaxed and more local than anything in the centre. Reviewers single out the Schweinsbraten and the house lager. If Augustiner-Keller is heaving, come here.</p>
+    <p class="ad">Kapuzinerplatz 5 · Mon–Thu 11:00–23:00, Fri–Sat to 24:00, Sun 09:00–23:00</p></div>
+
+  <div class="r"><div class="top"><span class="nm">Viktualienmarkt Beergarden</span><span class="sc">★ 4.4 · 6,200+</span></div>
+    <span class="tier t-b">Quick · central</span><span class="tier">€€</span>
+    <p>In the middle of the food market, five minutes from Marienplatz. The right call for a fast Leberkässemmel-and-beer stop rather than a sit-down dinner. Self-service tables around the outside; the clothed tables are table-service.</p>
+    <p class="ad">Viktualienmarkt 9 · 10:00–22:00 · <span class="warn">CLOSED SUNDAYS</span> — so Saturday evening only for you</p></div>
+
+  <div class="r"><div class="top"><span class="nm">Hofbräuhaus München</span><span class="sc">★ 4.3 · 108,000+</span></div>
+    <span class="tier">Famous</span><span class="tier">€€</span>
+    <p>The most famous beer hall on earth, and openly a tourist attraction — reviewers say so themselves and mostly still enjoy it. Brass band, enormous portions, communal benches. Go for thirty minutes and the spectacle, not for dinner.</p>
+    <p class="ad">Platzl 9 · daily 11:00–24:00</p></div>
+</section>
+
+<section id="f02" data-nav="02" data-label="Slovenia">
+  <p class="stopno"><span>02</span><span class="day">Days 2–4 · 9–11 Aug</span><span>Bled · Radovljica · Bohinj</span></p>
+  <h2>Alpine Slovenia</h2>
+  <p class="dek">A cuisine caught between Austria, Italy and the Balkans, which sounds like a compromise and is actually the appeal.</p>
+
+  <div class="b b-g"><span class="lab">Where you actually are</span>
+  <p>Camping at Kamna Gorica puts you ten minutes from <strong>Radovljica</strong> and its old town, and Radovljica is materially better eating than lakeside Bled — less captive, less priced-for-the-view. Bohinj, forty minutes the other way, is better again for mountain food. Bled itself is where you go for one specific cake.</p></div>
+
+  <h3>Dishes</h3>
+
+  <div class="d m"><h4>Kremšnita <span class="rate r-m">Must try</span></h4>
+  <p>The Bled cream cake, and one of very few desserts in Europe with a documented inventor and a fixed specification. Codified in 1953 by Ištvan Lukačević, then pastry chef at the Hotel Park: a layer of vanilla custard, a layer of whipped cream, puff pastry top and bottom, cut into a seven-centimetre square. That is the spec and it does not vary. The Park still claims the original and sells them by the thousand.</p>
+  <p class="how"><b>How to do it</b> — on the lakeside terrace, with a coffee, after the Osojnica climb. It is a genuinely great cake and it is also completely unpretentious.</p></div>
+
+  <div class="d m"><h4>Potica <span class="rate r-m">Must try</span></h4>
+  <p>The Slovene celebration cake: a very thin sheet of yeasted dough spread with filling and rolled into a spiral, so a slice is a dozen alternating rings. Walnut (<em>orehova</em>) is the classic. The one to look for is <strong>tarragon potica</strong> (<em>pehtranova</em>) — sweet dough filled with tarragon, sugar and cream. It sounds wrong, it is a genuinely Slovene thing, and it is superb: herbal, aniseed-ish, not remotely like a herb has wandered into a pudding.</p></div>
+
+  <div class="d m"><h4>Štruklji <span class="rate r-m">Must try</span></h4>
+  <p>Rolled dumplings — thin dough wrapped around a filling, rolled into a log, then boiled or baked and sliced. There are said to be dozens of traditional fillings. The default is <em>skutni</em>, curd cheese, served savoury with breadcrumbs and butter alongside meat, or sweet with sugar. Tarragon appears here too. It is the dish that most clearly is not Austrian and not Italian — it is simply Slovene.</p></div>
+
+  <div class="d m"><h4>Kranjska klobasa <span class="rate r-m">Must try</span></h4>
+  <p>Carniolan sausage, and one of the most legally protected sausages in Europe. The EU spec is strict: coarsely chopped pork and bacon, salt, pepper, garlic, water — nothing else, no more than 20% bacon, pinned with a wooden skewer through the loop. Boiled, served with mustard and horseradish and dark bread. This is the sausage that emigrated to Australia and became the "kransky", so you may have met a distant, sadder relative already.</p></div>
+
+  <div class="d w"><h4>Žganci <span class="rate r-w">Worth it</span></h4>
+  <p>Buckwheat spoonbread — coarse porridge crumbled into lumps, dressed with <em>ocvirki</em>, pork cracklings and their fat. Peasant food, mountain food, and the Bohinj version is the reference. Order it as a side with something braised rather than as a main and it makes complete sense.</p></div>
+
+  <div class="d w"><h4>Prekmurska gibanica <span class="rate r-w">Worth it</span></h4>
+  <p>Nothing to do with these mountains — it is from the far northeast — but it is on every traditional menu and it is EU-protected. Layered pastry with four fillings in strict order: poppy seed, cottage cheese, walnut, apple, repeated. Dense, ancient-feeling, and served in a slab. Share one.</p></div>
+
+  <div class="d w"><h4>Lake trout <span class="rate r-w">Worth it</span></h4>
+  <p>Grilled whole with butter, parsley and potatoes, or cold-smoked as a starter. Slovenia farms and fishes trout seriously, and in Bohinj and the Radovljica valley it is the local protein rather than an import. Several of the best restaurants here build their menu around it.</p></div>
+
+  <div class="d t"><h4>Jota <span class="rate r-t">If time</span></h4>
+  <p>Sauerkraut, beans, potato and smoked pork, cooked long. Excellent food, and very obviously winter food. In August it is a heavy lunch you will regret in the car. Worth knowing about; worth eating in November.</p></div>
+
+  <h3>Drink</h3>
+
+  <div class="d m"><h4>Orange wine from Goriška Brda <span class="rate r-m">Must try</span></h4>
+  <p>The genuine foodie find in Slovenia. Skin-contact white wine — white grapes fermented on their skins like a red, producing an amber, tannic, oxidative, savoury wine — was revived in the 1990s in the hills on the Slovene-Italian border, and Goriška Brda is one of the two places on earth where the modern movement started. Look for <strong>Rebula</strong> (Ribolla Gialla) done this way. It is nothing like any other white wine and it happens to be superb with cured pork and hard cheese.</p>
+  <p>Elsewhere on the list: <strong>Teran</strong> from the Karst, a fierce, high-acid red grown on red iron soil; <strong>Šipon</strong> (Furmint) from the east; and <strong>Cviček</strong>, a pale, low-alcohol red blend that Slovenes drink like water and outsiders rarely understand.</p></div>
+
+  <div class="d w"><h4>Honey, and things made from it <span class="rate r-w">Worth it</span></h4>
+  <p>Slovenia is disproportionately a beekeeping country — Anton Janša, born beside your campsite, was Maria Theresa's court beekeeper and World Bee Day is his birthday. The consequence on a menu is <em>medica</em> (honey brandy), honey liqueurs, and <strong>lect</strong> — hard decorated honey-dough hearts, made in Radovljica for generations. There is a working lect workshop and museum under one of the restaurants below.</p></div>
+
+  <h3>Where</h3>
+
+  <div class="r"><div class="top"><span class="nm">Gostilna Lectar, Radovljica</span><span class="sc">★ 4.4 · 1,550+</span></div>
+    <span class="tier t-b">The one to pick</span><span class="tier">€€</span>
+    <p>An inn on Radovljica's medieval square with a gingerbread workshop and museum in the cellar. Traditional Slovene menu — reviewers repeatedly flag the house gibanica and the ravioli with pancetta and leek, and warn that portions are enormous. Some small plates must be ordered before 18:00.</p>
+    <p class="ad">Linhartov trg 2, Radovljica · daily 12:00–22:00 · 12 min from camp</p></div>
+
+  <div class="r"><div class="top"><span class="nm">Domačija Globočnik</span><span class="sc">★ 5.0 · 290+</span></div>
+    <span class="tier t-s">Splurge · farmhouse</span><span class="tier">€€€</span>
+    <p>A perfect five stars across nearly 300 reviews, which is close to unheard of. A farmhouse restaurant doing traditional Slovene cooking with real technique — reviewers describe amuse-bouches, homemade bread, and hosts who come to the table. Roughly €100 for three courses for two.</p>
+    <p class="ad">Globoko 9, Radovljica · <span class="warn">Thu–Sun only</span> (Sun 12:00–20:00) · book ahead · +386 31 681 053<br>Open on your Sunday. Closed on your Monday.</p></div>
+
+  <div class="r"><div class="top"><span class="nm">Restavracija Union, Bled</span><span class="sc">★ 4.7 · 500+</span></div>
+    <span class="tier">Best-rated in Bled</span><span class="tier">€€€</span>
+    <p>The highest-rated restaurant in Bled by some distance, and small enough that the rating means something. One-page menu, heavy on meat done well, thrifted-antique room. Repeatedly named by reviewers as the best food they had in Slovenia.</p>
+    <p class="ad">Ljubljanska cesta 9, Bled · Mon 17:00–23:00, Tue–Sat 13:30–23:00, Sun 13:00–23:00</p></div>
+
+  <div class="r"><div class="top"><span class="nm">Gostilna Pri Planincu, Bled</span><span class="sc">★ 4.4 · 2,890+</span></div>
+    <span class="tier t-b">Budget</span><span class="tier">€€</span>
+    <p>An old inn near the castle road — pub at the front, proper dining room at the back that most people miss. Traditional dishes plus surprisingly strong vegetarian ones; reviewers single out the buckwheat pockets with pumpkin and porcini, and the tarragon dumplings in lemon sauce.</p>
+    <p class="ad">Grajska cesta 8, Bled · daily 12:00–21:30</p></div>
+
+  <div class="r"><div class="top"><span class="nm">Gostilna pri Hrvatu, Bohinj</span><span class="sc">★ 4.7 · 1,380+</span></div>
+    <span class="tier t-b">Worth the drive</span><span class="tier">€€€</span>
+    <p>In a village above Lake Bohinj with a river-and-mountain view. Reviewers consistently name the cold-smoked trout and the trout risotto, and the štruklji. Family-run, and the kind of place people describe as stumbling on and then not shutting up about.</p>
+    <p class="ad">Srednja vas v Bohinju 76 · Mon, Wed–Sun 10:00–23:00, Tue from 17:00</p></div>
+
+  <div class="r"><div class="top"><span class="nm">Žarson — Leskovački žar, Radovljica</span><span class="sc">★ 4.7 · 1,400+</span></div>
+    <span class="tier t-b">Budget · curiosity</span><span class="tier">€€</span>
+    <p>Serbian-style grill in Slovenia — ćevapi, pljeskavica, stuffed meats, ajvar. Worth a mention because it is your first taste of the Balkan grill tradition that will dominate the second half of the trip, eaten before you cross into it. Cheap and generous.</p>
+    <p class="ad">Cankarjeva ulica 66, Radovljica · Mon–Sat 10:00–22:00, Sun 12:00–21:00</p></div>
+</section>
+
+<section id="f03" data-nav="03" data-label="Dalmatia">
+  <p class="stopno"><span>03</span><span class="day">Days 4–6 · 11–13 Aug</span><span>Lokva Rogoznica · Omiš · Brela</span></p>
+  <h2>Dalmatia</h2>
+  <p class="dek">Four hundred years of Venice, olive oil instead of butter, and a whole cuisine built on cooking things slowly under a metal bell.</p>
+
+  <div class="b b-g"><span class="lab">Where you actually are</span>
+  <p>Autocamp Sirena is at Lokva Rogoznica, which sits between Omiš and Brela — about twenty minutes north of Punta Rata. That matters for eating: <strong>Omiš is closer than Brela</strong>, it is a working town rather than a resort strip, and it has the better konobas. It also puts you inside <strong>Poljica</strong>, the old peasant republic, which has its own protected dish.</p></div>
+
+  <h3>Dishes</h3>
+
+  <div class="d m"><h4>Peka <span class="rate r-m">Must try</span></h4>
+  <p>The defining Dalmatian method and the meal to build a day around. Meat — usually veal, lamb or octopus — with potatoes, onion, olive oil, rosemary and white wine, placed in a shallow pan, covered with an iron bell (the <em>peka</em>), and buried in embers on the hearth for three hours or more. The bell traps the steam so nothing dries; the coals on top brown everything. The potatoes soak up the fat and are, quietly, the best part.</p>
+  <p><strong>Octopus peka</strong> is the one to get if you want the version that is hardest to find at home. It goes gelatinous and sweet in a way grilled octopus never does.</p>
+  <p class="how"><b>How to do it</b> — must be ordered <strong>24 hours ahead</strong>, and usually for a minimum of two people. Book it on your first afternoon, eat it on your second night. Several places will collect you and drive you back for free, which solves the wine problem.</p></div>
+
+  <div class="d m"><h4>Soparnik <span class="rate r-m">Must try</span></h4>
+  <p>Your local dish, and almost nobody outside Croatia has heard of it. Two paper-thin sheets of unleavened dough with a filling of Swiss chard, onion and parsley between them, baked directly on a stone hearth under hot ashes, then brushed with garlic and olive oil and cut into diamonds. It is EU protected-designation and it comes from <strong>Poljica</strong> — the district you are camped in. Vegan by accident, ancient by design, and completely unlike anything else on the coast.</p></div>
+
+  <div class="d m"><h4>Pašticada <span class="rate r-m">Must try</span></h4>
+  <p>The great Dalmatian celebration dish and a two-day project. Beef topside is studded with garlic, bacon and cloves, marinated in vinegar and wine overnight, browned, then stewed for hours with prunes, dried figs and <em>prošek</em> dessert wine until the sauce is dark, glossy and sweet-sour. Served with gnocchi to catch it. If you see it on a menu, it is a house's signature and it will have been made properly.</p></div>
+
+  <div class="d m"><h4>Crni rižot <span class="rate r-m">Must try</span></h4>
+  <p>Black risotto — cuttlefish or squid with their ink, garlic, wine and a little tomato. It stains everything, including you. Done well it is intensely of the sea and not remotely fishy; done badly it is grey and gluey. It is the single best test of whether a konoba's kitchen is serious.</p></div>
+
+  <div class="d m"><h4>Buzara <span class="rate r-m">Must try</span></h4>
+  <p>Not a dish so much as a method: shellfish — mussels, clams, langoustines — flashed in olive oil, garlic, parsley, white wine and breadcrumbs. <em>Bijela buzara</em> is the white version; <em>crvena</em> adds tomato. The breadcrumbs are the trick, thickening the liquor into something you finish with bread. Order it, then order more bread.</p></div>
+
+  <div class="d w"><h4>Brudet <span class="rate r-w">Worth it</span></h4>
+  <p>Fisherman's stew — several kinds of fish, tomato, vinegar, onion, cooked in one pot and never stirred with a spoon (you shake the pan, or the fish breaks). Served with soft polenta. It is what was made from whatever did not sell, and it is far better than that origin suggests.</p></div>
+
+  <div class="d w"><h4>Paški sir and Dalmatinski pršut <span class="rate r-w">Worth it</span></h4>
+  <p>The standard opening plate, and both are properly good. <strong>Pag cheese</strong> is a hard sheep's milk cheese from an island so wind-blasted that salt spray coats the herbs the sheep graze on — the salinity is in the animal before it is in the cheese. <strong>Dalmatian prosciutto</strong> differs from Italian in being lightly smoked and then dried in the bura wind. Order both with olives and capers and a glass of something white.</p></div>
+
+  <div class="d w"><h4>Grilled sardines and small fish <span class="rate r-w">Worth it</span></h4>
+  <p>The cheap end of the fish menu and, in August, frequently the better eating. Fresh sardines over charcoal with nothing but salt, oil and lemon; <em>girice</em>, tiny fried whitebait eaten whole. A plate of either costs a fraction of a sea bass and is more purely Dalmatian.</p></div>
+
+  <div class="d t"><h4>Fritule and rožata <span class="rate r-t">If time</span></h4>
+  <p>Dessert here is thin. <strong>Fritule</strong> are small rum-and-citrus-zest doughnuts, usually festival food. <strong>Rožata</strong> is a Dubrovnik custard — see the next section, where it belongs.</p></div>
+
+  <h3>Drink</h3>
+
+  <div class="d m"><h4>Plavac Mali, and knowing what to ask for <span class="rate r-m">Must try</span></h4>
+  <p>The great Dalmatian red. DNA testing eventually established it as a cross of Dobričić and Crljenak Kaštelanski — and Crljenak turned out to be <strong>Zinfandel</strong>, meaning California's signature grape is a Dalmatian native that had almost died out at home. Plavac Mali is its child: dark, high-alcohol, dried-fig and Mediterranean-herb.</p>
+  <p>Whites to ask for: <strong>Pošip</strong> (Korčula — full, nutty, the best white on the coast), <strong>Malvazija</strong> (Istrian, crisper), and if you ever see <strong>Grk</strong>, order it — it grows on one sandy strip of Korčula, has only female flowers so needs Plavac interplanted to pollinate, and barely leaves the island.</p>
+  <p class="how"><b>Don't confuse</b> — <em>prošek</em> is a sweet Dalmatian dessert wine made from dried grapes. It is not prosecco, and Croatians are touchy about the confusion for good legal reasons.</p></div>
+
+  <div class="d w"><h4>Rakija, correctly <span class="rate r-w">Worth it</span></h4>
+  <p>On the coast the base is grape — <em>loza</em>. The infusions are where it gets interesting: <strong>travarica</strong> (wild herbs, the Dalmatian default), <strong>orahovica</strong> (green walnuts, dark and bitter-sweet), <strong>medica</strong> (honey), <strong>smokovača</strong> (fig). Most konobas make their own and will bring you a shot at the end unbidden. Refusing it is worse manners than accepting it.</p></div>
+
+  <h3>Where — Omiš (closest to camp)</h3>
+
+  <div class="r"><div class="top"><span class="nm">U Našeg Marina</span><span class="sc">★ 4.9 · 615</span></div>
+    <span class="tier t-s">The best-rated · book now</span><span class="tier">€€</span>
+    <p>A tiny family place in the old town, charcoal grill in the back yard, and the fish platter for two that reviewers describe as the best fish they have ever eaten. <span class="warn">Reviewers report booking a week ahead in August.</span> If you want this, phone the moment you read this — it is the highest-rated thing near your campsite by any measure.</p>
+    <p class="ad">Knezova Kačića 4, Omiš · daily 08:00–13:00 and 17:00–23:00 · +385 91 577 9999</p></div>
+
+  <div class="r"><div class="top"><span class="nm">Konoba Gušti</span><span class="sc">★ 4.7 · 780+</span></div>
+    <span class="tier t-b">The one to pick</span><span class="tier">€€</span>
+    <p>Hidden down a side street in the old town — reviewers say it is genuinely hard to find, which is the point. Real charcoal and open fire, traditional Dalmatian method, excellent octopus, strong local wine list, and a homemade cherry liqueur at the end. Slow-cooked dishes need ordering a day ahead.</p>
+    <p class="ad">Ul. Matije Gubca 7, Omiš · <span class="warn">closed Saturdays</span> · Sun–Fri from 14:00 (Wed 15:00) · +385 91 531 1112</p></div>
+
+  <div class="r"><div class="top"><span class="nm">Konoba Joskan</span><span class="sc">★ 4.6 · 660+</span></div>
+    <span class="tier t-b">Budget</span><span class="tier">€€</span>
+    <p>Chargrilled fish and steak at prices reviewers repeatedly call reasonable by Croatian standards. Grill visible from the table. One consistent note: skip the grilled vegetables, which are overpriced for the portion.</p>
+    <p class="ad">Knezova Kačića 13, Omiš · <span class="warn">closed Sundays</span> · 12:00–24:00</p></div>
+
+  <h3>Where — Brela</h3>
+
+  <div class="r"><div class="top"><span class="nm">Konoba Ivandica Dvori</span><span class="sc">★ 4.9 · 1,590+</span></div>
+    <span class="tier t-s">Splurge</span><span class="tier">€€€</span>
+    <p>4.9 across sixteen hundred reviews is extraordinary for a restaurant this size. Family-run, seafood-led, and reviewers describe genuinely exceptional service — one recounts the family sourcing a bouquet within an hour on learning it was her birthday. Book.</p>
+    <p class="ad">Banje 1, Brela · daily 17:00–23:00 · +385 98 771 819</p></div>
+
+  <div class="r"><div class="top"><span class="nm">Konoba Katara</span><span class="sc">★ 4.7 · 780+</span></div>
+    <span class="tier t-s">For the peka</span><span class="tier">€€€</span>
+    <p>Up in the hills above Brela with a view down the coast, and the place reviewers name specifically for <strong>octopus peka ordered a day ahead</strong>. Runs a <strong>free shuttle from town both ways</strong>, which means you can drink. <span class="warn">Cash only.</span> Bring insect repellent for the ankles.</p>
+    <p class="ad">Svetog Jurja 55, Brela · daily 18:00–01:00 · +385 99 564 6096</p></div>
+
+  <div class="r"><div class="top"><span class="nm">Konoba Feral</span><span class="sc">★ 4.7 · 1,810+</span></div>
+    <span class="tier t-b">Budget · reliable</span><span class="tier">€€</span>
+    <p>On the waterfront, busy enough to queue, and they serve you drinks while you wait. Grilled octopus, fresh sardines, fish lasagne. Reviewers consistently note generous portions and good local olive oil — which they also sell.</p>
+    <p class="ad">Obala Kneza Domagoja 30, Brela · daily 11:00–23:00 (Sun from 09:00)</p></div>
+
+  <div class="r"><div class="top"><span class="nm">Restaurant Galinac</span><span class="sc">★ 4.7 · 1,350+</span></div>
+    <span class="tier">Sea view</span><span class="tier">€€€</span>
+    <p>A genuine family operation — reviewers describe the mother baking the cakes and the children serving. Fresh fish daily, big sea view, and they will also collect you and drop you home free of charge, up to about 9 km.</p>
+    <p class="ad">Svetog Jurja, Brela · daily 18:00–23:00 · +385 98 910 5466</p></div>
+</section>
+
+<section id="f04" data-nav="04" data-label="Ston">
+  <p class="stopno"><span>04</span><span class="day">Day 6 · Thu 13 Aug</span><span>Ston · Mali Ston · Pelješac</span></p>
+  <h2>Ston</h2>
+  <p class="dek">A bay that has been farming the same oyster since the Romans, at the foot of five kilometres of wall built to protect salt.</p>
+
+  <h3>Dishes</h3>
+
+  <div class="d m"><h4>Mali Ston oysters <span class="rate r-m">Must try</span></h4>
+  <p>These are <strong>Ostrea edulis</strong>, the native European flat oyster — not the Pacific rock oyster that makes up almost all of what is sold in Europe today. Flat oysters are slower-growing, far rarer, and taste completely different: metallic, mineral, almost coppery, with a long finish rather than a clean brine. The bay works because the Neretva's fresh water meets the sea here at exactly the right salinity, and they have been farmed on this spot since Roman times.</p>
+  <p class="how"><b>Honest note on August</b> — the traditional peak is around St Joseph's Day, 19 March. Summer is spawning season for flat oysters, and a spawning oyster can be softer and milkier than one eaten in spring. They are still excellent and absolutely worth the stop; they are simply not at their theoretical best. Eat them raw with lemon and nothing else, and try one grilled for contrast.</p></div>
+
+  <div class="d w"><h4>Mussels na buzaru <span class="rate r-w">Worth it</span></h4>
+  <p>Farmed alongside the oysters on the same ropes, and cheaper by a wide margin. A kilo of Ston mussels in white wine, garlic and breadcrumbs is arguably better value than the oysters and just as much a product of this bay.</p></div>
+
+  <div class="d w"><h4>Stonski makaruli <span class="rate r-w">Worth it</span></h4>
+  <p>Ston's genuinely strange contribution: a sweet cake made with <strong>pasta in it</strong>. Macaroni is boiled, mixed with ground walnuts or almonds, sugar, eggs, cinnamon and chocolate, and baked. It has been made here since at least the sixteenth century and traditionally served at weddings. It should not work. It is not exactly dessert as you know it, and it is worth ordering purely because you will not meet it anywhere else.</p></div>
+
+  <div class="d m"><h4>Dingač and Postup <span class="rate r-m">Must try</span></h4>
+  <p>You are on the peninsula that makes the best Plavac Mali in Croatia. <strong>Dingač</strong> was the country's first protected wine appellation, designated 1961; <strong>Postup</strong> is its neighbour. Both grow on absurdly steep south-facing slopes falling straight to the sea, where the vines get sun three ways — direct, reflected off the water, and radiated back off white limestone. Until 1973 the grapes came down by donkey; then they blasted a tunnel through the ridge so tractors could reach them. Drink it here rather than reading about it later.</p></div>
+
+  <div class="d w"><h4>Ston salt <span class="rate r-w">Worth it</span></h4>
+  <p>Not a dish, but buy a bag. The saltworks below the walls are among the oldest continuously operating in Europe and still harvested by hand from shallow evaporation pans, exactly as they were in the fourteenth century. It is the commodity the walls were built to defend, and it costs almost nothing.</p></div>
+
+  <h3>Where</h3>
+
+  <div class="r"><div class="top"><span class="nm">Kapetanova kuća</span><span class="sc">★ 4.7 · 3,860+</span></div>
+    <span class="tier t-s">The one to pick</span><span class="tier">€€€</span>
+    <p>The reference restaurant of Mali Ston, on the water. Reviewers describe oysters straight from the bay, a black seafood risotto they call the best they have had, and — notably — the house serving Stonski makaruli. Complimentary appetiser tray on arrival. Busy; walk-ins possible but not guaranteed.</p>
+    <p class="ad">Obala dr. Ante Starčevića 9, Mali Ston · daily 11:00–23:00 · +385 20 754 264</p></div>
+
+  <div class="r"><div class="top"><span class="nm">Bota Šare Oyster Bar</span><span class="sc">★ 4.6 · 2,180+</span></div>
+    <span class="tier">Also does the farm trip</span><span class="tier">€€€</span>
+    <p>Right on the fishing harbour, and they run boat trips out to the oyster pontoons where the oysters are lifted and shucked in front of you. Reviewers rate the platters highly and the setting even more so. Easy parking, which is not nothing here.</p>
+    <p class="ad">Mali Ston · daily 09:00–23:00 · +385 20 754 482</p></div>
+
+  <div class="r"><div class="top"><span class="nm">Barba Ston</span><span class="sc">★ 4.7 · 830+</span></div>
+    <span class="tier t-b">Budget</span><span class="tier">€€</span>
+    <p>In Ston proper rather than Mali Ston, on the main square. Smaller, cheaper, and reviewers repeatedly single out the black risotto and the octopus salad. The sensible choice if the harbourside places are full or you want to eat and move on.</p>
+    <p class="ad">Trg kralja Tomislava 1, Ston · daily 10:00–22:00</p></div>
+
+  <div class="r"><div class="top"><span class="nm">Mali Ston Oysters (farm visit)</span><span class="sc">★ 4.6 · 31</span></div>
+    <span class="tier t-s">Experience</span><span class="tier">€€</span>
+    <p>A small operation running visitors out on a seventy-year-old wooden boat to the beds themselves, with oysters and mussels pulled and opened on the water, plus local wine and homemade grappa. Few reviews but uniformly glowing. If you want the story as well as the plate, this is the version.</p>
+    <p class="ad">Obala Maršala Tita, Mali Ston · 09:00–20:00 · +385 91 369 6981</p></div>
+</section>
+
+<section id="f05" data-nav="05" data-label="Dubrovnik">
+  <p class="stopno"><span>05</span><span class="day">Day 7 · Fri 14 Aug</span><span>Dubrovnik</span></p>
+  <h2>Dubrovnik</h2>
+  <p class="dek">The most expensive eating on the route, with a genuine local cuisine hiding underneath the tourist menus.</p>
+
+  <div class="b b-f"><span class="lab">Strategy</span>
+  <p>Dubrovnik has more bad expensive restaurants per square metre than anywhere else you will go. Two rules fix it. <strong>One: get off the Stradun.</strong> The alleys running uphill — Prijeko in particular — and the streets just outside Ploče Gate are where the food improves and the price drops. <strong>Two: order the Dubrovnik dishes, not the "Dalmatian" ones.</strong> Ragusa had its own cooking, distinct from the rest of the coast, and a kitchen that puts <em>zelena menestra</em> or <em>šporki makaruli</em> on the menu is telling you something about itself.</p></div>
+
+  <h3>Dishes</h3>
+
+  <div class="d m"><h4>Rožata <span class="rate r-m">Must try</span></h4>
+  <p>Dubrovnik's own custard, EU protected, and much better than the crème caramel it resembles. The difference is <em>rozulin</em> — a rose-petal liqueur that has been made here for centuries and gives the set custard a faint, unmistakable floral edge. It has been recorded in Dubrovnik since at least the fifteenth century, which makes it older than most of the buildings around you.</p></div>
+
+  <div class="d m"><h4>Zelena menestra <span class="rate r-m">Must try</span></h4>
+  <p>The genuine Dubrovnik home dish and the one that separates a real kitchen from a tourist one. Collards or kale slow-cooked with potato and several kinds of cured and smoked pork — sausage, pancetta, sometimes an ear — until everything collapses together. Rustic, salty, deeply savoury, and served at Christmas and family occasions. Heavy for August, but order it as a shared starter and you will understand the city better.</p></div>
+
+  <div class="d w"><h4>Šporki makaruli <span class="rate r-w">Worth it</span></h4>
+  <p>"Dirty macaroni" — pasta in a long-cooked beef and tomato sauce enriched with cinnamon and clove, traditionally eaten at the feast of St Blaise, the city's patron. The spicing is the tell: it is a medieval Mediterranean sauce, not an Italian one, and the trade routes that brought those spices are the reason Ragusa existed.</p></div>
+
+  <div class="d w"><h4>Arancini <span class="rate r-w">Worth it</span></h4>
+  <p>Not the Sicilian rice balls. In Dubrovnik <em>arancini</em> are strips of orange peel candied slowly in sugar syrup and rolled in sugar, sold in paper bags in the old town. A frugal Ragusan use of what was left after juicing, and a very good thing to have in the car.</p></div>
+
+  <div class="d t"><h4>Oysters, again <span class="rate r-t">If time</span></h4>
+  <p>Dubrovnik restaurants serve Ston oysters, marked up substantially for the postcode. You will have eaten them at source the day before. Skip.</p></div>
+
+  <h3>Where</h3>
+
+  <div class="r"><div class="top"><span class="nm">Public Old Town Croatian Bistro</span><span class="sc">★ 4.9 · 1,270+</span></div>
+    <span class="tier t-s">The one to pick</span><span class="tier">€€€</span>
+    <p>4.9 inside Dubrovnik's old town is remarkable — this is the rare central place reviewers describe as "not tourist slop." On Prijeko, off the main drag. Reviewers repeatedly name the cuttlefish orzo, the shrimp pâté and the beef tartare, and call the value fair, which nobody says about Dubrovnik.</p>
+    <p class="ad">Prijeko ul. 30 · daily 11:00–22:30 · +385 20 747 867</p></div>
+
+  <div class="r"><div class="top"><span class="nm">Konoba Nava</span><span class="sc">★ 4.6 · 870+</span></div>
+    <span class="tier t-b">Budget · family</span><span class="tier">€€</span>
+    <p>A few tables in a stone alley, family-owned, unfussy. Fried sardines, octopus salad, whole fish with lemon and oil and nothing else. Reviewers describe being talked out of over-ordering by the staff, which is a good sign. Check the price before you sit.</p>
+    <p class="ad">Getaldićeva ul. 5 · daily 09:00–23:00 · +385 20 350 746</p></div>
+
+  <div class="r"><div class="top"><span class="nm">Konoba Maestro</span><span class="sc">★ 4.8 · 670+</span></div>
+    <span class="tier">Outside the walls</span><span class="tier">€€</span>
+    <p>Just beyond Ploče Gate beside the fort — quiet pavement tables, away from the crush. Highly rated, though several reviewers note prices have risen. Good wine advice from the floor.</p>
+    <p class="ad">Hvarska ul. 6 · daily 16:00–24:00</p></div>
+
+  <div class="r"><div class="top"><span class="nm">Konoba Pjatanca</span><span class="sc">★ 4.4 · 2,140+</span></div>
+    <span class="tier t-s">For the peka</span><span class="tier">€€€</span>
+    <p>Sea view a few minutes from Ploče Gate, and the Dubrovnik option for <strong>peka ordered a day ahead</strong> — reviewers describe being shown the bell before it is served. Ratings are more mixed than the others here and several complain about value, so go for the peka specifically rather than à la carte.</p>
+    <p class="ad">Koločepska ul. 2 · daily 09:00–24:00 · +385 98 938 0023</p></div>
+</section>
+
+<section id="f06" data-nav="06" data-label="Boka">
+  <p class="stopno"><span>06</span><span class="day">Days 7–10 · 14–17 Aug</span><span>Kotor · Perast · Njeguši</span></p>
+  <h2>The Bay of Kotor</h2>
+  <p class="dek">Where the coast and the mountains meet on one plate — and where the single best cheap meal of the whole trip is a shack on the water.</p>
+
+  <h3>Dishes</h3>
+
+  <div class="d m"><h4>Njeguški pršut and Njeguški sir <span class="rate r-m">Must try</span></h4>
+  <p>Eat this at source, on the Lovćen road, not in a Kotor restaurant. The village of Njeguši sits in a saddle at about 900 m where cold mountain air meets sea air rising off the bay — a specific microclimate that dries and smokes ham unlike anywhere else. It is smoked over beech, then air-dried, giving it a distinctly different character from Italian or Dalmatian prosciutto: firmer, smokier, saltier.</p>
+  <p>It comes with the local hard cow's cheese, often <em>sir iz ulja</em> — cheese matured submerged in oil — plus bread, olives, honey and a shot of loza. This is the plate that explains Montenegro.</p>
+  <p class="how"><b>How to do it</b> — stop in Njeguši itself on the Lovćen drive. Roadside houses sell it; one of the producers below will show you the drying room.</p></div>
+
+  <div class="d m"><h4>Boka oysters, at the farm <span class="rate r-m">Must try</span></h4>
+  <p>The bay farms its own oysters and mussels, and the best way to eat them is at a working farm rather than a restaurant — pulled out of the water, shucked in front of you, eaten at a plastic table on a pontoon. This is genuinely the highest pleasure-per-euro meal available on your entire route, and it is a fifteen-minute walk from Perast.</p></div>
+
+  <div class="d m"><h4>Kajmak <span class="rate r-m">Must try</span></h4>
+  <p>Not cream, not butter, not cheese — the skin lifted off scalded milk, salted and left to mature in layers for days or weeks. Young kajmak is mild and spreadable; aged is sharp, salty, almost blue-cheesy. It goes on bread, on grilled meat, into ćevapi, onto cornmeal. You will meet it from here to Sarajevo and it is one of the genuinely distinctive foods of the region.</p></div>
+
+  <div class="d w"><h4>Njeguški steak <span class="rate r-w">Worth it</span></h4>
+  <p>Veal or pork pounded flat, stuffed with njeguški pršut and the local cheese, rolled or folded, then pan-fried. It appears on every Montenegrin menu. Rich to the point of comedy; share it, or have it as your one big meal of the day.</p></div>
+
+  <div class="d w"><h4>Priganice <span class="rate r-w">Worth it</span></h4>
+  <p>Small yeasted dough balls, deep fried, served hot with honey, kajmak and sometimes cheese. Eaten for breakfast, dessert or with drinks. The kajmak-and-honey combination — salty fresh dairy against raw honey on hot fried dough — is much better than the description suggests.</p></div>
+
+  <div class="d w"><h4>Perast cake <span class="rate r-w">Worth it</span></h4>
+  <p>An almond cake specific to Perast, dense and marzipan-adjacent, made in a village of a few hundred people. Reviewers of the restaurant below name it unprompted as the reason to stay for dessert. It exists nowhere else.</p></div>
+
+  <div class="d s"><h4>Buzara and black risotto, again <span class="rate r-s">Skippable</span></h4>
+  <p>Same dishes as Dalmatia, same quality, and you will have eaten both already. Order them here only if you loved them. Montenegro's distinctive food is uphill, not on the water.</p></div>
+
+  <h3>Drink</h3>
+
+  <div class="d m"><h4>Vranac <span class="rate r-m">Must try</span></h4>
+  <p>Montenegro's native red — the name means "black stallion" — and it lives up to it: deep, tannic, dark-fruited, high in alcohol. The white counterpart is <strong>Krstač</strong>, a native grape named for the cross shape its bunches make. Most of both comes from Plantaže near Podgorica, whose main cellar, <strong>Šipčanik</strong>, is a converted underground aircraft hangar built to hide Yugoslav air force jets and now holding a couple of million litres in a tunnel designed to survive an air strike.</p></div>
+
+  <h3>Where — Kotor and Dobrota</h3>
+
+  <div class="r"><div class="top"><span class="nm">Bonazza</span><span class="sc">★ 4.8 · 4,000+</span></div>
+    <span class="tier t-s">On your doorstep</span><span class="tier">€€€</span>
+    <p>4.8 across four thousand reviews, and it is on Donji put in Dobrota — the same road as your hotel. Waterside tables, seafood-led, homemade fig bread that reviewers rave about. Message ahead on WhatsApp for a table on the water. Consistent note: the service is slow. Go when you have an evening, not an hour.</p>
+    <p class="ad">170 Donji put, Dobrota · daily 08:00–24:00 · +382 63 270 250</p></div>
+
+  <div class="r"><div class="top"><span class="nm">Konoba Scala Santa</span><span class="sc">★ 4.5 · 2,250+</span></div>
+    <span class="tier t-b">Old town · reliable</span><span class="tier">€€€</span>
+    <p>In the old town on Salad Square, with a guitarist most evenings. Reviewers describe local cheese and charcuterie boards, good seafood platters and reasonable prices for the setting — which is rare inside Kotor's walls. Reserve in season.</p>
+    <p class="ad">Salad Square, Kotor old town · daily 10:00–23:00 · +382 67 393 458</p></div>
+
+  <div class="r"><div class="top"><span class="nm">Galerija</span><span class="sc">★ 4.7 · 206</span></div>
+    <span class="tier">View</span><span class="tier">€€€</span>
+    <p>A terrace a few minutes outside the old town walls, looking at the fortifications one way and the marina the other. Smaller and less trafficked than the in-walls places, with an Italian-leaning menu and a good octopus risotto.</p>
+    <p class="ad">Šuranj, Kotor · daily 08:00–24:00</p></div>
+
+  <h3>Where — Perast</h3>
+
+  <div class="r"><div class="top"><span class="nm">Pescatore Oysters &amp; Mussels Farm</span><span class="sc">★ 4.8 · 470+</span></div>
+    <span class="tier t-b">Do this one</span><span class="tier">€€</span>
+    <p>A working oyster and mussel farm about fifteen minutes' walk from Perast toward Risan. Oysters lifted from the bay and shucked in front of you; mussels, prawns and fish simply grilled; house wine at around €2.50 a glass. Reviewers describe it as the best meal they had in Montenegro, repeatedly, and the family running it as the reason. Rustic — plastic chairs, no pretence.</p>
+    <p class="ad">Between Perast and Risan · daily 11:00–19:00 · +382 69 447 508<br>Note the early close — this is a lunch, not a dinner.</p></div>
+
+  <div class="r"><div class="top"><span class="nm">Restaurant Conte</span><span class="sc">★ 4.5 · 2,670+</span></div>
+    <span class="tier">Waterfront</span><span class="tier">€€€</span>
+    <p>The established waterfront name in Perast, with tables at the edge of the sea. Reviewers name the cuttlefish risotto, the prawn-stuffed gnocchi and — universally — the Perast cake. Reserve for a waterfront table; without one you are inland and it is a different experience. Reviews on food are a little uneven; stick to what is named.</p>
+    <p class="ad">Ul. Marka Martinovića, Perast · daily 08:00–24:00 · +382 67 257 387</p></div>
+
+  <div class="r"><div class="top"><span class="nm">Eho Restaurant</span><span class="sc">★ 4.8 · 309</span></div>
+    <span class="tier t-s">Splurge</span><span class="tier">€€€€</span>
+    <p>Modern fine dining in a restored palace in Perast — tortellini with truffle, fish velouté, proper desserts, a carefully built wine list. Newer and less known than Conte, and rated higher. This is the trip's best candidate for one genuinely serious meal.</p>
+    <p class="ad">Perast · daily 11:00–23:00 · +382 67 183 293</p></div>
+
+  <h3>Where — Njeguši, on the Lovćen road</h3>
+
+  <div class="r"><div class="top"><span class="nm">Turo — Njeguški Pršut i Sir</span><span class="sc">★ 4.9 · 44</span></div>
+    <span class="tier t-b">At source</span><span class="tier">€</span>
+    <p>A producer rather than a restaurant. Reviewers describe being shown the drying rooms with the hams hanging, given wine and brandy, and buying to take away. Few reviews, all excellent. If you want to understand njeguški pršut rather than just eat it, stop here.</p>
+    <p class="ad">Njeguši · Mon–Fri 08:00–14:00, Sat to 12:30 · <span class="warn">closed Sunday</span> · +382 68 867 162</p></div>
+
+  <div class="r"><div class="top"><span class="nm">Kafana Porto Turo</span><span class="sc">★ 4.7 · 393</span></div>
+    <span class="tier t-b">Budget · lunch</span><span class="tier">€€</span>
+    <p>In the village itself, and specifically described by reviewers as the authentic alternative to the places that fill with coach parties. Mixed cheese and ham plates, ćevapi, mountain views. Slow service, warm welcome.</p>
+    <p class="ad">P1, Njeguši · daily 09:00–21:00 · +382 68 867 162</p></div>
+</section>
+
+<section id="f07" data-nav="07" data-label="Durmitor">
+  <p class="stopno"><span>07</span><span class="day">Days 10–13 · 17–20 Aug</span><span>Žabljak · Durmitor</span></p>
+  <h2>The mountains</h2>
+  <p class="dek">Three nights at 1,456 m, where the food stops being Mediterranean entirely and becomes cornmeal, cream and lamb.</p>
+
+  <div class="b b-g"><span class="lab">The shift</span>
+  <p>This is the most distinct cuisine on the route and the one people skip. Highland Montenegro has almost no olive oil, no seafood and no tomato tradition — it runs on <strong>dairy, maize, potato and sheep</strong>. Everything is heavier, and at this altitude, in a place that is genuinely cold at night in August, it makes complete sense. You have three nights here. Use them.</p></div>
+
+  <h3>Dishes</h3>
+
+  <div class="d m"><h4>Kačamak <span class="rate r-m">Must try</span></h4>
+  <p>The definitive Durmitor dish. Cornmeal and potato boiled together, then beaten hard with kajmak and young cheese until the whole thing turns glossy and starts to pull away from the pot in strands. Served in the pan it was made in, with more kajmak melting on top. It is somewhere between polenta, mashed potato and fondue, and it has no real equivalent anywhere else in Europe.</p>
+  <p>Its close cousin <strong>cicvara</strong> is richer still — made with more kajmak and less potato, so the fat separates out into a golden pool. Both are traditionally a shepherd's meal. Order one for two people and something grilled alongside.</p></div>
+
+  <div class="d m"><h4>Lamb — boiled, or under the sač <span class="rate r-m">Must try</span></h4>
+  <p>Two mountain preparations, both worth it. <strong>Jagnjetina ispod sača</strong> is the bell method again — lamb and potatoes under an iron dome buried in embers, three hours. <strong>Boiled lamb</strong> (<em>jagnjetina u mlijeku</em>, cooked in milk, or simply in its own broth) is the older highland version and sounds far less appealing than it is: the meat ends up falling apart and mild, with a rich broth served alongside. Reviewers of the restaurants below name the boiled lamb repeatedly and unprompted.</p>
+  <p class="how"><b>Order it a day ahead.</b> Both methods take hours. Ask on your first night for your second.</p></div>
+
+  <div class="d m"><h4>Kajmak and skorup, properly <span class="rate r-m">Must try</span></h4>
+  <p>You met kajmak on the coast; up here it is a different product. <strong>Skorup</strong> is the mature Durmitor version, aged in wooden vessels and sometimes for months — sharp, salty, funky, closer to a cheese than a cream. Sold from farms around Žabljak. If you like strong dairy, this is one of the most distinctive things you can eat in the Balkans.</p></div>
+
+  <div class="d w"><h4>Trout <span class="rate r-w">Worth it</span></h4>
+  <p>From the Tara and the mountain lakes, usually grilled whole with a potato salad. The counterweight to everything else on this list, and a good idea on the third day when the dairy has caught up with you.</p></div>
+
+  <div class="d w"><h4>Suho meso and raštan <span class="rate r-w">Worth it</span></h4>
+  <p><strong>Suho meso</strong> is smoked, air-dried beef or mutton — the highland preserving tradition, sliced thin as a starter or dropped into stews for salt and smoke. <strong>Raštan</strong> is collard greens slow-cooked with it, the winter vegetable dish of the mountains.</p></div>
+
+  <div class="d w"><h4>Priganice with honey <span class="rate r-w">Worth it</span></h4>
+  <p>The same fried dough as the coast, but here served with mountain honey and skorup, and usually for breakfast. Durmitor honey is worth buying — the flora at this altitude is entirely different from anything on the coast.</p></div>
+
+  <h3>Where</h3>
+
+  <div class="r"><div class="top"><span class="nm">Izvor</span><span class="sc">★ 4.7 · 1,950+</span></div>
+    <span class="tier t-s">The one to pick</span><span class="tier">€€</span>
+    <p>Out of town on the road south, and the highest-rated place in the area by a clear margin. Reviewers name the <strong>boiled lamb</strong> and the baked veal over and over, plus homemade bread and baklava. Repeated pattern in the reviews: people eat here three days running. Big view.</p>
+    <p class="ad">R-5, south of Žabljak · daily 08:00–21:00 · +382 67 661 300</p></div>
+
+  <div class="r"><div class="top"><span class="nm">Restaurant Tara</span><span class="sc">★ 4.3 · 670</span></div>
+    <span class="tier t-b">Budget</span><span class="tier">€€</span>
+    <p>In Žabljak itself and repeatedly described as excellent value. Reviewers specifically name the goulash, the grilled trout with potato salad, the sausage-and-bean stew, and — importantly for you — the <strong>kačamak</strong>. The obvious first-night dinner, and the place to ask about ordering lamb for the next day.</p>
+    <p class="ad">60 Božidara Žugića, Žabljak · daily 07:30–23:00 · +382 68 820 419</p></div>
+
+  <div class="r"><div class="top"><span class="nm">Krčma Nostalgija</span><span class="sc">★ 4.4 · 1,270+</span></div>
+    <span class="tier t-b">Budget · rustic</span><span class="tier">€€€</span>
+    <p>Rustic room, generous portions, homemade desserts — reviewers mention a cherry pie more than once. Very traditional, very meat-forward. Several note that vegetables are scarce, which is accurate for the whole region.</p>
+    <p class="ad">Vuka Karadžića, Žabljak · daily 12:00–23:00 (Sun to 22:30)</p></div>
+
+  <div class="r"><div class="top"><span class="nm">Restaurant Or'O</span><span class="sc">★ 4.4 · 3,200+</span></div>
+    <span class="tier">Busiest in town</span><span class="tier">€€€</span>
+    <p>The best-known restaurant in Žabljak and the busiest — reserve in the evening. Reviewers name the trout, the stuffed peppers, the risotto and the homemade raspberry juice. Slightly more polished and slightly more expensive than the others here.</p>
+    <p class="ad">Njegoševa, Žabljak · daily 08:00–01:00 · +382 69 406 210</p></div>
+</section>
+
+<section id="f08" data-nav="08" data-label="Herzegovina">
+  <p class="stopno"><span>08</span><span class="day">Day 13 · Thu 20 Aug</span><span>Mostar · Blagaj · Počitelj</span></p>
+  <h2>Herzegovina</h2>
+  <p class="dek">Four hundred years of Ottoman cooking, and two native grapes almost nobody outside the country has drunk.</p>
+
+  <h3>Dishes</h3>
+
+  <div class="d m"><h4>Ćevapi <span class="rate r-m">Must try</span></h4>
+  <p>The national dish of the whole region, and Bosnia's version is the reference. Small fingers of minced beef (and often lamb), no filler, no egg, seasoned with little more than salt, garlic water and bicarbonate, rested, then grilled hard over charcoal. Ordered in fives or tens. What makes the Bosnian version distinct is the bread: a fresh <strong>somun</strong>, a soft flatbread, split open and pressed inside-down on the grill so the cut face soaks up the fat before the meat goes in.</p>
+  <p>Served with raw chopped onion and, if you ask, <strong>kajmak</strong>. Eaten with your hands. Do not order chips with it — nobody local does.</p></div>
+
+  <div class="d m"><h4>Klepe <span class="rate r-m">Must try</span></h4>
+  <p>Bosnian ravioli: small pasta parcels of minced beef, boiled and then drowned in garlic yoghurt with melted butter and paprika poured over. A direct descendant of Turkish <em>manti</em> and one of the best things in the country. Almost never found outside the Balkans and rarely made properly even in Bosnia — if a menu has it, order it.</p></div>
+
+  <div class="d m"><h4>Begova čorba <span class="rate r-m">Must try</span></h4>
+  <p>"Bey's soup" — chicken, okra, root vegetables and rice, thickened with a roux and finished with cream and egg yolk. The dish of the Ottoman gentry, still on every serious Bosnian menu. Thick, mild, faintly sour from the okra. It is the closest thing Bosnia has to a national soup and it is genuinely elegant.</p></div>
+
+  <div class="d m"><h4>Anything from an aščinica <span class="rate r-m">Must try</span></h4>
+  <p>Not a dish but a category, and the most authentic meal available in Bosnia. An <em>aščinica</em> cooks braises and stews in the morning and sells them from trays until they run out — no grill, no menu, you point. What you will find: <strong>japrak</strong> (vine or chard leaves rolled around rice and meat), <strong>sogan-dolma</strong> (onions hollowed out and stuffed), <strong>bosanski lonac</strong> (a layered pot of meat and vegetables cooked for hours), <strong>sarma</strong>, stuffed peppers, and beans. Half the price of anywhere with a view of the bridge.</p></div>
+
+  <div class="d m"><h4>Bosnian coffee <span class="rate r-m">Must try</span></h4>
+  <p>Locals will tell you why it is not Turkish coffee, and the difference is real: the water is boiled first, a little is set aside, the ground coffee is added to the pot and returned to the heat to foam, then the reserved water is poured back to settle it. It arrives as a set — <em>džezva</em>, <em>fildžan</em>, sugar cube, rahat lokum. Hold the sugar in your teeth and drink through it. Half an hour minimum.</p></div>
+
+  <div class="d w"><h4>Tufahija and the sweets <span class="rate r-w">Worth it</span></h4>
+  <p><strong>Tufahija</strong> is a whole apple poached in sugar syrup until translucent, cored and stuffed with walnuts, topped with cream — Ottoman, refined, and less aggressively sweet than it looks. Alongside it: <strong>hurmašice</strong> (syrup-soaked semolina biscuits), <strong>baklava</strong>, and <strong>kadaif</strong> (shredded pastry with walnut). Bosnian baklava is generally walnut rather than pistachio.</p></div>
+
+  <div class="d w"><h4>Uštipci and the breakfast plate <span class="rate r-w">Worth it</span></h4>
+  <p><strong>Uštipci</strong> are savoury fried dough balls served with kajmak and cheese — the Bosnian breakfast, and excellent before a long drive. The wider <em>bosanski doručak</em> plate adds cured meat, tomato, cheese and eggs.</p></div>
+
+  <div class="d t"><h4>Trout at Blagaj <span class="rate r-t">If time</span></h4>
+  <p>The restaurants at the Buna source serve trout from the river, and the setting — under a two-hundred-metre cliff at one of Europe's largest karst springs — is the reason to sit down, not the food. Reviewers are consistent that the view is exceptional and the cooking is fine. Go for a coffee and the view; eat properly in Mostar.</p></div>
+
+  <h3>Drink</h3>
+
+  <div class="d m"><h4>Žilavka and Blatina <span class="rate r-m">Must try</span></h4>
+  <p>The genuine discovery of this leg. Herzegovina grows two indigenous grapes on hot karst around Mostar and Čitluk, and almost none of it is exported. <strong>Žilavka</strong> is the white — mineral, high-acid, faintly bitter-almond on the finish, and much more serious than its obscurity suggests. <strong>Blatina</strong> is the red, and it has a genuine botanical oddity: its flowers are functionally female and cannot self-pollinate, so every Blatina vineyard must be interplanted with a pollinator variety. A monoculture Blatina vineyard is literally impossible.</p>
+  <p class="how"><b>For a foodie</b> — this is the wine on the whole route you are least likely ever to encounter again. Buy a bottle of each to bring home.</p></div>
+
+  <div class="d w"><h4>Rakija, Bosnian-style <span class="rate r-w">Worth it</span></h4>
+  <p>Inland, the base changes from grape to <strong>plum</strong> — <em>šljivovica</em>. Herzegovina, being Mediterranean, still makes <em>loza</em> from grapes, so on this leg you can drink both and taste the geography change.</p></div>
+
+  <h3>Where</h3>
+
+  <div class="r"><div class="top"><span class="nm">Aščinica Balkan II</span><span class="sc">★ 4.2 · 650+</span></div>
+    <span class="tier t-b">The authentic one</span><span class="tier">€</span>
+    <p>The aščinica described above, in the old town. Reviewers repeatedly say the same thing: home cooking "like a Balkan grandmother you have never met," very cheap, and don't spend your money anywhere else in Mostar. Sarma, ćevapi, sausages, and a proper Bosnian salad. Some vegetarian (<em>posno</em>) dishes.</p>
+    <p class="ad">Mala Tepa 12, Mostar · daily 09:30–22:00 · +387 65 926-838</p></div>
+
+  <div class="r"><div class="top"><span class="nm">National Restaurant Tima-Irma</span><span class="sc">★ 4.8 · 3,660+</span></div>
+    <span class="tier t-s">The famous one</span><span class="tier">€€</span>
+    <p>4.8 across 3,600 reviews and always full. Grilled meat, enormous portions, meat stuffed with smoked cheese that reviewers name constantly, and grilled vegetables good enough that carnivores mention them. Around 40 KM for a full meal for one. Very limited seating and it is on the busiest street in Mostar — go early or expect to wait.</p>
+    <p class="ad">Onešćukova bb, Mostar · daily 09:00–23:00 · +387 66 905-070</p></div>
+
+  <div class="r"><div class="top"><span class="nm">Ćevabdžinica Kod Bahre</span><span class="sc">★ 4.4 · 393</span></div>
+    <span class="tier t-b">Cheapest · local</span><span class="tier">€</span>
+    <p>A tiny local place away from the bridge on Trg Musala — reviewers report fifteen ćevapi in bread for around €3, and a shaded corner with almost no tourists. This is what ćevapi actually costs when you are not paying for the view.</p>
+    <p class="ad">Trg Musala, Mostar · Mon–Sat 08:00–23:00 · <span class="warn">closed Sunday</span></p></div>
+
+  <div class="r"><div class="top"><span class="nm">Ćevabdžinica Korzo</span><span class="sc">★ 4.5 · 1,060+</span></div>
+    <span class="tier t-b">Budget · west bank</span><span class="tier">€€</span>
+    <p>Over on the Croat side of the Bulevar, away from the old town entirely, which is part of the point. Reviewers call the spicy beef skewers the best they had in Bosnia. <span class="warn">Cash only.</span></p>
+    <p class="ad">Mostarskog bataljona bb, Mostar · daily 08:00–23:00 (Sun from 11:00)</p></div>
+
+  <div class="r"><div class="top"><span class="nm">Restaurant Šadrvan</span><span class="sc">★ 4.5 · 5,340+</span></div>
+    <span class="tier">Tourist-central but good</span><span class="tier">€€</span>
+    <p>On the main strip and openly aimed at visitors, but it holds 4.5 across five thousand reviews and locals recommend it. The reason to come is the <strong>national plate</strong> (around 75 KM) — ćevapi, klepe, dolma, đuveč and half a dozen others on one board. The efficient way to taste everything in this section at once.</p>
+    <p class="ad">Jusovina 11, Mostar · daily 09:00–23:00 · +387 61 891 189</p></div>
+</section>
+
+<section id="f09" data-nav="09" data-label="Sarajevo">
+  <p class="stopno"><span>09</span><span class="day">Day 14 · Fri 21 Aug</span><span>Sarajevo</span></p>
+  <h2>Sarajevo</h2>
+  <p class="dek">One night, and the best street food on the route. Plan it properly and you can eat four times.</p>
+
+  <div class="b b-f"><span class="lab">One night only</span>
+  <p>You have a single evening and a morning here. The efficient plan: <strong>ćevapi</strong> from a ćevabdžinica for dinner, <strong>Bosnian coffee</strong> in a courtyard afterwards, <strong>burek by weight</strong> for breakfast, and a sit-down lunch only if the schedule allows. Do not spend the one evening in a restaurant with a menu in five languages.</p></div>
+
+  <h3>Dishes</h3>
+
+  <div class="d m"><h4>Sarajevo ćevapi <span class="rate r-m">Must try</span></h4>
+  <p>The city's ćevapi are their own sub-tradition and Bosnians argue about the ranking with real heat. Sarajevo style: smaller, joined in pairs or fours on the grill and separated on the plate, served in somun with raw onion, with kajmak on request. Ordered by number — five or ten. The great ćevabdžinice are on <strong>Bravadžiluk</strong>, the street of coppersmiths running east from Baščaršija, and several have been there for generations.</p></div>
+
+  <div class="d m"><h4>Burek, by weight, from a proper buregdžinica <span class="rate r-m">Must try</span></h4>
+  <p>Hand-rolled filo, coiled into a spiral in a round pan, baked — traditionally under a <em>sač</em>, a metal dome covered with hot coals, which is where one of the best places in the city gets its name. You order by weight: "trista grama" is 300 g and a generous portion. It comes with <strong>kiselo mlijeko</strong> (sour milk) or yoghurt poured over or alongside, which is not optional if you want it done right.</p>
+  <p>Remember the naming: <em>burek</em> is meat, <em>sirnica</em> cheese, <em>zeljanica</em> spinach and cheese, <em>krompiruša</em> potato. The meat one frequently sells out by early afternoon.</p></div>
+
+  <div class="d m"><h4>Coffee in a Baščaršija courtyard <span class="rate r-m">Must try</span></h4>
+  <p>Not a dish, an hour. The right version is a courtyard off the main tourist lane, full of locals, where a Bosnian coffee costs about 3.50 KM and nobody will hurry you. Be warned that a genuinely local coffee house also means a genuinely smoky one.</p></div>
+
+  <div class="d w"><h4>Dolma, japrak and the aščinica dishes <span class="rate r-w">Worth it</span></h4>
+  <p>Same category as Mostar, done at a higher level here — Sarajevo is where Ottoman court cooking actually lived. If you have a lunch slot, this is the better use of it than another grill.</p></div>
+
+  <div class="d w"><h4>Tufahija and Sarajevsko pivo <span class="rate r-w">Worth it</span></h4>
+  <p>The city's dessert and the city's beer. <strong>Sarajevsko</strong> has been brewed since 1864, and the brewery matters beyond the beer: it sits over a natural spring, and during the siege — when the water supply was cut — it became one of the city's main water points. People queued there under fire, and some were killed doing it.</p></div>
+
+  <div class="d t"><h4>Boza <span class="rate r-t">If time</span></h4>
+  <p>A thick, pale, mildly fermented millet drink, faintly sour and faintly sweet, sold in the old town and drunk as a pick-me-up. It tastes like nothing else you have had and reactions divide sharply. Costs almost nothing; worth one glass for the experience.</p></div>
+
+  <h3>Where — ćevapi and burek</h3>
+
+  <div class="r"><div class="top"><span class="nm">Buregdžinica Sač</span><span class="sc">★ 4.5 · 6,380+</span></div>
+    <span class="tier t-b">The one to pick</span><span class="tier">€</span>
+    <p>Named for the dome it bakes under. Six thousand reviews at 4.5 and reviewers who work through the entire range across a week-long stay. Around 5 KM a portion, yoghurt on the side, order at the counter by weight then find a table. <span class="warn">Cash only.</span> Busy — expect to share.</p>
+    <p class="ad">Bravadžiluk mali 2 · daily 08:30–22:00 · +387 33 239-748</p></div>
+
+  <div class="r"><div class="top"><span class="nm">Buregdžinica Bosna</span><span class="sc">★ 4.5 · 5,480+</span></div>
+    <span class="tier t-b">Budget</span><span class="tier">€</span>
+    <p>Next door and equally established. Reviewers here single out the <strong>sirnica</strong> and <strong>zeljanica</strong> as exceptional rather than the meat one. Also does a good traditional coffee. Cash.</p>
+    <p class="ad">Bravadžiluk 11 · daily 08:00–23:00 · +387 33 538-426</p></div>
+
+  <div class="r"><div class="top"><span class="nm">Buregdžinica Saraj Bosna</span><span class="sc">★ 4.6 · 1,170+</span></div>
+    <span class="tier t-b">Highest-rated · takes cards</span><span class="tier">€</span>
+    <p>Slightly off the main run and rated highest of the three. One reviewer visited four times in five days and rated the meat burek above every other in the city. <span class="warn">Closed Monday and Tuesday</span> — but open on your Friday. Takes cards, which is rare here. Meat sells out; go early.</p>
+    <p class="ad">Ćurčiluk mali 26 · Wed–Sun 07:00–23:00 · +387 61 019 665</p></div>
+
+  <div class="r"><div class="top"><span class="nm">Ćevabdžinica Bosna (Sport)</span><span class="sc">★ 4.4 · 1,110+</span></div>
+    <span class="tier t-b">Budget · classic</span><span class="tier">€</span>
+    <p>A long-running Bravadžiluk ćevabdžinica, open from 07:00. Reviews are solid rather than ecstatic and several note it is a fast-food operation, not a restaurant — which is exactly what a ćevabdžinica is meant to be.</p>
+    <p class="ad">Bravadžiluk 9 · daily 07:00–23:00</p></div>
+
+  <h3>Where — sit down</h3>
+
+  <div class="r"><div class="top"><span class="nm">Avlija</span><span class="sc">★ 4.7 · 1,720+</span></div>
+    <span class="tier t-s">The one to pick</span><span class="tier">€€</span>
+    <p>A covered garden courtyard away from Baščaršija, hung with plants and junk-shop objects. Reviewers name the <strong>klepe</strong> and the <strong>begova čorba</strong> specifically — both dishes from this section, done properly. Good vegetarian versions of traditional dishes, which is genuinely rare in Bosnia. <span class="warn">Closed Sunday</span>; open your Friday.</p>
+    <p class="ad">Avde Sumbula 2 · Mon–Sat 08:00–23:00 · +387 62 699 409</p></div>
+
+  <div class="r"><div class="top"><span class="nm">Dveri</span><span class="sc">★ 4.7 · 2,920+</span></div>
+    <span class="tier t-s">Splurge · book ahead</span><span class="tier">€€€</span>
+    <p>The best-known serious restaurant in the old town, and reviewers report the first available dinner table being <strong>days out</strong> — one was quoted Friday for the following Tuesday. Tiny room, huge menu, excellent bread. If you want this, reserve before you leave Montenegro.</p>
+    <p class="ad">Prote Bakovića 12 · daily 09:00–23:00 · +387 33 537-020</p></div>
+
+  <div class="r"><div class="top"><span class="nm">Bistro Kašika Viljuška Nož</span><span class="sc">★ 4.8 · 282</span></div>
+    <span class="tier t-b">Small · personal</span><span class="tier">€€</span>
+    <p>Essentially a one-man operation near the cathedral — he cooks, serves and entertains. Reviewers describe genuinely homemade food, very cheap, and going back three nights running. Tiny, so book or arrive early. <span class="warn">Closed Monday and Saturday</span>; open your Friday.</p>
+    <p class="ad">Koturova 1 · Tue–Fri &amp; Sun 12:00–22:00 · +387 62 519 828</p></div>
+
+  <div class="r"><div class="top"><span class="nm">Đulagin Dvor</span><span class="sc">★ 4.8 · 481</span></div>
+    <span class="tier t-b">Quiet</span><span class="tier">€€</span>
+    <p>On a quiet street at the edge of Baščaršija — traditional Bosnian, generous, with live music some evenings. Reviewers name the dumplings and the mixed grill. A good fallback if Avlija and Dveri are full.</p>
+    <p class="ad">Đulagina · daily 09:00–23:00 · +387 61 203 783</p></div>
+
+  <h3>Where — coffee</h3>
+
+  <div class="r"><div class="top"><span class="nm">Caffe Divan</span><span class="sc">★ 4.6 · 1,380+</span></div>
+    <span class="tier t-b">The local one</span><span class="tier">€</span>
+    <p>A courtyard with an old tree in the middle, tucked off the busy lane. Reviewers report hearing no English at all and being left alone for forty-five minutes over one coffee — which is the correct outcome. Around 3.50 KM with lokum. Heavy smoking; there is a separate smokers' area but the air is what it is.</p>
+    <p class="ad">Sarači 77 · daily 07:00–23:00 · +387 62 530 972</p></div>
+
+  <div class="r"><div class="top"><span class="nm">Viennese Café, Hotel Europe</span><span class="sc">★ 4.4 · 576</span></div>
+    <span class="tier">The other tradition</span><span class="tier">€€</span>
+    <p>Worth knowing about for what it represents rather than the cake: a Habsburg coffee house a few hundred metres from an Ottoman one, which is the whole point of Sarajevo. Reviewers rate the krempita. Prices higher than the old town.</p>
+    <p class="ad">Vladislava Skarića 5 · daily 07:00–24:00</p></div>
+</section>
+
+<section id="f10" data-nav="10" data-label="Salzburg">
+  <p class="stopno"><span>10</span><span class="day">Days 15–16 · 22–23 Aug</span><span>Salzburg</span></p>
+  <h2>Salzburg</h2>
+  <p class="dek">The last dinner, a dessert shaped like three mountains, and a piece of street food improbably named after the country you just left.</p>
+
+  <h3>Dishes</h3>
+
+  <div class="d m"><h4>Salzburger Nockerl <span class="rate r-m">Must try</span></h4>
+  <p>The city's own dessert and a proper piece of theatre. A sweet soufflé of whipped egg white, sugar and a little flour, piled into three tall peaks — representing the three hills around Salzburg, the Mönchsberg, Kapuzinerberg and Gaisberg — dusted heavily with icing sugar to look like snow, and baked until barely set. It arrives enormous, collapses within minutes, and tastes of almost nothing but sweet air.</p>
+  <p class="how"><b>Practical</b> — takes 20–25 minutes to bake, so order it with your main. Almost always sized for two or three. Order it once, share it, and photograph it fast.</p></div>
+
+  <div class="d m"><h4>A Bosna, in Salzburg <span class="rate r-m">Must try</span></h4>
+  <p>The best joke on your entire itinerary. Salzburg's own street food, invented here in the late 1940s, is called a <strong>Bosna</strong>: a grilled bratwurst in a crisp white roll with raw onion, mustard, parsley and — the defining element — a heavy dusting of <strong>curry powder</strong>. It is sold from small windows on and around the Getreidegasse and it is what Salzburgers eat after a night out.</p>
+  <p>You will have spent four days actually in Bosnia, eating ćevapi that look nothing like this, and then arrive in Austria to find a curry-dusted sausage bearing the name. Nobody agrees on where the name came from. Eat one.</p></div>
+
+  <div class="d m"><h4>Mozartkugel — but the original <span class="rate r-m">Must try</span></h4>
+  <p>Worth doing properly because the difference is real. The <strong>original Mozartkugel was created in 1890 by Paul Fürst</strong>, a Salzburg confectioner: pistachio marzipan centre, nougat around it, hand-dipped in dark chocolate on a stick, then the stick removed and the hole filled. His descendants still make them by hand in the same shop, wrapped in <strong>silver and blue</strong>.</p>
+  <p>Everything in <strong>red and gold</strong> — the ones in every airport — is a mass-produced industrial version by a different company, with a different recipe and milk chocolate. The Fürst originals are sold loose, cost several times more, and are a completely different confection. Buy a small bag of the real ones.</p></div>
+
+  <div class="d w"><h4>Wiener Schnitzel, and the distinction that matters <span class="rate r-w">Worth it</span></h4>
+  <p>Legally in Austria, <strong>Wiener Schnitzel means veal</strong>. If it is pork it must be called <em>Schnitzel Wiener Art</em> — "in the Viennese style" — and it costs about half as much. Both are good; menus are explicit about which is which, and now you can read them. Properly made, the crumb should puff and separate slightly from the meat, which is achieved by shaking the pan so hot fat washes over the top.</p></div>
+
+  <div class="d w"><h4>Kasnocken <span class="rate r-w">Worth it</span></h4>
+  <p>The Alpine one: small soft dumplings tossed with mountain cheese and buried under fried onions. The Austrian sibling of Käsespätzle, and the correct thing to eat if the evening turns cold. Heavy, salty, superb with beer.</p></div>
+
+  <div class="d w"><h4>Kaiserschmarrn <span class="rate r-w">Worth it</span></h4>
+  <p>The shredded, caramelised pancake with plum compote, named for Franz Joseph. If you skipped it in Munich, this is the second and last chance — and it is arguably more at home here.</p></div>
+
+  <div class="d t"><h4>Salzburg salt <span class="rate r-t">If time</span></h4>
+  <p>The commodity the city is named for, still mined at the Dürrnberg above Hallein twenty minutes south. Buy a box as the closing bookend to the Ston salt pans you walked past on Day 6 — the two ends of the same medieval trade.</p></div>
+
+  <h3>Drink</h3>
+
+  <div class="d m"><h4>Beer from a wooden barrel, in a monastery <span class="rate r-m">Must try</span></h4>
+  <p><strong>Augustiner Bräu Mülln</strong> has been brewing since 1621 and the serving ritual is unchanged and unlike anywhere else. You buy a token, take a heavy stone mug from the shelf, <strong>rinse it yourself at the stone fountain</strong>, hand it to the man at the barrel, and he fills it straight from the wood. Food is not ordered from a menu — a market arcade of stalls sells pork belly, pretzels, radishes and fish, and you carry it to a bench in a hall or the chestnut garden.</p>
+  <p>It is the same institution as the Munich beer garden at the other end of your trip, several centuries older, and it makes a very neat closing bracket. <strong>Salzburg's other brewery is Stiegl</strong>, founded 1492 and the largest private brewery in Austria.</p></div>
+
+  <h3>Where</h3>
+
+  <div class="r"><div class="top"><span class="nm">Augustiner Bräu Mülln</span><span class="sc">★ 4.5 · 5,600+</span></div>
+    <span class="tier t-b">Do this one</span><span class="tier">€€</span>
+    <p>Beer from wooden barrels into stone mugs, four enormous halls, a huge chestnut garden, and food from stalls rather than a kitchen. Reviewers call it a cultural pilgrimage and mean it. Watch a video of the ordering process first — it is genuinely unobvious and there is no one to explain it.</p>
+    <p class="ad">Lindhofstraße 7 · Mon–Fri 15:00–23:00, Sat–Sun from 14:30 · +43 662 431246<br>Note the mid-afternoon opening.</p></div>
+
+  <div class="r"><div class="top"><span class="nm">Bärenwirt</span><span class="sc">★ 4.5 · 6,440+</span></div>
+    <span class="tier t-s">The one to pick</span><span class="tier">€€</span>
+    <p>Five minutes' walk from Augustiner, so the two combine into one evening. Traditional Austrian done seriously — reviewers name the fried chicken (<em>Backhendl</em>), the goulash and the shared chocolate soufflé. Small; reserve, and expect to share a table on a busy night.</p>
+    <p class="ad">Müllner Hauptstraße 8 · daily 11:00–23:00 · +43 662 422404</p></div>
+
+  <div class="r"><div class="top"><span class="nm">Zwettler's Wirtshaus</span><span class="sc">★ 4.5 · 6,780+</span></div>
+    <span class="tier t-b">Budget · central</span><span class="tier">€€</span>
+    <p>In the old town, brews its own beer, and reviewers specifically praise the <strong>Salzburger Nockerl</strong> and the liver-dumpling broth. Very busy — one reviewer waited fifteen minutes on a Monday. Book if you can.</p>
+    <p class="ad">Kaigasse 3 · daily 11:30–23:00 · +43 662 274018</p></div>
+
+  <div class="r"><div class="top"><span class="nm">Johanneskeller</span><span class="sc">★ 4.7 · 1,400+</span></div>
+    <span class="tier t-s">Highest-rated</span><span class="tier">€€</span>
+    <p>Rated highest of the traditional places here, and deliberately old-fashioned: <span class="warn">cash only, by choice, with a philosophy about it</span>. Local cooking with a modern edge, huge portions, and reviewers who describe being adopted by the staff. <span class="warn">Closed Sunday and Monday</span> — open your Saturday. Reserve.</p>
+    <p class="ad">Richard-Mayr-Gasse 1 · Tue–Sat 17:00–23:00 · +43 662 265536</p></div>
+
+  <div class="r"><div class="top"><span class="nm">Wirtshaus zum Zirkelwirt</span><span class="sc">★ 4.5 · 5,470+</span></div>
+    <span class="tier t-b">Budget</span><span class="tier">€€</span>
+    <p>Old town, popular with locals, classic Austrian home cooking — soups, roasts, stews — plus a well-regarded Kaiserschmarrn and chocolate soufflé. Outdoor seating in good weather.</p>
+    <p class="ad">Pfeifergasse 14 · daily 11:30–23:00 (Sun to 22:00) · +43 662 842796</p></div>
+</section>
+
+<footer>
+  <p>Compiled 8 August 2026. Restaurant names, ratings, review counts, addresses and opening hours are from <strong>Google Places, retrieved 8 August 2026</strong> — hours and closures in particular change, so check before you drive anywhere specifically. Ratings are shown so you can see the sample size behind them: 4.9 across 600 reviews means more than 4.9 across 30.</p>
+  <p>Everything about the dishes themselves is general culinary and cultural knowledge, not a fresh check. Where a claim is a local tradition rather than documented fact, it says so. Nothing here has been invented.</p>
+</footer>
+</main>
+
+<script>
+(function(){
+  var secs = [].slice.call(document.querySelectorAll('section[data-nav]'));
+  var rail = document.getElementById('rail'), chips = document.getElementById('chips');
+  secs.forEach(function(s){
+    var a=document.createElement('a');
+    a.className='rn'; a.href='#'+s.id; a.dataset.for=s.id;
+    a.innerHTML='<i></i><b>'+s.dataset.nav+'</b>';
+    a.setAttribute('aria-label', s.dataset.label);
+    rail.appendChild(a);
+    var c=document.createElement('a');
+    c.className='chip'; c.href='#'+s.id; c.dataset.for=s.id;
+    c.textContent=s.dataset.nav+' '+s.dataset.label;
+    chips.appendChild(c);
+  });
+  var links=[].slice.call(document.querySelectorAll('[data-for]')), cur=null;
+  function spy(){
+    var best=null,bt=-1e9;
+    secs.forEach(function(s){var t=s.getBoundingClientRect().top-90; if(t<=0&&t>bt){bt=t;best=s;}});
+    if(!best) best=secs[0];
+    if(best===cur) return; cur=best;
+    links.forEach(function(a){
+      var on=a.dataset.for===best.id;
+      a.classList.toggle('on',on);
+      if(on&&a.classList.contains('chip')){
+        chips.scrollTo({left:Math.max(0,a.offsetLeft-chips.clientWidth/2+a.clientWidth/2),behavior:'smooth'});
+      }
+    });
+  }
+  var tick=false;
+  window.addEventListener('scroll',function(){if(tick)return;tick=true;requestAnimationFrame(function(){spy();tick=false;});},{passive:true});
+  spy();
+})();
+(function(){
+  var K='balkans2026.theme', t='light';
+  try{ t=localStorage.getItem(K)||'light'; }catch(e){}
+  function set(v){
+    t=v; document.documentElement.setAttribute('data-theme', v==='dark'?'dark':'light');
+    try{ localStorage.setItem(K,v); }catch(e){}
+    var b=document.getElementById('themebtn'); if(b) b.textContent = v==='dark'?'Day mode':'Night mode';
+  }
+  set(t);
+  document.addEventListener('click',function(e){ if(e.target&&e.target.id==='themebtn') set(t==='dark'?'light':'dark'); });
+})();
+</script>
