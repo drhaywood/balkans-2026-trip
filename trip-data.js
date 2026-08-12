@@ -304,34 +304,36 @@ const LEGS = [
     ]
   },
   {
-    id:"hrv", name:"Croatia", color:"#1F6F7A", meta:"11–13 Aug · straight to the coast, two nights at Brela",
-    route:[[46.317389,14.193883],[43.3711,16.9114],[42.6989,18.0056]],
+    id:"hrv", name:"Croatia", color:"#1F6F7A", meta:"11–13 Aug · straight to the coast, two nights at Lokva Rogoznica",
+    route:[[46.317389,14.193883],[43.4063,16.7771],[42.6989,18.0056]],
     geometry:[[46.317389,14.193883],[46.33475,14.19758],[46.18858,14.4796],[46.03903,14.44984],[45.97009,14.63383],[45.89979,15.05131],[45.82862,15.1806],[45.77852,15.17915],[45.47897,15.42825],[45.40554,15.24979],[45.14509,15.27334],[44.96875,15.09142],[44.94603,15.16116],[44.86198,15.21096],[44.75165,15.3738],[44.63615,15.43911],[44.54033,15.43865],[44.45919,15.60573],[44.31358,15.67761],[44.25319,15.64481],[44.26413,15.59126],[44.23911,15.60577],[44.21528,15.45098],[44.12998,15.42358],[43.83886,15.88382],[43.70869,15.99372],[43.59556,16.34876],[43.60259,16.61972],[43.48088,16.80605],[43.39768,17.04501],[43.34931,16.96504],[43.37577,16.91965],[43.34879,16.96497],[43.40274,17.03547],[43.33288,17.16111],[43.22578,17.23791],[43.1599,17.47548],[43.06293,17.4959],[43.04927,17.45694],[43.03178,17.55071],[42.96947,17.51603],[42.86382,17.56643],[42.79056,17.88653],[42.76082,17.88123],[42.69908,18.00569]],
     days:[
-      {n:4,date:"Tue 11 Aug",title:"→ Brela (Plitvice cut)",lat:43.3711,lng:16.9114,
+      {n:4,date:"Tue 11 Aug",title:"→ Lokva Rogoznica (Plitvice cut)",lat:43.4063,lng:16.7771,
        from:{name:"Kamna Gorica",lat:46.317389,lng:14.193883},
-       body:"Plitvice's off the list — August crowds, peak-season pricing, and 2026's drought has the waterfalls running thin, so the one thing that sells the ticket wasn't going to deliver. Straight through to the coast instead: down through Ljubljana, Zagreb, and the A1 to the Makarska Riviera. This is a genuinely long single day — treat it like Day 16's Salzburg–Rotterdam haul, not a casual drive, and start early regardless of how the legs feel after yesterday's via ferrata.",
-       pills:[["drive","~6–6.5 h"],["locked","Brela"],["tent","Autocamp Sirena"],["locked","Booked · 2 nights"]],
-       opts:{label:"Brela camping — you've emailed all four",
+       body:"Plitvice's off the list — August crowds, peak-season pricing, and 2026's drought has the waterfalls running thin, so the one thing that sells the ticket wasn't going to deliver. Straight through to the coast instead: down through Ljubljana, Zagreb, and the A1 to Lokva Rogoznica, just north of the Makarska Riviera and a few minutes south of Omiš. This is a genuinely long single day — treat it like Day 16's Salzburg–Rotterdam haul, not a casual drive, and start early regardless of how the legs feel after yesterday's via ferrata.",
+       pills:[["drive","~6–6.5 h"],["locked","Lokva Rogoznica"],["tent","Autocamp Sirena"],["locked","Booked · 2 nights"]],
+       opts:{label:"Coast camping — you've emailed all four",
          items:[
-           {n:"Autocamp Sirena",d:"Booked — 2 nights, Tue 11 to Thu 13 Aug. Lokva Rogoznica, ~20 min north of Brela toward Omiš. Cliffside pitches over the sea, restaurant with live music on-site — base for this night and the beach day that follows.",t:"Camp · booked",cost:null,star:true,lat:43.4063,lng:16.7771},
-           {n:"Camping Krvavica",d:"Krvavica, ~15 min south. Small and quiet, 5-min walk to the beach, good showers. Cheapest of the strong options at ~€23/night for two.",t:"4.5★ · 1,299 reviews",cost:12,unit:"pp",lat:43.3235,lng:16.9858},
-           {n:"Mini Camp Podaca",d:"Podaca, ~20 min south. Terraced olive-grove pitches with sea views, free communal kitchen. Highest-rated of the four.",t:"4.6★ · 601 reviews",cost:15,unit:"pp",lat:43.1225,lng:17.3060},
-           {n:"Camp Viter",d:"Zaostrog, ~25 min south. Right on the beach, big enough for tent plus motorcycle, close to town for supplies.",t:"4.4★ · 1,299 reviews",cost:14,unit:"pp",lat:43.1393,lng:17.2810}
+           {n:"Autocamp Sirena",d:"Booked — 2 nights, Tue 11 to Thu 13 Aug. Lokva Rogoznica, ~10 min south of Omiš. Cliffside pitches over the sea, restaurant with live music on-site — base for this night and the Omiš day trip that follows.",t:"Camp · booked",cost:null,star:true,lat:43.4063,lng:16.7771},
+           {n:"Camping Krvavica",d:"Krvavica, ~20 min south toward Brela. Small and quiet, 5-min walk to the beach, good showers. Cheapest of the strong options at ~€23/night for two.",t:"4.5★ · 1,299 reviews",cost:12,unit:"pp",lat:43.3235,lng:16.9858},
+           {n:"Mini Camp Podaca",d:"Podaca, ~30 min south toward Makarska. Terraced olive-grove pitches with sea views, free communal kitchen. Highest-rated of the four.",t:"4.6★ · 601 reviews",cost:15,unit:"pp",lat:43.1225,lng:17.3060},
+           {n:"Camp Viter",d:"Zaostrog, ~35 min south toward Makarska. Right on the beach, big enough for tent plus motorcycle, close to town for supplies.",t:"4.4★ · 1,299 reviews",cost:14,unit:"pp",lat:43.1393,lng:17.2810}
          ],
-         foot:"<b>Booked:</b> Autocamp Sirena, 11–13 Aug (2 nights) — covers this night and the Brela beach day that follows."}},
-      {n:5,date:"Wed 12 Aug",title:"Brela — beach day",lat:43.3711,lng:16.9114,
-       body:"No driving. A full day to actually use the beach and campsite you paid for, instead of passing through it. Second night at the same site.",
-       pills:[["locked","Rest day"],["pencil","Punta Rata beach"],["tent","2nd night"]],
-       opts:{label:"What to do with a free day in Brela",
+         foot:"<b>Booked:</b> Autocamp Sirena, 11–13 Aug (2 nights) — covers this night and the Omiš day trip that follows."}},
+      {n:5,date:"Wed 12 Aug",title:"Lokva Rogoznica — Omiš day",lat:43.4381,lng:16.6893,
+       body:"A free day based at camp. Omiš is ten minutes up the coast rather than Brela's twenty minutes, and it has more packed into walking distance — a pirate-era old town wedged into the Cetina gorge, a canyon to raft or zipline across, and the coffee/craft-beer spots already flagged in the other guides. Second night at the same site.",
+       pills:[["locked","Rest day"],["pencil","Omiš"],["tent","2nd night"]],
+       opts:{label:"What to do with a free day near Lokva Rogoznica",
          items:[
-           {n:"Punta Rata Beach",d:"Brela's signature beach, consistently ranked among Europe's best — pebble beach around the small pine-covered islet Kamen Brela. Note: ~20 min drive south from Autocamp Sirena, not walkable from the booked pitch.",t:"Half day+",cost:0,star:true,lat:43.3757,lng:16.9370},
-           {n:"Biokovo Skywalk",d:"A glass horseshoe platform cantilevered off Biokovo mountain above the riviera, roughly 1,200m up with views straight down to the coast — a real change of pace from beach time if you want one active thing this day.",t:"Half day",cost:16,unit:"pp",lat:43.3183,lng:17.0658},
-           {n:"Kamen Brela islet swim",d:"Swim or kayak out to the small pine islet just off Punta Rata — the postcard shot of Brela.",t:"1–2 h",cost:0,lat:43.3757,lng:16.9370},
-           {n:"Just don't drive anywhere",d:"You cut Plitvice specifically to get unhurried time on the coast — the point of this day is doing less, not filling it with a second activity.",t:"—",cost:null,lat:43.3711,lng:16.9114}
+           {n:"Omiš old town & Fortica",d:"Where the Cetina river cuts through limestone straight into the sea. A genuine pirate stronghold for centuries — the Omiš corsairs harassed Venetian shipping until the 17th century — with the Mirabela and Fortica fortresses climbing the cliffs above the old town. Short climb, good payoff: the view straight back down the gorge.",t:"2–3 h",cost:0,star:true,lat:43.4381,lng:16.6893},
+           {n:"Cetina Canyon zipline",d:"Several lines strung across the gorge just outside town, run by one of the local rafting outfits. Popular enough in August that booking ahead is worth it. Price is a rough regional estimate, not confirmed against a specific operator.",t:"2–3 h",cost:45,unit:"pp",verify:true,lat:43.4550,lng:16.7050},
+           {n:"Cetina River rafting or kayaking",d:"A gentler half-day trip down the canyon from around Radmanove Mlinice — cold spring-fed water even when the coast is baking, no serious rapids. Good first-timer run. Exact put-in and price need checking against whichever operator you book.",t:"Half day",cost:35,unit:"pp",verify:true,lat:43.4658,lng:16.7186},
+           {n:"Nugal beach",d:"A small pebble cove backed by cliffs, a short walk or boat hop south of Omiš — quieter than the town beach. Location approximate; worth confirming the access path before setting off.",t:"Half day",cost:0,verify:true,lat:43.4213,lng:16.6717},
+           {n:"Punta Rata Beach (Brela)",d:"Still there if you want it — Brela's postcard beach around the pine-covered Brela Stone, about 20 minutes' drive south. No longer the default for this day, but a legitimate top-up if Omiš doesn't fill the day.",t:"Half day+",cost:0,lat:43.3757,lng:16.9370},
+           {n:"Just stay at camp",d:"You cut Plitvice specifically to get unhurried time on the coast — the point of this day is doing less, not filling it with somewhere to be.",t:"—",cost:null,lat:43.4063,lng:16.7771}
          ]}},
       {n:6,date:"Thu 13 Aug",title:"→ Dubrovnik (camp outside the walls)",lat:42.6989,lng:18.0056,
-       from:{name:"Brela",lat:43.3711,lng:16.9114},
+       from:{name:"Lokva Rogoznica",lat:43.4063,lng:16.7771},
        body:"Coastal drive over the Pelješac Bridge, bypassing the old Neum corridor entirely. Camp just outside Dubrovnik tonight rather than inside the city, so tomorrow's dawn walk starts fresh instead of after a late check-in.",
        pills:[["drive","~3 h"],["tent","Camp Pod Maslinom"],["pencil","Dawn walk tomorrow"]],
        opts:{label:"Dubrovnik-area camping",
@@ -343,7 +345,7 @@ const LEGS = [
        opts2:{label:"En route to Dubrovnik",
          items:[
            {n:"Ston",d:"Walls, oysters and salt pans right on the Pelješac approach — a twenty-minute detour before the bridge, not out of the way.",t:"1–2 h",cost:0,star:true,lat:42.8397,lng:17.6994},
-           {n:"Makarska Riviera beach stops",d:"More coastline between here and the bridge if the pace allows — Brela and Makarska itself are already covered by the last two days, so treat this as a top-up rather than a destination.",t:"Flexible",cost:0,lat:43.2969,lng:17.0186}
+           {n:"Makarska Riviera beach stops",d:"More coastline between here and the bridge if the pace allows — Omiš is already covered by the last two days and Brela's an easy add-on if you skipped it, so treat this as a top-up rather than a destination.",t:"Flexible",cost:0,lat:43.2969,lng:17.0186}
          ]}}
     ]
   },
