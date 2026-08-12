@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Karst &amp; Citrus — Coffee Field Guide</title>
+<style>
+:root{
+  --stone:#E9E4D9;
+  --stone-2:#F6F3EC;
+  --ink:#1C2B33;
+  --ink-soft:#4A5C66;
+  --citrus:#E4610F;
+  --lemon:#F2B705;
+  --teal:#24707A;
+  --alarm:#B3301F;
+  --line:rgba(28,43,51,.14);
+  --card:#FFFFFF;
+}
+body.night{
+  --stone:#141C21;
+  --stone-2:#1C2B33;
+  --ink:#F2EEE5;
+  --ink-soft:#A9BAC2;
+  --line:rgba(242,238,229,.16);
+  --card:#1C2B33;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--stone);color:var(--ink);
+  font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  padding-bottom:70px;
+  transition:background .2s,color .2s;
+}
+header{background:var(--ink);color:#F6F3EC;padding:22px 18px 20px}
+body.night header{background:#0D1418}
+.eyebrow{font:600 11px/1 -apple-system,sans-serif;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--lemon);margin:0 0 8px}
+h1{font:700 30px/1.05 Georgia,"Times New Roman",serif;margin:0 0 10px;letter-spacing:-.01em}
+.sub{margin:0;font-size:14px;color:rgba(246,243,236,.72)}
+.nightbtn{
+  margin-top:14px;background:transparent;color:#F6F3EC;border:1px solid rgba(246,243,236,.35);
+  border-radius:20px;padding:6px 14px;font:600 12px/1 -apple-system,sans-serif;letter-spacing:.04em;
+}
+nav{
+  position:sticky;top:0;z-index:20;background:var(--stone-2);
+  border-bottom:1px solid var(--line);
+  overflow-x:auto;-webkit-overflow-scrolling:touch;white-space:nowrap;
+  padding:9px 12px;
+}
+nav a{
+  display:inline-block;margin-right:7px;padding:6px 12px;border-radius:16px;
+  background:var(--card);border:1px solid var(--line);color:var(--ink);
+  font:600 12.5px/1 -apple-system,sans-serif;text-decoration:none;
+}
+nav a:focus-visible{outline:2px solid var(--citrus);outline-offset:2px}
+section{padding:24px 18px 4px}
+h2{font:700 12px/1 -apple-system,sans-serif;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--citrus);margin:0 0 4px}
+h2 + .h2sub{margin:0 0 16px;font:700 24px/1.15 Georgia,serif;letter-spacing:-.01em}
+h3{font:700 18px/1.2 Georgia,serif;margin:0 0 3px}
+p{margin:0 0 12px}
+.lead{font-size:16.5px;color:var(--ink-soft);margin-bottom:18px}
+.card{
+  background:var(--card);border:1px solid var(--line);border-radius:6px;
+  padding:16px;margin-bottom:14px;
+}
+.card.top{border-left:4px solid var(--citrus)}
+.card.warn{border-left:4px solid var(--alarm)}
+.card.note{border-left:4px solid var(--teal)}
+.meta{font:600 12px/1.4 -apple-system,sans-serif;color:var(--ink-soft);margin:0 0 10px;letter-spacing:.02em}
+.stars{color:var(--citrus);font-weight:700}
+.addr{font-size:13px;color:var(--ink-soft);margin:0 0 8px}
+.tagrow{margin:10px 0 0}
+.tag{
+  display:inline-block;margin:0 5px 5px 0;padding:3px 9px;border-radius:12px;
+  font:600 11px/1.5 -apple-system,sans-serif;letter-spacing:.03em;
+  background:rgba(36,112,122,.12);color:var(--teal);
+}
+.tag.cash{background:rgba(179,48,31,.12);color:var(--alarm)}
+.tag.smoke{background:rgba(228,97,15,.12);color:var(--citrus)}
+.tag.roast{background:rgba(242,183,5,.2);color:#7A5C00}
+body.night .tag.roast{color:var(--lemon)}
+ul{margin:0 0 12px;padding-left:19px}
+li{margin-bottom:7px}
+.order{
+  background:var(--ink);color:#F6F3EC;border-radius:6px;padding:15px 16px;margin-bottom:14px;
+}
+body.night .order{background:#0D1418}
+.order h4{font:700 11px/1 -apple-system,sans-serif;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--lemon);margin:0 0 10px}
+.order dl{margin:0;font-size:14.5px}
+.order dt{font-weight:700;color:#fff;margin-top:9px}
+.order dt:first-child{margin-top:0}
+.order dd{margin:1px 0 0;color:rgba(246,243,236,.76)}
+.rule{height:1px;background:var(--line);margin:26px 0 0}
+.flag{font-size:13px;color:var(--ink-soft);font-style:italic;margin:0}
+footer{padding:26px 18px 40px;color:var(--ink-soft);font-size:13px}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<header>
+  <p class="eyebrow">Karst &amp; Citrus · Toolkit 06</p>
+  <h1>Coffee Field Guide</h1>
+  <p class="sub">Omiš to Salzburg. Three coffee empires, one road. Places verified against Google Places on 11 Aug 2026 — ratings and hours drift, so treat them as a starting point, not gospel.</p>
+  <button class="nightbtn" onclick="document.body.classList.toggle('night')">Night mode</button>
+</header>
+
+<nav>
+  <a href="#worlds">Three worlds</a>
+  <a href="#order">How to order</a>
+  <a href="#brela">Omiš / Makarska</a>
+  <a href="#split">Split</a>
+  <a href="#ston">Ston</a>
+  <a href="#dubrovnik">Dubrovnik</a>
+  <a href="#kotor">Kotor</a>
+  <a href="#zabljak">Žabljak</a>
+  <a href="#mostar">Mostar</a>
+  <a href="#sarajevo">Sarajevo</a>
+  <a href="#salzburg">Salzburg</a>
+  <a href="#dzezva">The džezva ritual</a>
+  <a href="#trade">Trade notes</a>
+</nav>
+
+<section id="worlds">
+  <h2>Context</h2>
+  <p class="h2sub">You are driving across three coffee empires in nine days</p>
+  <p class="lead">This is the single most useful thing to understand about the rest of the trip. The coffee changes because the empire changed, and the border where it changes is still visible in the cup.</p>
+
+  <div class="card top">
+    <h3>1. The Venetian coast — espresso</h3>
+    <p>Dalmatia and the Bay of Kotor were Venetian territory for centuries. Kotor was under Venice from 1420 until the republic collapsed in 1797, and the coffee habit that stuck is Italian: small, fast, standing or sitting outside for a long time.</p>
+    <p>What matters practically: the default cup on the coast is a short espresso or a macchiato, and the <em>bar</em> is a social institution rather than a caffeine transaction. Nobody is rushing you off the table. A "kava" ordered without qualification gets you an espresso in Croatia; in Montenegro it may get you a Turkish-style one, so specify.</p>
+  </div>
+
+  <div class="card top">
+    <h3>2. The Habsburg interior — Kaffeehaus</h3>
+    <p>Slovenia, inland Croatia and Austria inherited the Viennese coffee house: a big room, marble tables, newspapers on wooden rods, a waiter in a waistcoat, a glass of water beside the cup, and an unwritten right to sit for three hours on one order. UNESCO added Viennese coffee house culture to its intangible cultural heritage list in 2011.</p>
+    <p>The water glass is not a courtesy add-on — it's structural. It signals you're welcome to stay.</p>
+  </div>
+
+  <div class="card top">
+    <h3>3. The Ottoman frontier — the džezva</h3>
+    <p>Coffee reached Europe through Ottoman territory, and Bosnia is the deepest surviving pocket of that culture anywhere on the continent. In Sarajevo and Mostar the default is still unfiltered coffee brewed in a long-handled copper pot and served on a tray with a sugar cube and a piece of rahat lokum.</p>
+    <p>Bosnians will tell you firmly that <strong>bosanska kafa is not Turkish coffee</strong>, and they have a real technical point — see the ritual section below. Don't call it Turkish in Sarajevo.</p>
+  </div>
+
+  <div class="card note">
+    <h3>Where the line actually falls on your route</h3>
+    <p>You cross the Ottoman line somewhere between Počitelj and Mostar. Everything from Brela to Kotor is Venetian espresso country with a thin modern specialty layer on top. Mostar and Sarajevo are Ottoman. Salzburg is Habsburg. The third-wave specialty scene sits on top of all three and largely ignores them.</p>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<section id="order">
+  <h2>Phrasebook</h2>
+  <p class="h2sub">Ordering without getting the tourist version</p>
+
+  <div class="order">
+    <h4>Croatia — Croatian</h4>
+    <dl>
+      <dt>kava</dt><dd>coffee, generic. Unqualified, usually an espresso.</dd>
+      <dt>bijela kava</dt><dd>white coffee — closer to a latte than a flat white.</dd>
+      <dt>s mlijekom / bez mlijeka</dt><dd>with milk / without milk.</dd>
+      <dt>produžena</dt><dd>lengthened — the local americano.</dd>
+      <dt>zaprška / kava s tučenim vrhnjem</dt><dd>with whipped cream.</dd>
+      <dt>za van / za ponijeti</dt><dd>to take away. Rarer than you'd think — most people sit.</dd>
+      <dt>fjaka</dt><dd>Not a drink. The Dalmatian state of blissful nothingness. A café in Makarska is named for it.</dd>
+    </dl>
+  </div>
+
+  <div class="order">
+    <h4>Montenegro — Montenegrin / Serbian</h4>
+    <dl>
+      <dt>kafa</dt><dd>coffee. Note the a, not kava.</dd>
+      <dt>domaća kafa</dt><dd>"domestic coffee" — the džezva version. This is what you want if you're after the traditional cup.</dd>
+      <dt>espreso / makijato</dt><dd>as you'd expect, Italian by inheritance.</dd>
+      <dt>produžena</dt><dd>lengthened.</dd>
+      <dt>Račun, molim</dt><dd>The bill, please.</dd>
+    </dl>
+  </div>
+
+  <div class="order">
+    <h4>Bosnia and Herzegovina — Bosnian</h4>
+    <dl>
+      <dt>bosanska kafa</dt><dd>Bosnian coffee. The correct name. Ask for it this way.</dd>
+      <dt>fildžan</dt><dd>the small handleless cup it arrives in.</dd>
+      <dt>džezva</dt><dd>the copper pot. Pronounced roughly JEZ-va.</dd>
+      <dt>rahat lokum</dt><dd>the cube of Turkish delight served alongside.</dd>
+      <dt>ćejf</dt><dd>From Arabic <em>kayf</em>. The unhurried pleasure of taking coffee properly. Not translatable as "a break" — it's closer to a philosophy of refusing to be hurried. A well-known Sarajevo café is named Ministry of Ćejf.</dd>
+      <dt>Hvala</dt><dd>Thank you.</dd>
+    </dl>
+  </div>
+
+  <div class="order">
+    <h4>Austria — German</h4>
+    <dl>
+      <dt>Melange</dt><dd>Espresso, hot milk, milk foam. The Viennese house standard.</dd>
+      <dt>Verlängerter</dt><dd>Lengthened — americano.</dd>
+      <dt>Kleiner / Großer Brauner</dt><dd>Small or large, with a dash of cream.</dd>
+      <dt>Einspänner</dt><dd>Double espresso in a glass under a cap of whipped cream.</dd>
+      <dt>Franziskaner</dt><dd>Melange with whipped cream and chocolate shavings.</dd>
+      <dt>Nie "einen Kaffee"</dt><dd>Ordering "a coffee" in a traditional Kaffeehaus marks you instantly. Name the drink.</dd>
+    </dl>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<section id="brela">
+  <h2>Stop 01 · Base: Lokva Rogoznica</h2>
+  <p class="h2sub">You're north of Brela, so go north for coffee</p>
+  <p class="lead">Your camp sits between Omiš and Mimice, roughly 20 minutes <em>north</em> of Brela. That flips the geography: Omiš is 10 minutes up the road and has a real specialty shop, while the Makarska cluster is now a 35–40 minute drive south. Do Omiš from camp. Do Makarska on the morning you leave, because you drive straight past it heading for Dubrovnik anyway.</p>
+
+  <div class="card top">
+    <h3>Kala — Specialty Coffee Shop &amp; Cocktail Bar</h3>
+    <p class="meta"><span class="stars">4.9</span> · 151 reviews · daily 08:00–22:00</p>
+    <p class="addr">Svetog Roka 2, Omiš — ~10 min north of camp</p>
+    <p>This is your morning shop for the whole stay. New, small, properly specialty, in the Omiš pedestrian zone under the Cetina gorge with a terrace looking up at the cliffs. Reviewers who know the category call the cappuccino among the best they've had. Matcha and craft beer too, and open until 22:00 — so it works as an evening stop as well.</p>
+    <p><strong>Pedestrian zone — you park and walk in.</strong> Cross-check your parking guide for Omiš before you go.</p>
+    <div class="tagrow"><span class="tag">10 min from camp</span><span class="tag">Specialty</span><span class="tag">Open till 22:00</span></div>
+  </div>
+
+  <div class="card">
+    <h3>Coro Food&amp;Bar · 212 Bar &amp; Lounge</h3>
+    <p class="meta">5.0 (104) · 4.9 (82) · both open 07:00</p>
+    <p><strong>Coro</strong> (Put Ribnjaka 1, Omiš harbour) opens at 07:00 daily and reviewers rate it as the best breakfast in town — the earliest properly good option if you want a pre-drive start. <strong>212</strong> (Četvrt Ribnjak 3) is a modern bar that does good coffee from 07:00; one reviewer flags indoor smoking, so sit out.</p>
+    <p><strong>Pekara Panis</strong> (Vukovarska, opens 05:30) is the bakery for burek and fresh bread, with parking outside and cards accepted. <strong>I Gemelli</strong> (Trg Svetog Mihovila 1, 4.8, 806 reviews) is the pastry stop in the old town — reviewers rate the pistachio highly and the matcha poorly.</p>
+    <div class="tagrow"><span class="tag">Opens 07:00</span><span class="tag">Bakery opens 05:30</span></div>
+  </div>
+
+  <div class="card note">
+    <h3>Everything below is 35–40 min south — do it on departure morning</h3>
+    <p>Makarska is not a there-and-back trip from Lokva Rogoznica. But Day 5 runs south down the coast toward Dubrovnik, so <strong>Kalalarga is directly on your line of travel</strong>. Leave camp, stop in Makarska for a proper coffee, carry on. Fyaka opens 07:30, which fits an early start.</p>
+  </div>
+
+  <div class="card top">
+    <h3>Fyaka Coffee</h3>
+    <p class="meta"><span class="stars">4.9</span> · 254 reviews · daily 07:30–14:30 &amp; 17:30–24:00</p>
+    <p class="addr">Kalalarga 4, Makarska</p>
+    <p>The clear specialty anchor of the riviera, and the split opening hours tell you it's run by people who actually work a bar rather than a tourist trap that opens whenever. Reviewers repeatedly call it the best coffee they had in Croatia. Terrace looks up at the Biokovo massif.</p>
+    <div class="tagrow"><span class="tag">Non-smoking</span><span class="tag">Pet friendly</span><span class="tag">Specialty</span></div>
+  </div>
+
+  <div class="card">
+    <h3>Drop</h3>
+    <p class="meta"><span class="stars">4.9</span> · 432 reviews · daily 09:00–23:30</p>
+    <p class="addr">Kalalarga 28, Makarska</p>
+    <p>Same street, 100 m up. Coffee by day, cocktails by night, family run. Reviewers single out the espresso tonic — which, given it's August and 33°C, is the correct order. No food.</p>
+    <div class="tagrow"><span class="tag">Espresso tonic</span><span class="tag">Coffee → cocktails</span></div>
+  </div>
+
+  <div class="card">
+    <h3>Kate's bar</h3>
+    <p class="meta"><span class="stars">5.0</span> · 104 reviews · closed Thursdays</p>
+    <p class="addr">Kačićev trg 11, Makarska</p>
+    <p>Pastry-forward. Croissants and focaccia get more attention in reviews than the coffee, which is not an insult — a 5.0 across 104 reviews is hard to fake. Closed Thursday, which catches people out.</p>
+  </div>
+
+  <div class="card note">
+    <h3>Brela — 20 min south, on the way out</h3>
+    <p>You're not staying here, but you pass it. If you stop at Punta Rata for a swim on the way south, <strong>Caffe Bar Mačić</strong> (4.8, 597 reviews, daily 08:00–23:00) is right on the beach and — unusually for Brela — takes cards. One reviewer noted the barista didn't know what a flat white was; order a macchiato and enjoy the view instead. Around €3 as of recent reviews.</p>
+    <p><strong>Caffe bar Mul</strong> (4.7, 354 reviews) and <strong>Beach bar Stari Porat</strong> (4.7, 205 reviews) are the other seafront options. All three are view-first, coffee-second. Fine for a swim stop, not worth a drive.</p>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<section id="split">
+  <h2>Stop 02 · Now genuinely reachable</h2>
+  <p class="h2sub">Split — the best coffee city on the route, ~50 min north</p>
+  <p class="lead">This is the other thing camping at Lokva Rogoznica changes. From Brela, Split is a commitment. From here it's roughly 45 km up the coast — under an hour, and closer than Makarska is in the other direction. It's the only real specialty cluster left between here and Sarajevo. The catch is August parking inside Diocletian's Palace, which is a genuine problem, not a caveat.</p>
+
+  <div class="card top">
+    <h3>4 Coffee</h3>
+    <p class="meta"><span class="stars">4.9</span> · 841 reviews · Mon–Sat 07:00–13:00, closed Sunday</p>
+    <p class="addr">Hrvojeva 9, Split</p>
+    <p>A hole in the wall with two tables bolted to the doors and no real seating. Multiple reviewers who had worked through the rest of Split's specialty scene named this as the one that got extraction right. One mentions an excellent V60 with a Colombian pink bourbon. Closes at 13:00 — this is a morning-only proposition.</p>
+    <div class="tagrow"><span class="tag">Pour-over</span><span class="tag">Standing only</span><span class="tag">Morning only</span></div>
+  </div>
+
+  <div class="card">
+    <h3>Stow Coffee Roasters Split</h3>
+    <p class="meta"><span class="stars">4.7</span> · 915 reviews · daily 07:00–22:00</p>
+    <p class="addr">Zrinsko Frankopanska 13, Split</p>
+    <p>Serves beans from Stow, a Slovenian roaster — so this is the through-line back to where you've just come from. Owner Matej is a barista who trains the whole team, which shows in the reviews. It's also a full breakfast operation, so service slows badly when it's busy. Reviews split sharply: people who came for coffee are happy, people who came at 10am for pastries less so.</p>
+    <div class="tagrow"><span class="tag roast">Slovenian beans</span><span class="tag">Full breakfast</span></div>
+  </div>
+
+  <div class="card">
+    <h3>Meštar o' Kave · D16 · Utopia · Tinel</h3>
+    <p class="meta">4.8 (363) · 4.6 (2,689) · 4.8 (399) · 4.6 (601)</p>
+    <p><strong>Meštar o' Kave</strong> (Marulićeva 2A, 08:00–15:00, closed Sun) — takeaway-focused, warmly reviewed, order an extra shot if you want it strong. <strong>D16</strong> (Dominisova 16) sits inside Diocletian's Palace and is the cult local favourite; tiny, gets rammed, has a dedicated quiet work room across the street. <strong>Utopia</strong> (Boškovićeva 11) is out of the centre, closed weekends, and notably non-smoking. <strong>Tinel</strong> divides opinion — some reviews praise it, one specialty-literate reviewer complains of burnt milk.</p>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<section id="ston">
+  <h2>Stop 03 · Pelješac gate</h2>
+  <p class="h2sub">Ston — manage expectations</p>
+  <p class="lead">Honest answer: Ston has no specialty coffee. It has two good, ordinary cafés on the main square and that's the whole scene. Plan accordingly and spend your attention on the walls, the salt pans and the oysters instead.</p>
+
+  <div class="card">
+    <h3>Caffe bar Kantun</h3>
+    <p class="meta"><span class="stars">4.5</span> · 228 reviews · daily 06:30–22:00</p>
+    <p>Best people-watching seat in the village, on the square. Reviewers consistently rate the espresso and cappuccino as properly made, prices reasonable, wifi good, clean toilets. Staff point people to the bakery across the street for pastry, which is a good sign about the place.</p>
+  </div>
+
+  <div class="card warn">
+    <h3>Cafe bar VIVA — cash only</h3>
+    <p class="meta"><span class="stars">4.4</span> · 228 reviews · opens 05:00</p>
+    <p>Same square, opens absurdly early. <strong>Cash only and not signposted</strong>, and a reviewer flags that the nearby ATM charges heavy fees. Carry euros into Ston.</p>
+    <div class="tagrow"><span class="tag cash">Cash only</span></div>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<section id="dubrovnik">
+  <h2>Stop 04 · Dubrovnik</h2>
+  <p class="h2sub">Get out of the Stradun for coffee</p>
+  <p class="lead">Old Town coffee inside the walls is priced for cruise passengers. The good stuff is either tucked off the main drag or up in the modern town near where you'll park anyway.</p>
+
+  <div class="card top">
+    <h3>Monachus Monachus</h3>
+    <p class="meta"><span class="stars">4.8</span> · 77 reviews · closed Tuesdays · 08:00–15:00/16:00, Sat to 18:00</p>
+    <p class="addr">Zagrebačka 50, Dubrovnik</p>
+    <p>New, small, and reviewers who tried everything in Dubrovnik keep landing here. Named for the Mediterranean monk seal. Crucially for you: <strong>it's right next to the public garage on the walking route down to the Old Town</strong>, which makes it the natural first stop after you park rather than a detour. Low review count means the rating is less settled than it looks.</p>
+    <div class="tagrow"><span class="tag">Next to the garage</span><span class="tag">Closed Tue</span></div>
+  </div>
+
+  <div class="card">
+    <h3>Cogito Coffee Shop — Old Town</h3>
+    <p class="meta"><span class="stars">4.6</span> · 1,148 reviews · daily 08:00–20:00</p>
+    <p class="addr">Stajeva 5, Dubrovnik</p>
+    <p>Cogito is a Zagreb roaster and one of the better-known specialty names in Croatia; this is their Dubrovnik outpost, on a quiet side lane off the Stradun. Consistent rather than thrilling — a few reviews note lattes arriving lukewarm from too much cold milk. If you're a dawn-visit person, they open at 08:00, which is after the light is gone.</p>
+    <div class="tagrow"><span class="tag roast">Zagreb roaster</span></div>
+  </div>
+
+  <div class="card">
+    <h3>Coffee Break</h3>
+    <p class="meta"><span class="stars">4.8</span> · 2,220 reviews · daily from 08:00, closes 15:00–15:30</p>
+    <p class="addr">Branitelja Dubrovnika 41</p>
+    <p>The volume favourite outside the walls, in a good building, doing breakfast properly — overnight oats, açaí, strudel. Reviewers report they'll make a decent decaf cappuccino on request even though it isn't on the menu. A second grab-and-go site sits at Ante Starčevića 27 (5.0, 50 reviews).</p>
+  </div>
+
+  <div class="card note">
+    <h3>Also worth knowing</h3>
+    <p><strong>GreenGo</strong> (Getaldićeva 12, 4.7, 363 reviews) is inside the walls and one of the few places with reliable dairy-free options and cold brew — useful if the queue matters more than the crema. <strong>Life According to KAWA</strong> (Hvarska 2, 4.8, 564 reviews) is a coffee shop grafted onto an Asian grocery and gift store just outside the Ploče gate, with a view over the little harbour. Closed Saturdays, oddly.</p>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<section id="kotor">
+  <h2>Stop 05 · Boka Bay</h2>
+  <p class="h2sub">Kotor and Tivat — three nights, so use them</p>
+  <p class="lead">This is the strongest coffee stop of the whole remaining route after Split, and you have three nights here. There's a genuine local roasting scene now, which did not exist five years ago.</p>
+
+  <div class="card top">
+    <h3>Too Hot to Handle Coffee Roasting Co.</h3>
+    <p class="meta"><span class="stars">5.0</span> · 128 reviews · daily 08:00–22:00</p>
+    <p class="addr">29. Novembra 278/1, Kotor</p>
+    <p>Roasting on site inside the old town, which is remarkable given the space constraints there. Cinnamon rolls come out of the oven around 10:00 and sell out. A 5.0 across 128 reviews is unusual. One dissenting review complains about a latte built from a pre-pulled shot on a busy day — a legitimate warning if you turn up mid-rush.</p>
+    <p><strong>Cash only</strong> at time of the most recent reviews, with a card machine "coming soon."</p>
+    <div class="tagrow"><span class="tag roast">Roasts on site</span><span class="tag cash">Cash only</span></div>
+  </div>
+
+  <div class="card top">
+    <h3>CAVE Coffee Specialty</h3>
+    <p class="meta"><span class="stars">4.8</span> · 893 reviews · daily 07:30–20:00 (Sun to 18:00)</p>
+    <p class="addr">Square Mata Petrovića, Kotor · second site in Tivat (4.9, 128 reviews)</p>
+    <p>The most technically serious operation in the bay. One reviewer — clearly a coffee professional — documented the recipe: 100% washed Colombian arabica, dosed to roughly 32 g out on a scale, around 40 seconds extraction. They weigh shots, which almost nobody in Montenegro does. The Tivat branch does pour-over and cold brew and, per a reviewer, uses beans roasted in Montenegro.</p>
+    <p>Their grapefruit matcha tonic and apricot matcha get named repeatedly — worth Kateryna's attention.</p>
+    <div class="tagrow"><span class="tag roast">Montenegrin roast</span><span class="tag">Scales shots</span><span class="tag">Two sites</span></div>
+  </div>
+
+  <div class="card">
+    <h3>Small talks — brunch and specialty coffee</h3>
+    <p class="meta"><span class="stars">4.6</span> · 583 reviews · daily 07:00–23:00</p>
+    <p class="addr">Put Prvoboraca, Kotor — just outside the walls near the bus station</p>
+    <p>Opens at 07:00, which makes it the best pre-hike option before the fortress walls. Turkish eggs and veggie focaccia get named repeatedly, portions are large, and it's cheaper than inside the walls. Also partnered with Bounce for luggage storage if that's ever useful.</p>
+    <div class="tagrow"><span class="tag">Opens 07:00</span><span class="tag">Pre-hike fuel</span></div>
+  </div>
+
+  <div class="card">
+    <h3>Senso Bakery · Niente · Patisserie by Wine House</h3>
+    <p class="meta">4.8 (2,287) · 4.8 (388) · 4.8 (672)</p>
+    <p><strong>Senso</strong> (Old Town 360, 07:00–23:00) is the volume favourite and the place to try <em>krempita</em>, Kotor's custard slice. Takes cards. <strong>Niente</strong> (Old Town 266) does generous portions at good value in a cramped, warm little room. <strong>Patisserie by Wine House</strong> (Stari grad 488) is a croissant-and-espresso operation that turns into a wine bar in the evening — which puts it in both of your guides.</p>
+  </div>
+
+  <div class="card note">
+    <h3>Tivat, if you're over there</h3>
+    <p><strong>Capulus Coffee</strong> (Kamelija 6, 4.9, 406 reviews) and its second site <strong>Capulus Duo</strong> (Nikole Tesle 20, 4.9, 38 reviews) are the local favourites — Duo has parking out front and a garden, which is rare. <strong>Caffè Vergnano 1882</strong> in Porto Montenegro is an Italian chain in a marina full of superyachts; good espresso, sea terrace, and exactly the scene you'd expect. One of its reviews contains some unpleasant political editorialising that has nothing to do with the coffee — ignore it.</p>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<section id="zabljak">
+  <h2>Stop 06 · Durmitor</h2>
+  <p class="h2sub">Žabljak — bring your own</p>
+  <p class="lead">Straight answer: there is no specialty coffee in Žabljak. At 1,450 m in a town of a couple of thousand people, that's not a failing, it's arithmetic. Three nights here means you should treat this as the leg where your own brewing kit earns its place in the boot.</p>
+
+  <div class="card top">
+    <h3>Shambhala Bakery &amp; Restaurant</h3>
+    <p class="meta"><span class="stars">4.6</span> · 1,308 reviews · daily 07:00–23:00</p>
+    <p class="addr">Vuka Karadžića 27, Žabljak</p>
+    <p>The best of what's available and the one everybody returns to. Opens at 07:00, which matters for early Durmitor starts. Shakshuka (red and white versions), granola, tarts. Reviewers describe the coffee as "good" rather than exceptional, which is an honest read.</p>
+    <div class="tagrow"><span class="tag">Opens 07:00</span><span class="tag">Best breakfast in town</span></div>
+  </div>
+
+  <div class="card warn">
+    <h3>What to expect elsewhere</h3>
+    <p><strong>Gradska kafanica</strong> (4.4, 178 reviews) — a reviewer notes it's now a café rather than a restaurant and that smoking indoors is normal. <strong>Kaćun</strong> (4.2, 584 reviews) and <strong>Lounge bar Čudna šuma</strong> (4.4, 557 reviews) are both fine for a beer and a pizza after a hike; Čudna šuma has a reviewer specifically noting <strong>no oat milk anywhere</strong>.</p>
+    <div class="tagrow"><span class="tag smoke">Indoor smoking normal</span><span class="tag">No oat milk</span></div>
+  </div>
+
+  <div class="card note">
+    <h3>Brew it yourself</h3>
+    <p>You've got three mornings at altitude with alpine starts. Buy beans in Kotor before you leave — Too Hot to Handle or CAVE both sell retail — because there is nothing to buy in Žabljak. Water boils cooler at 1,450 m, so if you're brewing filter, go slightly finer or extend contact time; the usual altitude correction is to accept a longer brew rather than fight it.</p>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<section id="mostar">
+  <h2>Stop 07 · Herzegovina</h2>
+  <p class="h2sub">Mostar — the Ottoman line</p>
+  <p class="lead">This is where the coffee changes. Order bosanska kafa at least once here before you get to Sarajevo, where you'll want to do it properly. And remember Bosnia runs on konvertibilna marka — many places refuse euros outright.</p>
+
+  <div class="card top">
+    <h3>Fabrika Coffee — Mostar</h3>
+    <p class="meta"><span class="stars">4.7</span> · 1,390 reviews · daily 07:30–23:00 (Sun from 08:30)</p>
+    <p class="addr">Braće Fejića 30, Mostar</p>
+    <p>Same name and family as the Sarajevo group, and the best specialty option in Mostar by a distance. Reviewers report a genuine selection of single origins to choose from — one names a Guatemalan flat white with a fruity profile. Large shaded courtyard on the main pedestrian street of the east bank. No beer, which several reviewers find odd for the setting.</p>
+    <p>Price signal from a recent review: a flat white plus an iced latte came to 12.50 KM, roughly €6.40 for two.</p>
+    <div class="tagrow"><span class="tag roast">Single origins</span><span class="tag">Big courtyard</span></div>
+  </div>
+
+  <div class="card">
+    <h3>Mazel Tov Concept Bar</h3>
+    <p class="meta"><span class="stars">4.7</span> · 619 reviews · daily 07:00–23:55</p>
+    <p class="addr">Zagrebačka 18, Mostar — west bank</p>
+    <p>Café by day, bar by night, on the Croat side of the river. Reviewers rate the cappuccino highly and describe the courtyard as the best summer coffee spot in Mostar. <strong>Cash only</strong> per recent reviews.</p>
+    <div class="tagrow"><span class="tag cash">Cash only</span></div>
+  </div>
+
+  <div class="card note">
+    <h3>Blagaj, Počitelj, Kravica</h3>
+    <p>None of these have specialty coffee, and Blagaj's cafés are the ones flagged for inflated pricing in your parking guide. Blagaj's Tekija setting is the whole point — river bursting out of a 200 m cliff, dervish house on the bank — and a Bosnian coffee there is worth ordering for the setting alone. Just ask the price before it arrives, and have KM in hand.</p>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<section id="sarajevo">
+  <h2>Stop 08 · Sarajevo</h2>
+  <p class="h2sub">The best coffee city on the route, in two completely different ways</p>
+  <p class="lead">Sarajevo is the only place where you can drink a genuinely excellent third-wave flat white and a 400-year-old brewing tradition within a five-minute walk, and both will be taken seriously. Do both. Don't rush either.</p>
+
+  <div class="card top">
+    <h3>Fabrika Coffee — four sites</h3>
+    <p class="meta">III: <span class="stars">4.8</span> (290) · II: 4.6 (959) · IV: 4.7 (166)</p>
+    <p>The specialty backbone of the city. <strong>Fabrika III</strong> (Derviša Numića 1A, daily 07:00–22:00) has the highest rating of the group. <strong>Fabrika II</strong> (Dalmatinska 2) is the sit-for-hours one — reviewers describe it as the full café experience, and several say the Bosnian coffee here is the best they had in the city, which is a real endorsement from a specialty shop. <strong>Fabrika IV</strong> (Alipašina 6C) is the smallest, closes 16:00 at weekends.</p>
+    <p>Worth noting as an operator: four sites in a city this size, all rated 4.6+, is a serious piece of execution.</p>
+    <div class="tagrow"><span class="tag roast">Specialty</span><span class="tag">Also does bosanska kafa well</span></div>
+  </div>
+
+  <div class="card top">
+    <h3>Kawa</h3>
+    <p class="meta"><span class="stars">4.7</span> · 883 reviews · daily 08:00–23:00, Sun 10:00–16:00</p>
+    <p class="addr">Dženetića čikma 16, Sarajevo</p>
+    <p>Much bigger inside than it looks from the street, with a back garden deck. Serves Franz &amp; Sophie tea alongside the coffee — the two businesses recommend each other, which tells you something about the scene. Fast wifi, phone charging, plenty of nooks. Almond milk but no oat as of recent reviews. Around £5 a head.</p>
+  </div>
+
+  <div class="card top">
+    <h3>Ministry of Ćejf</h3>
+    <p class="meta"><span class="stars">4.6</span> · 1,827 reviews · daily 07:00–23:00</p>
+    <p class="addr">Kovači 26, Sarajevo — start of the hill above Baščaršija</p>
+    <p>Named for the concept in the phrasebook above, and the place to sit for an hour over a Bosnian coffee with a view back across the city. Family-run, seasonal flowers, genuinely lovely. Be clear-eyed though: several reviewers say the espresso-based drinks are the weak point. <strong>Come here for the džezva and the view, not the flat white.</strong> Cash in KM works fine.</p>
+    <div class="tagrow"><span class="tag">Bosnian coffee</span><span class="tag">View</span><span class="tag warn">Not for espresso</span></div>
+  </div>
+
+  <div class="card">
+    <h3>EJTIIZ books and coffee</h3>
+    <p class="meta"><span class="stars">4.8</span> · 36 reviews · closed Sunday</p>
+    <p class="addr">Koševo 17, Sarajevo</p>
+    <p>Eighties aesthetic, walls of books, covered patio, cheap. Low review count, so the rating isn't settled. The quiet alternative if Baščaršija is grinding you down.</p>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<section id="salzburg">
+  <h2>Stop 09 · Salzburg</h2>
+  <p class="h2sub">Habsburg tradition versus the modern scene</p>
+  <p class="lead">One night, and it lands the evening before a 1,000 km drive. Realistically you get one coffee here — probably early on departure morning. Pick the one that suits what you want out of it, because the traditional and modern answers are genuinely different experiences.</p>
+
+  <div class="card top">
+    <h3>Kaffee-Alchemie</h3>
+    <p class="meta"><span class="stars">4.7</span> · 1,579 reviews · Mon–Fri from 07:30, weekends from 09:00</p>
+    <p class="addr">Rudolfskai 38, Salzburg — on the river</p>
+    <p>Operating since 2011, which makes it an elder statesman of Austrian third wave. Classic interior, modern coffee, self-service, oat milk, a proper bean selection on the flat white. Opens 07:30 on weekdays. Reviewers report cappuccino and cortado around €4.90. <strong>This is my pick for departure morning</strong> — earliest opening of the serious options and directly on the river.</p>
+    <div class="tagrow"><span class="tag">Opens 07:30</span><span class="tag">Oat milk</span><span class="tag">Third wave</span></div>
+  </div>
+
+  <div class="card">
+    <h3>nur coffee</h3>
+    <p class="meta"><span class="stars">4.8</span> · 2,070 reviews · daily 08:00–18:30</p>
+    <p class="addr">Bürgerspitalgasse 3 — just off the end of Getreidegasse</p>
+    <p>Roasts its own. A literal hole in the wall doing takeaway iced coffee well, which is harder to find in Austria than it should be. Soft serve too. Highest volume of reviews of any specialty place in the city.</p>
+    <div class="tagrow"><span class="tag roast">Roasts own</span><span class="tag">Iced coffee done right</span></div>
+  </div>
+
+  <div class="card">
+    <h3>KAVA coffee roasters · 220GRAD · Ratio · Idealist</h3>
+    <p class="meta">4.9 (492) · 4.7 (125) · 4.6 (905) · 4.8 (409)</p>
+    <p><strong>KAVA</strong> (Griesgasse 2a, from 09:00) is the highest-rated in the city and the one to buy beans from — though one reviewer reports an uneven light roast in a retail bag, handled well by the company afterwards. <strong>220GRAD</strong> (Maxglaner Hauptstraße 29) is the roastery itself, weekdays only, 09:00–17:00, and is widely credited with dragging Salzburg's coffee scene past the traditional Kaffeehaus. <strong>Ratio</strong> (Linzer Gasse 72A) is the reliable all-week option. <strong>Idealist</strong> (Schallmooser Hauptstraße 44) is brunch-led, closed Tuesdays.</p>
+  </div>
+
+  <div class="card note">
+    <h3>Café Tomaselli — the honest verdict</h3>
+    <p class="meta"><span class="stars">3.8</span> · 4,885 reviews · daily 07:00–19:00 · Alter Markt 9</p>
+    <p>Widely described as Austria's oldest continuously operating coffee house, with roots traced to around 1700. Waiters in black tie handle drinks; a separate "cake lady" carries a tray of pastries to your table for you to choose from. Newspapers on wooden rods. Mozart's family drank here.</p>
+    <p>And it's rated <strong>3.8</strong>. Reviews are consistent about why: the room is magnificent, the coffee and cake are average, the prices are touristy. That's a fair trade if you want the institution — it's a living museum and worth twenty minutes for that reason. Just don't go expecting the coffee to justify it. Opens 07:00, earlier than anywhere else.</p>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<section id="dzezva">
+  <h2>The ritual</h2>
+  <p class="h2sub">How to drink bosanska kafa without getting it wrong</p>
+
+  <div class="card top">
+    <h3>Why it isn't Turkish coffee</h3>
+    <p>The distinction Bosnians insist on is a real one in the method. In the Bosnian preparation, water is brought to the boil in the džezva <em>first</em>, a small amount is poured off and reserved, the finely ground coffee is stirred into the remaining hot water and returned to the heat to raise the foam, and the reserved water is then poured back in to settle the grounds. Turkish preparation typically combines coffee, water and sugar cold from the start.</p>
+    <p>The practical result: Bosnian coffee is served unsweetened, with sugar handled separately by the drinker, and it arrives as a small set rather than a single cup.</p>
+  </div>
+
+  <div class="card">
+    <h3>What arrives</h3>
+    <ul>
+      <li>The <strong>džezva</strong> — copper pot, long handle, grounds settled at the bottom.</li>
+      <li>One or two <strong>fildžani</strong> — small handleless cups.</li>
+      <li>A dish of <strong>sugar cubes</strong>.</li>
+      <li>A piece of <strong>rahat lokum</strong>.</li>
+      <li>A glass of <strong>water</strong>.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>The order of operations</h3>
+    <ul>
+      <li><strong>Drink the water first.</strong> It clears the palate. This is not optional in the etiquette.</li>
+      <li><strong>Pour slowly</strong> and stop before the grounds move. Don't stir the pot.</li>
+      <li><strong>Sugar goes in your mouth, not the cup.</strong> The traditional move — <em>na kocku</em> — is to dip a corner of the sugar cube into the coffee, hold it on the tongue, and drink through it. Foreigners almost always stir the sugar in; it isn't wrong, it's just not the local way.</li>
+      <li><strong>The lokum is for the end</strong>, not between sips.</li>
+      <li><strong>Leave the last centimetre.</strong> That's grounds.</li>
+      <li><strong>Take an hour.</strong> That's ćejf. Ordering it and drinking it in eight minutes misses the entire point of the thing.</li>
+    </ul>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<section id="trade">
+  <h2>Trade notes</h2>
+  <p class="h2sub">Things worth looking at with New Jozi eyes</p>
+
+  <div class="card">
+    <h3>Four things worth studying</h3>
+    <ul>
+      <li><strong>Fabrika's four-site model in Sarajevo.</strong> A city smaller than Rotterdam supporting four specialty sites all at 4.6+, differentiated by function rather than menu — one for sitting, one for grabbing, one small and local. That differentiation is the interesting part, not the count.</li>
+      <li><strong>CAVE weighing shots in Montenegro.</strong> One reviewer reverse-engineered their entire recipe from watching. Visible scales are a marketing asset in a market where nobody else does it — and the review it generated is worth more than any ad.</li>
+      <li><strong>Split's split hours.</strong> 4 Coffee closes at 13:00. Meštar at 15:00. Fyaka in Makarska shuts 14:30 and reopens 17:30. These are businesses that decided when their customers actually come and refused to staff the dead hours. Worth thinking about against your own trading pattern.</li>
+      <li><strong>Non-smoking as a stated selling point.</strong> In Croatia, Montenegro and Bosnia, "non-smoking" appears in reviews as an explicit reason people chose the place — Fyaka and Utopia both get it named. A constraint you take for granted in NL is a differentiator here.</li>
+    </ul>
+  </div>
+
+  <div class="card warn">
+    <h3>Practical, all countries</h3>
+    <ul>
+      <li><strong>Cash.</strong> Too Hot to Handle (Kotor), Mazel Tov (Mostar) and Cafe bar VIVA (Ston) are cash-only per recent reviews. Bosnia needs KM; several places refuse euros outright.</li>
+      <li><strong>Smoking.</strong> Indoors smoking is normal in Bosnia and Montenegro and common in Croatian bars. Sit outside if it bothers you, which in August you will anyway.</li>
+      <li><strong>Oat milk.</strong> Patchy. Reliable at Kaffee-Alchemie, CAVE and most Split specialty shops. Absent in Žabljak. Kawa in Sarajevo has almond, not oat.</li>
+      <li><strong>Sunday.</strong> Utopia (Split), 4 Coffee (Split), Meštar (Split), EJTIIZ (Sarajevo) and 220GRAD (Salzburg) all close or shorten. Check before you plan a Sunday morning around one.</li>
+      <li><strong>Buy beans in Kotor.</strong> It's your last chance before the Durmitor stretch, and Salzburg is your only other retail-quality option.</li>
+    </ul>
+  </div>
+
+  <div class="card note">
+    <h3>What's verified and what isn't</h3>
+    <p>Every named business, rating, review count, address and set of opening hours came from a live Google Places lookup on 11 August 2026, and the quoted observations are paraphrased from real reviews. Ratings and hours change — treat them as of that date.</p>
+    <p>The historical and cultural material is background knowledge, not looked up: the empire framing, the džezva method, the ordering vocabulary and the ritual. It's accurate to the best of my knowledge but I haven't verified it against a source here, and my information runs to around May 2026. If a specific claim matters to you, check it.</p>
+  </div>
+</section>
+
+<footer>
+  <p>Karst &amp; Citrus toolkit · Coffee field guide · built 11 August 2026 · works fully offline, no network needed</p>
+</footer>
+
+</body>
+</html>

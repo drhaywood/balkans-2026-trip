@@ -1,0 +1,506 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Eating Cheap — Balkans, 8–23 August 2026</title>
+<style>
+:root{
+  --ink:#0F1519; --ink2:#33414A; --ink3:#4E5C65;
+  --stone:#FCFBF8; --paper:#F1EFE9; --line:#D6D1C5;
+  --verd:#1D6857; --rust:#8E3220; --gold:#7A5F12;
+  --rail:78px;
+  --serif:Georgia,"Iowan Old Style","Times New Roman",serif;
+  --sans:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--stone);color:var(--ink);font-family:var(--sans);
+  font-size:18px;line-height:1.58;-webkit-text-size-adjust:100%}
+p{margin:0 0 .9em}
+main{max-width:740px;margin:0 auto;padding:0 20px 90px}
+@media(min-width:1080px){main{margin-left:calc(var(--rail) + 40px);margin-right:40px}}
+.rail{display:none}
+@media(min-width:1080px){
+  .rail{display:block;position:fixed;left:0;top:0;bottom:0;width:var(--rail);
+    border-right:1px solid var(--line);background:var(--stone);z-index:40;padding:22px 0;overflow-y:auto;scrollbar-width:none}
+  .rail::-webkit-scrollbar{display:none}
+  .rail::before{content:"";position:absolute;left:38px;top:34px;bottom:34px;width:1px;background:var(--line)}
+  .rn{position:relative;display:block;text-decoration:none;padding:8px 0;text-align:center}
+  .rn i{display:block;width:9px;height:9px;margin:0 auto;border-radius:50%;background:var(--stone);
+    border:1px solid var(--ink3);position:relative;z-index:2;transition:all .2s}
+  .rn b{display:block;font-family:var(--mono);font-size:10px;color:var(--ink3);margin-top:4px;font-weight:400}
+  .rn.on i{background:var(--rust);border-color:var(--rust);transform:scale(1.5)}
+  .rn.on b{color:var(--rust)}
+}
+.chips{position:sticky;top:0;z-index:30;background:var(--stone);border-bottom:1px solid var(--line);
+  margin:0 -20px;padding:9px 0;overflow-x:auto;white-space:nowrap;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.chips::-webkit-scrollbar{display:none}
+@media(min-width:1080px){.chips{display:none}}
+.chip{display:inline-block;font-family:var(--mono);font-size:12px;text-decoration:none;color:var(--ink2);
+  border:1px solid var(--line);padding:5px 10px;border-radius:2px;margin-left:7px;background:var(--paper)}
+.chip.on{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.mast{padding:50px 0 28px;border-bottom:2px solid var(--ink)}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--rust);margin:0 0 14px}
+.mast h1{font-family:var(--serif);font-weight:700;font-size:clamp(34px,8.4vw,56px);line-height:1.02;letter-spacing:-.022em;margin:0 0 16px}
+.mast .sub{font-size:18px;color:var(--ink2);max-width:54ch;margin:0 0 18px}
+section{padding:44px 0 8px;border-bottom:1px solid var(--line);scroll-margin-top:60px}
+@media(min-width:1080px){section{scroll-margin-top:24px}}
+.stopno{font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--ink3);display:flex;gap:12px;
+  align-items:baseline;margin-bottom:9px;flex-wrap:wrap}
+.stopno .day{color:var(--rust)}
+section h2{font-family:var(--serif);font-weight:700;font-size:clamp(27px,6vw,38px);line-height:1.08;letter-spacing:-.018em;margin:0 0 10px}
+.dek{font-size:19px;line-height:1.5;color:var(--ink2);max-width:54ch;margin:0 0 22px;font-style:italic}
+h3{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);
+  font-weight:400;margin:34px 0 14px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+.d{margin:0 0 20px;padding-left:14px;border-left:3px solid var(--line)}
+.d.m{border-left-color:var(--rust)} .d.w{border-left-color:var(--verd)} .d.t{border-left-color:var(--gold)}
+.d h4{margin:0 0 4px;font-size:19px;font-family:var(--serif);font-weight:700;letter-spacing:-.01em;
+  display:flex;flex-wrap:wrap;gap:8px;align-items:baseline}
+.rate{font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;padding:2px 6px;
+  border-radius:2px;border:1px solid;white-space:nowrap;vertical-align:2px;font-weight:400}
+.r-m{color:#fff;background:var(--rust);border-color:var(--rust)}
+.r-w{color:var(--verd);border-color:var(--verd)}
+.r-t{color:var(--gold);border-color:var(--gold)}
+.r-p{color:var(--ink2);border-color:var(--line);background:var(--paper)}
+.d p{margin:0 0 .55em;font-size:16.5px;line-height:1.52}
+.d p:last-child{margin-bottom:0}
+.d .how{font-size:15px;color:var(--ink2);border-top:1px dotted var(--line);padding-top:6px;margin-top:7px}
+.d .how b{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);font-weight:400}
+.r{border:1px solid var(--line);background:var(--paper);border-radius:3px;padding:13px 15px;margin:0 0 12px}
+.r .top{display:flex;justify-content:space-between;gap:10px;align-items:baseline;flex-wrap:wrap;margin-bottom:5px}
+.r .nm{font-family:var(--serif);font-size:19px;font-weight:700;letter-spacing:-.01em}
+.r .sc{font-family:var(--mono);font-size:12px;color:var(--ink2);white-space:nowrap}
+.r .tier{font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;border:1px solid var(--line);
+  color:var(--ink2);padding:2px 6px;border-radius:2px;margin-right:2px}
+.r .t-b{border-color:var(--verd);color:var(--verd)}
+.r p{margin:6px 0 0;font-size:15.5px;line-height:1.5}
+.r .ad{font-family:var(--mono);font-size:11.5px;color:var(--ink3);margin-top:6px;line-height:1.6}
+.warn{color:var(--rust);font-weight:600}
+.b{border-left:3px solid var(--line);padding:2px 0 2px 16px;margin:0 0 20px}
+.b .lab{font-family:var(--mono);font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;display:block;margin-bottom:6px}
+.b-l{border-left-color:var(--gold)} .b-l .lab{color:var(--gold)}
+.b-g{border-left-color:var(--ink2)} .b-g .lab{color:var(--ink2)}
+.b-f{border-left-color:var(--rust);background:rgba(142,50,32,.055);padding:10px 12px 10px 16px} .b-f .lab{color:var(--rust)}
+.b p:last-child{margin-bottom:0}
+/* recipe */
+.rec{border:1px solid var(--verd);border-radius:3px;padding:15px 16px;margin:0 0 16px;background:rgba(29,104,87,.045)}
+.rec h4{margin:0 0 3px;font-family:var(--serif);font-size:20px;font-weight:700;letter-spacing:-.01em}
+.rec .meta{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--verd);margin-bottom:9px}
+.rec .ing{font-size:15.5px;color:var(--ink2);border-bottom:1px dotted var(--line);padding-bottom:9px;margin-bottom:9px}
+.rec ol{margin:0;padding-left:20px;font-size:16px}
+.rec ol li{margin-bottom:6px}
+.rec .note{font-size:15px;color:var(--ink2);margin-top:9px;font-style:italic}
+table{width:100%;border-collapse:collapse;font-size:15.5px;margin:0 0 18px}
+th,td{text-align:left;padding:8px 8px 8px 0;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);font-weight:400}
+ul{margin:0 0 16px;padding-left:19px} li{margin-bottom:8px}
+footer{padding:38px 0 20px;font-family:var(--mono);font-size:12.5px;color:var(--ink2);line-height:1.9}
+[data-theme="dark"]{
+  --ink:#ECEAE3; --ink2:#C4CDD3; --ink3:#9BA7AF;
+  --stone:#0F161A; --paper:#1A2429; --line:#2E3A41;
+  --verd:#63C4AC; --rust:#E5876A; --gold:#DCBA63;
+}
+[data-theme="dark"] .r-m{color:#0F161A}
+[data-theme="dark"] .b-f{background:rgba(229,135,106,.10)}
+[data-theme="dark"] .rec{background:rgba(99,196,172,.08)}
+.themebtn{position:fixed;right:14px;bottom:14px;z-index:60;font-family:var(--mono);font-size:10.5px;
+  letter-spacing:.06em;text-transform:uppercase;background:var(--paper);border:1px solid var(--line);
+  color:var(--ink2);padding:6px 11px;border-radius:2px;cursor:pointer;box-shadow:0 2px 10px rgba(0,0,0,.14)}
+:focus-visible{outline:2px solid var(--rust);outline-offset:3px}
+</style>
+
+<button class="themebtn" id="themebtn">Night mode</button>
+<nav class="rail" id="rail" aria-label="Route"></nav>
+<div class="chips" id="chips" aria-label="Route"></div>
+
+<main>
+<header class="mast" id="top">
+  <p class="eyebrow">Street food, markets &amp; camp cooking · 8–23 August 2026</p>
+  <h1>Eating Cheap</h1>
+  <p class="sub">Four nights with a camp stove, twelve with a car boot, and a region where the best food is frequently the cheapest. Bakeries, green markets, grill windows, what to buy in each country, and what to actually cook on two burners.</p>
+</header>
+
+<section id="c00" data-nav="00" data-label="Habits">
+  <p class="stopno"><span>00</span><span class="day">Read once</span></p>
+  <h2>Five habits that halve the bill</h2>
+
+  <div class="b b-l"><span class="lab">1</span>
+  <p><strong>The bakery is the meal, not the snack.</strong> Every town on this route has a <em>pekara</em> open from 05:00 to midnight selling burek, cheese pastry, filled rolls, pizza slices and fresh bread. In Croatia and Bosnia a filled pastry is roughly the price of a coffee, and it is a full lunch. Two people can eat properly for the cost of one restaurant starter. This single habit is worth more than every other tip here combined.</p></div>
+
+  <div class="b b-l"><span class="lab">2</span>
+  <p><strong>Eat the cheap fish, not the expensive fish.</strong> Menus divide whole fish into classes, and sea bass and dentex are priced by the kilo at rates that surprise people. <strong>Sardines, mackerel, anchovies and <em>girice</em></strong> (tiny whitebait, fried and eaten whole) sit at the bottom of the price list and are, in August, better eating — oily fish is at its peak in high summer. A plate of grilled sardines costs a fraction of a bream and is more purely Dalmatian.</p></div>
+
+  <div class="b b-l"><span class="lab">3</span>
+  <p><strong>Walk two streets inland.</strong> The price gradient in Dubrovnik, Kotor and Mostar is brutal and it operates over about 200 metres. In Mostar, reviewers report fifteen ćevapi with bread for around €3 five minutes from the bridge, and considerably more than that at the bridge itself. Same food, same city, same day.</p></div>
+
+  <div class="b b-l"><span class="lab">4</span>
+  <p><strong>Order the thing that was cooked this morning.</strong> Grills are priced per portion of meat. Braises, stews and stuffed vegetables are made in a batch at dawn and sold until they run out, which makes them structurally cheaper. In Bosnia this is a whole institution — the <em>aščinica</em> — and it is also the most authentic food in the country.</p></div>
+
+  <div class="b b-l"><span class="lab">5</span>
+  <p><strong>Buy drinks at a shop, not a terrace.</strong> Wine, beer and rakija at supermarket prices across Croatia, Montenegro and Bosnia are cheap enough that you can drink genuinely good local bottles every night. A bottle of decent Plavac Mali or Vranac from a supermarket costs less than two glasses of house wine on a waterfront. You are camping with a cool box — use it.</p></div>
+</section>
+
+<section id="c01" data-nav="01" data-label="Sundays">
+  <p class="stopno"><span>01</span><span class="day">Act on this first</span></p>
+  <h2>The Sunday problem</h2>
+  <p class="dek">Your four camping nights start on a Sunday, in two countries where the shops are shut on Sundays. This is the one thing on the whole list that will actually bite you.</p>
+
+  <div class="b b-f"><span class="lab">The trap</span>
+  <p><strong>Germany closes completely on Sundays.</strong> Not "some shops" — effectively all retail, by law. <strong>Slovenia largely does too.</strong> Checking the shops nearest your Kamna Gorica campsite: the Mercator on Kranjska cesta in Radovljica is <strong>closed Sunday</strong>. The local produce shop Domača trgovina is <strong>closed Sunday</strong>. The big SPAR on Gradnikova is listed as <strong>closed both Saturday and Sunday</strong>.</p>
+  <p>You drive Munich → Bled on <strong>Sunday 9 August</strong> and pitch your first camp that evening. If you have not shopped before you leave Munich, your options that night are a petrol station or a restaurant.</p></div>
+
+  <div class="b b-g"><span class="lab">The fix</span>
+  <p><strong>Shop in Munich on Saturday evening, 8 August, before the shops shut around 20:00.</strong> Buy the dry goods and the first two dinners. German supermarkets are cheaper than Slovenian ones anyway, and considerably cheaper than Croatian coastal ones.</p>
+  <p>If you miss it: main railway station supermarkets are the standard German exception and generally do open on Sundays — the REWE at München Hauptbahnhof is the usual answer. <span class="warn">Verify before relying on it.</span> Motorway services and petrol stations are also open but priced accordingly.</p></div>
+
+  <h3>Your shopping calendar</h3>
+  <table>
+    <tr><th>When</th><th>Where</th><th>Buy</th></tr>
+    <tr><td><strong>Sat 8 Aug</strong><br>evening, Munich</td><td>Any supermarket before 20:00</td><td>All dry goods for the trip: oil, salt, pepper, coffee, pasta, rice, buckwheat flour, tinned tomatoes, foil, matches. Plus Sunday breakfast and Sunday dinner.</td></tr>
+    <tr><td><strong>Mon 10 Aug</strong><br>Radovljica</td><td>Mercator, Kranjska cesta<br>Domača trgovina, Cankarjeva 70</td><td>Slovenian night two: Kranjska sausage, sauerkraut, potatoes, buckwheat flour, cracklings, honey, yoghurt, bread.</td></tr>
+    <tr><td><strong>Tue 11 Aug</strong><br>arriving on the coast</td><td>Studenac or any Croatian supermarket en route</td><td>Basics restock. Croatian coastal prices are higher than Slovenian — buy the bulky things before you get to the coast if you can.</td></tr>
+    <tr><td><strong>Wed 12 Aug</strong><br>Omiš, before 14:00</td><td>Gradska tržnica i ribarnica, Fošal ul.</td><td>The good stuff: mussels, sardines, chard, tomatoes, figs. <strong>Market closes at 14:00 and is shut Sunday.</strong></td></tr>
+  </table>
+
+  <div class="b b-f"><span class="lab">Also worth knowing</span>
+  <p><strong>15 August is Assumption</strong> — a major public holiday across the Catholic parts of this region, with widespread closures in Croatia, Slovenia and Austria and Catholic-area closures elsewhere. You will be in Kotor that day, in a hotel, so it should not hurt you — but do not plan a big shop for it. <span class="warn">Verify locally.</span></p>
+  <p>Across Montenegro, most supermarkets also close on Sundays — both VOLI branches checked (Dobrota and Žabljak) and the Aroma Centar in Žabljak are all <strong>closed Sunday</strong>. You are in hotels by then, but it affects buying wine and breakfast.</p></div>
+</section>
+
+<section id="c02" data-nav="02" data-label="Bakeries">
+  <p class="stopno"><span>02</span><span class="day">Everywhere, every day</span></p>
+  <h2>The bakery</h2>
+  <p class="dek">The single cheapest good meal from Slovenia to Bosnia, open from before dawn until midnight, including Sundays when everything else is shut.</p>
+
+  <div class="b b-g"><span class="lab">How it works</span>
+  <p>A <em>pekara</em> is not a patisserie. It is a counter with trays of hot savoury pastry, filled rolls, pizza slices and bread, turned over continuously all day. You point, they weigh or count, you pay cash. In Bosnia you order pastry <strong>by weight</strong> — "trista grama", 300 grams, is a generous portion for one.</p>
+  <p>Critically, <strong>bakeries stay open on Sundays</strong> when supermarkets do not. Pekara Panis in Omiš runs 05:00–midnight, seven days. This is your fallback for every closure problem on the trip.</p></div>
+
+  <h3>What to order</h3>
+
+  <div class="d m"><h4>Burek and its family <span class="rate r-m">Must try</span> <span class="rate r-p">Cheapest hot meal</span></h4>
+  <p>Hand-rolled filo coiled into a spiral and baked. <strong>Burek</strong> is meat, <strong>sirnica</strong> cheese, <strong>zeljanica</strong> spinach and cheese, <strong>krompiruša</strong> potato — that naming holds in Bosnia and blurs in Croatia. Ask for <strong>kiselo mlijeko</strong> or yoghurt with it; it is meant to be eaten together and it costs almost nothing extra.</p>
+  <p class="how"><b>Price signal</b> — reviewers in Sarajevo report around <strong>5 KM</strong> (roughly €2.50) for a portion at the big Baščaršija buregdžinicas. In Croatian bakeries a slice is in the same ballpark. This is a full lunch.</p></div>
+
+  <div class="d w"><h4>Kifle, pogačice and filled rolls <span class="rate r-w">Worth it</span></h4>
+  <p>The breakfast end of the counter. <em>Kifle</em> are crescent rolls, plain or with cheese; <em>pogača</em> is a flat soft bread; filled versions come with cheese, ham or olives. Reviewers of Pekara Poričanin in Sarajevo describe a salted crusty kifla for under 2 KM. Buy these the night before for breakfast in the tent.</p></div>
+
+  <div class="d w"><h4>Somun and lepinja <span class="rate r-w">Worth it</span> <span class="rate r-p">Camp essential</span></h4>
+  <p>The soft flatbread that ćevapi are served in. Buy it fresh from a bakery to eat at camp with cheese, ajvar and tomatoes — it is the base of the cheapest good meal you can assemble anywhere in the region, and it costs pennies.</p></div>
+
+  <h3>Where</h3>
+
+  <div class="r"><div class="top"><span class="nm">Pekara Panis, Omiš</span><span class="sc">★ 4.4 · 770+</span></div>
+    <span class="tier t-b">Open 7 days</span><span class="tier">€</span>
+    <p>The daily-ritual bakery of Omiš — reviewers describe going back every single day of their stay. Fresh bread from before dawn, burek in the afternoon. <strong>05:30–midnight weekdays, 05:00–midnight weekends.</strong> Twenty minutes from your campsite and the answer to every Sunday closure.</p>
+    <p class="ad">Vukovarska ul., Omiš · cash or card</p></div>
+
+  <div class="r"><div class="top"><span class="nm">Pekara Poričanin, Sarajevo</span><span class="sc">★ 4.8 · 630+</span></div>
+    <span class="tier t-b">Highest-rated bakery on the route</span><span class="tier">€</span>
+    <p>4.8 across 630 reviews. Reviewers name the bread, the crusty salted kifle and the doughnuts, and note a queue most mornings. Just north of Baščaršija, away from the tourist run.</p>
+    <p class="ad">Safvet-bega Bašagića 16 · daily 05:00–21:00</p></div>
+
+  <div class="r"><div class="top"><span class="nm">Bakery Bistrik, Sarajevo</span><span class="sc">★ 4.5 · 369</span></div>
+    <span class="tier t-b">Cheaper than Baščaršija</span><span class="tier">€</span>
+    <p>Reviewers say it directly: "cheaper than Baščaršija," and they went every day. Meat burek and spinach-cheese both singled out. Five minutes uphill from the old town.</p>
+    <p class="ad">Bistrik 1 · daily 06:00–midnight</p></div>
+
+  <div class="r"><div class="top"><span class="nm">Bakery "As", Sarajevo</span><span class="sc">★ 4.5 · 1,410+</span></div>
+    <span class="tier t-b">Open 24 hours</span><span class="tier">€</span>
+    <p>Genuinely 24/7, with free parking outside — the answer if you arrive late or leave at dawn. Out west of the centre rather than in the old town. Reviews are mostly strong with a few complaining about late-night stock, so go for the fresh trays rather than the last slice of pizza.</p>
+    <p class="ad">Triglavska 1 · open 24 hours</p></div>
+</section>
+
+<section id="c03" data-nav="03" data-label="Markets">
+  <p class="stopno"><span>03</span><span class="day">Camp legs</span></p>
+  <h2>Markets and supermarkets</h2>
+  <p class="dek">Where to buy the local ingredients, what each chain is for, and the one thing every green market on this route does to foreigners.</p>
+
+  <div class="b b-f"><span class="lab">Read this before any green market</span>
+  <p>The <em>tržnica</em> or <em>pijaca</em> is where the good produce is — and it is also where visitors reliably get overcharged, because <strong>stalls frequently display no prices</strong>. This is not paranoia; it is the single most common complaint in reviews of every market on your route, from Omiš to Kotor to Markale in Sarajevo. One reviewer reports paying €30 for a slice of watermelon, some grapes and a dragon fruit in Omiš.</p>
+  <p>Three habits fix it entirely:</p>
+  <ul>
+    <li><strong>Ask the price per kilo before anything goes in a bag.</strong> "Koliko po kili?" Point at the scale.</li>
+    <li><strong>Carry small notes.</strong> Handing over a €50 for €4 of tomatoes invites creative change. Reviewers report folded notes given back short.</li>
+    <li><strong>Buy the things markets are genuinely better at</strong> — fish, cheese, cured meat, seasonal fruit — and buy staples at the supermarket where everything is priced and scanned.</li>
+  </ul>
+  <p>None of this means avoid them. The produce is better and the cheese and cured meat are frequently excellent. It means shop like a local rather than like a cruise passenger.</p></div>
+
+  <h3>The chains, by country</h3>
+  <table>
+    <tr><th>Country</th><th>Chains</th><th>Notes</th></tr>
+    <tr><td><strong>Germany</strong></td><td>Lidl, Aldi, REWE, Edeka</td><td>Cheapest on the whole route. Load up on Saturday. Closed Sundays.</td></tr>
+    <tr><td><strong>Slovenia</strong></td><td>Mercator, SPAR, Hofer (=Aldi), Tuš</td><td>Mercator is the domestic one and best for local products. Mostly closed Sundays.</td></tr>
+    <tr><td><strong>Croatia</strong></td><td>Konzum, Studenac, Tommy, Lidl, Plodine</td><td>Lidl is markedly cheaper than the rest — reviewers report Studenac at double or triple Lidl prices on the same goods. Studenac is small and everywhere; use it for convenience, not a big shop.</td></tr>
+    <tr><td><strong>Montenegro</strong></td><td>VOLI, Idea, Aroma</td><td>VOLI is the national chain. Mostly closed Sundays. Check your receipt — overcharging complaints are common in reviews.</td></tr>
+    <tr><td><strong>Bosnia</strong></td><td>Bingo, Konzum, Mercator</td><td>Cheapest country on the route by a distance. Bring KM in cash.</td></tr>
+    <tr><td><strong>Austria</strong></td><td>Billa, SPAR, Hofer, Lidl</td><td>Back to Western European prices. Closed Sundays.</td></tr>
+  </table>
+
+  <h3>Where — Slovenia (camp nights 1–2)</h3>
+
+  <div class="r"><div class="top"><span class="nm">Mercator, Kranjska cesta</span><span class="sc">★ 4.0 · 87</span></div>
+    <span class="tier t-b">Main shop</span>
+    <p>The practical supermarket for your Radovljica nights, in the old town. Small but stocked, and reviewers mention friendly staff and low prices. Nearby is a larger SPAR on Gradnikova, but check its hours — it is listed as closed Saturday and Sunday.</p>
+    <p class="ad">Kranjska cesta 11, Radovljica · Mon–Fri 07:00–20:00, Sat to 18:00 · <span class="warn">closed Sunday</span></p></div>
+
+  <div class="r"><div class="top"><span class="nm">Domača trgovina (Veronika Šolar)</span><span class="sc">★ 4.8 · 40</span></div>
+    <span class="tier t-b">Local produce</span>
+    <p>A small shop selling Slovenian farm products — reviewers name the cheese, butter, yoghurt and a raw milk vending machine. This is where to buy the local dairy and honey rather than the supermarket version. Tiny, and the ratings are excellent.</p>
+    <p class="ad">Cankarjeva ulica 70, Radovljica · Mon–Fri 08:00–19:00, Sat to 12:00 · <span class="warn">closed Sunday</span></p></div>
+
+  <h3>Where — Dalmatia (camp nights 3–4)</h3>
+
+  <div class="r"><div class="top"><span class="nm">Gradska tržnica i ribarnica Omiš — Peovica</span><span class="sc">★ 3.8 · 105</span></div>
+    <span class="tier t-b">Fish and produce</span>
+    <p>The town market and fish counter. Reviewers are blunt that it is <strong>small</strong> — a handful of fish vendors, not a grand market hall — but equally blunt that the fish itself is excellent and worth grilling. Several warn about the fruit stalls specifically and unpriced goods. Buy fish here; buy fruit at the supermarket.</p>
+    <p class="ad">Fošal ul., Omiš · Mon–Sat <strong>07:00–14:00</strong> · <span class="warn">closed Sunday</span><br>Go early on Wednesday 12 Aug — the fish is gone by mid-morning.</p></div>
+
+  <div class="r"><div class="top"><span class="nm">Studenac Market, Omiš</span><span class="sc">★ 4.1 · 1,610+</span></div>
+    <span class="tier">Convenience</span>
+    <p>The biggest supermarket near your campsite and reviewers call it the only decent-sized one in the area. Also the most complained-about on price — one reviewer puts it at double or triple Lidl. Fine for bread, water and beer; do the bulk shop before you reach the coast. <span class="warn">Only the row directly in front is free parking</span> — reviewers report €30 fines one row over.</p>
+    <p class="ad">Četvrt Ribnjak 17, Omiš · 07:00–22:00 weekdays · <span class="warn">hours listed as closed weekends — verify</span></p></div>
+
+  <h3>Where — later legs</h3>
+
+  <div class="r"><div class="top"><span class="nm">Green Story, Dobrota</span><span class="sc">★ 4.5 · 29</span></div>
+    <span class="tier t-b">Best produce in Kotor</span>
+    <p>On the Dobrota road near your hotel. Reviewers rate the fruit and vegetables above the supermarkets and mention local cheeses, olives and roasted peppers. Card machine is unreliable — bring cash.</p>
+    <p class="ad">Dobrota · Mon–Sat 07:30–21:00 · <span class="warn">closed Sunday</span></p></div>
+
+  <div class="r"><div class="top"><span class="nm">Ribanica Tržnica, Mostar</span><span class="sc">★ 4.1 · 558</span></div>
+    <span class="tier t-b">Open every day</span>
+    <p>Mostar's working produce market away from the old bazaar — fruit, vegetables, cheese, olive oil, butchers. Reviewers note it is open <strong>seven days</strong>, which is rare. Bring small KM notes; the usual foreigner-pricing caveat applies.</p>
+    <p class="ad">Splitska 60, Mostar · daily 06:30–13:00</p></div>
+
+  <div class="r"><div class="top"><span class="nm">Gradska tržnica Markale, Sarajevo</span><span class="sc">★ 4.7 · 366</span></div>
+    <span class="tier t-b">The good one</span>
+    <p>Not the open-air market — the <strong>covered hall</strong> next to it, and it is the better of the two. Dairy, dried meat, sujuk, cheeses. Reviewers describe free samples pressed on them and specifically recommend the smoked fresh cheese and the clotted-cream-like dairy. This is where to buy things to bring home.</p>
+    <p class="ad">Ferhadija 7 · Mon–Sat 07:00–17:00, Sun to 15:00</p></div>
+
+  <div class="r"><div class="top"><span class="nm">Pijaca Markale (open-air), Sarajevo</span><span class="sc">★ 4.4 · 5,000</span></div>
+    <span class="tier">Produce · history</span>
+    <p>The open market on Mula Mustafe Bašeskije. Good produce, and also the site of the two 1994–95 massacres — there are Sarajevo Roses in the pavement. Reviewers report paying double the supermarket next door for the same tomatoes, so ask prices. Worth walking through regardless of whether you buy.</p>
+    <p class="ad">Mula Mustafe Bašeskije 4a · Mon–Sat 06:00–17:00, Sun 07:00–14:00</p></div>
+</section>
+
+<section id="c04" data-nav="04" data-label="Camp cooking">
+  <p class="stopno"><span>04</span><span class="day">9–13 Aug</span><span>Four nights, two burners</span></p>
+  <h2>What to cook at camp</h2>
+  <p class="dek">Six local dishes that need one pan, ingredients from the shops above, and no equipment you don't already have.</p>
+
+  <h3>Slovenia — Kamna Gorica, 9–11 Aug</h3>
+
+  <div class="rec">
+    <h4>Kranjska klobasa with sauerkraut and potato</h4>
+    <p class="meta">One pot · 25 min · Slovenia's protected sausage</p>
+    <p class="ing"><strong>Buy:</strong> Kranjska klobasa (Mercator, from the counter — the real one is pinned with a wooden skewer through the loop) · jar of sauerkraut (<em>kislo zelje</em>) · potatoes · one onion · bay leaf · caraway · mustard and horseradish · rye bread</p>
+    <ol>
+      <li>Cube the potatoes, cover with water, boil until nearly done.</li>
+      <li>Add the drained sauerkraut, a sliced onion, a bay leaf and a good pinch of caraway. Simmer 10 minutes.</li>
+      <li>Lay the sausages on top whole, lid on, 8–10 minutes. <strong>Do not prick them</strong> — the whole point of a protected Kranjska is that the fat stays inside.</li>
+      <li>Serve with mustard, horseradish and dark bread.</li>
+    </ol>
+    <p class="note">This is genuinely how it is eaten here, not a camping compromise. Total cost is a few euros for two.</p>
+  </div>
+
+  <div class="rec">
+    <h4>Žganci with ocvirki</h4>
+    <p class="meta">One pot · 20 min · the Bohinj mountain staple</p>
+    <p class="ing"><strong>Buy:</strong> buckwheat flour (<em>ajdova moka</em> — Mercator, near the flours) · salt · pork cracklings (<em>ocvirki</em>, from the deli counter) or diced bacon · optionally sour milk or plain yoghurt</p>
+    <ol>
+      <li>Bring roughly a litre of well-salted water to the boil.</li>
+      <li>Tip in about 300 g buckwheat flour all at once, in a mound in the centre. Do not stir. Boil 10 minutes.</li>
+      <li>Poke a few holes down through the mound with a spoon handle so steam escapes. Boil 5 more minutes.</li>
+      <li>Pour off most of the water into a mug, keeping it. Mash and beat the flour hard with a wooden spoon until it forms coarse crumbs, adding the reserved water a splash at a time.</li>
+      <li>Fry the cracklings until they release their fat, and pour the whole lot — fat included — over the top.</li>
+    </ol>
+    <p class="note">Peasant food, mountain food, and about as Slovene as it gets. Eat with a glass of sour milk if you want the full version.</p>
+  </div>
+
+  <h3>Dalmatia — Lokva Rogoznica, 11–13 Aug</h3>
+
+  <div class="rec">
+    <h4>Blitva na dalmatinski</h4>
+    <p class="meta">One pot · 20 min · the dish every Dalmatian household eats</p>
+    <p class="ing"><strong>Buy:</strong> Swiss chard (<em>blitva</em> — market, sold in big bunches) · potatoes · several cloves of garlic · good olive oil · salt · lemon</p>
+    <ol>
+      <li>Cube the potatoes and boil in salted water for about 10 minutes.</li>
+      <li>Wash the chard, chop stems and leaves roughly, add to the same pot. Cook 6–8 minutes until everything is soft.</li>
+      <li>Drain, keeping a little of the water. Return to the pot off the heat.</li>
+      <li>Add sliced raw garlic and a genuinely generous amount of olive oil — more than feels right — plus salt and lemon. Crush it all together roughly with a fork.</li>
+    </ol>
+    <p class="note">Served alongside grilled fish in every konoba on the coast, and eaten alone as a light supper in every house. The olive oil is the dish; do not be shy with it.</p>
+  </div>
+
+  <div class="rec">
+    <h4>Dagnje na buzaru — mussels</h4>
+    <p class="meta">One pan · 12 min · the fastest good meal on the coast</p>
+    <p class="ing"><strong>Buy:</strong> 1 kg mussels (Omiš fish market, before 14:00) · 4–5 garlic cloves · parsley · a glass of white wine · olive oil · dry breadcrumbs · optional tinned tomato for the red version · bread</p>
+    <ol>
+      <li>Scrub the mussels and pull off any beards. Discard any that are open and won't close when tapped.</li>
+      <li>Warm olive oil, sliced garlic and chopped parsley stalks in a wide pan — do not brown the garlic.</li>
+      <li>Tip in the mussels, pour over the wine, lid on, high heat. Shake the pan rather than stirring.</li>
+      <li>After 4–5 minutes, when they are all open, stir through a heaped spoonful of breadcrumbs and the parsley leaves. The crumbs thicken the liquor into a sauce — this is the actual trick of buzara.</li>
+      <li>Eat straight from the pan with bread. Use an empty shell as tongs, which is what locals do.</li>
+    </ol>
+    <p class="note">Add a tin of chopped tomatoes with the wine for <em>crvena buzara</em>. Works identically with clams or prawns.</p>
+  </div>
+
+  <div class="rec">
+    <h4>Grilled sardines, in foil or a pan</h4>
+    <p class="meta">10 min · the cheapest fish on the coast and the best in August</p>
+    <p class="ing"><strong>Buy:</strong> fresh sardines (ask the fishmonger to gut them — "očistite, molim") · coarse salt · olive oil · lemon · garlic and parsley</p>
+    <ol>
+      <li>Salt the sardines heavily inside and out and leave 15 minutes. Pat dry.</li>
+      <li>On a campsite grill: straight on the bars, 2–3 minutes a side, until the skin blisters. On a stove: a dry hot pan, same timing. In foil: a double parcel with oil, garlic and lemon slices, 10 minutes.</li>
+      <li>Dress with olive oil, lemon and chopped garlic-parsley the moment they come off.</li>
+    </ol>
+    <p class="note">Oily fish peak in high summer, which makes August exactly the right month for this and exactly the wrong month to pay four times as much for sea bass. Eat with blitva and bread.</p>
+  </div>
+
+  <div class="rec">
+    <h4>The no-cook plate</h4>
+    <p class="meta">Zero minutes · for arrival nights and long drives</p>
+    <p class="ing"><strong>Buy:</strong> somun or fresh bread (bakery) · Paški sir or another hard sheep cheese · Dalmatian pršut · ajvar · tomatoes · olives · figs · a bottle of Plavac Mali</p>
+    <ol>
+      <li>That's it. Cut things up.</li>
+    </ol>
+    <p class="note"><strong>Ajvar</strong> is the one to buy properly: roasted red peppers and aubergine cooked down to a thick relish, sold in jars everywhere from Slovenia south. Look for <em>domaći</em> (homemade) at a market rather than the supermarket version. It goes on everything for the rest of the trip.</p>
+  </div>
+</section>
+
+<section id="c05" data-nav="05" data-label="Street food">
+  <p class="stopno"><span>05</span><span class="day">All twelve non-camping days</span></p>
+  <h2>Street food, country by country</h2>
+  <p class="dek">What to eat standing up. Prices are indicative — treat them as ratios rather than quotes.</p>
+
+  <h3>Bavaria</h3>
+
+  <div class="d m"><h4>Leberkässemmel <span class="rate r-m">Must try</span> <span class="rate r-p">~€3–4</span></h4>
+  <p>A thick slab of griddled Leberkäse — a baked loaf of finely ground pork and beef, containing neither liver nor cheese — in a crusty roll with sweet or hot mustard. Sold at butcher counters and Viktualienmarkt stalls. The definitive cheap Bavarian lunch and excellent road food.</p></div>
+
+  <div class="d w"><h4>Brezn and Obatzda <span class="rate r-w">Worth it</span> <span class="rate r-p">~€5 together</span></h4>
+  <p>A lye pretzel and a tub of the orange beer-garden cheese spread. Buy both at the market, take them into the self-service section of a beer garden, and buy only the beer — which you are legally entitled to do and locals routinely do.</p></div>
+
+  <h3>Slovenia</h3>
+
+  <div class="d w"><h4>Burek and bakery pastry <span class="rate r-w">Worth it</span></h4>
+  <p>Slovenia is the northern edge of burek country and it is everywhere, generally cheaper than a sandwich. Also look for <em>štruklji</em> sold ready-made at markets and delis — the rolled curd-cheese dumplings, sold by the piece, warm.</p></div>
+
+  <div class="d t"><h4>Kremšnita, from a bakery not a hotel <span class="rate r-t">If time</span></h4>
+  <p>The Bled cream cake is a fixed recipe, and a bakery version costs a fraction of a lakeside terrace one. If you want it with the view, pay for the view knowingly.</p></div>
+
+  <h3>Croatia</h3>
+
+  <div class="d m"><h4>Soparnik <span class="rate r-m">Must try</span> <span class="rate r-p">Sold by the slice</span></h4>
+  <p>Your local dish and it is street food, not restaurant food. Two paper-thin sheets of dough with chard, onion and parsley between, baked under hot ashes, brushed with garlic and oil, cut into diamonds and sold by weight. EU protected-designation, from <strong>Poljica</strong> — the district your campsite sits in. Look for it at markets, bakeries and roadside stalls between Omiš and Split.</p></div>
+
+  <div class="d m"><h4>Girice and fritule <span class="rate r-m">Must try</span></h4>
+  <p><strong>Girice</strong> — tiny whitebait, floured, deep fried, eaten whole with lemon. Sold cheap at any konoba and at fish counters. <strong>Fritule</strong> are small rum-and-citrus doughnuts sold from stalls in summer.</p></div>
+
+  <div class="d w"><h4>Ćevapi and pljeskavica in Croatia <span class="rate r-w">Worth it</span></h4>
+  <p>Grill windows exist here too, and are noticeably cheaper than any konoba. Ordered in fives or tens with onion and ajvar. Good for a fast lunch in Omiš or Split.</p></div>
+
+  <h3>Montenegro</h3>
+
+  <div class="d m"><h4>Priganice <span class="rate r-m">Must try</span> <span class="rate r-p">A few euro</span></h4>
+  <p>Hot fried dough balls with honey, kajmak and cheese, sold from small places all over the Boka. Breakfast, dessert or an afternoon thing. The salty fresh dairy against raw honey on hot dough is the whole point.</p></div>
+
+  <div class="d m"><h4>Burek and pekara food, Kotor <span class="rate r-m">Must try</span></h4>
+  <p>Kotor's old town restaurants are priced for cruise passengers. The bakeries three streets back are not. This is the biggest single price gap you will encounter in Montenegro.</p></div>
+
+  <div class="d w"><h4>Njeguški pršut, bought by weight <span class="rate r-w">Worth it</span></h4>
+  <p>Buying a couple of hundred grams at a Njeguši producer costs a fraction of a restaurant charcuterie board and is better ham. Eat it at a picnic table on the Lovćen road with bread and cheese from the same shop.</p></div>
+
+  <h3>Bosnia and Herzegovina — the cheapest country on the route</h3>
+
+  <div class="d m"><h4>Ćevapi, away from the bridge <span class="rate r-m">Must try</span> <span class="rate r-p">~3 KM for 15</span></h4>
+  <p>Reviewers at Ćevabdžinica Kod Bahre in Mostar report <strong>fifteen ćevapi in bread for around 3 KM</strong> — roughly €1.50. That is not a typo and it is five minutes from the tourist strip. Sarajevo's Bravadžiluk ćevabdžinicas are similar. This is the best value food anywhere on your route.</p></div>
+
+  <div class="d m"><h4>Aščinica trays <span class="rate r-m">Must try</span> <span class="rate r-p">A few KM a portion</span></h4>
+  <p>Point-and-choose home cooking: japrak, sogan-dolma, sarma, bosanski lonac, beans. Cooked at dawn, sold until gone, no grill, no English menu. Half the price of anywhere with a view and the most genuinely local meal in the country.</p></div>
+
+  <div class="d m"><h4>Bosnian coffee <span class="rate r-m">Must try</span> <span class="rate r-p">~3.50 KM</span></h4>
+  <p>Reviewers at Caffe Divan in Sarajevo report about 3.50 KM — under €2 — for a full Bosnian coffee set with lokum, and being left alone for forty-five minutes. That is an hour of Sarajevo for the price of a bottle of water in Dubrovnik.</p></div>
+
+  <div class="d w"><h4>Sujuk, smoked cheese and dried meat <span class="rate r-w">Worth it</span></h4>
+  <p>From the covered Markale hall. Reviewers describe vendors cutting free samples across the counter. Buy smoked fresh cheese and dried beef for the drive to Salzburg — this is the best car food on the trip and it travels.</p></div>
+
+  <h3>Austria</h3>
+
+  <div class="d m"><h4>A Bosna <span class="rate r-m">Must try</span> <span class="rate r-p">~€5</span></h4>
+  <p>Salzburg's own street food, invented here in the late 1940s: grilled bratwurst in a crisp roll with onion, mustard, parsley and a heavy dusting of <strong>curry powder</strong>. Sold from small windows on and around the Getreidegasse. Named after the country you will have just spent four days in, for reasons nobody agrees on. Cheapest good thing in Salzburg.</p></div>
+
+  <div class="d w"><h4>Augustiner Bräu, self-service <span class="rate r-w">Worth it</span></h4>
+  <p>Not street food but it behaves like it. You rinse your own stone mug, get it filled from a wooden barrel, and buy food from a market arcade of stalls rather than a kitchen — pork belly, pretzels, radishes, fish. Assembling a meal there costs a fraction of a restaurant dinner in the old town.</p></div>
+</section>
+
+<section id="c06" data-nav="06" data-label="Buy this">
+  <p class="stopno"><span>06</span><span class="day">Region by region</span></p>
+  <h2>Local ingredients worth the boot space</h2>
+  <p class="dek">Things that are cheap where they're made, expensive or unavailable at home, and survive a cool box.</p>
+
+  <table>
+    <tr><th>Where</th><th>Buy</th><th>Why</th></tr>
+    <tr><td><strong>Radovljica</strong></td><td>Buckwheat flour · pumpkin seed oil · honey and <em>medica</em> · Kranjska klobasa · farm dairy</td><td>Pumpkin seed oil is the Slovene one to bring home — dark green, intensely nutty, over salads and vanilla ice cream. Sold everywhere here, expensive and rare in the Netherlands.</td></tr>
+    <tr><td><strong>Omiš / Dalmatia</strong></td><td>Olive oil · Paški sir · Dalmatian pršut · ajvar · travarica · dried figs · lavender</td><td>Buy oil from a producer or market rather than a supermarket. Sheep cheese from Pag travels perfectly in a cool box and improves the whole trip.</td></tr>
+    <tr><td><strong>Ston / Pelješac</strong></td><td>Hand-harvested sea salt · a bottle of Dingač</td><td>The salt is a couple of euros and comes from pans worked continuously since the fourteenth century. The best cheap souvenir on the route.</td></tr>
+    <tr><td><strong>Njeguši</strong></td><td>Njeguški pršut · cheese in oil · honey</td><td>Buy at the producer on the Lovćen road. Vacuum-packed ham keeps for the rest of the trip.</td></tr>
+    <tr><td><strong>Žabljak</strong></td><td>Skorup · mountain honey · dried mushrooms · suho meso</td><td>Skorup is the aged Durmitor kajmak — sharp, salty, closer to cheese than cream. Sold from farms and the small local market. Nothing like it exists at home.</td></tr>
+    <tr><td><strong>Mostar</strong></td><td>Žilavka and Blatina · figs · pomegranate syrup</td><td>Two indigenous grapes almost never exported. This is the wine you are least likely to encounter again — buy several bottles, not one.</td></tr>
+    <tr><td><strong>Sarajevo</strong></td><td>Bosnian coffee (ground) · a <em>džezva</em> · smoked cheese · sujuk · plum jam · ajvar</td><td>From the covered Markale hall. A copper džezva from the coppersmiths on Kujundžiluk is the one non-food thing worth buying, and Dave will actually use it.</td></tr>
+    <tr><td><strong>Salzburg</strong></td><td>Fürst Mozartkugeln (silver and blue) · Hallein salt · pumpkin seed oil again</td><td>The silver-and-blue ones are the hand-made 1890 original. Red-and-gold is the industrial version. Different product entirely.</td></tr>
+  </table>
+
+  <div class="b b-l"><span class="lab">Drinking at shop prices</span>
+  <p>The gap between shop and terrace prices for wine in Croatia, Montenegro and Bosnia is wide enough to change how you travel. A decent supermarket bottle of Plavac Mali, Vranac or Žilavka costs roughly what a single glass costs on a waterfront. With a cool box and four camping nights, buying a case at the start of the Dalmatian leg is straightforwardly the right move.</p>
+  <p>Beer to try at shop prices: <strong>Union</strong> and <strong>Laško</strong> (Slovenia), <strong>Ožujsko</strong> and <strong>Karlovačko</strong> (Croatia), <strong>Nikšićko</strong> (Montenegro, brewed since 1896), <strong>Sarajevsko</strong> (Bosnia, 1864). None is remarkable; all are the correct thing to be drinking where you are.</p>
+  <p>And the free one: <strong>tap water is drinkable</strong> throughout Slovenia, Croatia, Montenegro and Bosnia, and in the mountains it is genuinely excellent. Refill bottles rather than buying them. Stretches of the Tara are drinkable straight from the river.</p></div>
+</section>
+
+<footer>
+  <p>Compiled 8 August 2026. Shop, market and bakery names, ratings, addresses and opening hours are from <strong>Google Places, retrieved 8 August 2026</strong>. Opening hours change constantly and several of the Sunday closures above are the single most consequential thing here — <strong>verify before you rely on any of them</strong>.</p>
+  <p>Prices are indicative and, where a figure is given, it comes from a customer review rather than a menu. Use them as ratios, not quotes. Recipes and food descriptions are general culinary knowledge. Nothing has been invented.</p>
+</footer>
+</main>
+
+<script>
+(function(){
+  var secs=[].slice.call(document.querySelectorAll('section[data-nav]'));
+  var rail=document.getElementById('rail'), chips=document.getElementById('chips');
+  secs.forEach(function(s){
+    var a=document.createElement('a');
+    a.className='rn'; a.href='#'+s.id; a.dataset.for=s.id;
+    a.innerHTML='<i></i><b>'+s.dataset.nav+'</b>';
+    a.setAttribute('aria-label',s.dataset.label); rail.appendChild(a);
+    var c=document.createElement('a');
+    c.className='chip'; c.href='#'+s.id; c.dataset.for=s.id;
+    c.textContent=s.dataset.nav+' '+s.dataset.label; chips.appendChild(c);
+  });
+  var links=[].slice.call(document.querySelectorAll('[data-for]')), cur=null;
+  function spy(){
+    var best=null,bt=-1e9;
+    secs.forEach(function(s){var t=s.getBoundingClientRect().top-90; if(t<=0&&t>bt){bt=t;best=s;}});
+    if(!best) best=secs[0];
+    if(best===cur) return; cur=best;
+    links.forEach(function(a){
+      var on=a.dataset.for===best.id; a.classList.toggle('on',on);
+      if(on&&a.classList.contains('chip')) chips.scrollTo({left:Math.max(0,a.offsetLeft-chips.clientWidth/2+a.clientWidth/2),behavior:'smooth'});
+    });
+  }
+  var tick=false;
+  window.addEventListener('scroll',function(){if(tick)return;tick=true;requestAnimationFrame(function(){spy();tick=false;});},{passive:true});
+  spy();
+})();
+(function(){
+  var K='balkans2026.theme', t='light';
+  try{ t=localStorage.getItem(K)||'light'; }catch(e){}
+  function set(v){
+    t=v; document.documentElement.setAttribute('data-theme',v==='dark'?'dark':'light');
+    try{ localStorage.setItem(K,v); }catch(e){}
+    var b=document.getElementById('themebtn'); if(b) b.textContent=v==='dark'?'Day mode':'Night mode';
+  }
+  set(t);
+  document.addEventListener('click',function(e){ if(e.target&&e.target.id==='themebtn') set(t==='dark'?'light':'dark'); });
+})();
+</script>

@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Karst &amp; Citrus — Wine, Beer &amp; Rakija</title>
+<style>
+:root{
+  --stone:#E9E4D9;
+  --stone-2:#F6F3EC;
+  --ink:#1C2B33;
+  --ink-soft:#4A5C66;
+  --citrus:#E4610F;
+  --lemon:#F2B705;
+  --teal:#24707A;
+  --alarm:#B3301F;
+  --line:rgba(28,43,51,.14);
+  --card:#FFFFFF;
+}
+body.night{
+  --stone:#141C21;
+  --stone-2:#1C2B33;
+  --ink:#F2EEE5;
+  --ink-soft:#A9BAC2;
+  --line:rgba(242,238,229,.16);
+  --card:#1C2B33;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--stone);color:var(--ink);
+  font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  padding-bottom:70px;transition:background .2s,color .2s;
+}
+header{background:var(--ink);color:#F6F3EC;padding:22px 18px 20px}
+body.night header{background:#0D1418}
+.eyebrow{font:600 11px/1 -apple-system,sans-serif;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--lemon);margin:0 0 8px}
+h1{font:700 30px/1.05 Georgia,"Times New Roman",serif;margin:0 0 10px;letter-spacing:-.01em}
+.sub{margin:0;font-size:14px;color:rgba(246,243,236,.72)}
+.nightbtn{margin-top:14px;background:transparent;color:#F6F3EC;border:1px solid rgba(246,243,236,.35);
+  border-radius:20px;padding:6px 14px;font:600 12px/1 -apple-system,sans-serif;letter-spacing:.04em}
+.doctrine{margin:18px 18px 0;background:var(--alarm);color:#fff;
+  border-radius:6px;padding:16px 16px 14px}
+.doctrine h2{font:700 12px/1 -apple-system,sans-serif;letter-spacing:.15em;
+  text-transform:uppercase;color:rgba(255,255,255,.8);margin:0 0 10px}
+.doctrine p{margin:0 0 8px;font-size:14.5px}
+.doctrine p:last-child{margin-bottom:0}
+.doctrine b{color:#fff}
+nav{position:sticky;top:0;z-index:20;background:var(--stone-2);border-bottom:1px solid var(--line);
+  overflow-x:auto;-webkit-overflow-scrolling:touch;white-space:nowrap;padding:9px 12px;margin-top:18px}
+nav a{display:inline-block;margin-right:7px;padding:6px 12px;border-radius:16px;
+  background:var(--card);border:1px solid var(--line);color:var(--ink);
+  font:600 12.5px/1 -apple-system,sans-serif;text-decoration:none}
+nav a:focus-visible{outline:2px solid var(--citrus);outline-offset:2px}
+section{padding:24px 18px 4px}
+h2.sec{font:700 12px/1 -apple-system,sans-serif;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--citrus);margin:0 0 4px}
+.h2sub{margin:0 0 16px;font:700 24px/1.15 Georgia,serif;letter-spacing:-.01em}
+h3{font:700 18px/1.2 Georgia,serif;margin:0 0 3px}
+p{margin:0 0 12px}
+.lead{font-size:16.5px;color:var(--ink-soft);margin-bottom:18px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:16px;margin-bottom:14px}
+.card.top{border-left:4px solid var(--citrus)}
+.card.warn{border-left:4px solid var(--alarm)}
+.card.note{border-left:4px solid var(--teal)}
+.meta{font:600 12px/1.4 -apple-system,sans-serif;color:var(--ink-soft);margin:0 0 10px;letter-spacing:.02em}
+.stars{color:var(--citrus);font-weight:700}
+.addr{font-size:13px;color:var(--ink-soft);margin:0 0 8px}
+.tagrow{margin:10px 0 0}
+.tag{display:inline-block;margin:0 5px 5px 0;padding:3px 9px;border-radius:12px;
+  font:600 11px/1.5 -apple-system,sans-serif;letter-spacing:.03em;
+  background:rgba(36,112,122,.12);color:var(--teal)}
+.tag.cash{background:rgba(179,48,31,.12);color:var(--alarm)}
+.tag.route{background:rgba(228,97,15,.12);color:var(--citrus)}
+.tag.grape{background:rgba(242,183,5,.2);color:#7A5C00}
+body.night .tag.grape{color:var(--lemon)}
+ul{margin:0 0 12px;padding-left:19px}
+li{margin-bottom:7px}
+table{width:100%;border-collapse:collapse;font-size:14px;margin:0 0 12px}
+th{text-align:left;font:700 11px/1.3 -apple-system,sans-serif;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--ink-soft);padding:0 8px 7px 0;border-bottom:1px solid var(--line)}
+td{padding:9px 8px 9px 0;border-bottom:1px solid var(--line);vertical-align:top}
+td:first-child{font-weight:700;white-space:nowrap}
+.rule{height:1px;background:var(--line);margin:26px 0 0}
+footer{padding:26px 18px 40px;color:var(--ink-soft);font-size:13px}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<header>
+  <p class="eyebrow">Karst &amp; Citrus · Toolkit 07</p>
+  <h1>Wine, Beer &amp; Rakija</h1>
+  <p class="sub">Omiš to Salzburg. Native grapes, monastery beer, and what you're allowed to carry home. Venues verified against Google Places on 11 Aug 2026.</p>
+  <button class="nightbtn" onclick="document.body.classList.toggle('night')">Night mode</button>
+</header>
+
+<div class="doctrine">
+  <h2>Read this first — you are driving</h2>
+  <p><b>Montenegro and Bosnia both run a blood alcohol limit around 0.03%</b>, roughly half the EU norm and low enough that a single glass of Vranac can put you over. Croatia, Slovenia, Austria and Germany sit at 0.05%, with 0.0 for novice and professional drivers.</p>
+  <p>I'm working from memory here, not a live lookup, and these limits get changed. <b>The only safe operating rule on this trip is that the driver drinks nothing.</b> Split it: one of you tastes at the winery, the other drives. Swap the next day.</p>
+  <p>Roadside checks in Montenegro and Bosnia are routine, not rare, and penalties for foreign drivers are handled on the spot. This is not the place to be slightly over.</p>
+</div>
+
+<nav>
+  <a href="#grapes">The grapes</a>
+  <a href="#lokva">Your village</a>
+  <a href="#peljesac">Pelješac</a>
+  <a href="#dubrovnik">Dubrovnik</a>
+  <a href="#kotor">Boka Bay</a>
+  <a href="#podgorica">Šipčanik</a>
+  <a href="#niksic">Nikšić</a>
+  <a href="#herzegovina">Herzegovina</a>
+  <a href="#mostar">Mostar</a>
+  <a href="#sarajevo">Sarajevo</a>
+  <a href="#salzburg">Salzburg</a>
+  <a href="#rakija">Rakija</a>
+  <a href="#home">Taking it home</a>
+</nav>
+
+<section id="grapes">
+  <h2 class="sec">Foundation</h2>
+  <p class="h2sub">Six grapes that explain everything you'll drink</p>
+  <p class="lead">The Balkans kept its native varieties while most of Europe replanted with French ones. That's the whole reason this leg is interesting rather than just cheap.</p>
+
+  <div class="card top">
+    <h3>Plavac Mali — and the Zinfandel bombshell</h3>
+    <p>The dominant red of Dalmatia. Small berries, high alcohol, dark fruit, grippy tannin, thrives on white karst where nothing else will grow.</p>
+    <p>The interesting part is its parentage. Croatian winemakers had claimed for years that Zinfandel was originally Croatian, and DNA work at UC Davis in the early 2000s largely proved them right — the ancient Dalmatian variety <strong>Crljenak Kaštelanski</strong> (also called Tribidrag) turned out to be genetically identical to Californian Zinfandel and Italian Primitivo. Plavac Mali is a <em>descendant</em> of that grape, crossed with another old Dalmatian variety, Dobričić.</p>
+    <p>So when you drink Plavac Mali on Pelješac you're drinking Zinfandel's child, on the ground where Zinfandel came from. That's a genuinely good bar fact and it happens to be true.</p>
+    <div class="tagrow"><span class="tag grape">Croatia · red</span></div>
+  </div>
+
+  <div class="card">
+    <h3>Pošip and Grk — the Dalmatian whites</h3>
+    <p><strong>Pošip</strong> is from Korčula, full-bodied, citrus and stone fruit, the serious Croatian white. <strong>Grk</strong> is the oddity: it grows almost exclusively in the sands around Lumbarda on Korčula, and its flowers are functionally female — it can't pollinate itself, so growers have to interplant Plavac Mali among the vines to get a crop at all. Rare, expensive, worth ordering once if you see it by the glass.</p>
+    <div class="tagrow"><span class="tag grape">Croatia · white</span></div>
+  </div>
+
+  <div class="card top">
+    <h3>Vranac and Krstač — Montenegro</h3>
+    <p><strong>Vranac</strong> — the name relates to the word for a black horse — is Montenegro's flagship red. Deep, robust, fairly tannic, better with food than without. <strong>Krstač</strong> is the native white, named for the cross shape the grape bunches form.</p>
+    <p>You'll see both everywhere under the Plantaže label, which dominates the country's production. A glass of Plantaže in Kotor old town runs around €4, which is good value by Adriatic standards.</p>
+    <div class="tagrow"><span class="tag grape">Montenegro</span></div>
+  </div>
+
+  <div class="card top">
+    <h3>Žilavka and Blatina — Herzegovina</h3>
+    <p>The pair that make Herzegovina genuinely distinctive, and neither is grown seriously anywhere else.</p>
+    <p><strong>Žilavka</strong> is the white — dry, mineral, apricot and almond notes, higher alcohol than you'd expect. It's grown on bare karst around Mostar, Čitluk and Ljubuški.</p>
+    <p><strong>Blatina</strong> is the red, and it has the same problem as Grk: functionally female flowers, so it must be interplanted with a pollinator variety to set fruit at all. Growers here use Alicante Bouschet or Merlot. That agronomic quirk is why Blatina stayed local — it's a nuisance to plant.</p>
+    <p>Both are cheap relative to quality because Bosnia has almost no export wine reputation. This is the best value drinking of the whole trip.</p>
+    <div class="tagrow"><span class="tag grape">Bosnia · both</span></div>
+  </div>
+
+  <div class="card note">
+    <h3>Prošek — the name fight</h3>
+    <p>Prošek is the traditional Dalmatian dessert wine made from grapes dried on straw mats — sweet, amber, nothing whatsoever to do with Prosecco except six shared letters. When Croatia applied to protect the name at EU level, Italy objected furiously on the grounds of confusion with Prosecco, and the application ran into serious trouble. I don't have a reliable read on where it finally landed, so don't quote me on the outcome. Drink it anyway if you see it — it's usually poured with dessert on the Dalmatian coast.</p>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<section id="lokva">
+  <h2 class="sec">Stop 01 · Base camp</h2>
+  <p class="h2sub">Lokva Rogoznica and Omiš — you can walk to this one</p>
+  <p class="lead">The single best thing here is in your own village, and it's the only stop on the whole route where the drinking rule doesn't bite, because you don't have to drive to it.</p>
+
+  <div class="card top">
+    <h3>BEREKIN — Craft Beer and Local Food</h3>
+    <p class="meta"><span class="stars">4.9</span> · 874 reviews · daily 13:30–22:30</p>
+    <p class="addr">Stara cesta 3, Lokva Rogoznica</p>
+    <p>4.9 across 874 reviews is one of the strongest signals in either guide, and it's in your village. Croatian craft beer and local food on a hillside terrace above the coast — reviewers describe tuna, scampi, homemade pasta, and the owner sending out a complimentary <strong>digestif tasting</strong> at the end, which is your rakija introduction handed to you for free.</p>
+    <p>Note the opening time: <strong>13:30</strong>. It's a lunch-and-evening place, not breakfast. It's on <em>Stara cesta</em>, the old road above the D8, not the coast road — check the pin before you set off.</p>
+    <div class="tagrow"><span class="tag route">Walkable from camp</span><span class="tag">Opens 13:30</span><span class="tag">Free digestif tasting</span></div>
+  </div>
+
+  <div class="card">
+    <h3>Arsana Tasting House, Omiš</h3>
+    <p class="meta"><span class="stars">4.9</span> · 430 reviews · 17:00–22:00, closed Tuesday</p>
+    <p class="addr">Četvrt kralja Slavca 32B, Omiš old town — ~10 min north</p>
+    <p>Family-run, short seasonal menu, four- and five-course tasting menus <strong>paired with local wines</strong>, hosted by Rita who reviewers name repeatedly. This is the proper Dalmatian wine-pairing dinner of the trip, and it's ten minutes away rather than in Dubrovnik at Dubrovnik prices. Gluten-free handled without fuss. Book it — 430 reviews at 4.9 means it fills.</p>
+    <p>Driving involved, so decide who's tasting before you go.</p>
+    <div class="tagrow"><span class="tag route">Book ahead</span><span class="tag cash">Closed Tuesdays</span></div>
+  </div>
+
+  <div class="card note">
+    <h3>Other options nearby</h3>
+    <p><strong>Kod Mije</strong> (D8, Lokva Rogoznica, 4.3, 1,569 reviews, closed Monday) — grilled fish and meat platters, and reviewers specifically call out an impressive wine list. Service can be slow to slack; one reviewer left after being ignored for 15 minutes. <strong>Restoran Skalinada</strong> (4.6, 792 reviews, closed Sunday) takes cards and is the reliable pick. <strong>Kala</strong> in Omiš serves craft beer alongside the coffee until 22:00. <strong>Cocktail bar Dal Mare</strong> (Omiš beach, 4.4, 1,130 reviews) — good location and coffee, but reviewers say cocktail quality swings hard depending on who's behind the bar.</p>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<section id="peljesac">
+  <h2 class="sec">Detour 02 · The big one</h2>
+  <p class="h2sub">Pelješac — Dingač and Postup</p>
+  <p class="lead">This is the single best wine decision available on the whole remaining route, and it sits right at Ston, which you're already stopping at. Potomje is roughly 40 minutes up the peninsula from Ston. Budget two and a half hours round trip with a tasting. Non-drinking driver required.</p>
+
+  <div class="card top">
+    <h3>Why Dingač matters</h3>
+    <p>Dingač is a strip of near-vertical south-facing slope on the seaward side of Pelješac, dropping to the Adriatic. The vines get sun three times — direct, reflected off the white karst, and reflected off the sea. Gradients reach around 45 degrees. Until relatively recently the grapes came out on donkeys.</p>
+    <p>It's generally cited as the first protected wine appellation in Croatia, designated in 1961. In the early 1970s growers cut a <strong>tunnel straight through the ridge</strong> from Potomje to reach the vineyards, which is still the way in and is worth driving through purely for the experience — single lane, unlit, rough-hewn.</p>
+    <p><strong>Postup</strong> is the neighbouring appellation, same grape, slightly less extreme, usually a little cheaper.</p>
+  </div>
+
+  <div class="card top">
+    <h3>Antičević Boutique Winery</h3>
+    <p class="meta"><span class="stars">5.0</span> · 194 reviews · daily 09:00–20:30</p>
+    <p class="addr">Potomje, Pelješac</p>
+    <p>Eight generations, family-run, and reviewers consistently describe tasting seven or eight wines straight from the barrels with the mother or the brothers walking them through it. A 5.0 across 194 reviews is the strongest signal in this entire guide. Cheese included. They also sell a friend's olive oil.</p>
+    <div class="tagrow"><span class="tag route">Pick of the peninsula</span><span class="tag">Barrel tasting</span></div>
+  </div>
+
+  <div class="card">
+    <h3>Matuško Winery</h3>
+    <p class="meta"><span class="stars">4.7</span> · 968 reviews · daily 08:00–20:00</p>
+    <p class="addr">Potomje 5</p>
+    <p>The best-known name in Potomje and the one with the dramatic old cellar you can walk through. Much higher volume than Antičević — expect other visitors. Reliable, reasonably priced, good introduction if you only do one.</p>
+  </div>
+
+  <div class="card">
+    <h3>Madirazza · Skaramuča · Zadruga Dingač</h3>
+    <p class="meta">4.8 (277) · 4.7 (187) · 4.2 (46)</p>
+    <p><strong>Madirazza</strong> (Potomje 49a, open to 22:00) — good staff, knowledgeable, though one reviewer reports cork failures in a case bought recently. <strong>Skaramuča</strong> (Pijavičino, closed Sundays) — reviewers rate the hosting highly but flag that most of their range is available in supermarkets for less; the exception is the small-format sweet red sold only at the winery. <strong>Zadruga Dingač</strong>, the co-operative, has the weakest reviews of the group — several describe a bare, unwelcoming shop and prices now level with supermarkets.</p>
+    <div class="tagrow"><span class="tag cash">Skaramuča closed Sun</span></div>
+  </div>
+
+  <div class="card warn">
+    <h3>The honest cost-benefit</h3>
+    <p>Reviewers repeatedly make the same point: <strong>the flagship wines are available in Croatian supermarkets at similar or lower prices.</strong> If your goal is to buy Dingač cheaply, buy it at a Tommy or Konzum. Go to Potomje for the barrel tastings, the tunnel, the slope, and the small-batch bottles that never leave the cellar — not for a discount.</p>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<section id="dubrovnik">
+  <h2 class="sec">Stop 02 · Dubrovnik</h2>
+  <p class="h2sub">The best wine-bar cluster on the route</p>
+  <p class="lead">Ragusa was a maritime republic with a merchant class and 400 years of wine trade; the wine bar culture here is real, not a tourist retrofit. Four genuinely good options within five minutes of each other.</p>
+
+  <div class="card top">
+    <h3>M'arden</h3>
+    <p class="meta"><span class="stars">4.9</span> · 525 reviews · daily 10:30–23:00</p>
+    <p class="addr">Od Domina 8 — up a flight of stairs through an unmarked green door</p>
+    <p>Over 100 wines by the glass or bottle, served in a vine-shaded garden terrace hidden inside the old town. Reviewers name the sommelier, Tony, repeatedly. The highest-rated wine bar in the city by a clear margin. Food gets mixed reviews and is expensive for what it is — <strong>eat first, drink here</strong>. The Dingač by the glass gets specific praise.</p>
+    <div class="tagrow"><span class="tag route">Best in Dubrovnik</span><span class="tag">Hidden garden</span></div>
+  </div>
+
+  <div class="card">
+    <h3>D'Vino Wine Bar</h3>
+    <p class="meta"><span class="stars">4.6</span> · 821 reviews · daily 10:00–02:00</p>
+    <p class="addr">Palmotićeva 4a, just off the Stradun</p>
+    <p>The one to pick if you want structured <strong>flights and side-by-side comparisons</strong>, which is rare here and the most efficient way to actually learn the Croatian varieties in one sitting. Deep Croatian list, flavoured brandies, snacks made in house. Small room, well located, reasonably priced.</p>
+    <div class="tagrow"><span class="tag">Tasting flights</span><span class="tag">Open late</span></div>
+  </div>
+
+  <div class="card">
+    <h3>Wine Bar Škar</h3>
+    <p class="meta"><span class="stars">4.7</span> · 208 reviews · daily 11:00–24:00</p>
+    <p class="addr">Dropčeva 2</p>
+    <p>Tight, deliberately limited list. Reviewers single out the <strong>Croatian orange wines</strong> — this is the place for skin-contact whites, which Croatia and Slovenia both do seriously. Flights of white, orange and red available. One negative review flags a €30 charcuterie board that arrived small and without bread, so know what you're ordering.</p>
+    <div class="tagrow"><span class="tag">Orange wine</span></div>
+  </div>
+
+  <div class="card">
+    <h3>Bakus Wine Bar</h3>
+    <p class="meta"><span class="stars">4.6</span> · 347 reviews · daily 11:00–02:00</p>
+    <p class="addr">Prijeko 6</p>
+    <p>Built into a natural cave, with the cellar set down inside what was an old subterranean water tank — look down when you're inside. Cool refuge on a hot afternoon. One reviewer reports being served a different wine than ordered and charged 20% more than the menu price, so <strong>confirm the bottle and the price before it's opened</strong>.</p>
+    <div class="tagrow"><span class="tag cash">Confirm prices</span></div>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<section id="kotor">
+  <h2 class="sec">Stop 03 · Boka Bay</h2>
+  <p class="h2sub">Kotor, and the two experiences worth booking</p>
+  <p class="lead">Kotor old town's wine bars are patchy — the two things genuinely worth your time here are both outside the walls, and both need arranging in advance.</p>
+
+  <div class="card top">
+    <h3>Underwater Wine Cellar Kraken</h3>
+    <p class="meta"><span class="stars">4.8</span> · 553 reviews · daily 12:00–20:00</p>
+    <p class="addr">Dražin Vrt, Boka Bay — free boat transfer from shore</p>
+    <p>Wine aged submerged in the bay. They run you out by boat, <strong>pull your bottle out of the sea in front of you</strong>, and serve it with mussels and bruschetta on the water. Reviewers who were sceptical about the price consistently say it delivered. Book by email; the confirmation includes taxi recommendations for getting back, which reviewers say is genuinely useful.</p>
+    <p>Practical: no toilet on site, no changing room, and people do swim. Plan for that.</p>
+    <div class="tagrow"><span class="tag route">Book ahead</span><span class="tag">Boat access</span></div>
+  </div>
+
+  <div class="card top">
+    <h3>Storia di Pietra</h3>
+    <p class="meta"><span class="stars">4.9</span> · 446 reviews · Tue–Sun 12:00–22:00, closed Monday</p>
+    <p class="addr">Mirac, above Kotor</p>
+    <p>Family winery on the slope above the bay with a panoramic terrace. Wine tour, multi-course meal with pairings, and on some evenings traditional Montenegrin dancers. Multiple reviewers call it the highlight of their entire Montenegro trip. <strong>Ask for a terrace table at sunset</strong> — that's the whole proposition. Their Chardonnay gets named more than the reds.</p>
+    <p>Note the road up: this is a hillside above Kotor, so factor the drive and the fact that neither of you should be drinking on the way down.</p>
+    <div class="tagrow"><span class="tag route">Sunset booking</span><span class="tag cash">Closed Mondays</span></div>
+  </div>
+
+  <div class="card">
+    <h3>In the old town</h3>
+    <p><strong>Klub Invalida</strong> (4.8, 261 reviews, cash only) is the honest one — a genuinely local, no-frills bar in a quiet corner of the walls with the cheapest drinks in Kotor and good rakija. Reviewers describe sitting for hours with locals on the patio. <strong>Holy Shot Bar</strong> (4.9, 191 reviews) is tiny, does a serious whiskey sour, and a glass of Plantaže runs about €4. <strong>Patisserie by Wine House</strong> (4.8, 672 reviews) is a croissant café that becomes a wine bar in the evening — useful because it's open on Sundays when the shops aren't.</p>
+    <p><strong>Old Winery Wine Bar</strong> is the one to be careful with: <span class="stars">3.9</span> across 600 reviews, with repeated complaints that the €30 tasting flight arrives as tiny pours with no explanation and no bottles shown. Skip.</p>
+    <div class="tagrow"><span class="tag cash">Klub Invalida cash only</span></div>
+  </div>
+
+  <div class="card note">
+    <h3>If you get down to Budva</h3>
+    <p><strong>Rakija &amp; Wine Bar</strong> (Njegoševa 16, 4.8, 142 reviews) in the old town is specifically praised for the rakija range and for staff who'll walk you through local wines and spirits properly. Responsive on Instagram DMs, per reviewers.</p>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<section id="podgorica">
+  <h2 class="sec">Detour 03 · Routing-dependent</h2>
+  <p class="h2sub">Šipčanik — a wine cellar in a bombed aircraft hangar</p>
+  <p class="lead">Only relevant if Day 11 routes you Žabljak → Podgorica → Trebinje rather than via Nikšić. If it does, this is a serious detour candidate.</p>
+
+  <div class="card top">
+    <h3>Wine Cellar Šipčanik, 13. Jul Plantaže</h3>
+    <p class="meta"><span class="stars">4.8</span> · 263 reviews · daily 09:00–17:00</p>
+    <p class="addr">Karabuško polje, Tuzi — south-east of Podgorica</p>
+    <p>The cellar is a converted underground military aircraft hangar from a Yugoslav air force base, damaged during the 1999 NATO campaign and rebuilt as a wine cellar in the mid-2000s. It's a long, arched tunnel now lined with barrels — genuinely unlike anywhere else you'll drink on this trip.</p>
+    <p>It sits beside Ćemovsko polje, Plantaže's single contiguous vineyard block, which is frequently described as one of the largest single vineyards in Europe. Guided tours, tastings, and reviewers repeatedly praise the guides by name.</p>
+    <p><strong>Sunday warning:</strong> a reviewer reports the shop was closed on a Sunday under Montenegrin law, so they could only buy at restaurant prices. If you want to carry bottles out, don't go on a Sunday.</p>
+    <div class="tagrow"><span class="tag route">Only if routing via Podgorica</span><span class="tag cash">Shop closed Sundays</span></div>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<section id="niksic">
+  <h2 class="sec">Stop 04 · On the Nikšić route</h2>
+  <p class="h2sub">Nikšićko — Montenegro's beer</p>
+
+  <div class="card">
+    <h3>Trebjesa Brewery, Nikšić</h3>
+    <p class="meta"><span class="stars">4.9</span> · 29 reviews · no public hours listed</p>
+    <p class="addr">Njegoševa, Nikšić</p>
+    <p>Nikšićko is <em>the</em> Montenegrin beer — you'll have already seen it everywhere — and it's brewed here, founded in the late nineteenth century. Reviews suggest tours happen for organised groups rather than walk-ins, and there are no published opening hours, so <strong>don't build a stop around it without calling first</strong>.</p>
+    <p>Worth ordering along the way: <strong>Nikšićko Tamno</strong>, the dark version, which is noticeably better than the standard lager and rarely exported.</p>
+    <div class="tagrow"><span class="tag cash">Call ahead — no listed hours</span></div>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<section id="herzegovina">
+  <h2 class="sec">Stop 05 · The best value of the trip</h2>
+  <p class="h2sub">The Herzegovina wine road — and it's on your route</p>
+  <p class="lead">This is the part most people drive straight past. The Čitluk–Međugorje–Domanovići triangle sits directly between Kravica, Počitelj and Mostar. You are already driving through it. Žilavka and Blatina at these prices don't exist anywhere else.</p>
+
+  <div class="card top">
+    <h3>Vinarija Marijanović</h3>
+    <p class="meta"><span class="stars">5.0</span> · 162 reviews · daily 09:00–21:00, Sun to 17:00</p>
+    <p class="addr">Služanj, near Čitluk</p>
+    <p>A 5.0 across 162 reviews. Vineyard and cellar tour, generous tasting, and reviewers specifically name the Žilavka 2025 as floral and elegant and the Blatina Premium as full-bodied. They run a cuvée blending workshop with a trained oenologist. Walnut liqueur gets repeated mentions.</p>
+    <p><strong>Arrange by email in advance and bring cash.</strong> They can cater vegan for the food pairing if you ask.</p>
+    <div class="tagrow"><span class="tag route">Pick of Herzegovina</span><span class="tag cash">Cash · book ahead</span></div>
+  </div>
+
+  <div class="card top">
+    <h3>Vinarija Domano</h3>
+    <p class="meta"><span class="stars">4.9</span> · 83 reviews · Mon–Fri 07:00–15:30, closed weekends</p>
+    <p class="addr">Domanovići — directly on the M17 between Počitelj and Mostar</p>
+    <p>The most convenient one on your actual line of travel — you pass the village. Cheese board, in-house prosciutto sliced at the table, local figs, four-wine tasting. Reviewers describe hosts who go well out of their way. <strong>Closed Saturday and Sunday</strong>, which is the catch.</p>
+    <div class="tagrow"><span class="tag route">On the M17</span><span class="tag cash">Weekdays only</span></div>
+  </div>
+
+  <div class="card">
+    <h3>Podrumi Andrija · Carska Grgo Vasilj · Nuić · Podrumi Mata</h3>
+    <p class="meta">4.9 (194) · 4.8 (50) · 4.8 (67) · 4.9 (18)</p>
+    <p><strong>Podrumi Andrija</strong> (Paoča, Mon–Fri 09:00–16:00, Sat to 12:00) — modern winery with visible old family cellars, and they have rooms if you ever wanted to sleep at a winery. <strong>Carska Grgo Vasilj</strong> (Međugorje) — multi-generational, reviewers report being poured premium bottles unprompted; reservations preferred. <strong>Nuić</strong> (Crnopod) — well regarded, no online booking system, and reviews are mixed on whether a pre-booked tasting actually materialises, so confirm by phone. <strong>Podrumi Mata</strong> (Blizne Gomile) — small and rustic; one reviewer's account of the owner pouring Blatina, Žilavka and a standout Blatina rosé straight from the cellar with no English and a fellow customer translating is the most charming thing in this entire document.</p>
+  </div>
+
+  <div class="card warn">
+    <h3>How to do this leg properly</h3>
+    <ul>
+      <li><strong>Email or phone ahead.</strong> Almost none of these have online booking. Walk-ins sometimes work and sometimes don't.</li>
+      <li><strong>Cash, in KM.</strong> Assume no cards.</li>
+      <li><strong>Watch the weekday trap.</strong> Domano is closed weekends; Andrija closes early Saturday and all Sunday; Nuić closes Sunday.</li>
+      <li><strong>One winery, done properly, beats three rushed.</strong> If you only do one, Marijanović.</li>
+    </ul>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<section id="mostar">
+  <h2 class="sec">Stop 06 · Mostar</h2>
+  <p class="h2sub">Where to drink in town</p>
+
+  <div class="card top">
+    <h3>VIA VINO</h3>
+    <p class="meta"><span class="stars">4.9</span> · 147 reviews · daily 10:00–23:00, closed Sunday</p>
+    <p class="addr">Braće Fejića 70, Mostar</p>
+    <p>Structured wine-and-cheese tastings run by an owner who takes the time to explain the history of Bosnian winemaking and what makes the indigenous grapes distinctive. Reviewers consistently describe an unhurried, personal session rather than a production line. <strong>This is the best single way to understand Žilavka and Blatina if you skip the wineries.</strong> Book a table.</p>
+    <div class="tagrow"><span class="tag route">Best in-town tasting</span><span class="tag cash">Closed Sundays</span></div>
+  </div>
+
+  <div class="card top">
+    <h3>Craft Beer Garden imaimoze</h3>
+    <p class="meta"><span class="stars">4.9</span> · 661 reviews · daily 13:00–24:00</p>
+    <p class="addr">Gojka Vukovića 4, Mostar</p>
+    <p>Local Mostar craft — reviewers name the <strong>OldBridz</strong> beers and single out a vanilla porter. Open-air terrace over a small stream, plus an indoor room across the road. Reasonable prices for craft, knowledgeable owner behind the taps, and — rare and worth stating — <strong>smoke-free</strong>. One reviewer who'd worked the region called it one of the best beer bars in this part of Europe.</p>
+    <div class="tagrow"><span class="tag">Smoke-free</span><span class="tag">Local craft</span></div>
+  </div>
+
+  <div class="card">
+    <h3>Vinoteka · Puž Bar</h3>
+    <p class="meta">4.6 (111) · 4.8 (64)</p>
+    <p><strong>Vinoteka</strong> (Vokića i Lorkovića 91, 09:00–17:30, closed weekends, <strong>cash only</strong>) is the widest wine selection in Mostar and reviewers describe it as the only place in town doing tasting with actual instruction. Non-smoking. <strong>Puž Bar Wine Pub</strong> (Kneza Branimira, open from 07:00 daily) is the relaxed option — local wines, food designed around them, small and cosy.</p>
+    <div class="tagrow"><span class="tag cash">Vinoteka cash only</span></div>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<section id="sarajevo">
+  <h2 class="sec">Stop 07 · Sarajevo</h2>
+  <p class="h2sub">A brewery that kept a city alive</p>
+
+  <div class="card top">
+    <h3>Sarajevska pivara — and why it matters</h3>
+    <p class="meta">Brewery: 4.4 (544) · Pivnica HS beer hall: <span class="stars">4.4</span> (3,844) · Franjevačka 15</p>
+    <p>Founded in 1864, the brewery sits on a natural spring. During the 1992–95 siege, when the city's water system had failed, <strong>that spring became one of Sarajevo's main sources of drinking water</strong> — people queued for it under fire. Reviewers still mention it unprompted. Treat the building with that in mind; it isn't just a beer hall.</p>
+    <p><strong>Pivnica HS</strong> is the attached hall — dark wood panelling, cool in summer, beers brewed on site including a blonde, a dark, an unfiltered and a premium. Live music Friday and Saturday. Closed Sundays. Food gets mixed reviews and one serious complaint about meat; several reviewers suggest sticking to the beer.</p>
+    <p><strong>Best value trick:</strong> there's a brewery shop at Iševića sokak 29 (Mon–Sat, closed Sun) selling everything the brewery makes at a fraction of bar prices.</p>
+    <div class="tagrow"><span class="tag route">Historic</span><span class="tag cash">Hall closed Sundays</span></div>
+  </div>
+
+  <div class="card">
+    <h3>Craft options</h3>
+    <p><strong>Board Room</strong> (Đulagina čikma 1, 4.8, 287 reviews) — craft pub in the old town, quirky, takes cards, good local range. <strong>Viking Pub</strong> (Hamdije Kreševljakovića 61, 4.6, 622 reviews) — riverside terrace, three taps plus a fridge of craft cans, around €6 a can, <strong>cash only</strong>. <strong>Gastro Pub Vučko</strong> (Radićeva 10, 4.6, 2,892 reviews) — 1984 Winter Olympics memorabilia everywhere, popular with locals, heavily smoky. <strong>Brew Brothers</strong> (Blažujski drum 8, Ilidža, 5.0, 40 reviews) — the best craft selection in Sarajevo by reviewer consensus, but it's out by the airport, opens 18:00, and takes no cards.</p>
+    <div class="tagrow"><span class="tag cash">Viking &amp; Brew Brothers cash only</span></div>
+  </div>
+
+  <div class="card note">
+    <h3>A note on drinking in Baščaršija</h3>
+    <p>Sarajevo is a majority-Muslim city and alcohol is widely and unremarkably available — but not everywhere. Plenty of cafés in the old quarter serve coffee and no alcohol, and that isn't a mistake or a shortage. Check the menu rather than asking loudly.</p>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<section id="salzburg">
+  <h2 class="sec">Stop 08 · Salzburg</h2>
+  <p class="h2sub">One night, and one obvious answer</p>
+
+  <div class="card top">
+    <h3>Augustiner Bräu Mülln</h3>
+    <p class="meta"><span class="stars">4.5</span> · 5,611 reviews · Mon–Fri 15:00–23:00, Sat–Sun 14:30–23:00</p>
+    <p class="addr">Lindhofstraße 7, Salzburg</p>
+    <p>Founded by Augustinian monks in 1621 and still brewing. It is the single best evening on the return leg and it is not close.</p>
+    <p><strong>How it works, because it confuses everyone:</strong></p>
+    <ul>
+      <li>Pay at the till first and take your receipt.</li>
+      <li>Take a <strong>stone mug</strong> from the shelf — half litre or full litre.</li>
+      <li><strong>Rinse it yourself</strong> at the stone fountain. This is not optional and it's not decorative.</li>
+      <li>Hand the receipt to the tapper, who fills it <strong>from a wooden barrel</strong>.</li>
+      <li>Food comes from stalls along the corridor — roast pork, sausage, pretzels, cold plates, bread. You can also bring your own food in, which is a genuine tradition here, not a loophole.</li>
+      <li>Seating is communal and outdoors under chestnut trees. Nobody reserves.</li>
+    </ul>
+    <p>It opens at 15:00, so this is an evening plan. Given Day 16 is a 1,000 km push, one stein and an early night is the sane version.</p>
+    <div class="tagrow"><span class="tag route">Do this</span><span class="tag">Opens 15:00</span><span class="tag">Self-service</span></div>
+  </div>
+
+  <div class="card">
+    <h3>Stiegl-Brauwelt</h3>
+    <p class="meta"><span class="stars">4.4</span> · 4,350 reviews · daily from 11:30</p>
+    <p class="addr">Bräuhausstraße 9, Salzburg</p>
+    <p>Stiegl is Salzburg's own brewery, with records going back to 1492, and remains family-owned while most Austrian brewers have been absorbed by multinationals. The Brauwelt is a full visitor centre — multi-floor museum, film, guided tours in English, generous tastings, big shop, beer garden and restaurant. Free entry with a Salzburg Card.</p>
+    <p>Reviewers note that on Sundays you won't see production running. If you're doing a tour, weekday.</p>
+  </div>
+
+  <div class="card note">
+    <h3>Austrian wine, honestly</h3>
+    <p>Salzburg is not a wine region — Austria's vineyards are all in the east, in Wachau, Burgenland and Styria, hundreds of kilometres away. You can drink Austrian wine here but you're drinking imports from the other side of the country, which is a strange note to end a trip on after Pelješac and Herzegovina.</p>
+    <p>If you do want a glass: <strong>Grüner Veltliner</strong> is the signature white, peppery and dry. <strong>Zweigelt</strong> and <strong>Blaufränkisch</strong> are the reds. And ask for a <strong>Radler</strong> if you want something light — beer and lemonade, and the honest choice for whoever's driving in the morning.</p>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<section id="rakija">
+  <h2 class="sec">The spirit</h2>
+  <p class="h2sub">Rakija — a field guide</p>
+  <p class="lead">Rakija is fruit brandy, it is homemade almost everywhere, and it is offered constantly. Refusing is fine; refusing badly is not. Take a small one, say <em>živjeli</em>, sip it.</p>
+
+  <table>
+    <thead><tr><th>Name</th><th>Made from</th><th>Where you'll meet it</th></tr></thead>
+    <tbody>
+      <tr><td>Loza / Lozovača</td><td>Grape pomace — a grappa relative</td><td>Everywhere on the coast. The default.</td></tr>
+      <tr><td>Šljivovica</td><td>Plum</td><td>Bosnia and inland. The classic Balkan spirit.</td></tr>
+      <tr><td>Travarica</td><td>Grape base infused with herbs</td><td>Dalmatia. Often house-made, every family different.</td></tr>
+      <tr><td>Orahovac / Orahovica</td><td>Green walnuts</td><td>Dark, bittersweet, almost medicinal. Herzegovina and Dalmatia.</td></tr>
+      <tr><td>Medica / Medovača</td><td>Honey-sweetened</td><td>The gateway one. Easiest for a first-timer.</td></tr>
+      <tr><td>Višnjevača</td><td>Sour cherry</td><td>Sweet, red, dangerously drinkable.</td></tr>
+      <tr><td>Kruškovača</td><td>Pear</td><td>Occasionally with a whole pear grown inside the bottle.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="card">
+    <h3>Etiquette</h3>
+    <ul>
+      <li><strong>Živjeli</strong> ("to life") works across Croatia, Bosnia and Montenegro. Make eye contact.</li>
+      <li>It's frequently served as a welcome, before food, not after. Don't treat it as a digestif.</li>
+      <li>Homemade rakija is a point of family pride. If someone brings out an unlabelled bottle, that's a compliment.</li>
+      <li>Strength is commonly 40% and can be well north of that. There's no reliable way to know.</li>
+      <li><strong>Best places to try it deliberately:</strong> Klub Invalida in Kotor, Rakija &amp; Wine Bar in Budva, and any Herzegovina winery — Marijanović's walnut liqueur gets named repeatedly in reviews.</li>
+    </ul>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<section id="home">
+  <h2 class="sec">Logistics</h2>
+  <p class="h2sub">Getting it back to Rotterdam</p>
+
+  <div class="card top">
+    <h3>The border that actually matters</h3>
+    <p>Croatia, Slovenia, Austria and Germany are in the EU. <strong>Montenegro and Bosnia are not.</strong> So the wine you buy in Herzegovina and Montenegro is coming <em>into</em> the EU when you cross back — and personal allowances apply.</p>
+    <p>The standard EU traveller allowance per adult, arriving from outside the EU, is:</p>
+    <ul>
+      <li><strong>4 litres</strong> of still wine</li>
+      <li><strong>16 litres</strong> of beer</li>
+      <li><strong>1 litre</strong> of spirits over 22% ABV, <em>or</em> 2 litres of fortified/sparkling wine under 22%</li>
+    </ul>
+    <p>Two adults doubles that. So realistically: <strong>eight bottles of Blatina and two bottles of rakija between you, and you're at the line.</strong> That is much less than you'll want after Herzegovina.</p>
+    <p>These allowances have been stable for years but I haven't verified them today — if you're planning to load the boot, check before you commit money.</p>
+    <div class="tagrow"><span class="tag route">Buy the Croatian wine last</span></div>
+  </div>
+
+  <div class="card note">
+    <h3>The workaround</h3>
+    <p>Wine bought <em>inside</em> the EU and moved within it for personal use is not subject to the same limits. So if you want volume, <strong>buy Pelješac wine on the way home rather than Herzegovina wine</strong> — but Pelješac comes before Bosnia on your route, and you'd be carrying it through two non-EU countries and back in.</p>
+    <p>Cleanest solution given your actual route: keep the Bosnian and Montenegrin purchases within allowance and treat them as the good bottles. Then top up in Austria on Day 15 if you want volume — that leg is EU-internal all the way home.</p>
+  </div>
+
+  <div class="card warn">
+    <h3>Heat</h3>
+    <p>You are in August, driving a car that will sit in full sun at trailheads for hours. A boot in Montenegro in August will comfortably exceed 50°C, and that will cook wine — corks push, and the wine is flat by the time you open it in Rotterdam.</p>
+    <ul>
+      <li>Buy on the <strong>last day</strong> of each leg, not the first.</li>
+      <li>Keep bottles in the <strong>cabin footwell</strong> with the aircon on, not the boot.</li>
+      <li>If you're leaving the car for a long hike, take the bottles out or accept the loss.</li>
+      <li>Rakija and fortified wine survive heat far better than table wine. If you want something to definitely make it home intact, buy spirits.</li>
+    </ul>
+  </div>
+
+  <div class="card note">
+    <h3>What's verified and what isn't</h3>
+    <p>Every named venue, rating, review count, address and set of opening hours came from a live Google Places lookup on 11 August 2026, and the quoted observations are paraphrased from real reviews.</p>
+    <p>The grape science, appellation history, brewery history and rakija taxonomy are background knowledge rather than looked-up facts. I've flagged the two places I'm genuinely unsure of — the Prošek outcome and the current blood-alcohol limits — and the customs allowances are stated from memory. My information runs to around May 2026. Verify anything that costs you money or a licence.</p>
+  </div>
+</section>
+
+<footer>
+  <p>Karst &amp; Citrus toolkit · Wine, beer &amp; rakija field guide · built 11 August 2026 · works fully offline, no network needed</p>
+</footer>
+
+</body>
+</html>

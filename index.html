@@ -321,6 +321,45 @@ h1 .to{color:var(--ink-faint);font-weight:400;}
   font-size:12.5px;line-height:1.55;color:var(--ink-soft);}
 .optfoot b{color:var(--ink);}
 
+.parkbtn{width:100%;border:none;border-top:1px solid var(--rule);background:transparent;
+  font:inherit;font-size:13px;font-weight:700;color:#1F6F7A;
+  padding:12px 18px;cursor:pointer;display:flex;align-items:center;
+  justify-content:space-between;gap:8px;margin-top:14px;transition:.15s;}
+.parkbtn:hover{background:var(--paper-3);}
+.parkbtn:focus-visible{outline:2.5px solid var(--teal);outline-offset:-3px;}
+.parkbtn .chev{transition:transform .22s;font-size:11px;}
+.parkbtn[aria-expanded="true"] .chev{transform:rotate(180deg);}
+.parkwrap{display:none;padding:2px 18px 16px;}
+.parkwrap.show{display:block;}
+.parknote{margin:0 0 12px;padding:9px 12px;border-radius:9px;background:#FBEAE5;
+  border:1px solid #EFD5CB;font-size:12px;line-height:1.5;color:#8A5142;}
+.parknote b{color:#7A3626;}
+.parkspot{border:1px solid var(--rule);border-radius:11px;padding:13px 14px;
+  margin-bottom:10px;background:var(--paper-2);}
+.parkspot:last-child{margin-bottom:0;}
+.parkspothead{display:flex;align-items:center;justify-content:space-between;
+  gap:8px;flex-wrap:wrap;}
+.parkspotname{font-weight:700;font-size:13.5px;}
+.parkchip{font-size:10px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;
+  padding:2px 8px;border-radius:999px;white-space:nowrap;flex-shrink:0;}
+.parkchip.pc-brutal{background:#FBEAE5;color:#9A4A33;}
+.parkchip.pc-tight{background:#FDF1E1;color:#A5641A;}
+.parkchip.pc-easy{background:#EAF3E3;color:#4E7040;}
+.parkdeadline{display:flex;gap:7px;align-items:baseline;flex-wrap:wrap;margin-top:6px;
+  font-size:11.5px;color:var(--ink-faint);}
+.parkdeadline b{color:var(--ink-soft);font-weight:700;}
+.parkdeadline .time{font-weight:800;color:#1F6F7A;}
+.parkitem{margin-top:9px;padding-top:9px;border-top:1px dotted var(--rule);}
+.parkspot .parkitem:first-of-type{border-top:none;margin-top:8px;padding-top:0;}
+.parktag{display:block;font-size:10px;font-weight:800;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--ink-faint);margin-bottom:3px;}
+.parkitem.warn .parktag{color:#9A4A33;}
+.parkitem.secret .parktag{color:#1F6F7A;}
+.parktext{font-size:12.5px;line-height:1.5;color:var(--ink-soft);}
+.parkitem.warn .parktext{color:#8A5142;}
+.parkmeta{display:block;margin-top:4px;font-size:11px;
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;color:var(--ink-faint);}
+
 .notes{padding:8px 30px 50px;}
 .notes section{background:var(--paper-2);border:1px solid var(--rule);border-radius:14px;
   padding:20px 22px;margin-bottom:14px;}
@@ -422,6 +461,9 @@ h1 .to{color:var(--ink-faint);font-weight:400;}
       <a class="btn abrp" id="abrpAll" href="#" target="_blank" rel="noopener">Whole trip in ABRP</a>
       <a class="btn" href="balkans-companion.html#s00" target="_blank" rel="noopener">Trip primer (money, borders, EV)</a>
       <a class="btn" href="balkans-food-guide.html#f00" target="_blank" rel="noopener">Food guide (rules)</a>
+      <a class="btn" href="balkans-cheap-eats.html#c00" target="_blank" rel="noopener">Eating cheap (rules)</a>
+      <a class="btn" href="balkans-2026-coffee.html#worlds" target="_blank" rel="noopener">Coffee guide</a>
+      <a class="btn" href="balkans-2026-drinks.html#grapes" target="_blank" rel="noopener">Wine, beer & rakija guide</a>
     </div>
 
     <div class="spine" id="spine"></div>
@@ -506,6 +548,22 @@ const READING_ANCHORS={1:'s01',2:'s02',3:'s04',4:'s05',5:'s06',6:'s07',7:'s08',
    food/drink/restaurant notes. Presentation-only, same as READING_ANCHORS. */
 const FOOD_ANCHORS={1:'f01',2:'f02',3:'f02',4:'f03',5:'f03',6:'f04',7:'f05',
   8:'f06',9:'f06',10:'f07',11:'f07',12:'f07',13:'f08',14:'f09',15:'f10',16:'f10'};
+
+/* ---------------- eating cheap / coffee / drinks deep links ----------------
+   Three more standalone static files, each with its own stable anchors.
+   balkans-cheap-eats.html isn't day-by-day like the food guide — it's organised
+   by topic (bakeries, markets, camp cooking, street food by country) — so each
+   day points at whichever topic section is most relevant that day, same
+   presentation-only pattern as FOOD_ANCHORS. Coffee and drinks are organised
+   by stop like the food guide, but neither has content for days 1-3
+   (Munich/Slovenia), so those days are simply absent from the map. */
+const EATS_ANCHORS={1:'c01',2:'c04',3:'c03',4:'c04',5:'c03',6:'c05',7:'c05',
+  8:'c06',9:'c05',10:'c06',11:'c06',12:'c06',13:'c05',14:'c02',15:'c05',16:'c05'};
+const COFFEE_ANCHORS={4:'brela',5:'brela',6:'ston',7:'dubrovnik',8:'kotor',9:'kotor',
+  10:'zabljak',11:'zabljak',12:'zabljak',13:'mostar',14:'sarajevo',15:'salzburg',16:'salzburg'};
+const DRINKS_ANCHORS={4:'lokva',5:'lokva',6:'peljesac',7:'dubrovnik',8:'kotor',9:'kotor',
+  10:'niksic',13:'herzegovina',14:'sarajevo',15:'salzburg',16:'salzburg'};
+
 const ALL_STOPS=[{name:ORIGIN.name,lat:ORIGIN.lat,lng:ORIGIN.lng}]
   .concat(LEGS.flatMap(l=>l.days.map(d=>({name:d.title.replace(/^.*→\s*/,''),lat:d.lat,lng:d.lng}))));
 document.getElementById('abrpAll').href=abrpUrl(ALL_STOPS);
@@ -955,7 +1013,64 @@ LEGS.forEach(leg=>{
       if(foodAnchor){
         html+=`<a class="abrplink" target="_blank" rel="noopener" href="balkans-food-guide.html#${foodAnchor}">Where to eat →</a>`;
       }
+      const eatsAnchor=EATS_ANCHORS[d.n];
+      if(eatsAnchor){
+        html+=`<a class="abrplink" target="_blank" rel="noopener" href="balkans-cheap-eats.html#${eatsAnchor}">Eating cheap →</a>`;
+      }
+      const coffeeAnchor=COFFEE_ANCHORS[d.n];
+      if(coffeeAnchor){
+        html+=`<a class="abrplink" target="_blank" rel="noopener" href="balkans-2026-coffee.html#${coffeeAnchor}">Coffee →</a>`;
+      }
+      const drinksAnchor=DRINKS_ANCHORS[d.n];
+      if(drinksAnchor){
+        html+=`<a class="abrplink" target="_blank" rel="noopener" href="balkans-2026-drinks.html#${drinksAnchor}">Wine, beer & rakija →</a>`;
+      }
       if(html){ links.innerHTML=html; card.appendChild(links); }
+    }
+
+    /* ---------------- inline parking guide ----------------
+       Unlike the three links above, parking is embedded directly in the card
+       (from PARKING_GROUPS/PARKING_DAYS in trip-data.js) rather than linked
+       out — the whole point being not to leave this page for it. */
+    {
+      const groupIds=PARKING_DAYS[d.n];
+      if(groupIds&&groupIds.length){
+        const groups=groupIds.map(id=>PARKING_GROUPS[id]).filter(Boolean);
+        const spotCount=groups.reduce((n,g)=>n+g.spots.length,0);
+        if(spotCount){
+          const pb=document.createElement('button');
+          pb.className='parkbtn';
+          pb.type='button';
+          pb.setAttribute('aria-expanded','false');
+          pb.innerHTML=`<span>Where to park · ${spotCount}</span><span class="chev">▼</span>`;
+
+          const pw=document.createElement('div');
+          pw.className='parkwrap';
+          pw.innerHTML=groups.map(g=>{
+            const note=g.groupNote
+              ?`<div class="parknote"><b>${g.groupNote.tag}</b> ${g.groupNote.html}</div>`:'';
+            const spots=g.spots.map(s=>`
+              <div class="parkspot">
+                <div class="parkspothead"><span class="parkspotname">${s.name}</span><span class="parkchip pc-${s.chipClass}">${s.chip}</span></div>
+                <div class="parkdeadline"><b>${s.parkLbl}</b><span class="time">${s.parkTime}</span><span>${s.parkNote}</span></div>
+                ${s.items.map(it=>`
+                  <div class="parkitem ${it.kind}">
+                    <span class="parktag">${it.tag}</span>
+                    <div class="parktext">${it.html}</div>
+                    ${it.meta?`<span class="parkmeta">${it.meta}</span>`:''}
+                  </div>`).join('')}
+              </div>`).join('');
+            return note+spots;
+          }).join('');
+
+          pb.addEventListener('click',()=>{
+            const show=pw.classList.toggle('show');
+            pb.setAttribute('aria-expanded',String(show));
+          });
+          card.appendChild(pb);
+          card.appendChild(pw);
+        }
+      }
     }
 
     if(d.hist){

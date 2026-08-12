@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Karst &amp; Citrus — Parking Field Guide</title>
+<style>
+:root{
+  --stone:#E9E4D9;
+  --stone-2:#F6F3EC;
+  --ink:#1C2B33;
+  --ink-soft:#4A5C66;
+  --citrus:#E4610F;
+  --lemon:#F2B705;
+  --teal:#24707A;
+  --alarm:#B3301F;
+  --line:rgba(28,43,51,.14);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--stone);color:var(--ink);
+  font:16px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  padding-bottom:60px;
+}
+header{
+  background:var(--ink);color:var(--stone-2);
+  padding:22px 18px 20px;
+}
+.eyebrow{
+  font:600 11px/1 -apple-system,sans-serif;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--lemon);margin:0 0 8px;
+}
+h1{
+  font:700 30px/1.05 Georgia,"Times New Roman",serif;
+  margin:0 0 10px;letter-spacing:-.01em;
+}
+.sub{margin:0;font-size:14px;color:rgba(246,243,236,.72)}
+
+/* The one rule that matters */
+.doctrine{
+  margin:18px 18px 0;background:var(--ink);color:var(--stone-2);
+  border-left:5px solid var(--citrus);padding:16px 16px 14px;border-radius:4px;
+}
+.doctrine h2{font:700 13px/1 -apple-system,sans-serif;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--lemon);margin:0 0 10px}
+.doctrine ol{margin:0;padding-left:18px;font-size:14.5px}
+.doctrine li{margin-bottom:8px}
+.doctrine li:last-child{margin-bottom:0}
+.doctrine b{color:#fff}
+
+nav{
+  position:sticky;top:0;z-index:20;background:var(--stone);
+  border-bottom:1px solid var(--line);padding:10px 12px;
+  overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch;
+}
+nav a{
+  display:inline-block;margin-right:6px;padding:6px 11px;border-radius:99px;
+  background:var(--stone-2);border:1px solid var(--line);
+  font:600 12.5px/1 -apple-system,sans-serif;color:var(--ink);text-decoration:none;
+}
+nav a:focus-visible{outline:2px solid var(--citrus);outline-offset:2px}
+
+.leg{padding:26px 18px 0}
+.leg-head{border-bottom:2px solid var(--ink);padding-bottom:6px;margin-bottom:16px}
+.leg-day{font:600 11px/1 -apple-system,sans-serif;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--citrus)}
+.leg-head h2{font:700 22px/1.15 Georgia,serif;margin:6px 0 0}
+
+.card{
+  background:var(--stone-2);border:1px solid var(--line);border-radius:6px;
+  margin-bottom:14px;overflow:hidden;
+}
+.card>summary{
+  list-style:none;cursor:pointer;padding:14px 15px;display:block;
+}
+.card>summary::-webkit-details-marker{display:none}
+.card>summary:focus-visible{outline:2px solid var(--citrus);outline-offset:-2px}
+.row{display:flex;align-items:flex-start;gap:10px}
+.name{font:700 17px/1.2 Georgia,serif;flex:1;margin:0}
+.chip{
+  font:700 10px/1 -apple-system,sans-serif;letter-spacing:.1em;text-transform:uppercase;
+  padding:5px 8px;border-radius:3px;color:#fff;flex-shrink:0;margin-top:2px;
+}
+.c-easy{background:var(--teal)}
+.c-tight{background:var(--lemon);color:var(--ink)}
+.c-brutal{background:var(--alarm)}
+
+/* Signature element: the deadline stamp */
+.deadline{
+  display:flex;align-items:baseline;gap:9px;margin-top:11px;
+  border-top:1px dashed var(--line);padding-top:10px;
+}
+.deadline .lbl{
+  font:600 10px/1 -apple-system,sans-serif;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink-soft);
+}
+.deadline .time{
+  font:700 25px/1 Georgia,serif;color:var(--citrus);letter-spacing:-.02em;
+}
+.deadline .after{font-size:12.5px;color:var(--ink-soft);flex:1}
+
+.body{padding:0 15px 15px;border-top:1px solid var(--line);margin-top:2px;padding-top:13px}
+.opt{margin-bottom:13px}
+.opt:last-child{margin-bottom:0}
+.tag{
+  font:700 10px/1 -apple-system,sans-serif;letter-spacing:.11em;text-transform:uppercase;
+  color:var(--teal);display:block;margin-bottom:4px;
+}
+.tag.b{color:var(--lemon);filter:brightness(.75)}
+.tag.n{color:var(--alarm)}
+.opt p{margin:0;font-size:14.5px}
+.meta{
+  font:500 12.5px/1.4 ui-monospace,SFMono-Regular,Menlo,monospace;
+  color:var(--ink-soft);margin-top:4px;word-break:break-word;
+}
+.meta b{color:var(--ink)}
+.secret{
+  background:rgba(36,112,122,.09);border-left:3px solid var(--teal);
+  padding:9px 11px;margin-top:11px;font-size:14px;border-radius:0 3px 3px 0;
+}
+.secret .tag{color:var(--teal)}
+.warn{
+  background:rgba(179,48,31,.08);border-left:3px solid var(--alarm);
+  padding:9px 11px;margin-top:9px;font-size:14px;border-radius:0 3px 3px 0;
+}
+.warn .tag{color:var(--alarm)}
+.cost{font-weight:700;color:var(--ink)}
+footer{padding:26px 18px 10px;font-size:12.5px;color:var(--ink-soft)}
+footer b{color:var(--ink)}
+hr{border:0;border-top:1px solid var(--line);margin:18px 0}
+a.gps{color:var(--teal);text-decoration:underline}
+@media (prefers-reduced-motion:no-preference){
+  .card{transition:border-color .15s ease}
+}
+.card[open]{border-color:rgba(28,43,51,.3)}
+</style>
+</head>
+<body>
+
+<header>
+  <p class="eyebrow">Karst &amp; Citrus · Field Supplement</p>
+  <h1>Where to put the car</h1>
+  <p class="sub">Days 4–14 · Brela → Dubrovnik → Kotor → Durmitor → Mostar → Sarajevo → Salzburg. Every stop has a primary, a backup, and a bail-out.</p>
+</header>
+
+<div class="doctrine">
+  <h2>The three rules</h2>
+  <ol>
+    <li><b>Parked by 09:00 or you're improvising.</b> Nature lots in August fill 08:30–09:30. Old towns fill 10:00. This is what killed Vršič and the Soča gorge — not the lot, the clock. Every card below carries its own deadline.</li>
+    <li><b>Cash, small, local.</b> Half these attendants take cash only. Croatia + Montenegro run euros. Bosnia runs <b>KM</b> (2 KM ≈ €1) and several lots refuse euros outright. Pull 150 KM at the first ATM after the border.</li>
+    <li><b>The 15-minute rule.</b> If you've circled for 15 minutes, take the expensive option immediately. A €20 lot costs less than a wrecked afternoon. You already paid that lesson once.</li>
+  </ol>
+</div>
+
+<nav>
+  <a href="#d4">D4 Brela</a>
+  <a href="#d5">D5 Ston</a>
+  <a href="#d6">D6 Dubrovnik</a>
+  <a href="#kotor">D6–8 Kotor</a>
+  <a href="#perast">Perast</a>
+  <a href="#lovcen">Lovćen</a>
+  <a href="#stefan">Sv. Stefan</a>
+  <a href="#ostrog">Ostrog</a>
+  <a href="#d9">D9–10 Durmitor</a>
+  <a href="#d11">D11 Mostar</a>
+  <a href="#d12">D12 Sarajevo</a>
+  <a href="#d13">D13 Salzburg</a>
+</nav>
+
+<!-- ============ DAY 4 ============ -->
+<section class="leg" id="d4">
+  <div class="leg-head">
+    <span class="leg-day">Day 4 · Bled → Brela</span>
+    <h2>Makarska Riviera</h2>
+  </div>
+
+  <details class="card">
+    <summary>
+      <div class="row">
+        <h3 class="name">Punta Rata beach, Brela</h3>
+        <span class="chip c-brutal">Brutal</span>
+      </div>
+      <div class="deadline">
+        <span class="lbl">Park by</span>
+        <span class="time">08:00</span>
+        <span class="after">…or don't come until 17:30. Midday is a lost cause.</span>
+      </div>
+    </summary>
+    <div class="body">
+      <div class="opt">
+        <span class="tag">Best move — do this</span>
+        <p><b>Don't drive to the beach at all.</b> You're camping in Brela. Park at the campsite once, on arrival, and never move the car. The coastal promenade links every Brela beach on foot — Punta Rata is a 10–25 minute walk from most Brela campsites and the walk is flat and shaded.</p>
+      </div>
+      <div class="opt">
+        <span class="tag b">If you must drive</span>
+        <p>Punta Rata beach lot, dirt-and-pine surface, attendant-run.</p>
+        <p class="meta"><b>43.3707, 16.9226</b> · <span class="cost">€4/hr</span>, ~€25/day · cash · fills by 08:30</p>
+      </div>
+      <div class="opt">
+        <span class="tag b">Second lot</span>
+        <p>"Parking car Brela", Put Solina — the big one above the village, barrier-controlled.</p>
+        <p class="meta"><b>43.3690, 16.9299</b> · <span class="cost">€2.85/hr or €25 day rate</span> · <b>you must pick the day rate at the gate</b></p>
+      </div>
+      <div class="opt">
+        <span class="tag n">Bail-out</span>
+        <p>Skip Punta Rata entirely. Beaches at Baška Voda (4 km north) and Podrače/Vrulja have far easier parking and near-identical water. Nobody will know.</p>
+      </div>
+      <div class="warn">
+        <span class="tag">Known trap</span>
+        <p>Both Brela lots have a documented pattern: the attendant quotes an hourly rate at entry, then charges the higher accumulated total at exit. Reviews report €27 bills on a "€14 day rate". <b>Say "day rate" at the gate, get it written on the ticket, photograph the price board.</b></p>
+      </div>
+      <div class="secret">
+        <span class="tag">Local read</span>
+        <p>There is genuinely no free parking in Brela. Locals park in residential streets uphill of the D8 and walk down. That works — but the tow trucks work the D8 itself hard in August. Never leave it on the magistrala.</p>
+      </div>
+    </div>
+  </details>
+</section>
+
+<!-- ============ DAY 5 ============ -->
+<section class="leg" id="d5">
+  <div class="leg-head">
+    <span class="leg-day">Day 5 · Coast → near Dubrovnik</span>
+    <h2>Ston &amp; the Pelješac run</h2>
+  </div>
+
+  <details class="card">
+    <summary>
+      <div class="row">
+        <h3 class="name">Ston — walls, salt pans, oysters</h3>
+        <span class="chip c-easy">Easy</span>
+      </div>
+      <div class="deadline">
+        <span class="lbl">Park by</span>
+        <span class="time">Anytime</span>
+        <span class="after">Genuinely relaxed. The easiest stop on the whole trip.</span>
+      </div>
+    </summary>
+    <div class="body">
+      <div class="opt">
+        <span class="tag">Primary</span>
+        <p>Main visitor lot at the town entrance, next to the salt museum. Large, card <em>and</em> cash, machine-operated.</p>
+        <p class="meta"><b>42.8379, 17.6976</b> · <span class="cost">~€1/hr</span> · pay within 15 min of arrival</p>
+      </div>
+      <div class="warn">
+        <span class="tag">Don't</span>
+        <p>The small lot at Ston 45 (42.8386, 17.6977) is signed <b>residents only</b> despite looking public. €10/day if they let you, a ticket if they don't.</p>
+      </div>
+      <div class="secret">
+        <span class="tag">Worth knowing</span>
+        <p>Pay within 15 minutes or it's an automatic ~€12 penalty. The machine is by the police station, which is also why this lot is the safest place your car will sit all trip.</p>
+      </div>
+    </div>
+  </details>
+</section>
+
+<!-- ============ DAY 6 DUBROVNIK ============ -->
+<section class="leg" id="d6">
+  <div class="leg-head">
+    <span class="leg-day">Day 6 · Dawn visit → Debeli Brijeg</span>
+    <h2>Dubrovnik</h2>
+  </div>
+
+  <details class="card" open>
+    <summary>
+      <div class="row">
+        <h3 class="name">Dubrovnik old town</h3>
+        <span class="chip c-brutal">Brutal</span>
+      </div>
+      <div class="deadline">
+        <span class="lbl">Park by</span>
+        <span class="time">06:30</span>
+        <span class="after">Your dawn plan already solves this. Arriving at 06:30 turns the worst parking in Croatia into a non-event.</span>
+      </div>
+    </summary>
+    <div class="body">
+      <div class="opt">
+        <span class="tag">Primary — dawn visit</span>
+        <p>Garaža Ilijina Glavica. Closest to the walls, always has space at 06:30, hourly rate is fine for a 2–3 hour visit. 220 steps down to Pile Gate.</p>
+        <p class="meta"><b>42.6452, 18.1032</b> · Zagrebačka 42 · <span class="cost">€7/hr</span> · 24h</p>
+      </div>
+      <div class="opt">
+        <span class="tag b">Backup — better value, slight walk</span>
+        <p>Dubrovnik Daily Parking. 4.8★ across 1,100+ reviews, which is unheard of here. They register your plate for the restricted zone over WhatsApp before you arrive — that alone is worth it. 15 flat minutes to the old town.</p>
+        <p class="meta"><b>42.6414, 18.1213</b> · Kralja Petra Krešimira IV 57A · <span class="cost">~€20/night</span> · WhatsApp <b>+385 99 369 9359</b></p>
+      </div>
+      <div class="opt">
+        <span class="tag b">Backup 2 — cheapest</span>
+        <p>Dubrovnik City Parking, Žuljanska. Cheapest rate in the city but small and grubby; pay at the Tisak kiosk.</p>
+        <p class="meta"><b>42.6526, 18.0872</b> · <span class="cost">€3/hr, €25/day</span> · bus into centre</p>
+      </div>
+      <div class="opt">
+        <span class="tag n">Bail-out</span>
+        <p>Dubrovnik Center Parking, Vukovarska 22 — €4/hr, ~€24/day, 20 min walk, bus stop and mall at the door. Big enough that it never truly fills.</p>
+        <p class="meta"><b>42.6511, 18.0930</b></p>
+      </div>
+      <div class="warn">
+        <span class="tag">The €266 trap — read this one</span>
+        <p>At <b>Ilijina Glavica</b>, the daily rate only applies if you walk to the office and register <b>within 15 minutes of entering</b>. Miss that and you're billed €7/hour for the entire stay. Reviews document €266 for 38 hours and €300 for 48. You cannot fix it at the machine. <b>Lost ticket = €450 fine.</b><br>For a dawn visit this is irrelevant — you're out in 3 hours on hourly. Just never leave the car there overnight.</p>
+      </div>
+      <div class="warn">
+        <span class="tag">Camera zone</span>
+        <p>Do not let the satnav walk you toward Pile Gate. Dubrovnik's restricted traffic zone is camera-enforced and the fine runs ~€250. Navigate to the <em>garage</em> as your destination, not the old town.</p>
+      </div>
+      <div class="secret">
+        <span class="tag">Local read</span>
+        <p>Old Town Parking on Miletićeva is the one everyone falls for — it's the closest, it's ~25 spaces, and it hits €10–20/hr in August. Ignore it.</p>
+      </div>
+    </div>
+  </details>
+</section>
+
+<!-- ============ KOTOR ============ -->
+<section class="leg" id="kotor">
+  <div class="leg-head">
+    <span class="leg-day">Days 6–8 · Three nights</span>
+    <h2>Kotor</h2>
+  </div>
+
+  <details class="card" open>
+    <summary>
+      <div class="row">
+        <h3 class="name">Kotor old town</h3>
+        <span class="chip c-tight">Tight</span>
+      </div>
+      <div class="deadline">
+        <span class="lbl">Park by</span>
+        <span class="time">08:30</span>
+        <span class="after">Cruise ships dump between 09:00 and 16:00. Outside that window Kotor parking is easy.</span>
+      </div>
+    </summary>
+    <div class="body">
+      <div class="opt">
+        <span class="tag">Primary — free, and most people miss it</span>
+        <p>Kotor Parking, Škaljari. Free, unguarded, 5 minutes' walk to the old town. Reviews consistently confirm no ticket, no attendant, no charge.</p>
+        <p class="meta"><b>42.4216, 18.7627</b> · <span class="cost">Free</span> · fills early · take valuables with you</p>
+      </div>
+      <div class="opt">
+        <span class="tag b">Backup — free overflow</span>
+        <p>Second free public lot further into Škaljari. Busier in season but turns over.</p>
+        <p class="meta"><b>42.4185, 18.7614</b> · <span class="cost">Free</span></p>
+      </div>
+      <div class="opt">
+        <span class="tag b">Backup — cheapest paid</span>
+        <p>Parking Autoboka, Njegoševa 206. Large, machine-billed, honest.</p>
+        <p class="meta"><b>42.4212, 18.7670</b> · <span class="cost">€0.90/hr</span> · <b>cash only</b></p>
+      </div>
+      <div class="opt">
+        <span class="tag n">Bail-out — the one that always works</span>
+        <p>Parking Garage LUX-Kotor. Underground, 4.8★, staffed. When they're "full" they take your keys and shuffle cars to fit you in — several reviews confirm they never turn people away. Open 08:00–24:00.</p>
+        <p class="meta"><b>42.4280, 18.7702</b> · <span class="cost">~€3/hr</span> · <b>+382 69 427 859</b></p>
+      </div>
+      <div class="secret">
+        <span class="tag">Tesla-specific</span>
+        <p>LUX is underground. In an August Kotor afternoon that's the difference between getting into a 30°C cabin and a 55°C one, and it saves you the pre-conditioning drain. On a three-night stay it's worth paying for at least the hottest day.</p>
+      </div>
+      <div class="secret">
+        <span class="tag">Local read</span>
+        <p>Google Maps routes the Benovo lot (42.4264, 18.7697, €1.10–1.90/hr, cash) down a one-way street the wrong way. <b>Waze gets it right.</b> Benovo also sits on the bus/taxi drop-off bottleneck — expect a 10-minute queue at 12:30 and empty spaces at 14:20.</p>
+      </div>
+      <div class="warn">
+        <span class="tag">Known trap</span>
+        <p>At Autoboka, attendants have been reclassifying normal cars as "large" to charge €5/hr instead of €0.90. A Model 3 is a standard car. If they try it, the free Škaljari lot is 600 m away — just leave.</p>
+      </div>
+      <div class="secret">
+        <span class="tag">Strategy for three nights</span>
+        <p>Ask your Kotor hotel about parking the moment you check in — most Kotor properties have an arrangement, and it's usually cheaper than anything above. Then leave the car parked and do Perast by boat or bus rather than driving it.</p>
+      </div>
+    </div>
+  </details>
+</section>
+
+<!-- ============ PERAST ============ -->
+<section class="leg" id="perast">
+  <div class="leg-head">
+    <span class="leg-day">Day 8 · Bay day trip</span>
+    <h2>Perast</h2>
+  </div>
+
+  <details class="card">
+    <summary>
+      <div class="row">
+        <h3 class="name">Perast &amp; Our Lady of the Rocks</h3>
+        <span class="chip c-brutal">Brutal</span>
+      </div>
+      <div class="deadline">
+        <span class="lbl">Park by</span>
+        <span class="time">08:00</span>
+        <span class="after">The free lots hold about six cars combined. Six.</span>
+      </div>
+    </summary>
+    <div class="body">
+      <div class="opt">
+        <span class="tag">Best move</span>
+        <p><b>Don't bring the car.</b> Cars are banned inside Perast; everyone parks on the E65 above and walks down regardless. The Blue Line bus from Kotor runs the bay road every 30 minutes and drops you at the same place, or take a boat across from Kotor. This removes the single worst parking problem in Montenegro from your day.</p>
+      </div>
+      <div class="opt">
+        <span class="tag b">If driving — free lot A</span>
+        <p>Roadside pull-in on the E65. Four to seven spaces. Steep curb and you reverse out onto a live highway.</p>
+        <p class="meta"><b>42.4904, 18.6926</b> · <span class="cost">Free</span></p>
+      </div>
+      <div class="opt">
+        <span class="tag b">Free lot B</span>
+        <p>Second small public pull-in, 400 m further north. Six or seven spaces, free, same tricky reverse. There's a swim spot with steps right below it.</p>
+        <p class="meta"><b>42.4932, 18.6914</b> · <span class="cost">Free</span></p>
+      </div>
+      <div class="opt">
+        <span class="tag n">Bail-out</span>
+        <p>Adriatic Pearl's lot — free <em>only</em> if you buy their boat tour. If you were going to take a boat anyway and it's 11am and everything's full, this is a legitimate exit.</p>
+        <p class="meta"><b>42.4864, 18.7012</b> · 09:00–19:00</p>
+      </div>
+      <div class="warn">
+        <span class="tag">The Perast hustle</span>
+        <p>Men in hi-vis will wave you into "parking" and quote €20, bundled with a €20pp boat ride "included". The boat to Our Lady of the Rocks costs <b>€5 return, bought at the waterfront</b>. Multiple reviewers photograph the same operator working the free public lots. If someone is charging you for a space that has no barrier and no machine, you're being taxed, not parked.</p>
+      </div>
+    </div>
+  </details>
+</section>
+
+<!-- ============ LOVCEN ============ -->
+<section class="leg" id="lovcen">
+  <div class="leg-head">
+    <span class="leg-day">Day 7 · Above Kotor</span>
+    <h2>Lovćen &amp; Njegoš Mausoleum</h2>
+  </div>
+
+  <details class="card">
+    <summary>
+      <div class="row">
+        <h3 class="name">Njegoš Mausoleum summit lot</h3>
+        <span class="chip c-tight">Tight</span>
+      </div>
+      <div class="deadline">
+        <span class="lbl">Drive by</span>
+        <span class="time">09:00</span>
+        <span class="after">The lot isn't the problem. The serpentine is.</span>
+      </div>
+    </summary>
+    <div class="body">
+      <div class="opt">
+        <span class="tag">Primary</span>
+        <p>Lot at the top of the access road, at the foot of the 461 steps. Reasonable capacity, rarely completely full.</p>
+        <p class="meta"><b>42.3999, 18.8375</b> · Park entry <span class="cost">€3pp</span> · Mausoleum <span class="cost">€8pp</span></p>
+      </div>
+      <div class="secret">
+        <span class="tag">The real constraint</span>
+        <p>The Kotor–Lovćen serpentine has single-lane sections with no barrier. Tour coaches start climbing around 09:30 and meeting one on a hairpin means reversing uphill on a blind bend. Go up before 09:00 or after 16:00 and the road is yours.</p>
+      </div>
+      <div class="secret">
+        <span class="tag">Tesla-specific</span>
+        <p>You'll burn a chunk climbing from sea level to ~1,650 m, and get most of it back on the descent through regen. Don't panic at the number on the way up. Set regen to standard, not low.</p>
+      </div>
+    </div>
+  </details>
+</section>
+
+<!-- ============ SVETI STEFAN ============ -->
+<section class="leg" id="stefan">
+  <div class="leg-head">
+    <span class="leg-day">Day 7 · Southern coast</span>
+    <h2>Sveti Stefan</h2>
+  </div>
+
+  <details class="card">
+    <summary>
+      <div class="row">
+        <h3 class="name">The viewpoint (not the island)</h3>
+        <span class="chip c-easy">Easy</span>
+      </div>
+      <div class="deadline">
+        <span class="lbl">Stop for</span>
+        <span class="time">20 min</span>
+        <span class="after">This is a photo stop, not a destination. The island is a closed private resort.</span>
+      </div>
+    </summary>
+    <div class="body">
+      <div class="opt">
+        <span class="tag">Primary — free</span>
+        <p>Sveti Stefan viewpoint on the E65. Free roadside stop, ~15 minutes tolerated, souvenir kiosk. This is the postcard shot and it costs nothing.</p>
+        <p class="meta"><b>42.2581, 18.8960</b> · <span class="cost">Free</span></p>
+      </div>
+      <div class="opt">
+        <span class="tag b">If you want the beach</span>
+        <p>Parking Service at Pržno, for Miločer and Queen's Beach. Spaces at 11:00 even in August.</p>
+        <p class="meta"><b>42.2622, 18.8944</b> · <span class="cost">€2/hr</span></p>
+      </div>
+      <div class="warn">
+        <span class="tag">Skip this one</span>
+        <p>"Parking Sveti Stefan" (42.2564, 18.8943) charges €4/hr, is 3.1★, and has documented reports of charging €2 just to turn around in it. There's also a €8/day rate that only applies if you get a registration card nobody tells you about — one reviewer paid €75. Cars parked on the road outside get towed. Use the free viewpoint.</p>
+      </div>
+    </div>
+  </details>
+</section>
+
+<!-- ============ OSTROG ============ -->
+<section class="leg" id="ostrog">
+  <div class="leg-head">
+    <span class="leg-day">Optional · Montenegro interior</span>
+    <h2>Ostrog Monastery</h2>
+  </div>
+
+  <details class="card">
+    <summary>
+      <div class="row">
+        <h3 class="name">Ostrog access road</h3>
+        <span class="chip c-brutal">Brutal</span>
+      </div>
+      <div class="deadline">
+        <span class="lbl">Park by</span>
+        <span class="time">07:30</span>
+        <span class="after">Visitors this week report queuing over an hour on the access road itself.</span>
+      </div>
+    </summary>
+    <div class="body">
+      <div class="opt">
+        <span class="tag">Primary</span>
+        <p>Free lower lot below the barrier. Large, free, public toilets. Then a steep 15-minute climb, or take the shuttle bus that runs up from the bottom.</p>
+        <p class="meta"><b>42.6752, 19.0278</b> · <span class="cost">Free</span></p>
+      </div>
+      <div class="opt">
+        <span class="tag b">Backup</span>
+        <p>Upper lot at the monastery itself. Only reachable if the barrier is open — which in August, it generally isn't. Don't plan around it.</p>
+      </div>
+      <div class="opt">
+        <span class="tag n">Bail-out</span>
+        <p>Turn around. Honest read: this is a pilgrimage site, the queue this week is over an hour on a narrow unbarriered mountain road, and non-religious visitors are consistently reporting it isn't worth the climb. If you're not there by 08:00, spend the day somewhere else.</p>
+      </div>
+      <div class="secret">
+        <span class="tag">If you go</span>
+        <p>Take the shuttle from the bottom rather than driving up. The upper road is single-lane with no guardrail and passing a descending car is genuinely unpleasant.</p>
+      </div>
+    </div>
+  </details>
+</section>
+
+<!-- ============ DURMITOR ============ -->
+<section class="leg" id="d9">
+  <div class="leg-head">
+    <span class="leg-day">Days 9–10 · Two nights</span>
+    <h2>Žabljak &amp; Durmitor</h2>
+  </div>
+
+  <details class="card" open>
+    <summary>
+      <div class="row">
+        <h3 class="name">Black Lake / Crno Jezero</h3>
+        <span class="chip c-tight">Tight + gouged</span>
+      </div>
+      <div class="deadline">
+        <span class="lbl">Park by</span>
+        <span class="time">09:00</span>
+        <span class="after">Coaches land 10:00–11:00. Reviewers who arrive at 09:00 describe it as quiet and 13:00 as chaos.</span>
+      </div>
+    </summary>
+    <div class="body">
+      <div class="opt">
+        <span class="tag">Best move — the local one</span>
+        <p><b>Leave the car in Žabljak town and walk in.</b> Free street parking in town, then a 25–30 minute forest path to the lake. This dodges the road toll entirely and it's a pleasant walk through pine. You still pay NP entry at the gate on foot.</p>
+      </div>
+      <div class="opt">
+        <span class="tag b">If driving in</span>
+        <p>Lake-side parking, five minutes' walk from the water.</p>
+        <p class="meta"><b>43.1462, 19.0921</b> · NP entry <span class="cost">€5–10pp</span> + road fee <span class="cost">~€15</span> + parking <span class="cost">€1.50/hr or €10</span> · <b>cash</b></p>
+      </div>
+      <div class="warn">
+        <span class="tag">The triple charge</span>
+        <p>Visitors report being billed three separate times: national park entry, then a <b>€15 "road fee" for the final 200 metres</b>, then parking on top. The road fee is the one nobody expects. Driving in can cost €40 for two people before you've seen the lake. Walking from town removes two of the three.</p>
+      </div>
+    </div>
+  </details>
+
+  <details class="card">
+    <summary>
+      <div class="row">
+        <h3 class="name">Ćurevac viewpoint</h3>
+        <span class="chip c-tight">Tight</span>
+      </div>
+      <div class="deadline">
+        <span class="lbl">Park by</span>
+        <span class="time">09:30</span>
+        <span class="after">Free lot, decent size, but it does fill.</span>
+      </div>
+    </summary>
+    <div class="body">
+      <div class="opt">
+        <span class="tag">Primary</span>
+        <p>Ćurevac Parking. Free, plenty of space, café and toilets on site. 15-minute walk to the first viewpoint, 45–60 to the top.</p>
+        <p class="meta"><b>43.1939, 19.0897</b> · <span class="cost">Free</span> · NP pass €5 checked at the booth</p>
+      </div>
+      <div class="secret">
+        <span class="tag">Routing warning</span>
+        <p>Google Maps sends you in on dirt tracks. There <b>is</b> a proper tarmac road — several drivers report going in on gravel and out on asphalt. Note the road you come out on and use that one next time. Fine in a Model 3, but not what you want on a 15-minute mountain approach.</p>
+      </div>
+      <div class="warn">
+        <span class="tag">Booth hustle</span>
+        <p>Attendants have told visitors their pre-bought NP pass "isn't valid here" to sell a second ticket. It is valid. Hold your ground.</p>
+      </div>
+    </div>
+  </details>
+
+  <details class="card">
+    <summary>
+      <div class="row">
+        <h3 class="name">Đurđevića Tara Bridge</h3>
+        <span class="chip c-easy">Easy</span>
+      </div>
+      <div class="deadline">
+        <span class="lbl">Park by</span>
+        <span class="time">11:00</span>
+        <span class="after">Roadside lots at both ends, turns over constantly.</span>
+      </div>
+    </summary>
+    <div class="body">
+      <div class="opt">
+        <span class="tag">Primary</span>
+        <p>Roadside lots at both bridge approaches, €1–2, plus café lots. Short stop, high turnover, low stress.</p>
+      </div>
+      <div class="secret">
+        <span class="tag">Free option</span>
+        <p>The zipline operators (Red Rock, 43.1510, 19.2958 and the longer one opposite) let you park free if you're riding. €20–30pp, and it's the best view of the canyon there is. If one of you is doing it, the parking is solved.</p>
+      </div>
+    </div>
+  </details>
+
+  <details class="card">
+    <summary>
+      <div class="row">
+        <h3 class="name">Durmitor Ring road</h3>
+        <span class="chip c-tight">No parking, by design</span>
+      </div>
+      <div class="deadline">
+        <span class="lbl">Start by</span>
+        <span class="time">08:00</span>
+        <span class="after">85 km, and drivers report 8 hours with stops and lunch.</span>
+      </div>
+    </summary>
+    <div class="body">
+      <div class="opt">
+        <span class="tag">How it works</span>
+        <p>There are no lots — just pullouts. Long stretches are too narrow for two cars to pass, so stopping badly blocks the road for everyone. Drive it <b>counterclockwise</b>; reviewers consistently say it's the easier direction.</p>
+      </div>
+      <div class="warn">
+        <span class="tag">Time budget</span>
+        <p>If this is on Day 10, understand it eats the whole day. It is not a morning activity with an afternoon after it.</p>
+      </div>
+    </div>
+  </details>
+</section>
+
+<!-- ============ MOSTAR LEG ============ -->
+<section class="leg" id="d11">
+  <div class="leg-head">
+    <span class="leg-day">Day 11 · Into Herzegovina</span>
+    <h2>Kravica, Blagaj, Počitelj, Mostar</h2>
+  </div>
+
+  <div class="warn" style="margin:0 0 14px;border-radius:4px">
+    <span class="tag">Before the border</span>
+    <p><b>Pull 150 KM in cash.</b> Kravica's machines take card and KM but explicitly refuse euros. Blagaj is cash only. Mostar street meters need KM coins. Euros are accepted in Mostar's private lots at a punishing rate.</p>
+  </div>
+
+  <details class="card">
+    <summary>
+      <div class="row">
+        <h3 class="name">Kravica Waterfall</h3>
+        <span class="chip c-tight">Tight</span>
+      </div>
+      <div class="deadline">
+        <span class="lbl">Park by</span>
+        <span class="time">10:00</span>
+        <span class="after">It's a swimming spot, so it fills for the whole day rather than turning over.</span>
+      </div>
+    </summary>
+    <div class="body">
+      <div class="opt">
+        <span class="tag">Primary</span>
+        <p>Parking Kravica. Large, auto-pay machines, restrooms, food. 20-minute walk down to the falls.</p>
+        <p class="meta"><b>43.1582, 17.6085</b> · <span class="cost">3 KM/hr</span> (some report it bundled into the NP ticket) · <b>card or KM only — no euros</b></p>
+      </div>
+      <div class="warn">
+        <span class="tag">Machine fault</span>
+        <p>Reviewers report the coin slot swallowing coins without counting them. Pay by card if the machine takes it.</p>
+      </div>
+    </div>
+  </details>
+
+  <details class="card">
+    <summary>
+      <div class="row">
+        <h3 class="name">Blagaj Tekija</h3>
+        <span class="chip c-easy">Easy — but scammed</span>
+      </div>
+      <div class="deadline">
+        <span class="lbl">Park by</span>
+        <span class="time">Anytime</span>
+        <span class="after">Space isn't the issue here. Price is.</span>
+      </div>
+    </summary>
+    <div class="body">
+      <div class="opt">
+        <span class="tag">Primary</span>
+        <p>Parking Blagaj Tekija — one minute's walk to the dervish house, much closer than the lot Google pushes you toward.</p>
+        <p class="meta"><b>43.2559, 17.9021</b> · <span class="cost">4 KM (~€2) for the day</span> · cash only</p>
+      </div>
+      <div class="opt">
+        <span class="tag b">Backup</span>
+        <p>Parking u Blagaju, the bigger lot down the road. Same real price, same hustle. Street parking just <em>before</em> it is free — walk the extra 100 m.</p>
+        <p class="meta"><b>43.2577, 17.8960</b> · <span class="cost">4 KM</span></p>
+      </div>
+      <div class="opt">
+        <span class="tag n">Blagaj Fortress instead</span>
+        <p>Free dirt lot for the fortress above the village, 20-minute uphill walk on a marked path, and almost nobody there.</p>
+        <p class="meta"><b>43.2616, 17.9051</b> · <span class="cost">Free</span></p>
+      </div>
+      <div class="warn">
+        <span class="tag">Named and documented</span>
+        <p>Multiple independent reviews describe the same bald attendant at Blagaj quoting <b>10–20 KM</b> to tourists and <b>4 KM</b> to locals, minutes apart. <b>The price is 4 KM. Say "four marks", ask for the receipt, and he backs down</b> — several reviewers confirm exactly that. This is the single most reliably scammed lot on your route.</p>
+      </div>
+    </div>
+  </details>
+
+  <details class="card">
+    <summary>
+      <div class="row">
+        <h3 class="name">Počitelj</h3>
+        <span class="chip c-easy">Easy</span>
+      </div>
+      <div class="deadline">
+        <span class="lbl">Park by</span>
+        <span class="time">Anytime</span>
+        <span class="after">Free, adjacent, and genuinely fine.</span>
+      </div>
+    </summary>
+    <div class="body">
+      <div class="opt">
+        <span class="tag">Primary</span>
+        <p>Počitelj Main Parking. Free, large, right beside the village, café and fruit stalls. Fills in peak but turns over quickly since it's a 45-minute stop for most people.</p>
+        <p class="meta"><b>43.1366, 17.7309</b> · <span class="cost">Free</span></p>
+      </div>
+    </div>
+  </details>
+
+  <details class="card" open>
+    <summary>
+      <div class="row">
+        <h3 class="name">Mostar old town</h3>
+        <span class="chip c-tight">Tight</span>
+      </div>
+      <div class="deadline">
+        <span class="lbl">Park by</span>
+        <span class="time">10:00</span>
+        <span class="after">Day-trippers from Dubrovnik and Split arrive 10:30–11:00 and leave by 16:00.</span>
+      </div>
+    </summary>
+    <div class="body">
+      <div class="opt">
+        <span class="tag">Primary</span>
+        <p>Old Bridge Parking For You. Best-rated in Mostar, clean, secure, steps from Stari Most.</p>
+        <p class="meta"><b>43.3355, 17.8143</b> · Gojka Vukovića 20b · <span class="cost">€5 / 2hr or €10 all day</span> · 24h</p>
+      </div>
+      <div class="opt">
+        <span class="tag b">Backup</span>
+        <p>Parking-Old Town, by the Sparkasse Bank. Friendly attendant, takes euros <em>and</em> gives change in euros, which is rare here.</p>
+        <p class="meta"><b>43.3352, 17.8148</b> · <span class="cost">2 KM/hr or €10/day</span> · 09:00–20:00</p>
+      </div>
+      <div class="opt">
+        <span class="tag b">Backup 2</span>
+        <p>Parking Old Town, Rade Bitange 7. Flat €10 all day, attendant helps you in. Narrow one-lane approach.</p>
+        <p class="meta"><b>43.3375, 17.8132</b> · <span class="cost">€10 flat</span></p>
+      </div>
+      <div class="opt">
+        <span class="tag n">Bail-out — and the cheap move</span>
+        <p>Ticketed street parking on the road above the old town runs roughly <b>4 KM/hr or ~10 KM for the day</b> — half what the private lots charge, and closer on foot. Needs KM coins. Try this <em>first</em> if you have coins.</p>
+      </div>
+      <div class="warn">
+        <span class="tag">Avoid</span>
+        <p>Parking CENTAR (43.3361, 17.8169) — 3.4★, with repeated reports of the attendant charging for street spaces he doesn't own, refusing to explain rates, and getting hostile when challenged. Multiple reviewers say to keep driving.</p>
+      </div>
+      <div class="secret">
+        <span class="tag">Hotel</span>
+        <p>You're in a hotel in Mostar. Confirm parking with them before you arrive — the old town lanes are tight, one-way, and not somewhere to be improvising at 19:00 with luggage.</p>
+      </div>
+    </div>
+  </details>
+</section>
+
+<!-- ============ SARAJEVO ============ -->
+<section class="leg" id="d12">
+  <div class="leg-head">
+    <span class="leg-day">Day 12 · One night</span>
+    <h2>Sarajevo</h2>
+  </div>
+
+  <details class="card" open>
+    <summary>
+      <div class="row">
+        <h3 class="name">Baščaršija &amp; centre</h3>
+        <span class="chip c-easy">Easy — go underground</span>
+      </div>
+      <div class="deadline">
+        <span class="lbl">Park by</span>
+        <span class="time">Anytime</span>
+        <span class="after">Real garages, card payment, 24 hours. The most civilised parking since Austria.</span>
+      </div>
+    </summary>
+    <div class="body">
+      <div class="opt">
+        <span class="tag">Primary — and it charges your car</span>
+        <p>Underground Garage, Avdage Šahinagića. Central for Baščaršija, clean, secure, 24h, <b>takes cards</b>. Critically: there's a <b>free 11 kW AC charger on Level −1</b>. Bring your Type 2 cable and this stop pays for itself.</p>
+        <p class="meta"><b>43.8582, 18.4335</b> · <span class="cost">~70 BAM / 24h (~€36)</span> · card accepted · <b>check the height limit</b></p>
+      </div>
+      <div class="opt">
+        <span class="tag b">Backup — cheaper</span>
+        <p>Parking Centar Skenderija. Secure, video-monitored, 24h, noticeably cheaper. Tight spaces.</p>
+        <p class="meta"><b>43.8538, 18.4100</b> · 15 min walk to the old town</p>
+      </div>
+      <div class="warn">
+        <span class="tag">Avoid both of these</span>
+        <p><b>Parking garaža Jadranska</b> (43.8576, 18.4183) — cash only, no English, repeated reports of charging above the posted list and of adding phantom extra days. <b>Hotel Europe garage</b> — 40 BAM/day, BAM cash only, refuses cards and euros.</p>
+      </div>
+      <div class="secret">
+        <span class="tag">Worth doing</span>
+        <p>Sarajevo is your last reliable charge before the long northbound run. An overnight on the free 11 kW is roughly a full battery by morning — plug in on arrival, not before you leave.</p>
+      </div>
+    </div>
+  </details>
+</section>
+
+<!-- ============ SALZBURG ============ -->
+<section class="leg" id="d13">
+  <div class="leg-head">
+    <span class="leg-day">Day 13 · Last night</span>
+    <h2>Salzburg</h2>
+  </div>
+
+  <details class="card">
+    <summary>
+      <div class="row">
+        <h3 class="name">Altstadt</h3>
+        <span class="chip c-easy">Easy</span>
+      </div>
+      <div class="deadline">
+        <span class="lbl">Park by</span>
+        <span class="time">Anytime</span>
+        <span class="after">Austrian parking. It just works.</span>
+      </div>
+    </summary>
+    <div class="body">
+      <div class="opt">
+        <span class="tag">Primary</span>
+        <p>Mönchsberggarage — carved into the mountain under the fortress, 24h, lifts, toilets, immaculate. Walk out directly into the Altstadt.</p>
+        <p class="meta"><b>47.7976, 13.0379</b> · Hildmannplatz 1 · <span class="cost">~€4.40 / 4hr with validation</span></p>
+      </div>
+      <div class="secret">
+        <span class="tag">The discount nobody uses</span>
+        <p>Get your ticket <b>validated</b> for a reduced rate — you can do it at the fortress, or more easily at the <b>DM drogerie or the SPAR near Mozart's Geburtshaus</b>. Reviewers who validate pay a fraction of the gate rate. Do this before you walk back to the car.</p>
+      </div>
+      <div class="warn">
+        <span class="tag">One quirk</span>
+        <p>There's no payment machine at the parking level itself — pay before you go back down to the car, or you'll be walking up again.</p>
+      </div>
+      <div class="opt">
+        <span class="tag b">Budget alternative</span>
+        <p>Park &amp; Ride at Salzburg Süd / Alpensiedlung: a few euros including bus tickets into the centre. Worth it if you're only there for the evening.</p>
+      </div>
+    </div>
+  </details>
+</section>
+
+<footer>
+  <hr>
+  <p><b>Where this came from.</b> Locations, coordinates and opening hours were pulled live from Google Places on 10 August 2026. Prices come from recent visitor reviews and shift constantly — treat every figure as an order of magnitude, not a quote. The scam patterns are the reliable part: they show up across dozens of independent reviews at the same lots, year after year.</p>
+  <p><b>What I couldn't check.</b> I don't have live web access in this session, so nothing here is verified against official municipal tariffs or 2026 rate cards. If a price at the barrier is wildly off what's written above, the barrier is right.</p>
+  <p><b>Sentry Mode.</b> It pulls roughly 1%/hour. On a six-hour hike at Durmitor that's a chunk of range you'll want. Turn it off for long day parks in guarded lots, leave it on for free unguarded ones like Škaljari.</p>
+</footer>
+
+</body>
+</html>
