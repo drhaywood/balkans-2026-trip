@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>The Russian Road — Vršič and the upper Soča</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#16212A; --ink2:#3E4E5A; --ink3:#6C7A85;
+  --stone:#E5E2D8; --paper:#F7F5EF; --line:#CFC9BA;
+  --verd:#2F7A6B; --rust:#A4402A; --gold:#94741C;
+  --serif:"Fraunces",Georgia,"Iowan Old Style","Times New Roman",serif;
+  --sans:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+}
+html.night{
+  --ink:#E8E6DE; --ink2:#BDC5C4; --ink3:#8E9A99;
+  --stone:#12191C; --paper:#1A2327; --line:#31403F;
+  --verd:#5DBFAB; --rust:#E08163; --gold:#D2AC4B;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+
+body{
+  margin:0;background:var(--stone);color:var(--ink);
+  font-family:var(--sans);font-size:17px;line-height:1.65;
+  -webkit-text-size-adjust:100%;
+}
+p{margin:0 0 1em}
+a{color:var(--verd)}
+
+.wrap{max-width:660px;margin:0 auto;padding:26px 20px 90px}
+
+/* ---------- toggle ---------- */
+.toggle{
+  position:fixed;top:14px;right:14px;z-index:60;
+  font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+  background:var(--paper);color:var(--ink2);
+  border:1px solid var(--line);border-radius:2px;
+  padding:8px 12px;cursor:pointer;
+}
+.toggle:hover{color:var(--ink);border-color:var(--ink3)}
+.toggle:focus-visible{outline:3px solid var(--verd);outline-offset:2px}
+
+/* ---------- masthead ---------- */
+.eyebrow{
+  font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--rust);margin:0 0 12px
+}
+h1{
+  font-family:var(--serif);font-weight:700;
+  font-size:clamp(32px,8vw,46px);line-height:1.06;letter-spacing:-.02em;
+  margin:0 0 14px
+}
+.dek{font-size:17px;color:var(--ink2);margin:0 0 8px;max-width:48ch}
+
+.contents{
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:16px 0;margin:30px 0 40px
+}
+.contents ol{
+  margin:0;padding:0;list-style:none;
+  font-family:var(--mono);font-size:12px;letter-spacing:.04em;line-height:2.1
+}
+.contents a{text-decoration:none;color:var(--ink2);display:block}
+.contents a:hover{color:var(--verd)}
+.contents .n{color:var(--ink3);display:inline-block;width:26px}
+
+/* ---------- sections ---------- */
+section{margin:0 0 46px;scroll-margin-top:20px}
+
+h2{
+  font-family:var(--serif);font-weight:700;
+  font-size:27px;line-height:1.18;letter-spacing:-.015em;
+  margin:0 0 4px;padding-top:22px;border-top:2px solid var(--ink)
+}
+.sub{
+  font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--gold);margin:0 0 16px
+}
+h3{
+  font-family:var(--serif);font-weight:600;font-size:19px;
+  margin:26px 0 6px;letter-spacing:-.01em
+}
+
+.lede::first-letter{
+  font-family:var(--serif);font-weight:700;
+  float:left;font-size:56px;line-height:.82;
+  padding:5px 8px 0 0;color:var(--rust)
+}
+
+blockquote{
+  margin:22px 0;padding:0 0 0 18px;border-left:2px solid var(--gold);
+  font-family:var(--serif);font-size:19px;line-height:1.5;color:var(--ink2);font-style:italic
+}
+
+.aside{
+  background:var(--paper);border:1px solid var(--line);
+  padding:16px 18px;margin:22px 0;font-size:15.5px
+}
+.aside .label{
+  font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--verd);display:block;margin-bottom:7px
+}
+.aside p:last-child{margin-bottom:0}
+
+.flag{
+  background:var(--paper);border-left:3px solid var(--rust);
+  padding:15px 17px;margin:22px 0;font-size:15.5px
+}
+.flag .label{
+  font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--rust);display:block;margin-bottom:7px
+}
+.flag p:last-child{margin-bottom:0}
+
+ul.plain{list-style:none;margin:14px 0;padding:0}
+ul.plain li{padding:0 0 11px 17px;position:relative;font-size:16px}
+ul.plain li::before{
+  content:"";position:absolute;left:0;top:10px;
+  width:5px;height:5px;background:var(--verd)
+}
+ul.plain strong{font-weight:600}
+
+.hairline{
+  font-family:var(--mono);font-size:12px;color:var(--ink3);
+  border-top:1px solid var(--line);padding-top:8px;margin-top:26px
+}
+
+footer{
+  border-top:1px solid var(--line);margin-top:50px;padding-top:18px;
+  font-family:var(--mono);font-size:11.5px;color:var(--ink3);line-height:1.8
+}
+</style>
+</head>
+<body>
+
+<button class="toggle" id="tg" aria-label="Switch between day and night reading">Night</button>
+
+<div class="wrap">
+
+  <p class="eyebrow">Slovenia · The Julian Alps</p>
+  <h1>The Russian Road</h1>
+  <p class="dek">Vršič Pass, the Trenta valley and the upper Soča — a day spent on a road that exists for one of the worst reasons a road can exist, running through some of the best country in Europe.</p>
+
+  <nav class="contents">
+    <ol>
+      <li><a href="#s1"><span class="n">01</span>Why there is a road here at all</a></li>
+      <li><a href="#s2"><span class="n">02</span>The Isonzo Front</a></li>
+      <li><a href="#s3"><span class="n">03</span>Reading the peaks from the car</a></li>
+      <li><a href="#s4"><span class="n">04</span>Slemenova špica</a></li>
+      <li><a href="#s5"><span class="n">05</span>Trenta, and the men who knew it</a></li>
+      <li><a href="#s6"><span class="n">06</span>Zlatorog</a></li>
+      <li><a href="#s7"><span class="n">07</span>The source</a></li>
+      <li><a href="#s8"><span class="n">08</span>Why the water is that colour</a></li>
+      <li><a href="#s9"><span class="n">09</span>Velika korita</a></li>
+      <li><a href="#s10"><span class="n">10</span>What to eat and drink</a></li>
+      <li><a href="#s11"><span class="n">11</span>Good to know</a></li>
+    </ol>
+  </nav>
+
+  <!-- 01 -->
+  <section id="s1">
+    <h2>Why there is a road here at all</h2>
+    <p class="sub">1915 · Ruska cesta</p>
+    <p class="lede">Nobody would build this road for pleasure. The fifty hairpins you'll drive today were cut in 1915 by the Austro-Hungarian army for one purpose: to move men, mules, guns and shells from the railhead at Kranjska Gora over the mountains and down into the Soča valley, where the empire was fighting Italy for its life.</p>
+
+    <p>Before the war, crossing here meant a mule track. When Italy declared war on Austria-Hungary in May 1915, the Soča valley became a front line overnight, and the only supply routes to it ran the long way round. A road over Vršič would cut days off the journey. It had to be built immediately, in mountains, at altitude, in wartime — which meant it had to be built by people who had no choice.</p>
+
+    <p>That labour was Russian. Prisoners taken on the Eastern Front were shipped west and put to work on the pass in their thousands, alongside other POWs and conscripted civilians. They worked through the winter of 1915–16 in inadequate clothing, at altitude, on rations that were poor even by the standards of a starving empire. The Slovenian name for the road — <em>Ruska cesta</em>, the Russian Road — is not decoration. It is an accurate description of who built it.</p>
+
+    <p>On 8 March 1916, an avalanche came off the slopes above the northern approach and buried a work camp and the men in it. The commonly cited death toll is around a hundred, though figures given in different accounts vary considerably and the true number was probably never established. It was not the only avalanche and not the only camp; deaths from cold, exhaustion and disease over the two construction seasons ran far higher than any single incident.</p>
+
+    <p>The surviving prisoners built a chapel that same year, near the site, in the Russian Orthodox style they knew — timber, twin onion domes, small enough to feel domestic. It is still there, at hairpin eight on the way up, and it is still tended. A commemoration is held each summer, attended by Slovenian and Russian officials.</p>
+
+    <div class="aside">
+      <span class="label">Stop here</span>
+      <p>The Russian Chapel is easy to drive past — a small pull-off, a wooden building set back in the trees. It takes ten minutes and it reframes the entire drive. Go before you climb, not after; the mood of the road changes once you know.</p>
+    </div>
+
+    <p>The road opened in 1916. Its builders had, by then, largely been moved on or were dead. Ninety of the hairpins on the southern descent and twenty-four on the northern climb are cobbled with the original stone setts, laid by hand — and when you feel the tyres go loose and loud under you on the corners, you are driving on their work. Each bend carries a numbered stone marker giving its altitude. Twenty-four up from Kranjska Gora, twenty-six down into Trenta. Fifty in total.</p>
+  </section>
+
+  <!-- 02 -->
+  <section id="s2">
+    <h2>The Isonzo Front</h2>
+    <p class="sub">1915–1917 · Twelve battles</p>
+
+    <p>The valley you'll descend into this afternoon was, for two and a half years, one of the deadliest places on earth.</p>
+
+    <p>Italy entered the war in 1915 on the Allied side, having been promised Trentino, Trieste, Istria and a slice of Dalmatia under the secret Treaty of London. To collect, it had to break through Austro-Hungarian lines along the Soča — the Isonzo, in Italian — a front of roughly ninety kilometres running from Mount Rombon above Bovec down to the Adriatic.</p>
+
+    <p>The Italians attacked eleven times. The battles are numbered rather than named, First through Eleventh Isonzo, which tells you something in itself: they were not distinct manoeuvres so much as repeated attempts at the same thing. Against them, Austro-Hungarian troops held high ground in terrain that favoured defence absolutely. Positions were hacked into rock at two thousand metres. Men fought and froze in tunnels cut through glacier ice. Shells bursting on limestone threw stone splinters that were as lethal as the shrapnel.</p>
+
+    <blockquote>The mountains here did not provide cover from the war. They were the war.</blockquote>
+
+    <p>The Twelfth Battle was different. In October 1917, reinforced by German divisions and using new infiltration tactics along with poison gas, the Central Powers broke the line near Kobarid — Caporetto in Italian. The Italian Second Army collapsed and the retreat did not stop until the Piave, more than a hundred kilometres back. <em>Caporetto</em> entered the Italian language as a word for total, humiliating defeat, and it is still used that way.</p>
+
+    <div class="aside">
+      <span class="label">Two names you'll recognise</span>
+      <p>A young German lieutenant named Erwin Rommel made his reputation at Kobarid, taking Mount Matajur with a small detachment and being awarded the Pour le Mérite for it. And Ernest Hemingway, who drove ambulances on the Italian front, set <em>A Farewell to Arms</em> around the Caporetto retreat — the river his characters cross is the one you'll be swimming in.</p>
+    </div>
+
+    <p>Estimates of the dead across the whole Isonzo Front run to several hundred thousand on each side, with Italian losses the heavier. The bones are still coming out of the mountains. Every few years a glacier or a landslide gives up equipment, ordnance, or men, and the Slovenian authorities do the work of identification and reburial.</p>
+
+    <p>You are only touching the northern edge of it today. The heart of the front — the Kobarid museum, the charnel house, the open-air trenches — lies further down the valley than this day trip reaches. Worth knowing it's there.</p>
+  </section>
+
+  <!-- 03 -->
+  <section id="s3">
+    <h2>Reading the peaks from the car</h2>
+    <p class="sub">Prisojnik · Jalovec · Razor</p>
+
+    <p>The climb up the northern side gives you Prisojnik on your left as you gain height, and it is worth knowing what to look for, because the mountain has two features that people drive past without noticing.</p>
+
+    <h3>The Window</h3>
+    <p>High in Prisojnik's north face there is a natural rock arch — a hole punched clean through the ridge, tens of metres across. Locals call it simply <em>Prisankovo okno</em>, the Prisojnik Window. From the right hairpin on the road you can see daylight through the mountain. It's genuinely startling once you spot it, and easy to miss if you don't know it's there.</p>
+
+    <h3>The Pagan Girl</h3>
+    <p>Lower on the same face, the rock formations resolve into a human profile — a woman's face, looking out over the valley. She's the <em>Ajdovska deklica</em>, the Pagan Girl. In the local legend she was a mountain spirit who foretold the fate of a newborn child, and was turned to stone by her sisters for breaking the rule against revealing the future to mortals. Like all such faces, once you see her you can't unsee her, and until you do you'll swear there's nothing there. There's usually a signboard at the relevant bend.</p>
+
+    <div class="aside">
+      <span class="label">Jalovec</span>
+      <p>The sharp, curved horn of a mountain you'll see from Slemenova špica is Jalovec, 2,645 m. It is the emblem of the Slovenian Alpine Association — the profile on the badge of every mountaineering club in the country. Slovenes will recognise it instantly and are often pleased when foreigners do.</p>
+    </div>
+
+    <p>Behind and around: Razor, Mojstrovka above the pass itself, and further west the great bulk of Mangart on the Italian border. Triglav — 2,864 m, the highest peak in the country, on the national flag and the coat of arms — is not visible from the road here, but you're deep inside its park.</p>
+  </section>
+
+  <!-- 04 -->
+  <section id="s4">
+    <h2>Slemenova špica</h2>
+    <p class="sub">1,911 m · Sleme</p>
+
+    <p>The walk from the top of the pass is not long and not technical, and the payoff is out of all proportion to the effort. That combination is why it's one of the most photographed spots in Slovenia and why you should be on it early.</p>
+
+    <p>The trail leaves the Vršič car park, climbs through larch and dwarf pine, and then does the thing that makes it special: it stops climbing and opens out. You come over a lip onto a broad, tilted meadow, and the mountains are simply <em>there</em> — Jalovec dead ahead, Mangart off to the west, the whole Trenta basin dropping away below. There is no summit scramble, no exposure, no scree. Just a meadow at nineteen hundred metres with an alpine horizon.</p>
+
+    <p>Two small tarns sit in the grass and hold reflections when the wind drops, which is the shot most people come for. In late autumn the larches turn gold and the meadow becomes something else again; in August it's green with whatever's still flowering that late.</p>
+
+    <div class="flag">
+      <span class="label">Weather</span>
+      <p>This is an open, exposed high meadow with nothing above it. Convective storms build over these mountains through the afternoon in summer, often from around two o'clock, and they arrive faster than you'd expect. That is the entire reason the plan puts this walk in the morning. If cloud is stacking up on the ridges while you climb, turn around — the meadow will still be there in a decade.</p>
+    </div>
+
+    <p>Take a layer even if it's twenty-eight degrees in the valley. Nineteen hundred metres with wind on it is a different climate, and you'll want something on while you sit and eat.</p>
+  </section>
+
+  <!-- 05 -->
+  <section id="s5">
+    <h2>Trenta, and the men who knew it</h2>
+    <p class="sub">A valley that was very poor for a very long time</p>
+
+    <p>Coming down the southern hairpins you drop into Trenta, and it's worth resisting the idea that this was always a beautiful place to live. For most of its history it was a hard, isolated, marginal valley — too high and too narrow for real farming, cut off by snow for months, reachable only on foot.</p>
+
+    <p>People survived on what the mountains gave. Iron ore was mined and smelted here from the medieval period, with charcoal burned in the forests to feed the furnaces. When the ore ran out, the valley fell back on livestock, hunting, and a peculiar local trade: herbs.</p>
+
+    <h3>The Trenta doctors</h3>
+    <p>Trenta men went high into the mountains to gather medicinal plants, and then walked them out — over the passes, down into Italy and Austria — to sell. Some of them developed enough knowledge of what they were selling to be treated as healers in their own right. They were known as the <em>trentarski zdravniki</em>, the Trenta doctors: not physicians in any formal sense, but men whose understanding of alpine botany was real and hard-won, and who were consulted accordingly.</p>
+
+    <h3>Julius Kugy</h3>
+    <p>The valley's most famous outsider was Julius Kugy, born in Trieste in 1858, a merchant by trade and by inclination a mountaineer, botanist and writer. Kugy came to Trenta chasing a flower — <em>Scabiosa trenta</em>, described once in an eighteenth-century account and never reliably found since. He never found it either. What he found instead was the Julian Alps, and he spent the rest of his long life climbing them and writing about them with a romanticism that shaped how Slovenes themselves see these mountains.</p>
+
+    <p>Crucially, Kugy wrote about the local guides as people rather than as equipment — which was not the norm for gentleman-alpinists of his era. His monument sits below the pass on the Trenta side, a bronze figure looking up at the peaks.</p>
+
+    <div class="aside">
+      <span class="label">Anton Tožbar</span>
+      <p>Kugy's guide was a Trenta hunter called Anton Tožbar, nicknamed Špik. In 1873 Tožbar was attacked by a bear and had his lower jaw torn away. He survived, was fitted with a crude prosthesis, and went back to hunting and guiding in the mountains. He is buried in Trenta.</p>
+    </div>
+
+    <p>The valley today is inside Triglav National Park — Slovenia's only national park, protected in some form since 1924 and established in its current boundaries in 1981. It covers around 880 square kilometres, roughly four per cent of the country. The population of Trenta is now measured in dozens.</p>
+  </section>
+
+  <!-- 06 -->
+  <section id="s6">
+    <h2>Zlatorog</h2>
+    <p class="sub">The white chamois with golden horns</p>
+
+    <p>You will see the name everywhere — on beer bottles, on signs, on the side of buildings — and it comes from here.</p>
+
+    <p>Zlatorog was a white chamois with horns of gold who guarded a paradise garden high in the Triglav massif, and a treasure beneath it. The horns were the key to the treasure. In the legend, a young hunter from Trenta — poor, in love with a girl who wanted gold — went up after him.</p>
+
+    <p>He shot Zlatorog. Where the blood fell, a Triglav rose sprang up. The wounded animal ate the flower and was instantly healed, and when he rose the sunlight caught his golden horns and dazzled the hunter, who fell from the cliff to his death. Zlatorog, betrayed by men, destroyed the garden in his grief and left. What had been paradise became the bare rock and scree of the high Julians, and it has stayed that way.</p>
+
+    <blockquote>It is a story about greed ruining a place, told by people living in a landscape that looks exactly as though something once ruined it.</blockquote>
+
+    <p>The legend was collected and published in the nineteenth century and became foundational to Slovenian national romanticism. Whether Laško brewery's use of the name honours that or flattens it is a matter of taste, but you'll be drinking it either way.</p>
+  </section>
+
+  <!-- 07 -->
+  <section id="s7">
+    <h2>The source</h2>
+    <p class="sub">Izvir Soče · 886 m</p>
+
+    <p>Most great rivers begin ambiguously — a bog, a confluence, a spread of snowmelt where nobody can point at one spot. The Soča does not. It comes out of a hole in a cliff.</p>
+
+    <p>Behind the rock face is a karst cave holding a subterranean lake, fed by water that has travelled underground from the Zadnjica basin and the surrounding limestone. That water has spent long enough in the rock to arrive cold, clear and already loaded with the dissolved and suspended limestone that will give the river its colour. From here it runs 138 kilometres to the Adriatic, crossing into Italy along the way and finishing near Monfalcone under its Italian name, the Isonzo.</p>
+
+    <div class="flag">
+      <span class="label">The last hundred metres</span>
+      <p>The path from the car park is easy. The final approach to the spring itself is not: it's a short, steep, genuinely exposed scramble with fixed steel cables, above a drop, on rock that is wet because there is a river coming out of it. People do it in trainers and people get hurt. There is a viewpoint short of the cables that shows you the cave mouth perfectly well. Stopping there is a reasonable decision, not a failure of nerve.</p>
+    </div>
+
+    <p>Parking is a handful of spaces on the roadside. In August you may have to wait for one, or park further down and walk up.</p>
+  </section>
+
+  <!-- 08 -->
+  <section id="s8">
+    <h2>Why the water is that colour</h2>
+    <p class="sub">Rock flour, and a fish that is nearly gone</p>
+
+    <p>The Soča's colour is not an artefact of photography. It really does run a luminous milky turquoise, and it does so along nearly its whole length, which is unusual — most rivers with that colour lose it within a few kilometres of their glacial source.</p>
+
+    <p>The mechanism is suspended limestone. Water moving through the karst carries extremely fine calcium carbonate particles — rock ground to flour. Those particles are small enough to stay in suspension and to scatter light at the blue-green end of the spectrum, which is what your eye picks up. Add exceptional clarity, a pale limestone riverbed reflecting light back up, and depth in the pools, and you get the effect.</p>
+
+    <p>It is also very cold. The Soča runs somewhere around nine to twelve degrees through the summer, and does not warm up meaningfully in August. Swimming in it is a short, sharp, entirely worthwhile experience.</p>
+
+    <div class="aside">
+      <span class="label">The marble trout</span>
+      <p>The river is home to <em>Salmo marmoratus</em>, the marble or Soča trout — a large, mottled salmonid endemic to this Adriatic drainage and one of the rarest in Europe. It was pushed to the edge of extinction not by pollution or overfishing but by hybridisation: brown trout stocked into the river through the twentieth century interbred with it until pure populations survived in only a handful of isolated headwater streams. A long-running conservation programme has been working to restore them. Fishing the Soča is tightly permitted and controlled, and the upper reaches are catch-and-release with barbless hooks.</p>
+    </div>
+  </section>
+
+  <!-- 09 -->
+  <section id="s9">
+    <h2>Velika korita</h2>
+    <p class="sub">The Great Gorge</p>
+
+    <p>Below the Lepena confluence the river does something strange: instead of spreading across its bed, it disappears into a slot it has cut for itself in the limestone. The Great Gorge runs for several hundred metres, only a few metres wide, and drops to something like fifteen metres deep in places.</p>
+
+    <p>The rock has been polished by water and stone into shapes that look sculpted — smooth flutes, scalloped hollows, potholes drilled out by pebbles spinning in eddies over thousands of years. Footbridges cross it, and the view straight down into the slot from above is the reason to come.</p>
+
+    <p>There are pools at either end where you can get in. This is the swim.</p>
+
+    <div class="flag">
+      <span class="label">Footing</span>
+      <p>That polish means the slabs are slick, especially where they're damp, and there are unprotected edges above a deep narrow channel with fast water in it. People fall here. Move deliberately, keep back from the lip when you're framing a shot, and don't jump into water you haven't looked into first — depth and submerged rock vary enormously along the gorge.</p>
+    </div>
+
+    <p>Downstream from here the river opens out and the Bovec basin begins — the rafting and kayaking centre of the valley, and the reason the town exists in its modern form. Not on today's plan, but that's what all the vans with boats on the roof are doing.</p>
+  </section>
+
+  <!-- 10 -->
+  <section id="s10">
+    <h2>What to eat and drink</h2>
+    <p class="sub">Upper Soča specialities</p>
+
+    <p>This valley has its own food, distinct from both the Slovenian interior and the Italian side of the border, and it is mountain food: cheese, potato, buckwheat, dairy, walnuts. Worth ordering deliberately rather than defaulting to pizza.</p>
+
+    <ul class="plain">
+      <li><strong>Bovški sir</strong> — Bovec cheese, a hard sheep's-milk cheese from the pastures above the valley, with protected designation status. Sharp, slightly piquant, ages well. The base ingredient of most of what follows.</li>
+      <li><strong>Frika</strong> — the local dish. Bovški sir fried into a flat cake, either alone or bound with grated potato, until the outside crisps and the inside goes molten. Rich, salty, absolutely a mountain dish.</li>
+      <li><strong>Čompe an skuta</strong> — boiled potatoes in their skins with curd cheese, olive oil and pepper. Peasant food in the honest sense; still on menus because it's good.</li>
+      <li><strong>Kobariški štruklji</strong> — walnut-and-raisin dumplings, boiled and rolled in fried breadcrumbs, from Kobarid down the valley. Protected designation. Served as dessert or alongside.</li>
+      <li><strong>Trout</strong> — grilled, whole, usually farmed rather than wild given the conservation status. A staple everywhere in the valley.</li>
+      <li><strong>Jota</strong> — sour turnip, bean and pork soup, more common in the Karst and Trieste hinterland but found up here too. Restorative after a cold swim.</li>
+    </ul>
+
+    <div class="aside">
+      <span class="label">To drink</span>
+      <p>Union and Laško are the national lagers — Zlatorog is Laško's flagship, so you can now read the label properly. Radenska is the mineral water, from the far east of the country. For spirits, the local <em>žganje</em> comes in fruit varieties; blueberry (<em>borovničevec</em>) is the alpine one. If you want wine, this is not really the region for it — the good Slovenian whites come from Goriška Brda and the Vipava valley further south, and Rebula is the grape to look for.</p>
+    </div>
+
+    <p>Mountain huts — <em>koče</em> — serve food, and the two at the top of the pass are among the most accessible in the country. Expect soup, sausage, štruklji, strudel. Expect cash-only.</p>
+  </section>
+
+  <!-- 11 -->
+  <section id="s11">
+    <h2>Good to know</h2>
+    <p class="sub">Practical notes for the day</p>
+
+    <ul class="plain">
+      <li><strong>Cobbles and rain.</strong> The hairpin bends are laid with original stone setts and they get genuinely slippery wet. Brake before the corner, not in it.</li>
+      <li><strong>Traffic on the pass.</strong> Vršič is a famous cycling climb and a motorcycling destination, and it also carries coaches and campervans on a road with very few passing places. It is far worse in the afternoon than the morning — which is the practical argument for going up early quite apart from the weather.</li>
+      <li><strong>Cash.</strong> The mountain huts, the smaller places in Trenta, and some parking are cash or cash-preferred. Carry euros.</li>
+      <li><strong>Signal.</strong> Patchy on the pass, effectively absent in upper Trenta. Download offline maps before you leave.</li>
+      <li><strong>Charging.</strong> There is essentially nothing between Kranjska Gora and Bovec. Go over full and come back on what you've got — you'll claw back a useful amount on the descents, but don't plan around it.</li>
+      <li><strong>Altitude and layers.</strong> The valley and the meadow are a thousand-plus metres apart in height and it feels like it. Warm layer, and sunscreen — UV at nineteen hundred metres is significantly stronger than at the campsite.</li>
+      <li><strong>National park rules.</strong> You're inside Triglav National Park all day. No wild camping, no fires, no drones without a permit, no picking plants, stay on marked trails. Enforcement is real.</li>
+      <li><strong>Unexploded ordnance.</strong> A hundred-odd years on, the front still throws things up. It is extremely unlikely you'll encounter anything on a marked trail, but if you do see corroded metal that could be a shell, do not touch it, note the location, and report it. This is standard advice throughout the region and it is not theoretical.</li>
+    </ul>
+
+    <p class="hairline">Vršič Pass — 1,611 m · 50 hairpins · Slemenova špica 1,911 m · Izvir Soče 886 m · Velika korita approx. 450 m</p>
+  </section>
+
+  <footer>
+    Written for the Vršič and upper Soča day, August 2026.<br>
+    Historical figures — casualty counts especially — vary between sources and are given as commonly cited ranges.<br>
+    Opening hours, parking rules and park access restrictions change seasonally; confirm locally on the day.
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  var b=document.getElementById('tg'),h=document.documentElement;
+  function set(night){
+    h.classList.toggle('night',night);
+    b.textContent=night?'Day':'Night';
+    b.setAttribute('aria-pressed',night?'true':'false');
+  }
+  try{
+    set(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches);
+  }catch(e){ set(false); }
+  b.addEventListener('click',function(){ set(!h.classList.contains('night')); });
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Vršič &amp; the Soča — day plan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Public+Sans:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    color-scheme:light dark;
+    --stone:#E9EBE6;
+    --card:#F5F6F2;
+    --ink:#18272A;
+    --ink-soft:#5A6B6C;
+    --soca:#217F79;
+    --soca-line:#2E9E97;
+    --larch:#47594B;
+    --blaze:#C4392C;
+    --rule:#CBD2CB;
+    --btn-text:#F5F6F2;
+  }
+
+  @media (prefers-color-scheme:dark){
+    :root{
+      --stone:#101819;
+      --card:#182325;
+      --ink:#E6EBE7;
+      --ink-soft:#97A8A7;
+      --soca:#4FC4BA;
+      --soca-line:#4FC4BA;
+      --larch:#93AE96;
+      --blaze:#E4675A;
+      --rule:#2B393B;
+      --btn-text:#101819;
+    }
+  }
+
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+
+  body{
+    margin:0;
+    background:var(--stone);
+    color:var(--ink);
+    font-family:"Public Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size:16px;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .wrap{max-width:640px;margin:0 auto;padding:28px 20px 72px;}
+
+  /* ---------- masthead ---------- */
+
+  .eyebrow{
+    font-family:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+    font-size:11px;letter-spacing:0.16em;text-transform:uppercase;
+    color:var(--soca);margin:0 0 10px;
+  }
+
+  h1{
+    font-family:"Bricolage Grotesque","Public Sans",sans-serif;
+    font-weight:800;font-size:clamp(34px,9vw,50px);
+    line-height:1.02;letter-spacing:-0.025em;margin:0 0 12px;
+  }
+
+  .standfirst{font-size:16px;color:var(--ink-soft);margin:0 0 26px;max-width:44ch;}
+
+  /* ---------- elevation hero ---------- */
+
+  .profile{
+    background:var(--card);border:1px solid var(--rule);
+    border-radius:3px;padding:18px 16px 12px;margin:0 0 34px;
+  }
+
+  .profile-head{
+    display:flex;justify-content:space-between;align-items:baseline;
+    gap:12px;margin-bottom:10px;
+  }
+
+  .profile-title{
+    font-family:"IBM Plex Mono",ui-monospace,monospace;
+    font-size:11px;letter-spacing:0.12em;text-transform:uppercase;
+    color:var(--ink-soft);
+  }
+
+  .profile svg{display:block;width:100%;height:auto;}
+
+  .profile-foot{
+    display:flex;justify-content:space-between;
+    font-family:"IBM Plex Mono",ui-monospace,monospace;
+    font-size:11px;color:var(--ink-soft);
+    padding-top:6px;border-top:1px solid var(--rule);margin-top:4px;
+  }
+
+  .ep-base{stroke:var(--rule);}
+  .ep-line{stroke:var(--soca-line);}
+  .ep-fill{fill:var(--soca-line);opacity:0.16;}
+  .ep-peak{fill:var(--blaze);}
+  .ep-node{fill:var(--card);stroke:var(--soca-line);}
+  .ep-label{fill:var(--ink);font-family:"IBM Plex Mono",monospace;}
+  .ep-label-soft{fill:var(--ink-soft);font-family:"IBM Plex Mono",monospace;}
+
+  /* ---------- timeline ---------- */
+
+  .stops{list-style:none;margin:0;padding:0;position:relative;}
+
+  .stops::before{
+    content:"";position:absolute;left:7px;top:10px;bottom:32px;
+    width:2px;background:var(--rule);
+  }
+
+  .stop{position:relative;padding:0 0 26px 34px;}
+
+  /* Knafelc blaze — the red-and-white ring that marks every Slovenian trail */
+  .stop::before{
+    content:"";position:absolute;left:0;top:5px;
+    width:16px;height:16px;border-radius:50%;
+    background:var(--card);border:4px solid var(--blaze);
+  }
+
+  .stop.drive::before{
+    width:10px;height:10px;left:3px;top:9px;
+    border-width:2px;border-color:var(--rule);background:var(--stone);
+  }
+
+  .time{
+    font-family:"IBM Plex Mono",ui-monospace,monospace;
+    font-weight:600;font-size:14px;color:var(--soca);
+    display:block;letter-spacing:0.02em;
+  }
+
+  .stop h2{
+    font-family:"Bricolage Grotesque","Public Sans",sans-serif;
+    font-weight:700;font-size:19px;letter-spacing:-0.012em;
+    margin:1px 0 4px;line-height:1.2;
+  }
+
+  .meta{
+    font-family:"IBM Plex Mono",ui-monospace,monospace;
+    font-size:11px;letter-spacing:0.06em;text-transform:uppercase;
+    color:var(--larch);margin:0 0 6px;
+  }
+
+  .stop p{margin:0;font-size:15px;color:var(--ink-soft);}
+
+  .stop.drive h2{
+    font-family:"Public Sans",sans-serif;font-weight:600;
+    font-size:14px;color:var(--ink-soft);margin:0;
+  }
+
+  .stop.drive .time{font-size:13px;color:var(--ink-soft);}
+
+  /* ---------- gates ---------- */
+
+  .gate{
+    background:var(--card);border-left:4px solid var(--blaze);
+    padding:15px 17px;margin:0 0 26px;
+  }
+
+  .gate .label{
+    font-family:"IBM Plex Mono",ui-monospace,monospace;
+    font-size:10px;letter-spacing:0.16em;text-transform:uppercase;
+    color:var(--blaze);display:block;margin-bottom:5px;
+  }
+
+  .gate p{margin:0;font-size:15px;}
+  .gate strong{font-weight:600;}
+
+  /* ---------- sections ---------- */
+
+  h3{
+    font-family:"Bricolage Grotesque","Public Sans",sans-serif;
+    font-weight:700;font-size:13px;letter-spacing:0.1em;text-transform:uppercase;
+    color:var(--larch);margin:38px 0 14px;
+    padding-bottom:7px;border-bottom:1px solid var(--rule);
+  }
+
+  .notes{list-style:none;margin:0;padding:0;}
+
+  .notes li{
+    font-size:15px;padding:0 0 12px 18px;position:relative;color:var(--ink-soft);
+  }
+
+  .notes li::before{
+    content:"";position:absolute;left:0;top:9px;
+    width:6px;height:6px;background:var(--soca);
+  }
+
+  .notes strong{color:var(--ink);font-weight:600;}
+
+  .maplink{
+    display:inline-block;
+    font-family:"IBM Plex Mono",ui-monospace,monospace;
+    font-size:13px;letter-spacing:0.04em;
+    color:var(--btn-text);background:var(--ink);
+    text-decoration:none;padding:13px 20px;border-radius:2px;margin-top:6px;
+  }
+
+  .maplink:hover,.maplink:focus{background:var(--soca);color:var(--btn-text);}
+
+  a:focus-visible{outline:3px solid var(--soca);outline-offset:3px;}
+
+  .foot{
+    margin-top:44px;padding-top:16px;border-top:1px solid var(--rule);
+    font-family:"IBM Plex Mono",ui-monospace,monospace;
+    font-size:11px;color:var(--ink-soft);line-height:1.7;
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    *{transition:none !important;animation:none !important;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <p class="eyebrow">One day · Julian Alps</p>
+  <h1>Vršič &amp; the Soča</h1>
+  <p class="standfirst">Over the pass early, down the far side to the river, home before the coals are ready. Around 4 hours driving, 3 hours walking, and one very cold swim.</p>
+
+  <!-- Signature: the day drawn as its own elevation profile -->
+  <div class="profile">
+    <div class="profile-head">
+      <span class="profile-title">The shape of the day</span>
+      <span class="profile-title">490 → 1,911 → 450 m</span>
+    </div>
+    <svg viewBox="0 0 1000 268" role="img" aria-label="Elevation profile: from Kamna Gorica at 490 metres, a brief stop at Zirovnica, then up over Vrsic Pass at 1,611 metres to Slemenova spica at 1,911 metres. Down the far side to the source of the Soca at 890 metres, Trenta at 620, and the gorge at 450 metres, before climbing back over the pass and home.">
+      <line class="ep-base" x1="0" y1="240" x2="1000" y2="240" stroke-width="1"/>
+      <line class="ep-base" x1="0" y1="73.5" x2="1000" y2="73.5" stroke-width="1" stroke-dasharray="3 5"/>
+
+      <path class="ep-fill" d="M0,227.6 L23,214.6 L183,73.5 L344,32.2 L504,73.5 L534,172.6 L626,209.8 L679,233.1 L885,73.5 L1000,227.6 L1000,240 L0,240 Z"/>
+      <path class="ep-line" d="M0,227.6 L23,214.6 L183,73.5 L344,32.2 L504,73.5 L534,172.6 L626,209.8 L679,233.1 L885,73.5 L1000,227.6" fill="none" stroke-width="2.5" stroke-linejoin="round"/>
+
+      <circle class="ep-peak" cx="344" cy="32.2" r="5"/>
+      <circle class="ep-peak" cx="679" cy="233.1" r="5"/>
+      <circle class="ep-node" cx="183" cy="73.5" r="4" stroke-width="2.5"/>
+      <circle class="ep-node" cx="534" cy="172.6" r="4" stroke-width="2.5"/>
+      <circle class="ep-node" cx="885" cy="73.5" r="4" stroke-width="2.5"/>
+
+      <text class="ep-label" x="344" y="20" text-anchor="middle" font-size="15">Slemenova špica</text>
+      <text class="ep-label" x="679" y="258" text-anchor="middle" font-size="15">Velika korita</text>
+      <text class="ep-label-soft" x="183" y="63" text-anchor="middle" font-size="13">Vršič</text>
+      <text class="ep-label-soft" x="534" y="162" text-anchor="middle" font-size="13">Izvir</text>
+    </svg>
+    <div class="profile-foot">
+      <span>08:30 depart</span>
+      <span>19:25 home</span>
+    </div>
+  </div>
+
+  <!-- ---------- timeline ---------- -->
+
+  <ol class="stops">
+
+    <li class="stop">
+      <span class="time">08:30</span>
+      <h2>Leave Kamna Gorica</h2>
+      <p class="meta">490 m</p>
+      <p>Swimming things, walking shoes, warm layer for the top — it's properly cold at 1,900 m even in August.</p>
+    </li>
+
+    <li class="stop drive">
+      <span class="time">15 min</span>
+      <h2>Drive to Žirovnica</h2>
+    </li>
+
+    <li class="stop">
+      <span class="time">08:45</span>
+      <h2>Žirovnica — shop &amp; charge</h2>
+      <p class="meta">560 m · 30 minutes</p>
+      <p>Supercharger with a Lidl and a Spar beside it. Get the BBQ shop done here and go over the pass full — Trenta and the upper valley have almost nothing.</p>
+    </li>
+
+    <li class="stop drive">
+      <span class="time">1h15</span>
+      <h2>Via Kranjska Gora, then 24 cobbled hairpins</h2>
+    </li>
+
+    <li class="stop">
+      <span class="time">10:30</span>
+      <h2>Vršič Pass — park</h2>
+      <p class="meta">1,611 m</p>
+      <p>Boots on, water filled, sunscreen. The trail to Slemenova špica leaves from the car park.</p>
+    </li>
+
+    <li class="stop">
+      <span class="time">10:45</span>
+      <h2>Walk to Slemenova špica</h2>
+      <p class="meta">1h30 up · steep in places, no exposure</p>
+      <p>Through larch forest, then out onto open meadow.</p>
+    </li>
+
+    <li class="stop">
+      <span class="time">12:15</span>
+      <h2>Slemenova špica</h2>
+      <p class="meta">1,911 m · 30 minutes up top</p>
+      <p>The high meadow with the Jalovec spire straight ahead. This is the one everybody photographs. Sit down, eat something, take your time.</p>
+    </li>
+
+    <li class="stop">
+      <span class="time">14:00</span>
+      <h2>Back at the car</h2>
+      <p class="meta">1h15 down</p>
+    </li>
+
+    <li class="stop drive">
+      <span class="time">20 min</span>
+      <h2>Down the far side into the Trenta valley</h2>
+    </li>
+
+    <li class="stop">
+      <span class="time">14:20</span>
+      <h2>Izvir Soče — the source</h2>
+      <p class="meta">890 m · 45 minutes</p>
+      <p>Where the whole river starts, straight out of the rock. Easy path to the viewpoint. The last stretch to the spring itself is cabled and genuinely exposed — no shame in stopping short. Very few parking spaces, so we may have to wait for one.</p>
+    </li>
+
+    <li class="stop drive">
+      <span class="time">15 min</span>
+      <h2>Follow the river down</h2>
+    </li>
+
+    <li class="stop">
+      <span class="time">15:20</span>
+      <h2>Trenta — coffee</h2>
+      <p class="meta">620 m · 15 minutes</p>
+      <p>Quick stop only. Closed on Thursdays, so worth checking before we count on it.</p>
+    </li>
+
+    <li class="stop drive">
+      <span class="time">20 min</span>
+      <h2>Downstream to the gorge</h2>
+    </li>
+
+    <li class="stop">
+      <span class="time">15:55</span>
+      <h2>Velika korita — the Great Soča Gorge</h2>
+      <p class="meta">450 m · 1 hour 30</p>
+      <p>Luminous turquoise water in a limestone slot. Walk the length of it, scramble the slabs, swim if you dare — the river runs 9–11 °C all summer. The rock is polished and slick near the edges.</p>
+    </li>
+
+    <li class="stop drive">
+      <span class="time">2 hours</span>
+      <h2>Back over Vršič and home</h2>
+    </li>
+
+    <li class="stop">
+      <span class="time">19:25</span>
+      <h2>Kamna Gorica — fire on</h2>
+      <p class="meta">490 m</p>
+      <p>Half an hour clear of an 8 o'clock BBQ.</p>
+    </li>
+
+  </ol>
+
+  <h3>Two decisions on the day</h3>
+
+  <div class="gate">
+    <span class="label">Turnaround · 12:30</span>
+    <p><strong>Not on the summit by 12:30? Turn back.</strong> The whole afternoon depends on being at the car by 14:00. The meadow is lovely but it isn't worth losing the river for.</p>
+  </div>
+
+  <div class="gate">
+    <span class="label">Hard cutoff · 18:00</span>
+    <p><strong>Leave Velika korita by 18:00 at the absolute latest.</strong> The plan has us going at 17:25, so the margin is thinner than it looks — this is the full version of the day, with nothing dropped.</p>
+  </div>
+
+  <h3>Worth knowing</h3>
+
+  <ul class="notes">
+    <li><strong>Storms build from about 2pm</strong> over these mountains in August. That's exactly why the walking happens in the morning — we'll be off the ridge before anything develops. If the forecast looks angry, we swap: river first, hike after.</li>
+    <li><strong>The drive home is the leg that slips.</strong> Two hours assumes moving traffic. Late afternoon on Vršič means coaches, campervans and cyclists on fifty hairpins with nowhere to pass.</li>
+    <li><strong>If we're running behind, the lever is the gorge</strong> — cutting it to an hour puts us home by 18:55. Don't cut the hike; we'd have driven all that way for it.</li>
+    <li><strong>No signal in upper Trenta.</strong> Download the offline map for the region before we leave.</li>
+  </ul>
+
+  <h3>Navigation</h3>
+
+  <a class="maplink" href="https://www.google.com/maps/dir/?api=1&amp;origin=Kamna+Gorica&amp;origin_place_id=ChIJtflwiCG-ekcRn9INjmo4Ays&amp;destination=Kamna+Gorica&amp;destination_place_id=ChIJtflwiCG-ekcRn9INjmo4Ays&amp;waypoints=46.4036%2C14.1305%7C46.432897%2C13.743071%7C46.411681%2C13.724123%7C46.380513%2C13.751867%7C46.337210%2C13.645934&amp;travelmode=driving">Open the route in Google Maps →</a>
+
+  <p class="foot">
+    Distances and drive times are estimates — treat the clock as a guide, not a schedule.<br>
+    Trenta opening hours and charger availability worth confirming on the day.
+  </p>
+
+</div>
+</body>
+</html>

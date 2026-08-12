@@ -564,6 +564,13 @@ const COFFEE_ANCHORS={4:'brela',5:'brela',6:'ston',7:'dubrovnik',8:'kotor',9:'ko
 const DRINKS_ANCHORS={4:'lokva',5:'lokva',6:'peljesac',7:'dubrovnik',8:'kotor',9:'kotor',
   10:'niksic',13:'herzegovina',14:'sarajevo',15:'salzburg',16:'salzburg'};
 
+/* ---------------- Vršič day-specific extras ----------------
+   Two standalone files just for day 3's Vršič Pass round trip: a minute-by-minute
+   timed itinerary (vrsic-day-plan.html) and a longer reading companion covering
+   the same ground as balkans-companion.html#s04 but in more depth
+   (vrsic-companion.html). Both single-purpose, no anchor map needed. */
+const VRSIC_DAY=3;
+
 const ALL_STOPS=[{name:ORIGIN.name,lat:ORIGIN.lat,lng:ORIGIN.lng}]
   .concat(LEGS.flatMap(l=>l.days.map(d=>({name:d.title.replace(/^.*→\s*/,''),lat:d.lat,lng:d.lng}))));
 document.getElementById('abrpAll').href=abrpUrl(ALL_STOPS);
@@ -1024,6 +1031,10 @@ LEGS.forEach(leg=>{
       const drinksAnchor=DRINKS_ANCHORS[d.n];
       if(drinksAnchor){
         html+=`<a class="abrplink" target="_blank" rel="noopener" href="balkans-2026-drinks.html#${drinksAnchor}">Wine, beer & rakija →</a>`;
+      }
+      if(d.n===VRSIC_DAY){
+        html+=`<a class="abrplink" target="_blank" rel="noopener" href="vrsic-day-plan.html">Vršič timed day plan →</a>`;
+        html+=`<a class="abrplink" target="_blank" rel="noopener" href="vrsic-companion.html">Read: The Russian Road →</a>`;
       }
       if(html){ links.innerHTML=html; card.appendChild(links); }
     }
